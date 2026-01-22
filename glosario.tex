@@ -1,0 +1,306 @@
+% =============================================================================
+% GLOSARIO DE TÉRMINOS
+% =============================================================================
+
+\chapter*{Glosario de Términos}
+\addcontentsline{toc}{chapter}{Glosario de Términos}
+
+A continuación se presentan las definiciones de los términos técnicos y conceptos especializados utilizados a lo largo de esta investigación, organizados alfabéticamente.
+
+\section*{A}
+
+\begin{description}
+    \item[Aceleración Angular:] Derivada temporal de la velocidad angular, medida en grados por segundo al cuadrado (°/s$^2$). Indica la rapidez con que cambia la velocidad del movimiento ocular durante un sacádico.
+    
+    \item[Algoritmo de Higuchi:] Método computacional para calcular la dimensión fractal de una señal temporal. Permite cuantificar la complejidad y auto-similitud de las trayectorias oculares.
+    
+    \item[Análisis Discriminante Lineal (LDA):] Técnica estadística supervisada utilizada para reducción de dimensionalidad y clasificación. Busca maximizar la separación entre clases mientras minimiza la dispersión dentro de cada clase mediante transformaciones lineales.
+\end{description}
+
+\section*{B}
+
+\begin{description}
+    \item[Bagging (Bootstrap Aggregating):] Técnica de aprendizaje conjunto donde se generan múltiples subconjuntos de datos mediante muestreo con reemplazo, entrenando un modelo independiente en cada uno para luego combinar sus predicciones.
+    
+    \item[Biometría Comportamental:] Tipo de identificación biométrica basada en patrones de comportamiento del individuo (como la forma de caminar, escribir o mover los ojos), a diferencia de características físicas estáticas como huellas dactilares.
+    
+    \item[Bounding Box:] Rectángulo delimitador que encierra una región de interés en una imagen. En este estudio, define el área que contiene el ojo detectado por YOLO.
+\end{description}
+
+\section*{C}
+
+\begin{description}
+    \item[Calibración:] Proceso mediante el cual se establece una correspondencia entre las posiciones de la pupila en la imagen y las coordenadas de la mirada en la pantalla. Es fundamental para la precisión del sistema.
+    
+    \item[CLAHE (Contrast Limited Adaptive Histogram Equalization):] Algoritmo de mejora de contraste que opera en regiones locales de la imagen, evitando la sobre-amplificación del ruido. Esencial para resaltar el contraste pupila-iris.
+    
+    \item[CNN (Red Neuronal Convolucional):] Arquitectura de red neuronal artificial especializada en procesamiento de imágenes. Utiliza operaciones de convolución para extraer características jerárquicas automáticamente.
+    
+    \item[Córnea:] Capa transparente frontal del ojo que ayuda a enfocar la luz hacia la retina. Su curvatura influye en las reflexiones luminosas (glints) utilizadas en algunos sistemas de eye-tracking.
+    
+    \item[Cursor Ocular:] Interfaz de control que permite mover un cursor en pantalla mediante la dirección de la mirada, eliminando la necesidad de dispositivos de entrada manuales.
+\end{description}
+
+\section*{D}
+
+\begin{description}
+    \item[Dataset:] Conjunto de datos estructurado utilizado para entrenar, validar y probar algoritmos de aprendizaje automático. En este estudio, consiste en secuencias de video anotadas de movimientos oculares.
+    
+    \item[Dimensión Fractal de Higuchi (HFD):] Métrica que cuantifica la complejidad espacial de una señal temporal. Valores altos indican trayectorias erráticas y caóticas; valores bajos indican movimientos suaves y deterministas.
+    
+    \item[Diámetro Pupilar:] Medida del tamaño de la pupila, típicamente en milímetros. Varía en respuesta a cambios de iluminación (reflejo pupilar) y carga cognitiva.
+\end{description}
+
+\section*{E}
+
+\begin{description}
+    \item[EAR (Eye Aspect Ratio):] Métrica geométrica que cuantifica el grado de apertura del ojo mediante la relación entre distancias verticales y horizontales de puntos de referencia del párpado. Utilizada para detección de parpadeos.
+    
+    \item[Ensemble Learning:] Paradigma de aprendizaje automático que combina múltiples modelos base para mejorar la precisión y robustez de las predicciones. Random Forest es un ejemplo de este enfoque.
+    
+    \item[Esclera:] Capa externa blanca y opaca del ojo. Proporciona contraste con la pupila oscura, facilitando la segmentación en sistemas de eye-tracking.
+    
+    \item[Exactitud (Accuracy):] En clasificación, proporción de predicciones correctas sobre el total de casos evaluados. Métrica principal para evaluar el rendimiento del sistema biométrico.
+\end{description}
+
+\section*{F}
+
+\begin{description}
+    \item[Falso Negativo (FN):] Error de clasificación donde el sistema no detecta un evento que sí ocurrió (por ejemplo, no detectar la pupila cuando está presente).
+    
+    \item[Falso Positivo (FP):] Error de clasificación donde el sistema detecta un evento que no ocurrió o identifica incorrectamente un objeto.
+    
+    \item[Fine-tuning:] Proceso de ajuste fino de un modelo pre-entrenado mediante entrenamiento adicional en un dataset específico. Permite adaptar redes neuronales generales a tareas especializadas.
+    
+    \item[Fijación:] Período durante el cual los ojos permanecen relativamente inmóviles enfocados en un punto específico. Es cuando ocurre el procesamiento visual de la información.
+    
+    \item[Filtro Savitzky-Golay:] Filtro digital que suaviza señales mediante el ajuste de polinomios locales. Permite calcular derivadas temporales con mínima amplificación de ruido.
+    
+    \item[FPS (Frames Per Second):] Número de imágenes capturadas por segundo. En este estudio, se opera a 120 FPS para capturar la dinámica rápida de los movimientos sacádicos.
+    
+    \item[Frecuencia de Muestreo:] Número de veces por segundo que se registra la posición del ojo, medida en Hertz (Hz). Debe ser al menos el doble de la frecuencia más alta del fenómeno medido (teorema de Nyquist).
+\end{description}
+
+\section*{G}
+
+\begin{description}
+    \item[Glint:] Reflejo especular de una fuente de luz sobre la superficie de la córnea. Utilizado como punto de referencia estable en algunos sistemas de eye-tracking para compensar movimientos de cabeza.
+    
+    \item[Ground Truth:] Datos de referencia considerados como verdaderos, utilizados para validar y entrenar algoritmos. En este estudio, corresponde a las anotaciones manuales de las posiciones pupilares.
+\end{description}
+
+\section*{H}
+
+\begin{description}
+    \item[Head-mounted Eye Tracker:] Sistema de seguimiento ocular montado en la cabeza del usuario mediante gafas o cascos, permitiendo movilidad total durante la captura.
+    
+    \item[Hiperplano:] Generalización de un plano en espacios de más de tres dimensiones. En SVM, es la superficie de decisión que separa las diferentes clases de datos.
+    
+    \item[Homografía:] Transformación matemática que mapea puntos entre dos planos proyectivos. Utilizada para convertir coordenadas del vector de mirada en coordenadas de pantalla.
+\end{description}
+
+\section*{I}
+
+\begin{description}
+    \item[Inferencia:] Proceso mediante el cual un modelo entrenado realiza predicciones sobre datos nuevos no vistos durante el entrenamiento.
+    
+    \item[Infrarrojo Cercano (NIR):] Región del espectro electromagnético con longitudes de onda entre 700-1000 nm. Invisible al ojo humano pero capturable por sensores CMOS, permite iluminar el ojo sin molestar al usuario.
+    
+    \item[Iris:] Estructura circular pigmentada del ojo que controla el diámetro de la pupila. Su patrón único es utilizado en sistemas de identificación biométrica.
+\end{description}
+
+\section*{J}
+
+\begin{description}
+    \item[Jerk (Sobreaceleración):] Tercera derivada de la posición respecto al tiempo, medida en °/s$^3$. Cuantifica la suavidad del movimiento; valores bajos indican movimientos fluidos y eficientes.
+    
+    \item[Jitter:] Variación aleatoria de alta frecuencia en una señal, típicamente causada por ruido instrumental. Debe ser filtrada para no contaminar el cálculo de derivadas.
+\end{description}
+
+\section*{K}
+
+\begin{description}
+    \item[Kernel RBF (Radial Basis Function):] Función matemática utilizada en SVM para proyectar datos no linealmente separables a un espacio de mayor dimensión donde se vuelven linealmente separables.
+    
+    \item[k-max:] Parámetro del algoritmo de Higuchi que determina el número de escalas temporales utilizadas para calcular la dimensión fractal.
+\end{description}
+
+\section*{L}
+
+\begin{description}
+    \item[Landmarks:] Puntos de referencia anatómicos detectados automáticamente en el rostro o el ojo. En este estudio, se utilizan para calcular el EAR y localizar la región ocular.
+    
+    \item[LDLJ (Log Dimensionless Jerk):] Logaritmo del Jerk adimensional. Métrica normalizada que permite comparar la suavidad de movimientos de diferentes amplitudes y duraciones.
+    
+    \item[Loss Function (Función de Pérdida):] Métrica que cuantifica el error del modelo durante el entrenamiento. El algoritmo ajusta los parámetros para minimizar esta función.
+\end{description}
+
+\section*{M}
+
+\begin{description}
+    \item[Machine Learning (Aprendizaje Automático):] Rama de la inteligencia artificial que permite a los sistemas aprender patrones de los datos sin ser explícitamente programados.
+    
+    \item[Main Sequence (Secuencia Principal):] Relación matemática fundamental entre la amplitud de un movimiento sacádico y su velocidad pico. Descrita por Bahill et al. (1975), sigue una ley exponencial de saturación.
+    
+    \item[mAP (mean Average Precision):] Métrica estándar para evaluar modelos de detección de objetos. Promedia la precisión a diferentes umbrales de solapamiento entre predicción y ground truth.
+    
+    \item[Matriz de Confusión:] Tabla que resume el rendimiento de un clasificador mostrando las predicciones correctas e incorrectas para cada clase. La diagonal principal representa aciertos.
+    
+    \item[Micro-movimientos:] Pequeñas fluctuaciones oculares de muy baja amplitud ($<$ 1°) que ocurren incluso durante las fijaciones. Incluyen microsacádicos, drift y tremor.
+\end{description}
+
+\section*{N}
+
+\begin{description}
+    \item[NIR (Near-Infrared):] Ver Infrarrojo Cercano.
+    
+    \item[Normalización:] Proceso de escalar los valores de las características a un rango estándar (típicamente [0,1] o media 0 y desviación estándar 1). Mejora la convergencia de algoritmos de aprendizaje.
+    
+    \item[Nyquist, Teorema de:] Principio fundamental del procesamiento de señales que establece que la frecuencia de muestreo debe ser al menos el doble de la frecuencia más alta presente en la señal para evitar aliasing.
+\end{description}
+
+\section*{O}
+
+\begin{description}
+    \item[Oculometría:] Ciencia que estudia la medición y análisis de los movimientos oculares. También se refiere a las técnicas experimentales de eye-tracking.
+    
+    \item[Overfitting (Sobreajuste):] Fenómeno donde un modelo aprende demasiado bien los datos de entrenamiento, incluyendo el ruido, perdiendo capacidad de generalización a datos nuevos.
+\end{description}
+
+\section*{P}
+
+\begin{description}
+    \item[Parpadeo:] Cierre breve e involuntario de los párpados, típicamente durando 100-150 ms. Ocurre aproximadamente 15-20 veces por minuto en condiciones normales.
+    
+    \item[Píxel:] Unidad mínima de información en una imagen digital. El tamaño físico del píxel del sensor determina la resolución espacial del sistema.
+    
+    \item[Precisión (del Sistema):] En eye-tracking, consistencia o repetibilidad de las mediciones al registrar el mismo movimiento múltiples veces. Se cuantifica mediante la desviación estándar de las mediciones repetidas.
+    
+    \item[Precisión (Métrica de Clasificación):] En aprendizaje automático, proporción de predicciones positivas que fueron correctas: $\text{Precisión} = \frac{TP}{TP + FP}$.
+    
+    \item[Preprocesamiento:] Conjunto de operaciones aplicadas a los datos crudos antes del análisis principal. Incluye filtrado, normalización, corrección de artefactos, etc.
+    
+    \item[Pupila:] Apertura circular en el centro del iris que regula la cantidad de luz que entra al ojo. Su detección precisa es fundamental para el eye-tracking.
+\end{description}
+
+\section*{R}
+
+\begin{description}
+    \item[Random Forest (Bosque Aleatorio):] Algoritmo de aprendizaje conjunto que construye múltiples árboles de decisión entrenados con subconjuntos aleatorios de datos y características, combinando sus predicciones mediante votación.
+    
+    \item[Recall (Sensibilidad):] Proporción de casos positivos reales que fueron correctamente identificados: $\text{Recall} = \frac{TP}{TP + FN}$.
+    
+    \item[Región de Interés (ROI):] Área específica de una imagen que contiene la información relevante para el análisis. En este estudio, la ROI contiene el ojo detectado por YOLO.
+    
+    \item[Regresión Lineal:] Técnica estadística que modela la relación entre variables mediante el ajuste de una línea recta que minimiza los errores cuadráticos.
+    
+    \item[Retina:] Capa fotosensible en el fondo del ojo que contiene los fotorreceptores (conos y bastones). Absorbe la luz infrarroja, causando que la pupila aparezca oscura en imágenes NIR.
+\end{description}
+
+\section*{S}
+
+\begin{description}
+    \item[Sacádico (Movimiento):] Movimiento ocular rápido y balístico que reorienta la fóvea hacia un nuevo objetivo visual. Son los movimientos corporales más rápidos, alcanzando hasta 900°/s.
+    
+    \item[Savitzky-Golay, Filtro de:] Ver Filtro Savitzky-Golay.
+    
+    \item[Segmentación:] Proceso de dividir una imagen en regiones significativas. En este estudio, separa la pupila del resto del ojo mediante umbralización.
+    
+    \item[Sensibilidad (Recall):] Ver Recall.
+    
+    \item[Señal Cruda (Raw Signal):] Datos registrados directamente por el sensor sin ningún tipo de procesamiento posterior. Típicamente contiene ruido y artefactos.
+    
+    \item[Serie Temporal:] Secuencia de datos ordenados cronológicamente. Las trayectorias oculares son series temporales multidimensionales (X, Y, Z, tiempo).
+    
+    \item[Sobreajuste:] Ver Overfitting.
+    
+    \item[SVM (Support Vector Machine):] Algoritmo de clasificación supervisada que busca el hiperplano óptimo que maximiza el margen de separación entre clases.
+\end{description}
+
+\section*{T}
+
+\begin{description}
+    \item[Teorema de Nyquist-Shannon:] Ver Nyquist, Teorema de.
+    
+    \item[Tracking (Seguimiento):] Proceso de mantener la identificación de un objeto a lo largo de múltiples fotogramas consecutivos. Esencial para construir trayectorias continuas.
+    
+    \item[Transfer Learning:] Técnica donde un modelo entrenado en una tarea general se adapta a una tarea específica mediante entrenamiento adicional con pocos datos.
+\end{description}
+
+\section*{U}
+
+\begin{description}
+    \item[Umbralización (Thresholding):] Técnica de segmentación que clasifica píxeles como pertenecientes al objeto o al fondo comparando su intensidad con un umbral. Puede ser global o adaptativa.
+\end{description}
+
+\section*{V}
+
+\begin{description}
+    \item[Validación Cruzada:] Técnica estadística que divide el dataset en múltiples subconjuntos para entrenar y validar el modelo iterativamente, asegurando mejor estimación del rendimiento real.
+    
+    \item[Vector de Características:] Conjunto de valores numéricos que describen un objeto o evento. En este estudio, cada participante se representa por un vector de 18 características biométricas.
+    
+    \item[Vector de Mirada:] Vector tridimensional que representa la dirección en la que apunta el eje visual del ojo en un momento dado, expresado en coordenadas cartesianas (X, Y, Z).
+    
+    \item[Vectores de Soporte:] En SVM, puntos de entrenamiento más cercanos al hiperplano de decisión. Son los únicos que determinan la posición y orientación del hiperplano.
+    
+    \item[Velocidad Angular:] Derivada temporal de la posición angular, medida en grados por segundo (°/s). Indica la rapidez del movimiento ocular.
+    
+    \item[Velocidad Pico:] Máxima velocidad alcanzada durante un movimiento sacádico. Es una característica fundamental de la Main Sequence.
+    
+    \item[Velocidad Pupilar:] Tasa de cambio del diámetro pupilar en el tiempo, medida en mm/s. Refleja la reactividad del sistema nervioso autónomo.
+\end{description}
+
+\section*{Y}
+
+\begin{description}
+    \item[YOLO (You Only Look Once):] Arquitectura de red neuronal convolucional para detección de objetos en tiempo real. En este estudio se utiliza YOLOv8n para localizar la pupila en cada fotograma.
+    
+    \item[YOLOv8n:] Variante ``Nano'' de YOLO versión 8, optimizada para inferencia rápida en hardware con recursos limitados (3.2 millones de parámetros).
+\end{description}
+
+\vspace{1cm}
+
+\section*{Abreviaturas Adicionales}
+
+\begin{description}
+    \item[2D/3D:] Bidimensional / Tridimensional
+    \item[CLAHE:] Contrast Limited Adaptive Histogram Equalization
+    \item[CMOS:] Complementary Metal-Oxide-Semiconductor (tipo de sensor de imagen)
+    \item[CPU:] Central Processing Unit (Unidad Central de Procesamiento)
+    \item[CSV:] Comma-Separated Values (formato de archivo de datos)
+    \item[dpi:] Dots per inch (puntos por pulgada, resolución)
+    \item[EAR:] Eye Aspect Ratio
+    \item[FN:] False Negative (Falso Negativo)
+    \item[FP:] False Positive (Falso Positivo)
+    \item[FPS:] Frames Per Second (fotogramas por segundo)
+    \item[GPU:] Graphics Processing Unit (Unidad de Procesamiento Gráfico)
+    \item[HD:] High Definition (Alta Definición)
+    \item[HFD:] Higuchi Fractal Dimension
+    \item[Hz:] Hertz (ciclos por segundo)
+    \item[IA:] Inteligencia Artificial
+    \item[LDLJ:] Log Dimensionless Jerk
+    \item[LDA:] Linear Discriminant Analysis
+    \item[LSTM:] Long Short-Term Memory (tipo de red neuronal recurrente)
+    \item[mAP:] mean Average Precision
+    \item[MJPEG:] Motion JPEG (formato de compresión de video)
+    \item[mm:] Milímetros
+    \item[ms:] Milisegundos
+    \item[NIR:] Near-Infrared (Infrarrojo Cercano)
+    \item[PCA:] Principal Component Analysis (Análisis de Componentes Principales)
+    \item[px:] Píxeles
+    \item[QVGA:] Quarter Video Graphics Array (320×240 píxeles)
+    \item[RAM:] Random Access Memory (Memoria de Acceso Aleatorio)
+    \item[RBF:] Radial Basis Function
+    \item[RGB:] Red-Green-Blue (modelo de color)
+    \item[RMSE:] Root Mean Square Error (Error Cuadrático Medio)
+    \item[ROI:] Region of Interest (Región de Interés)
+    \item[SSD:] Solid State Drive (Disco de Estado Sólido)
+    \item[SVM:] Support Vector Machine
+    \item[TN:] True Negative (Verdadero Negativo)
+    \item[TP:] True Positive (Verdadero Positivo)
+    \item[USB:] Universal Serial Bus
+    \item[YOLO:] You Only Look Once
+    \item[$\mu$m:] Micrómetros (micras)
+\end{description}
+

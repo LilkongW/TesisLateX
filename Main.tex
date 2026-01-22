@@ -1,0 +1,223 @@
+\documentclass[12pt, letterpaper, oneside]{report}
+
+% =============================================================================
+% PREÁMBULO GLOBAL - CONFIGURACIÓN PROFESIONAL
+% =============================================================================
+
+% --- CODIFICACIÓN E IDIOMA ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel} % es-nodecimaldot para que no cambie el punto por coma en matemáticas si se desea
+
+% --- TIPOGRAFÍA PROFESIONAL ---
+\usepackage{mathptmx}       % Times para texto y matemáticas
+\usepackage[scaled=0.92]{helvet} % Helvetica para sans-serif
+\usepackage{courier}        % Courier para monoespaciado
+
+% Mejoras tipográficas avanzadas
+\usepackage{microtype}
+\usepackage{textcomp}
+
+% --- FORMATO DE PÁGINA PROFESIONAL ---
+\usepackage{geometry}
+\geometry{
+	left=3cm,
+	right=2.5cm,
+	top=2.5cm,
+	bottom=2.5cm,
+	headheight=15pt
+}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% Encabezados y pies de página
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+% --- MATEMÁTICAS Y SÍMBOLOS ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{csquotes}
+
+% --- GRÁFICOS Y TABLAS ---
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{caption}
+
+\captionsetup{
+	font=small,
+	labelfont=bf,
+	format=plain,
+	justification=centering,
+	singlelinecheck=false
+}
+
+% --- COLORES ---
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{darkred}{RGB}{139,0,0}
+
+% --- DIAGRAMAS Y ALGORITMOS ---
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc, shadows}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Salida:}}
+
+% --- LISTADOS DE CÓDIGO ---
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{darkblue}\bfseries,
+	commentstyle=\color{gray}\itshape,
+	stringstyle=\color{darkred},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=8pt,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	backgroundcolor=\color{white},
+	captionpos=b,
+	inputencoding=utf8,
+	extendedchars=true,
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 % Soporte para tildes en código
+}
+
+% --- BIBLIOGRAFÍA (BIBLATEX CON BIBER) ---
+\usepackage[
+style=ieee,
+backend=biber,
+sorting=none,
+maxbibnames=99,
+giveninits=true,
+doi=true,
+url=true,
+eprint=false
+]{biblatex}
+
+% Archivo de bibliografía (asegúrate de tener este archivo en la carpeta)
+\addbibresource{referencias.bib}
+
+% --- ENLACES (Hyperref debe cargarse casi al final) ---
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=darkblue,
+	urlcolor=darkblue,
+	pdfborder={0 0 0},
+	pdftitle={Sistema de Seguimiento Ocular},
+	pdfauthor={Tu Nombre},
+	pdfsubject={Tesis de Física},
+	pdfkeywords={Eye Tracking, Biometría, Visión por Computadora}
+}
+
+% --- AJUSTES FINOS ---
+\widowpenalty=10000
+\clubpenalty=10000
+
+% --- FORMATO DE CAPÍTULOS (Titlesec después de hyperref) ---
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}
+{\chaptertitlename\ \thechapter}
+{20pt}
+{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% --- UNIDADES FÍSICAS ---
+\usepackage{siunitx}
+\sisetup{
+	detect-all, % Nota: En versiones muy nuevas de siunitx esto puede generar warning, pero compila.
+	output-decimal-marker = {,},
+	group-separator = {.},
+	group-minimum-digits = 4
+}
+
+% =============================================================================
+% CUERPO DEL DOCUMENTO
+% =============================================================================
+\begin{document}
+	
+	% --- PRELIMINARES (Numeración Romana) ---
+	\pagestyle{empty}
+	\pagenumbering{roman}
+	
+	% Portada
+	\include{portada}
+	
+	% Dedicatoria y Agradecimientos
+	\include{dedicatoria}
+	\include{agradecimientos}
+	
+	% =========================================================================
+	% RESUMEN 
+	% =========================================================================
+	\include{resumen}
+
+	
+	% Activar numeración de páginas para índices
+	\pagestyle{plain}
+	
+	% Índices
+	\tableofcontents
+	\clearpage
+	
+	\listoffigures
+	\addcontentsline{toc}{chapter}{Lista de Figuras}
+	\clearpage
+	
+	\listoftables
+	\addcontentsline{toc}{chapter}{Lista de Tablas}
+	\clearpage
+	
+	% Introducción (sin numeración de capítulo, pero en TOC)
+	\include{introduccion}
+	
+	% --- CONTENIDO PRINCIPAL (Numeración Arábiga) ---
+	\clearpage
+	\pagenumbering{arabic} % Reinicia contador a 1
+	\pagestyle{fancy}
+	
+	% Capítulos
+	\include{Capitulo1}
+	\include{Capitulo2}
+	\include{Capitulo3}
+	\include{Capitulo4}
+	\include{Capitulo5}
+	
+	% --- MATERIAL FINAL ---
+	\clearpage
+	\pagestyle{plain}
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Referencias Bibliográficas}
+	\printbibliography[title={Referencias Bibliográficas}]
+	
+	\appendix
+	\pagestyle{fancy}
+	\include{formulas}
+	
+\end{document}

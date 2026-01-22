@@ -1,0 +1,109 @@
+\chapter*{Anexo: Compendio de Formulación Matemática}
+\addcontentsline{toc}{chapter}{Anexo: Compendio de Formulación Matemática}
+
+A continuación se presenta un resumen consolidado de los modelos matemáticos, algoritmos y transformaciones geométricas utilizadas a lo largo de esta investigación.
+
+\section*{1. Procesamiento de Imágenes}
+
+\subsection*{Conversión a Escala de Grises}
+Transformación de luminancia basada en la percepción humana (CCIR 601):
+\begin{equation}
+    I(x,y) = 0.2989 \cdot R(x,y) + 0.5870 \cdot G(x,y) + 0.1140 \cdot B(x,y)
+\end{equation}
+
+\subsection*{Umbralización Binaria (Thresholding)}
+Segmentación básica para la detección de la pupila oscura:
+\begin{equation}
+    I_{bin}(x, y) = \begin{cases} 
+      255 & \text{si } I(x, y) > T \\
+      0 & \text{si } I(x, y) \leq T 
+   \end{cases}
+\end{equation}
+
+\subsection*{Optimización de Contornos (Suavidad Angular)}
+Criterio de filtrado geométrico basado en el coseno del ángulo entre vectores adyacentes del contorno:
+\begin{equation}
+    \cos \theta = \frac{\vec{v}_1 \cdot \vec{v}_2}{\|\vec{v}_1\| \|\vec{v}_2\|}
+\end{equation}
+Donde $\vec{v}_1 = P_i - P_{i-1}$ y $\vec{v}_2 = P_{i+1} - P_i$.
+
+\subsection*{Filtro de Savitzky-Golay}
+Suavizado de la señal temporal mediante ajuste polinomial local para preservar picos:
+\begin{equation}
+    y[i] = \sum_{k=-M}^{M} c_k x[i+k]
+\end{equation}
+Donde $2M+1$ es el tamaño de la ventana y $c_k$ son los coeficientes de convolución.
+
+\section*{2. Cinemática y Dinámica Ocular}
+
+\subsection*{Velocidad Angular}
+Calculada a partir de la diferencia de posición entre frames consecutivos ($\Delta t$):
+\begin{equation}
+    \omega(t) = \frac{\theta(t) - \theta(t-1)}{\Delta t}
+\end{equation}
+
+\subsection*{Jerk (Sobreaceleración)}
+Tercera derivada de la posición (o primera derivada de la aceleración), indicador de suavidad motora:
+\begin{equation}
+    J(t) = \frac{d^3 \theta(t)}{dt^3} \approx \frac{a(t) - a(t-1)}{\Delta t}
+\end{equation}
+
+\subsection*{Main Sequence (Modelo de Bahill)}
+Relación exponencial entre la amplitud ($A$) y la velocidad pico ($V_{pico}$) de un sacádico:
+\begin{equation}
+    V_{pico} = V_{sat} \left(1 - e^{-A/C}\right)
+\end{equation}
+Donde $V_{sat}$ es la velocidad de saturación asintótica y $C$ la constante de forma.
+
+\section*{3. Geometría y Biometría Ocular}
+
+\subsection*{EAR Tradicional (Standard Eye Aspect Ratio)}
+Propuesto por Soukupová y Čech (6 landmarks):
+\begin{equation}
+    EAR_{std} = \frac{||p_2 - p_6|| + ||p_3 - p_5||}{2 \cdot ||p_1 - p_4||}
+\end{equation}
+
+\subsection*{EAR Mejorado (Propuesta Tesis)}
+Métrica basada en muestreo denso poligonal (5 verticales) para mayor estabilidad:
+\begin{equation}
+    EAR_{imp} = \frac{\frac{1}{5} \sum_{i=1}^{5} ||v_{top,i} - v_{bottom,i}||}{||h_{left} - h_{right}||}
+\end{equation}
+
+\subsection*{Dimensión Fractal de Higuchi (HFD)}
+Cálculo de la longitud de curva $L_m(k)$ para medir complejidad de la señal:
+\begin{equation}
+    L_m(k) = \frac{1}{k} \left( \sum_{i=1}^{\lfloor \frac{N-m}{k} \rfloor} |x(m+ik) - x(m+(i-1)k)| \right) \frac{N-1}{\lfloor \frac{N-m}{k} \rfloor k}
+\end{equation}
+
+\section*{4. Calibración y Machine Learning}
+
+\subsection*{Matriz de Homografía (Mapeo de Mirada)}
+Transformación proyectiva del espacio del ojo $(g_x, g_y)$ al espacio de pantalla $(s_x, s_y)$:
+\begin{equation}
+    \begin{bmatrix} s_x \\ s_y \\ 1 \end{bmatrix} = 
+    \begin{bmatrix} 
+    h_{11} & h_{12} & h_{13} \\ 
+    h_{21} & h_{22} & h_{23} \\ 
+    h_{31} & h_{32} & h_{33} 
+    \end{bmatrix} 
+    \cdot 
+    \begin{bmatrix} g_x \\ g_y \\ 1 \end{bmatrix}
+\end{equation}
+
+\subsection*{Criterio de Fisher (LDA)}
+Maximización de la separabilidad entre clases ($S_B$) frente a la varianza intra-clase ($S_W$):
+\begin{equation}
+    J(w) = \frac{w^T S_B w}{w^T S_W w}
+\end{equation}
+
+\subsection*{Kernel RBF (SVM)}
+Función de base radial para mapeo no lineal en Máquinas de Vectores de Soporte:
+\begin{equation}
+    K(x_i, x_j) = \exp\left(-\gamma ||x_i - x_j||^2\right)
+\end{equation}
+
+\subsection*{Votación Random Forest}
+Decisión final basada en la moda de las predicciones de $T$ árboles de decisión:
+\begin{equation}
+    \hat{y} = \text{moda}\{h_1(x), h_2(x), \dots, h_T(x)\}
+\end{equation}

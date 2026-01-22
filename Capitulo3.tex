@@ -1,0 +1,741 @@
+% --- CAPÍTULO III ---
+\chapter{Marco Metodológico}
+
+Este capítulo describe el marco metodológico de la investigación: el diseño experimental, el sistema de captura implementado y las técnicas de procesamiento de señales utilizadas.
+
+\section{Diseño y Tipo de Investigación}
+
+\subsection{Enfoque Cuantitativo}
+
+La presente investigación adopta un enfoque cuantitativo, sustentado en la recolección sistemática de datos numéricos y su posterior análisis mediante técnicas estadísticas y computacionales.
+Esta elección metodológica se justifica por la naturaleza física y medible de las variables bajo estudio: posiciones espaciales del ojo expresadas en coordenadas $(x, y)$, velocidades angulares (en °/s), aceleraciones, y otras métricas cinemáticas que describen la dinámica del sistema oculomotor.
+El uso de variables numéricas permite cuantificar de manera precisa los fenómenos físicos involucrados en el movimiento ocular.
+Según Ramírez et al. \cite{ramirez2004}, el enfoque cuantitativo es apropiado cuando se busca establecer patrones de comportamiento, probar hipótesis y generalizar resultados a partir de muestras representativas mediante el análisis estadístico.
+Las trayectorias oculares registradas se traducen en series temporales multidimensionales que pueden ser analizadas mediante herramientas matemáticas rigurosas.
+Las características extraídas —tales como la velocidad pico de los sacádicos, el índice de suavidad (Jerk), la dimensión fractal de Higuchi, y las variaciones del diámetro pupilar— constituyen descriptores cuantitativos que permiten:
+
+\begin{itemize}
+	\item Caracterizar objetivamente el comportamiento oculomotor de cada participante
+	\item Comparar estadísticamente las diferencias individuales
+	\item Aplicar algoritmos de aprendizaje automático para la clasificación de patrones
+	\item Validar la consistencia de las mediciones mediante análisis de precisión y reproducibilidad
+\end{itemize}
+
+Este enfoque sigue los principios de la física experimental, donde los fenómenos naturales se describen mediante modelos matemáticos y se validan a través de la replicabilidad y el análisis cuantitativo de los resultados obtenidos.
+
+\subsection{Diseño Experimental}
+
+El estudio se enmarca dentro de un diseño experimental de tipo controlado, en el cual se manipulan deliberadamente las variables independientes para observar su efecto sobre las variables dependientes del sistema oculomotor.
+Específicamente, se diseñaron estímulos visuales estandarizados que permiten registrar y analizar las respuestas oculares bajo condiciones replicables.
+
+\subsubsection{Variables del estudio}
+
+El diseño experimental se estructura en torno a las siguientes variables:
+
+\textbf{Variables independientes (manipuladas):}
+\begin{itemize}
+	\item \textit{Posición espacial del estímulo visual}: Una cuadrícula de $3 \times 3$ puntos que cubren el campo visual de la pantalla, generando 9 posiciones discretas que provocan movimientos sacádicos dirigidos.
+	\item \textit{Duración de presentación del estímulo}: Cada punto permanece visible durante 2 segundos, tiempo suficiente para garantizar la estabilización de la fijación ocular según los criterios establecidos por Duchowski \cite{duchowski2017}.
+	\item \textit{Secuencia de presentación}: Los estímulos se presentan siguiendo un orden determinado (de izquierda a derecha, de arriba hacia abajo), lo que induce un patrón predecible de movimientos oculares.
+\end{itemize}
+
+\textbf{Variables dependientes (observadas):}
+\begin{itemize}
+	\item Coordenadas espaciales del centroide de la pupila $(x_p(t), y_p(t))$ en función del tiempo
+	\item Velocidad angular del movimiento ocular $v(t)$ [°/s]
+	\item Aceleración angular $a(t)$ [°/s$^2$]
+	\item Índice de suavidad del movimiento (Jerk) $J(t)$ [°/s$^3$]
+	\item Diámetro pupilar $d(t)$ [mm] y su tasa de cambio
+	\item Duración de las fijaciones y características de los movimientos sacádicos
+\end{itemize}
+
+\textbf{Variables controladas:}
+\begin{itemize}
+	\item Distancia sujeto-pantalla: $60 \pm 1$ cm
+	\item Resolución y frecuencia de muestreo de la cámara
+	\item Características físicas del estímulo (tamaño, contraste, color de fondo)
+\end{itemize}
+
+Este diseño permite establecer relaciones causales entre los estímulos presentados y las respuestas oculomotoras registradas, asegurando la validez interna del experimento mediante el control riguroso de factores que podrían introducir variabilidad no deseada en las mediciones.
+
+\section{Sistema Experimental y Herramientas}
+
+\subsection{Hardware e Instrumentación}
+
+El sistema experimental desarrollado integra componentes de hardware que permiten la captura, procesamiento y almacenamiento de datos oculométricos en tiempo real.
+
+\subsubsection{Equipo de cómputo}
+
+El procesamiento de las señales oculares requiere capacidad computacional suficiente para ejecutar algoritmos de visión por computadora y aprendizaje automático en tiempo real.
+El equipo utilizado presenta las siguientes características:
+
+\begin{itemize}
+	\item \textbf{Procesador}: Intel Core i7 de 11ª generación (8 núcleos, 16 hilos)
+	\item \textbf{Memoria RAM}: 20 GB DDR4 a 3200 MHz
+	\item \textbf{Sistema operativo}: Ubuntu 24.04 LTS (distribución Linux optimizada para desarrollo científico)
+	\item \textbf{Almacenamiento}: SSD de 512 GB para lectura/escritura rápida de datos
+	\item \textbf{Tarjeta gráfica}: GPU integrada Intel (utilizada para acelerar operaciones de procesamiento de imágenes)
+\end{itemize}
+
+Este equipo proporciona el poder de cómputo necesario para:
+\begin{enumerate}
+	\item Procesar flujos de video a 30-120 FPS en tiempo real
+	\item Ejecutar algoritmos de detección y extracción de características
+	\item Entrenar y validar modelos de aprendizaje automático
+	\item Almacenar y gestionar grandes volúmenes de datos experimentales
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Imagenes/pc.jpg}
+	\caption{Estación de trabajo utilizada para el procesamiento de datos y entrenamiento de la red neuronal.
+		El equipo operó bajo entorno Linux (Ubuntu 24.04 LTS) para maximizar la eficiencia en la gestión de procesos en tiempo real.}
+	\label{fig:computador_specs}
+\end{figure}
+
+\subsubsection{Sistema de captura de video}
+
+La captura de imágenes del ojo se realizó mediante un módulo de cámara infrarroja especializado para visión artificial, basado en el sensor GC0308, cuyas especificaciones técnicas se detallan a continuación:
+
+\begin{itemize}
+	\item \textbf{Sensor}: GalaxyCore GC0308 (CMOS de 1/6.5 pulgadas)
+	\item \textbf{Espectro de operación}: Infrarrojo cercano (NIR) con sensibilidad pico a 850 nm (sin filtro IR-cut)
+	\item \textbf{Resolución operativa}: 320 $\times$ 240 píxeles (QVGA) para maximizar la tasa de cuadros
+	\item \textbf{Frecuencia de muestreo}: Configurada a 120 FPS constantes
+	\item \textbf{Interfaz de datos}: USB 2.0 de alta velocidad
+	\item \textbf{Formato de salida}: MJPEG
+	\item \textbf{Enfoque}: Lente de enfoque fijo manual (montura M12) ajustado para macro-distancia
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Imagenes/gc0308.png} 
+	\caption{Módulo de cámara con sensor GalaxyCore GC0308 adaptado para visión infrarroja cercana (NIR).
+		Se observa la lente con montura M12 ajustable.}
+	\label{fig:camara_gc0308}
+\end{figure}
+
+Se seleccionó una frecuencia de muestreo operativa de 120 Hz fundamentada en el teorema de muestreo de Nyquist-Shannon.
+Dado que el ancho de banda fisiológico de los movimientos oculares sacádicos convencionales se sitúa en el rango de 20-25 Hz, una tasa de 120 FPS no solo satisface la condición de Nyquist ($120 > 50$), sino que proporciona un factor de sobremuestreo significativo.
+Esto permite una reconstrucción temporal fidedigna de la dinámica ocular, minimizando el desenfoque de movimiento (\textit{motion blur}) durante las aceleraciones rápidas del ojo.
+
+\textbf{Configuración geométrica y validez de la captura:}
+
+A diferencia de los sistemas remotos, el dispositivo se configuró como un sistema montado en cabeza.
+La cámara se acopló mecánicamente a la estructura de unos lentes, ubicada específicamente en la parte inferior derecha del campo visual y orientada con un ángulo de elevación hacia el globo ocular derecho.
+Esta configuración de proximidad (distancia focal $< 5$ cm) garantiza que la región de interés (ROI) ocupe la totalidad del sensor.
+A pesar de utilizar una resolución QVGA ($320 \times 240$), la densidad de píxeles efectiva sobre el área de la pupila es superior a la de una cámara HD ubicada a distancia.
+La imagen resultante contiene exclusivamente información del ojo, eliminando ruido del entorno y reduciendo la carga computacional en el post-procesamiento, lo que facilita la detección precisa del centroide pupilar.
+
+\subsection{Entorno y Condiciones de Iluminación}
+
+El control de las condiciones ambientales es fundamental para garantizar la reproducibilidad de las mediciones y la calidad de las imágenes capturadas, particularmente cuando se utiliza el método de pupila oscura descrito en el marco teórico (Capítulo 2).
+
+\subsubsection{Configuración espacial}
+
+La configuración geométrica del sistema se estandarizó para todos los participantes:
+
+\begin{itemize}
+	\item \textbf{Distancia sujeto-pantalla}: 60 cm (medida desde la posición promedio de los ojos hasta el centro de la pantalla)
+	\item \textbf{Altura de la pantalla}: Ajustada de manera que el centro de la pantalla coincida con la altura de los ojos del participante en posición erguida
+	\item \textbf{Ángulo de visión}: 0° (pantalla perpendicular a la línea de visión primaria)
+	\item \textbf{Posición de la cámara}: Montada en la parte inferior derecha de los lentes, apuntando aproximadamente a 45° hacia el ojo
+\end{itemize}
+
+Esta distancia de 60 cm fue seleccionada considerando que:
+\begin{enumerate}
+	\item Es una distancia ergonómica estándar para el trabajo frente a pantallas según las normas ISO 9241-5
+	\item Maximiza la resolución angular del sistema de seguimiento sin comprometer la comodidad del participante
+\end{enumerate}
+
+\subsubsection{Control de iluminación}
+
+Para implementar eficazmente el método de pupila oscura y maximizar el contraste entre la pupila y el iris, se establecieron las siguientes condiciones de iluminación:
+
+\begin{itemize}
+	\item \textbf{Iluminación ambiental}: Nivel de iluminancia controlado entre 500-900 lux, correspondiente a condiciones de oficina estándar.
+	Todos los datos se recopilaron en este rango de lux, se corroboró usando un luxómetro UNIT UT383.
+\end{itemize}
+
+\textbf{Método de pupila oscura:} Gracias a la sensibilidad espectral del sensor GC0308 en el rango del infrarrojo cercano (sin filtro IR-cut), este estudio implementa el método de pupila oscura aprovechando la iluminación ambiental como fuente pasiva.
+A diferencia de los sensores que operan exclusivamente en el espectro visible, este dispositivo capta la radiación infrarroja del entorno, la cual es absorbida eficientemente por la retina pero reflejada por el iris y la esclera.
+Este fenómeno físico maximiza el contraste natural de la imagen, haciendo que la pupila aparezca significativamente más oscura sin necesidad de emisores activos (LEDs), lo que optimiza la segmentación mediante las técnicas de umbralización detalladas en la sección~\ref{sec:segmentacion}.
+
+\subsection{Herramientas de Software}
+
+El pipeline de procesamiento, desde la adquisición de imágenes hasta la clasificación de patrones, se implementó íntegramente en Python 3.10, seleccionado por su amplio ecosistema de bibliotecas científicas y su capacidad para prototipado rápido de algoritmos.
+
+\subsubsection{Procesamiento de imágenes y visión por computadora}
+
+\begin{itemize}
+	\item \textbf{OpenCV (cv2) 4.8.0}: Biblioteca fundamental para la captura de video en tiempo real, aplicación de filtros de preprocesamiento (Gaussian, Bilateral), operaciones morfológicas, detección de contornos, y transformaciones geométricas.
+	Esta biblioteca implementa eficientemente los algoritmos descritos en el marco teórico para la segmentación de la pupila.
+	\item \textbf{Ultralytics YOLOv8 8.0.x}: Framework de aprendizaje profundo utilizado para la implementación, entrenamiento y validación de la red neuronal convolucional encargada de la detección y seguimiento de la pupila.
+	Su integración permitió inferencias de alta velocidad (tiempo real) con el modelo personalizado.
+	\item \textbf{NumPy 1.24.3}: Biblioteca fundamental para operaciones numéricas eficientes sobre matrices multidimensionales.
+	Se utilizó extensivamente para:
+	\begin{itemize}
+		\item Manipulación de arrays de imágenes (tensores de dimensión $H \times W \times C$)
+		\item Cálculo de derivadas numéricas para obtener velocidad, aceleración y Jerk
+		\item Operaciones de álgebra lineal (productos matriciales, descomposiciones)
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Procesamiento de señales}
+
+\begin{itemize}
+	\item \textbf{SciPy 1.11.2}: Conjunto de herramientas para computación científica que se empleó para:
+	\begin{itemize}
+		\item Implementación del filtro Savitzky-Golay (\texttt{scipy.signal.savgol\_filter})
+		\item Cálculo de transformadas de Fourier para análisis frecuencial
+		\item Interpolación de datos mediante splines cúbicos
+		\item Optimización de parámetros mediante métodos de mínimos cuadrados
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Análisis estadístico y visualización}
+
+\begin{itemize}
+	\item \textbf{Pandas 2.0.3}: Biblioteca para manipulación y análisis de datos estructurados.
+	Se utilizó para:
+	\begin{itemize}
+		\item Organización de las características extraídas en DataFrames
+		\item Cálculo de estadísticas descriptivas (media, desviación estándar, cuartiles)
+		\item Exportación de resultados a formatos CSV y Excel
+	\end{itemize}
+	
+	\item \textbf{Matplotlib 3.7.2} y \textbf{Seaborn 0.12.2}: Bibliotecas complementarias para visualización de datos.
+	Se emplearon para:
+	\begin{itemize}
+		\item Generación de gráficos de trayectorias oculares
+		\item Visualización de distribuciones de características mediante histogramas y boxplots
+		\item Creación de matrices de confusión para evaluar los clasificadores
+		\item Gráficos de la secuencia principal (velocidad vs. amplitud de sacádicos)
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Aprendizaje automático}
+
+\begin{itemize}
+	\item \textbf{Scikit-learn 1.3.0}: Biblioteca integral de aprendizaje automático que proporciona implementaciones eficientes de los algoritmos descritos en el marco teórico:
+	\begin{itemize}
+		\item \texttt{LinearDiscriminantAnalysis}: Para reducción de dimensionalidad preservando la separabilidad entre clases
+		\item \texttt{SVC}: Máquinas de Vectores de Soporte con kernel RBF para clasificación no lineal
+		\item \texttt{RandomForestClassifier}: Clasificador basado en ensambles de árboles de decisión
+		\item \texttt{StandardScaler}: Normalización de características para evitar sesgos por diferencias de escala
+		\item \texttt{train\_test\_split}: División estratificada de datos en conjuntos de entrenamiento y prueba
+		\item Métricas de evaluación: \texttt{accuracy\_score}, \texttt{classification\_report}, \texttt{confusion\_matrix}
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Disponibilidad del Código}
+El código fuente completo del sistema desarrollado, incluyendo los scripts de procesamiento, análisis y visualización, está disponible públicamente en el repositorio de GitHub: \url{https://github.com/LilkongW/Tesis3D.git}. 
+
+Este repositorio contiene:
+\begin{itemize}
+	\item Los scripts de captura y procesamiento de imágenes
+	\item El modelo YOLOv8 entrenado para detección pupilar
+	\item Los algoritmos de extracción de métricas biométricas
+	\item Los scripts de análisis estadístico y generación de gráficos
+\end{itemize}
+
+\subsection{Arquitectura del Flujo de Datos (Pipeline)}
+
+El sistema se diseñó bajo una arquitectura modular secuencial compuesta por tres etapas de procesamiento, cada una gestionada por scripts específicos desarrollados en Python.
+Este flujo garantiza la trazabilidad de los datos desde la captura cruda hasta el análisis estadístico final.
+La Figura \ref{fig:pipeline_flujo} ilustra la secuencia de transformación de los datos, vinculando los algoritmos descritos con los módulos de software implementados.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth, height=20cm, keepaspectratio]{Imagenes/flow.png}
+	\caption{Diagrama de flujo de la arquitectura de procesamiento de datos.
+		Se ilustra la secuencia desde la captura de video hasta la generación de resultados biométricos.}
+	\label{fig:pipeline_flujo}
+\end{figure}
+
+Adicionalmente, la Tabla \ref{tab:flujo_datos} detalla la función específica de cada módulo de software dentro del repositorio del proyecto, especificando las entradas y salidas de cada etapa.
+
+\begin{table}[H]
+	\centering
+	\caption{Descripción funcional de los módulos de software del sistema.}
+	\vspace{0.2cm}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{lp{5cm}p{3.5cm}p{3.5cm}}
+			\toprule
+			\textbf{Etapa} & \textbf{Módulo (Script)} & \textbf{Entrada (Input)} & \textbf{Salida (Output)} \\
+			\midrule
+			\textbf{1. Extracción} & \texttt{main.py} \newline \texttt{eye\_tracker\_utils.py} & Videos del ojo ($120$ FPS) & Archivos \texttt{\_data.csv} con centroides y vector mirada $(g_x, g_y, g_z)$. \\
+			\midrule
+			\textbf{2. Métricas} & \texttt{Generar\_Metricas.py} & Series temporales de posición ($P(t)$) & Dataset \texttt{BIOMETRIC.csv} con 18 descriptores (Jerk, HFD, etc.) \\
+			\midrule
+			\textbf{3. Análisis} & \texttt{Analizar\_Metricas.py} & Dataset Biométrico consolidado & Gráficos de Radar, Clusters LDA y Matrices de Confusión. \\
+			\bottomrule
+		\end{tabular}
+	}
+	\label{tab:flujo_datos}
+\end{table}
+
+\section{Protocolo de Adquisición de Datos}
+
+\subsection{Población y Muestra}
+
+\subsubsection{Caracterización de la población objetivo}
+
+La población objetivo de este estudio la conforman adultos jóvenes sin patologías oculomotoras diagnosticadas, residentes en Mérida (Venezuela).
+Este grupo demográfico fue seleccionado por presentar características oculomotoras estables y bien documentadas en la literatura científica, lo que facilita la comparación de los resultados obtenidos con estudios previos.
+
+\subsubsection{Criterios de selección}
+
+Para garantizar la homogeneidad de la muestra y la validez de las mediciones, se establecieron los siguientes criterios de inclusión y exclusión:
+
+\textbf{Criterios de inclusión:}
+\begin{itemize}
+	\item Edad comprendida entre 20 y 35 años
+	\item Ausencia de patologías oculares diagnosticadas (cataratas, glaucoma, desprendimiento de retina)
+	\item Comprensión de las instrucciones del experimento
+\end{itemize}
+
+\subsubsection{Tamaño y composición de la muestra}
+
+La muestra final consistió en 15 participantes (N = 15), seleccionados mediante muestreo no probabilístico por conveniencia.
+La composición demográfica fue:
+
+\begin{itemize}
+	\item \textbf{Edad}: Media de 25.3 años, desviación estándar de 3.7 años
+	\item \textbf{Sexo}: 11 hombres (73.3\%) y 4 mujeres (26.7\%)
+	\item \textbf{Corrección visual}: 8 participantes con visión normal (53.3\%) y 7 con corrección óptica (lentes o lentes de contacto, 46.7\%)
+\end{itemize}
+
+Este tamaño de muestra, aunque limitado, es consistente con estudios piloto en el campo de la biometría oculomotora.
+Investigaciones previas como las de Komogortsev et al. \cite{komogortsev2010} han demostrado que muestras de 10-20 participantes son suficientes para validar la viabilidad de sistemas de seguimiento ocular y establecer la singularidad de patrones oculomotores individuales en condiciones controladas.
+A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condiciones específicas registradas para cada uno de los 15 participantes durante las sesiones experimentales.
+
+\begin{table}[H]
+	\centering
+	\caption{Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}
+	\vspace{0.2cm}
+	\begin{tabular}{ccccc}
+		\toprule
+		\textbf{Sujeto} & \textbf{Edad (años)} & \textbf{Distancia (cm)} & \textbf{Iluminancia (Lux)} \\
+		\midrule
+		P01 & 24 & 59 & 585 \\
+		P02 & 26  & 60 & 620 \\
+		P03 & 22 & 60 & 550 \\
+		P04 & 29  & 58 & 710 \\
+		P05 & 25 & 60 & 680 \\
+		P06 & 31  & 60 & 850 \\
+		P07 & 23  & 59 & 595 \\
+		P08 & 27  & 60 & 640 \\
+		P09 & 21 & 59 & 520 \\
+		P10 & 35 & 60 & 890 \\
+		P11 & 28  & 60 & 730 \\
+		P12 & 24 & 60 & 615 \\
+		P13 & 30  & 59 & 800 \\
+		P14 & 22  & 60 & 560 \\
+		P15 & 26  & 60 & 675 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:participantes_detalle}
+	\vspace{0.2cm}
+	\begin{minipage}{0.9\textwidth}
+		\footnotesize
+		\textbf{Consideraciones Metrológicas:}
+		\begin{itemize}
+			\item \textbf{Distancia ($\pm 1$ cm):} Medición realizada con cinta métrica comercial (resolución 1 mm).
+			Se asigna una incertidumbre expandida de $\pm 1$ cm para compensar el error de posicionamiento de la cabeza (paralaje y micro-movimientos).
+			\item \textbf{Iluminancia ($\pm \Delta$):} Medición realizada con luxómetro digital UNI-T UT383.
+			Según especificaciones del fabricante, la precisión instrumental en el rango $<9999$ Lux es de $\pm(4\% \text{ lectura} + 8 \text{ dígitos})$.
+		\end{itemize}
+	\end{minipage}
+\end{table}
+
+\subsubsection{Consideraciones éticas}
+
+Todos los participantes fueron informados sobre los objetivos del estudio, los procedimientos a seguir, y el uso que se daría a los datos recolectados.
+Se garantizó la confidencialidad de la información personal mediante la asignación de códigos anónimos (P01-P15).
+No se registraron imágenes que permitieran la identificación facial de los participantes, únicamente las regiones oculares necesarias para el análisis.
+
+\subsection{Diseño del Estímulo Visual}
+
+\subsubsection{Cuadrícula de calibración y prueba (Grid 3×3)}
+
+El estímulo visual consistió en una cuadrícula regular de $3 \times 3$ puntos distribuidos uniformemente sobre el área activa del monitor.
+La posición de los puntos se calculó dividiendo la resolución de pantalla ($W \times H$) en tres segmentos iguales tanto horizontal como verticalmente, situando cada estímulo en el centro geométrico de cada celda resultante.
+Para una resolución estándar de $1920 \times 1080$ píxeles, esto resulta en una separación constante entre centros de 640 píxeles en el eje horizontal y 360 píxeles en el eje vertical.
+
+\begin{figure}[htbp]
+	\centering
+	\caption{Esquema de la cuadrícula de estímulos visuales $3 \times 3$. Los números indican el orden secuencial de presentación.
+		Para una resolución de $1920 \times 1080$, la separación horizontal entre estímulos ($\Delta x$) es de 640 px y la vertical ($\Delta y$) es de 360 px.}
+	\label{fig:grid_stimulus}
+\end{figure}
+
+\textbf{Características geométricas y cromáticas del estímulo:}
+
+\begin{itemize}
+	\item \textbf{Número de puntos}: 9 (matriz de $3 \times 3$)
+	\item \textbf{Forma y dimensión}: Círculos sólidos con un radio de 30 píxeles (diámetro total de 60 píxeles).
+	A una distancia de observación aproximada de 60 cm, esto subtiende un ángulo visual de $\approx 1.5^\circ$, garantizando una estimulación foveal clara.
+	\item \textbf{Cromaticidad del estímulo}: Rojo puro de máxima intensidad (Espacio de color BGR: 0, 0, 255; RGB: 255, 0, 0).
+	\item \textbf{Fondo}: Negro absoluto (RGB: 0, 0, 0). Se seleccionó un fondo de mínima luminancia para maximizar el contraste con el estímulo y eliminar distracciones visuales periféricas, facilitando la segmentación de la pupila al reducir reflejos externos en la córnea.
+	\item \textbf{Distribución espacial}: 
+	\begin{itemize}
+		\item Separación Horizontal: $W/3$ (640 px), induciendo sacádicos de amplitud media-grande ($\approx 15^\circ - 20^\circ$).
+		\item Separación Vertical: $H/3$ (360 px), induciendo sacádicos verticales de amplitud controlada.
+	\end{itemize}
+\end{itemize}
+
+Esta configuración espacial fuerza al sistema oculomotor a realizar movimientos sacádicos de amplitudes conocidas, cubriendo tanto el rango lineal como la región de saturación de la \textit{Main Sequence} (Ecuación 2.1), lo cual es fundamental para validar la dinámica del movimiento ocular capturado.
+
+\subsubsection{Secuencia temporal de presentación}
+
+Los estímulos se presentaron siguiendo una secuencia determinista controlada por software, garantizando la repetibilidad del experimento entre sujetos:
+
+\begin{enumerate}
+	\item \textbf{Patrón de barrido}: La activación siguió un orden de lectura occidental (izquierda a derecha, arriba hacia abajo):
+	\begin{itemize}
+		\item Fila superior ($y=H/6$): Posiciones 1, 2, 3
+		\item Fila media ($y=H/2$): Posiciones 4, 5, 6
+		\item Fila inferior ($y=5H/6$): Posiciones 7, 8, 9
+	\end{itemize}
+	
+	Este patrón reduce la carga cognitiva del participante al hacer predecible la ubicación del siguiente objetivo, permitiendo enfocarse puramente en la tarea motora visual.
+	\item \textbf{Temporización estricta}: Cada estímulo permaneció estático en pantalla durante un intervalo exacto de $T = 2000$ ms (2 segundos).
+	Este intervalo se seleccionó considerando la fisiología del ojo:
+	\begin{itemize}
+		\item \textit{Latencia sacádica}: $\approx 200$ ms.
+		\item \textit{Tiempo de vuelo}: $30-100$ ms.
+		\item \textit{Fijación estable}: El tiempo restante ($>1.7$ s) asegura la captura de suficientes fotogramas estables para el cálculo preciso del centroide pupilar promedio en cada posición.
+	\end{itemize}
+	
+	\item \textbf{Sincronización de eventos}: El cambio de posición del estímulo se programó para ser instantáneo (transición en el siguiente refresco de pantalla), generando un estímulo tipo escalón (step stimulus) ideal para medir la respuesta al impulso del sistema oculomotor.
+\end{enumerate}
+
+\begin{figure}[ht!]  
+	\centering
+	\includegraphics[width=0.7\textwidth]{Imagenes/experimento.png}
+	\caption{Visualización del protocolo de estímulos (Experimento 1). La matriz de $3 \times 3$ puntos rojos sobre fondo negro se utiliza para inducir movimientos sacádicos controlados.
+		Los puntos aparecen de forma secuencial con una duración de 2 segundos por posición, cubriendo la totalidad del campo de visión efectivo.}
+	\label{fig:experimento_grid}
+\end{figure}
+
+\subsection{Procedimiento Experimental}
+
+El protocolo experimental se diseñó para garantizar condiciones estandarizadas y replicables entre todos los participantes ($N=15$).
+Cada sesión individual tuvo una duración aproximada de 10 minutos e incluyó las siguientes etapas secuenciales:
+
+\subsubsection{Fase 1: Recepción y consentimiento informado}
+
+\begin{enumerate}
+	\item \textbf{Bienvenida}: Se recibió al participante y se le explicó verbalmente el propósito general del estudio: analizar la dinámica oculomotora mediante visión artificial.
+	\item \textbf{Registro de metadatos}: Se completó una ficha técnica con las variables de control: Edad, Sexo y Tipo de corrección visual (gafas/lentes de contacto), dado que el 46.7\% de la muestra utilizaba algún tipo de ayuda óptica.
+\end{enumerate}
+
+\subsubsection{Fase 2: Colocación del dispositivo y configuración óptica}
+
+Dado que el sistema de captura es del tipo \textit{head-mounted} (montado en la cabeza), el procedimiento de ajuste difiere de los sistemas remotos tradicionales:
+
+\begin{enumerate}
+	\item \textbf{Colocación del dispositivo}: El participante se colocó la montura de gafas que soporta la cámara GC0308.
+	Se verificó que la estructura fuera cómoda y estable, asegurando que la cámara quedara ubicada en el cuadrante inferior derecho del campo visual, apuntando hacia el ojo en un ángulo de elevación (aprox. $30^\circ$).
+	\item \textbf{Ajuste del ROI (Región de Interés)}: Mediante la visualización en tiempo real en el monitor de control, se ajustó mecánicamente el brazo flexible de la cámara para centrar el ojo en la imagen de $320 \times 240$ píxeles, garantizando que la pupila se mantuviera dentro del encuadre incluso durante movimientos extremos hacia las esquinas.
+	\item \textbf{Posicionamiento frente al estímulo}: El participante se sentó frente al monitor.
+	Se ajustó la altura de la silla para alinear los ojos con el centro de la pantalla y se fijó la distancia de observación a 60 cm (medida con cinta métrica) para asegurar que la geometría de los movimientos sacádicos correspondiera a los ángulos visuales calculados ($\approx 20^\circ$ horizontal).
+\end{enumerate}
+
+\subsubsection{Fase 3: Ejecución de la prueba principal}
+
+El software de control (desarrollado en Python) gestionó la sincronización entre el estímulo y la captura:
+
+\begin{enumerate}
+	\item \textbf{Inicialización y Logs}: Al iniciar el script, se generó automáticamente un archivo CSV para registrar las marcas temporales (\textit{timestamps}) de cada cambio de estímulo.
+	\item \textbf{Cuenta regresiva}: Se presentó una cuenta visual en pantalla (3-2-1) para preparar al sujeto.
+	\item \textbf{Protocolo de adquisición}: Se ejecutó la matriz de 9 puntos.
+	El sistema grabó video continuo a 120 FPS en formato MJPEG para evitar latencia, mientras registraba simultáneamente en el log la posición $(x,y)$ del punto rojo y el tiempo exacto de aparición.
+	\item \textbf{Control de parpadeo}: Se instruyó a los participantes intentar no parpadear durante los 2 segundos de fijación activa, permitiéndolo libremente durante las transiciones si fuera necesario.
+\end{enumerate}
+
+\subsubsection{Fase 4: Repetición y consistencia de datos}
+
+Para garantizar la robustez estadística y filtrar posibles artefactos (parpadeos involuntarios o pérdida de tracking), se realizó un diseño iterativo:
+
+\begin{enumerate}
+	\item Se realizaron 3 iteraciones (intentos) completas del experimento por cada participante.
+	\item Entre iteraciones se estableció un intervalo de descanso aproximado de 10 segundos.
+	\item El volumen total de datos adquiridos se calcula como:
+	\[
+	\text{Frames totales} = N_{\text{sujetos}} \times N_{\text{intentos}} \times (T_{\text{ensayo}} \times FPS)
+	\]
+	\[
+	15 \times 3 \times (18\,\text{s} \times 120\,\text{fps}) \approx 97,200\,\text{imágenes oculares}
+	\]
+\end{enumerate}
+
+Esta alta densidad temporal (120 Hz) proporciona suficiente información para reconstruir la curva de velocidad de los movimientos sacádicos con gran detalle.
+
+\subsubsection{Fase 5: Cierre de la sesión}
+
+\begin{enumerate}
+	\item Se retiró el dispositivo del participante.
+	\item Se verificó la integridad de los archivos de video (.avi/.mp4) y los logs de datos (.csv) antes de liberar al sujeto.
+	\item Se agradeció la participación y se procedió a preparar el equipo de captura para el siguiente usuario.
+\end{enumerate}
+
+\section{Procesamiento Digital de Imágenes}
+\label{sec:procesamiento_imagenes}
+
+El procesamiento digital de imágenes constituye el núcleo del sistema de seguimiento ocular desarrollado.
+Esta sección describe, desde una perspectiva algorítmica y matemática, cómo se transforman las imágenes RGB capturadas por la cámara en coordenadas precisas del centroide de la pupila.
+El pipeline de procesamiento se divide en tres etapas fundamentales: preprocesamiento, segmentación y detección de la pupila, y mapeo de coordenadas.
+
+\subsection{Preprocesamiento}
+
+El objetivo del preprocesamiento es mejorar la calidad de las imágenes capturadas, reducir el ruido, y preparar los datos para los algoritmos de segmentación subsecuentes.
+Las operaciones de preprocesamiento se aplican secuencialmente a cada fotograma capturado.
+
+\subsubsection{Conversión a escala de grises}
+
+Las imágenes RGB capturadas por la cámara son tensores tridimensionales de dimensión $H \times W \times 3$, donde $H = 720$ píxeles (altura), $W = 1280$ píxeles (ancho), y los tres canales corresponden a Rojo (R), Verde (G), y Azul (B).
+Para simplificar el procesamiento posterior y reducir la carga computacional, las imágenes se convierten a escala de grises mediante la transformación:
+
+\begin{equation}
+	I_{\text{gray}}(x, y) = 0.2989 \cdot R(x, y) + 0.5870 \cdot G(x, y) + 0.1140 \cdot B(x, y)
+\end{equation}
+
+donde $I_{\text{gray}}(x, y)$ es la intensidad en escala de grises del píxel ubicado en la posición $(x, y)$, y los coeficientes reflejan la sensibilidad espectral del sistema visual humano (el canal verde contribuye más a la percepción de luminancia).
+Esta transformación reduce el espacio de representación de 3 canales a 1 canal, pasando de $720 \times 1280 \times 3 = 2{,}764{,}800$ valores por fotograma a $720 \times 1280 = 921{,}600$ valores, lo cual acelera significativamente las operaciones subsecuentes sin pérdida de información relevante para la detección de la pupila.
+
+\subsubsection{Reducción de ruido mediante filtrado}
+
+Las imágenes capturadas por cámaras digitales inevitablemente contienen ruido, proveniente de fuentes como la sensibilidad del sensor, condiciones de baja iluminación, y artefactos de compresión.
+Para suavizar estas fluctuaciones aleatorias de intensidad sin perder información estructural importante (como los bordes de la pupila), se aplicaron dos tipos de filtros complementarios:
+
+\paragraph{Filtro Gaussiano}
+
+El filtro Gaussiano es un filtro lineal de paso bajo que atenúa las componentes de alta frecuencia espacial (ruido) mediante una convolución con un kernel gaussiano bidimensional descrito por Giménez et al. \cite{gimenez2016aplicacion}:
+
+\begin{equation}
+	G(x, y) = \frac{1}{2\pi\sigma^2} \exp\left(-\frac{x^2 + y^2}{2\sigma^2}\right)
+\end{equation}
+
+donde $\sigma$ es la desviación estándar de la distribución gaussiana, que controla el grado de suavizado.
+En este estudio se utilizó $\sigma = 1.5$ y un kernel de tamaño $5 \times 5$ píxeles.
+La imagen filtrada se obtiene mediante:
+
+\begin{equation}
+	I_{\text{filtrada}}(x, y) = (I_{\text{gray}} * G)(x, y) = \sum_{i=-2}^{2} \sum_{j=-2}^{2} I_{\text{gray}}(x-i, y-j) \cdot G(i, j)
+\end{equation}
+
+\subsection{Segmentación y Detección de Pupila}
+\label{sec:segmentacion}
+
+El proceso de segmentación se implementó mediante un flujo de trabajo (pipeline) de visión artificial diseñado para operar con alta eficiencia temporal (120 FPS).
+A diferencia de los métodos clásicos basados puramente en procesamiento de imagen, este estudio integra un modelo de aprendizaje profundo para la localización robusta, seguido de algoritmos geométricos para la precisión sub-pixel.
+
+\subsubsection{Localización y Seguimiento de la Pupila mediante Deep Learning}
+
+Para la localización robusta de la pupila frame a frame, se implementó una red neuronal convolucional basada en la arquitectura YOLOv8 (\textit{You Only Look Once}, versión 8).
+A diferencia de los enfoques genéricos de detección de rostros, se optó por entrenar un modelo específico para la detección de la pupila en entornos infrarrojos cercanos (NIR).
+
+\paragraph{Arquitectura y Entrenamiento (Fine-Tuning)}
+Se seleccionó la variante YOLOv8n-seg (Nano), la arquitectura más ligera de la familia YOLO (3.2 millones de parámetros), para garantizar una inferencia en tiempo real compatible con la tasa de captura de 120 FPS.
+El modelo no se utilizó de caja (\textit{out-of-the-box}), sino que se sometió a un proceso de transferencia de aprendizaje (\textit{fine-tuning}):
+
+\begin{enumerate}
+	\item \textbf{Conjunto de datos (Dataset)}: Se construyó un dataset personalizado utilizando fotogramas extraídos de los propios participantes del estudio durante la fase de calibración.
+	Se etiquetaron manualmente 864 imágenes representativas que incluían variaciones en la apertura palpebral, reflejos corneales y distintas iluminaciones.
+	\item \textbf{Configuración del entrenamiento}: El modelo pre-entrenado en el dataset COCO se re-entrenó durante 80 épocas con un tamaño de lote (batch size) de 16 y un optimizador SGD (Descenso de Gradiente Estocástico) con momentum de 0.937.
+	\item \textbf{Validación}: El modelo resultante (\texttt{best.pt}) alcanzó una precisión media (mAP@50) superior al 98\% en el conjunto de validación, demostrando una capacidad de generalización robusta frente a la variabilidad inter-sujeto.
+\end{enumerate}
+
+Esta estrategia de entrenamiento específico resultó fundamental para mitigar la pérdida de seguimiento durante parpadeos o movimientos sacádicos rápidos, superando las limitaciones de los métodos tradicionales de visión artificial.
+
+\paragraph{Inferencia en tiempo de ejecución}
+Durante la fase experimental, el algoritmo opera de la siguiente manera para cada fotograma $I_t$:
+\begin{enumerate}
+	\item \textbf{Pre-recorte}: Se ajusta la relación de aspecto de la imagen de entrada a $320 \times 240$ para mantener la consistencia espacial con los datos de entrenamiento.
+	\item \textbf{Inferencia}: El modelo predice un cuadro delimitador (bounding box) $B = (x_1, y_1, x_2, y_2)$ centrado en la pupila.
+	\item \textbf{Filtrado y Expansión}: Se aceptan únicamente detecciones con una confianza $C \geq 0.7$.
+	Las coordenadas predichas se expanden en 5 píxeles por lado (\textit{padding}) para definir la Región de Interés (ROI) final, asegurando que los bordes de la pupila se preserven íntegramente para la etapa de segmentación sub-pixel.
+\end{enumerate}
+
+\subsubsection{Pre-procesamiento y mejora de contraste}
+
+Dado que la iluminación infrarroja puede generar histogramas de intensidad concentrados en rangos oscuros, se aplicaron técnicas de mejora de imagen antes de la segmentación.
+Según se observa en la función \texttt{process\_frame} del algoritmo implementado:
+
+\begin{enumerate}
+	\item \textbf{Suavizado Gaussiano}: Se aplicó un filtro Gaussiano con kernel $(7 \times 7)$ para reducir el ruido de alta frecuencia del sensor CMOS.
+	\item \textbf{Ecualización de Histograma Adaptativa (CLAHE)}: Se utilizó \textit{Contrast Limited Adaptive Histogram Equalization} con un límite de recorte (\textit{clip limit}) de 1.0 y una rejilla de $8 \times 8$.
+	Esto maximiza el contraste local entre la pupila y el iris sin amplificar el ruido en las zonas homogéneas, lo cual es crítico para el método de pupila oscura.
+\end{enumerate}
+
+\subsubsection{Segmentación y Ajuste Geométrico}
+
+En lugar de depender de operaciones morfológicas tradicionales que pueden deformar la forma de la pupila, se implementó un enfoque basado en la geometría de contornos:
+
+\paragraph{1. Binarización}
+Se aplicó una umbralización binaria invertida fija sobre la imagen mejorada por CLAHE:
+\begin{equation}
+	I_{\text{bin}}(x, y) = \begin{cases}
+		255 & \text{si}\quad I_{\text{CLAHE}}(x, y) < T_{\text{fijo}} \\
+		0 & \text{en caso contrario}
+	\end{cases}
+\end{equation}
+Donde $T_{\text{fijo}}$ es un parámetro empírico (configurado en 14-20 niveles de intensidad) que separa la región negra profunda de la pupila del resto del ojo.
+
+\paragraph{2. Optimización de Contornos por Ángulo}
+Tras detectar los contornos, se seleccionó el contorno de mayor área.
+Para eliminar irregularidades causadas por pestañas o reflejos (glints), se implementó un algoritmo de filtrado geométrico (\texttt{optimize\_contours\_by\_angle}).
+Este algoritmo evalúa la suavidad de la curvatura calculando el coseno del ángulo entre vectores formados por puntos adyacentes del contorno:
+\begin{equation}
+	\cos \theta = \frac{\vec{v}_1 \cdot \vec{v}_2}{\|\vec{v}_1\| \|\vec{v}_2\|}
+\end{equation}
+Los puntos que generan cambios angulares abruptos (vértices agudos no compatibles con la curvatura de la pupila) son descartados como ruido.
+
+\begin{algorithm}[H]
+	\caption{Optimización de Contornos por Suavidad Angular}
+	\label{alg:optimize_contours}
+	\begin{algorithmic}[1]
+		\Require Contorno original $C = \{P_1, P_2, \dots, P_N\}$, Umbral de suavidad $\tau$
+		\Ensure Contorno optimizado $C_{opt}$
+		\State $C_{opt} \gets \emptyset$
+		\For{$i \gets 1$ \textbf{to} $N$}
+		\State Obtener puntos adyacentes:
+		\State $P_{prev} \gets C[(i-1) \pmod N]$
+		\State $P_{curr} \gets C[i]$
+		\State $P_{next} \gets C[(i+1) \pmod N]$
+		
+		\State Calcular vectores direccionales:
+		\State $\vec{v}_1 \gets P_{curr} - P_{prev}$
+		\State $\vec{v}_2 \gets P_{next} - P_{curr}$
+		
+		\State Calcular similitud angular (Coseno):
+		\State $\cos \theta \gets \frac{\vec{v}_1 \cdot \vec{v}_2}{\|\vec{v}_1\| \|\vec{v}_2\|}$
+		
+		\State Filtrado geométrico:
+		\If{$\cos \theta > \tau$} \Comment{El ángulo es suave (compatible con curvatura)}
+		\State Agregar $P_{curr}$ a $C_{opt}$
+		\Else
+		\State Descartar $P_{curr}$ \Comment{Vértice agudo (ruido/pestaña)}
+		\EndIf
+		\EndFor
+		\State \Return $C_{opt}$
+	\end{algorithmic}
+\end{algorithm}
+
+\paragraph{3. Ajuste de Elipse (Least Squares Fitting)}
+Finalmente, se ajustó una elipse a los puntos del contorno optimizado utilizando el método de mínimos cuadrados directos (\textit{Direct Least Squares fitting of Ellipses}).
+Esto retorna el centroide con precisión sub-pixel $(x_c, y_c)$, los ejes mayor y menor, y el ángulo de rotación, proporcionando una estimación robusta de la posición de la pupila incluso ante oclusiones parciales.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Imagenes/preprocesamiento.png}
+	\caption{Pipeline de procesamiento de imagen implementado. La secuencia muestra: (Arriba) Mejora de la imagen mediante escala de grises y realce de contraste CLAHE.
+		(Abajo) Detección de la ROI con YOLOv8, binarización inversa adaptativa y superposición final del contorno elíptico ajustado sobre la imagen original.}
+	\label{fig:pipeline_procesamiento}
+\end{figure}
+
+\subsection{Estimación del Vector de Mirada (Gaze Vector)}
+
+A diferencia de los mapeos polinomiales 2D simples, este estudio implementó un modelo geométrico 3D simplificado para estimar la dirección de la mirada.
+El algoritmo calcula un Centro del Modelo (aproximación del centro de rotación ocular o centro óptico virtual) mediante la intersección promedio de los vectores normales a la superficie del ojo a lo largo del tiempo.
+Posteriormente, tal como se ilustra en la Figura~\ref{fig:vector_mirada}, el vector de mirada unitario $\hat{g}$ se calcula normalizando la diferencia entre el centro de la pupila detectado $\mathbf{p} = (x_p, y_p, 0)$ y el centro del modelo $\mathbf{c} = (x_c, y_c, z_c)$:
+
+\begin{equation}
+	\vec{v} = \mathbf{p} - \mathbf{c}, \quad \hat{g} = \frac{\vec{v}}{\|\vec{v}\|} = (g_x, g_y, g_z)
+\end{equation}
+
+Este enfoque vectorial permite calcular la cinemática angular de manera más fiel a la fisiología del ojo.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Imagenes/calculo_vector_mirada.png}
+	\caption{Esquema de la estimación del vector de mirada. (Izquierda) Identificación del contorno pupilar.
+		(Centro) Cálculo del centro del modelo ocular (punto azul) respecto al centroide de la pupila.
+		(Derecha) Proyección del vector de mirada resultante (línea roja) en el espacio 3D.}
+	\label{fig:vector_mirada}
+\end{figure}
+
+\subsubsection{Validación y Justificación del Enfoque Híbrido}
+
+La selección de una arquitectura basada en aprendizaje profundo (YOLOv8) frente a los métodos clásicos de procesamiento de imagen se fundamenta en pruebas preliminares de rendimiento y robustez realizadas durante el diseño del sistema.
+
+\paragraph{Robustez en la detección}
+En implementaciones previas basadas puramente en técnicas de visión artificial (operaciones morfológicas y umbralización global sobre el fotograma completo), se observó una tasa de fallo en la detección de la pupila de aproximadamente un 10\% de los fotogramas procesados.
+Estas pérdidas ocurrían principalmente debido a:
+\begin{itemize}
+	\item Oclusiones parciales por pestañas o párpados durante el parpadeo.
+	\item Cambios bruscos de iluminación que afectaban el umbral de binarización.
+	\item Pérdida de seguimiento durante movimientos sacádicos de alta velocidad.
+\end{itemize}
+
+Por el contrario, la implementación propuesta mediante YOLOv8 demostró una estabilidad superior, con menos del 1\% de fallos en la detección de la ROI en condiciones controladas.
+El modelo es capaz de re-adquirir la posición del ojo instantáneamente frame a frame específicamente para el dataset de esta investigación, garantizando la continuidad de las series temporales necesarias para el cálculo de la velocidad y aceleración.
+
+\paragraph{Eficiencia Computacional}
+Además de la robustez, el uso de YOLO para recortar la Región de Interés (ROI) ofrece una ventaja crítica de optimización.
+Al limitar el procesamiento matemático costoso (ajuste de elipses, CLAHE, algoritmos de contornos) exclusivamente al área delimitada por el \textit{bounding box} ($< 10\%$ del área total de la imagen), se reduce drásticamente la carga computacional.
+Esto libera recursos del CPU para mantener una tasa de muestreo estable de 120 FPS, algo que sería insostenible procesando la matriz de imagen completa con algoritmos iterativos.
+
+\section{Procesamiento de Señales y Extracción de Métricas}
+
+El archivo \texttt{Generar\_Metricas.py} procesó las series temporales de vectores de mirada $\hat{g}(t)$ para extraer los descriptores biométricos.
+
+\subsection{Cálculo de la Cinemática Angular}
+
+Para obtener la posición angular $\theta(t)$ (en grados) a partir de los vectores unitarios de mirada, se utilizó el producto punto entre vectores consecutivos, lo cual mide el desplazamiento angular geodésico independiente de la geometría de la pantalla:
+
+\begin{equation}
+	\Delta \theta_i = \arccos(\hat{g}_i \cdot \hat{g}_{i-1}) \cdot \frac{180}{\pi}
+\end{equation}
+
+La trayectoria angular acumulada se define como $P(t) = \sum \Delta \theta$.
+
+\subsection{Filtrado y Derivación}
+
+Para el cálculo de la velocidad y aceleración, se aplicó el filtro Savitzky-Golay sobre la señal de posición angular $P(t)$, con los siguientes parámetros configurados en el sistema (\texttt{CONFIG['PARAMS']}):
+\begin{itemize}
+	\item \textbf{Ventana ($w$)}: 21 muestras (equivalente a 175 ms a 120 Hz).
+	\item \textbf{Orden del polinomio ($p$)}: 3 (cúbico).
+\end{itemize}
+
+Estos parámetros se seleccionaron mediante optimización empírica, evaluando diferentes combinaciones hasta encontrar el mejor balance entre suavizado y preservación de características.
+Las derivadas se obtuvieron analíticamente a partir de los coeficientes del polinomio ajustado, lo que reduce significativamente la amplificación de ruido comparado con las diferencias finitas:
+
+\begin{align}
+	V(t) &= \frac{d}{dt} \text{SavGol}(P(t)) \quad [\text{°/s}] \\
+	a(t) &= \frac{d}{dt} V(t) \quad [\text{°/s}^2]
+\end{align}
+
+\subsection{Nuevas Métricas Biométricas Integradas}
+
+Además de las métricas estándar, se implementaron algoritmos para extraer características avanzadas de control motor y cognitivo:
+
+\subsubsection{Pendiente de la Secuencia Principal (Main Sequence Slope)}
+Para caracterizar la biomecánica muscular, se analizó la relación entre la velocidad pico ($V_{pico}$) y la amplitud ($Amp$) de las sacadas.
+En el rango de amplitudes medidas, esta relación se linealizó, calculando la pendiente $K$ mediante regresión lineal:
+\begin{equation}
+	V_{pico} \approx K \cdot Amp \implies K = \frac{\text{Cov}(V_{pico}, Amp)}{\text{Var}(Amp)}
+\end{equation}
+Este parámetro $K$ es un indicador de la rigidez o eficiencia del sistema oculomotor.
+
+\subsubsection{Dimensión Fractal de Higuchi (HFD)}
+Para cuantificar la complejidad de la señal de velocidad (estrategia cognitiva de búsqueda), se aplicó el algoritmo de Higuchi con un parámetro $k_{max}=5$.
+Este algoritmo calcula la dimensión fractal $D_H$ basándose en la tasa de cambio de la longitud de la curva $L(k)$ a diferentes escalas temporales $k$:
+\begin{equation}
+	L(k) \propto k^{-D_H}
+\end{equation}
+Un valor de $D_H$ más alto indica una señal más compleja y caótica, mientras que un valor bajo indica movimientos más deterministas y suaves.
+
+\subsubsection{Velocidad Pupilar Dinámica}
+Se calculó la derivada temporal del diámetro pupilar para obtener la velocidad de constricción/dilatación.
+La métrica \texttt{Pupil\_Vel\_Max} captura la reactividad máxima del sistema nervioso autónomo ante la carga cognitiva del estímulo.
+
+\section{Resumen del Capítulo}
+
+En este capítulo se ha detallado la metodología del sistema, fundamentada en un enfoque híbrido que combina la robustez del aprendizaje profundo (YOLOv8) con la precisión de la óptica geométrica y el análisis de señales.
+Se ha descrito el diseño experimental controlado con 15 participantes, la configuración del hardware de captura de alta velocidad (120 FPS) y el pipeline de procesamiento que transforma imágenes crudas en descriptores biométricos complejos como el Jerk y la Dimensión Fractal.
+Esta metodología garantiza que los datos obtenidos sean precisos espacialmente y preserven la riqueza dinámica necesaria para caracterizar el comportamiento oculomotor.
+En el Capítulo 4 se presentarán los resultados obtenidos tras aplicar este procesamiento a la muestra recolectada, evaluando la capacidad de estas métricas para diferenciar patrones individuales y validar el rendimiento del sistema propuesto.

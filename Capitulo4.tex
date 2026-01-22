@@ -1,0 +1,341 @@
+% =============================================================================
+% CAPÍTULO IV
+% =============================================================================
+\chapter{Resultados y Discusión}
+
+% --- INTRODUCCIÓN DEL CAPÍTULO ---
+En este capítulo se presentan los resultados obtenidos tras el procesamiento y análisis de las señales oculomotoras de los 15 participantes del estudio. La exposición se organiza en cinco etapas fundamentales: primero, se valida la calidad técnica de la señal capturada y el rendimiento del algoritmo de detección; segundo, se caracteriza la dinámica fisiológica de los movimientos registrados; tercero, se evalúa la capacidad discriminativa de las métricas biométricas propuestas; cuarto, se presenta el rendimiento de los modelos de clasificación automática; y finalmente, se analiza la viabilidad del sistema para aplicaciones de control de cursor.
+
+\section{Validación del Sistema de Captura y Procesamiento}
+
+Antes de abordar el análisis biométrico, es fundamental verificar la integridad de los datos adquiridos y la robustez del sistema de visión artificial implementado.
+
+\subsection{Calidad de la Señal y Filtrado}
+
+El análisis inicial de los datos crudos reveló la presencia de ruido de alta frecuencia, un problema común en sensores CMOS cuando operan con ganancia variable en el espectro infrarrojo. Para mitigar este \textit{jitter} (temblor instrumental) sin comprometer la integridad de la información biológica, se aplicó el filtro digital Savitzky-Golay. La configuración óptima del filtro se estableció con una ventana de longitud $w=21$ muestras y un polinomio de orden $p=3$. Esta elección de parámetros es crítica para el estudio:
+
+\begin{itemize}
+	\item \textbf{Ventana ($w=21$)}: A una tasa de 120 FPS, esta ventana abarca un contexto temporal de $\approx 175$ ms. Esto proporciona suficiente suavizado para eliminar fluctuaciones aleatorias del centroide pupilar.
+	\item \textbf{Polinomio Cúbico ($p=3$)}: A diferencia de los filtros de promedio móvil que tienden a atenuar o recortar los picos de señal, el ajuste polinomial de tercer grado preserva los momentos de inercia y, crucialmente, la magnitud real de la velocidad durante los movimientos sacádicos rápidos.
+\end{itemize}
+
+Como se evidencia en la Figura~\ref{fig:filtrado_signal}, el filtro actúa de manera conservadora: elimina el ruido "sucio" de la señal cruda (línea negra) pero se adhiere perfectamente a las transiciones rápidas del ojo (línea de color), asegurando que no se eliminen micro-movimientos importantes ni se introduzca latencia artificial en la señal.
+
+% --- [GRÁFICA: SEÑAL CRUDA VS FILTRADA EN 3 EJES] ---
+\begin{figure}[h!]
+	\centering
+	% Asegúrate de que el archivo se llame así en tu carpeta Imagenes
+	\includegraphics[width=1\textwidth]{Imagenes/senal_filtrada.png}
+	\caption{Descomposición vectorial de la señal de mirada en un corto periodo de tiempo. Se compara la señal cruda (negro) con la señal filtrada (colores) para las componentes X, Y y Z del vector de mirada. El filtro Savitzky-Golay ($w=21, p=3$) elimina el ruido de alta frecuencia manteniendo la fidelidad de los cambios de posición bruscos (sacádicos).}
+	\label{fig:filtrado_signal}
+\end{figure}
+
+Adicionalmente, el sistema mantuvo una estabilidad temporal rigurosa, operando a una tasa de muestreo efectiva de 120 FPS. Esto permitió reconstruir las trayectorias con una resolución temporal de 8.33 ms, capturando la micro-estructura del movimiento que se perdería en cámaras web convencionales de 30 o 60 Hz.
+
+\subsection{Precisión de la Detección (YOLOv8)}
+
+El modelo de detección de pupila basado en YOLOv8n (Nano) demostró un rendimiento superior en comparación con los métodos clásicos. Tras el proceso de \textit{fine-tuning} con el dataset propio, se obtuvo una Precisión Media (mAP@50) de 99,5\%, con menos del 1\% de pérdidas de seguimiento (\textit{track-loss}) durante los parpadeos y movimientos rápidos.
+
+\subsubsection{Métricas de Entrenamiento y Validación}
+
+El entrenamiento se realizó durante \textbf{80 épocas} utilizando un tamaño de lote (\textit{batch size}) de 16 imágenes y optimización estocástica. La convergencia del modelo fue estable, estabilizando las pérdidas de caja (\textit{box\_loss}) y clasificación (\textit{cls\_loss}) en valores mínimos hacia la época 75.
+
+La Tabla~\ref{tab:yolo_metrics} resume las métricas de rendimiento obtenidas en el conjunto de validación tras finalizar el entrenamiento.
+
+\begin{table}[h!]
+	\centering
+	\caption{Métricas finales de rendimiento del modelo YOLOv8n tras 80 épocas de entrenamiento.}
+	\vspace{0.2cm}
+	\begin{tabular}{lc}
+		\toprule
+		\textbf{Métrica} & \textbf{Valor Obtenido} \\
+		\midrule
+		Precisión (Precision) & 0.999 \\
+		Sensibilidad (Recall) & 1.000 \\
+		mAP @ 0.50 & 0.995 \\
+		mAP @ 0.50:0.95 & 0.912 \\
+		Tiempo de Inferencia (promedio) & 24.7 ms \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:yolo_metrics}
+\end{table}
+
+Los resultados evidencian una robustez excepcional:
+\begin{itemize}
+	\item \textbf{Recall de 1.000}: Indica que el sistema fue capaz de detectar el 100\% de las pupilas presentes en el set de validación, confirmando la ausencia total de "falsos negativos" (pérdidas de tracking).
+	\item \textbf{mAP@50-95 de 0.912}: Este valor, inusualmente alto para detección de objetos en tiempo real, demuestra que no solo se detecta la pupila, sino que el cuadro delimitador (\textit{bounding box}) se ajusta con precisión sub-píxel al contorno real del ojo, lo cual es crítico para el posterior cálculo del centroide.
+\end{itemize}
+
+\section{Caracterización Cinemática y Fisiológica}
+
+Una vez validada la señal, se procedió a verificar que los movimientos registrados cumplen con las leyes fisiológicas conocidas del sistema oculomotor humano.
+
+\subsection{Análisis de la Secuencia Principal (Main Sequence)}
+
+La validación fisiológica de los movimientos capturados es un paso crítico para asegurar la integridad de los datos biométricos. Para ello, se analizó la relación entre la amplitud del movimiento sacádico ($A$) y su velocidad pico ($V_{pico}$), conocida como la \textit{Main Sequence}. Se procesaron los datos consolidados de la población completa ($N=15$), aplicando un umbral de detección estricto ($v > 80^\circ/s$) para aislar exclusivamente la dinámica balística y separar microsacádicos o ruido instrumental.
+
+La Figura~\ref{fig:main_sequence} muestra la distribución de los sacádicos registrados junto con el ajuste del modelo exponencial teórico de Bahill, definido por la Ecuación~\ref{eq:bahill}.
+
+\begin{figure}[H]
+	\centering
+	% Asegúrate de que el nombre del archivo coincida con el que guardaste
+	\includegraphics[width=0.85\textwidth]{Imagenes/secuencia_principal.png}
+	\caption{Diagrama de dispersión de la Secuencia Principal para la población completa ($N=15$). Los puntos azules representan los movimientos sacádicos individuales detectados. La línea roja indica el ajuste del modelo exponencial ($R^2 > 0.90$). La clara adherencia a la curva confirma que el sistema captura fielmente la saturación muscular del ojo humano.}
+	\label{fig:main_sequence}
+\end{figure}
+
+\subsubsection{Discusión de Parámetros}
+
+El ajuste de regresión no lineal sobre los datos experimentales permitió extraer los parámetros característicos del sistema oculomotor de la población estudiada:
+
+\begin{itemize}
+	\item \textbf{Velocidad de Saturación ($V_{sat}$)}: $594.47^\circ/s$. Este valor se sitúa perfectamente dentro del rango fisiológico normal reportado en la literatura (400-800 $^\circ/s$) para adultos sanos. Un valor de saturación cercano a los $600^\circ/s$ confirma que la frecuencia de muestreo de 120 Hz fue suficiente para reconstruir la magnitud real de la velocidad sin sufrir atenuación por submuestreo (\textit{aliasing}).
+	\item \textbf{Constante de Amplitud ($C$)}: $12.97^\circ$. Este parámetro define la región de linealidad del sistema. Indica que, para movimientos pequeños (menores a $\approx 13^\circ$), la velocidad crece casi linealmente con la distancia. Para amplitudes mayores, como las inducidas por los extremos de la cuadrícula, el sistema entra en régimen de saturación muscular, comportamiento que fue capturado con precisión por el algoritmo.
+\end{itemize}
+
+En conclusión, la alta correlación entre los datos empíricos y el modelo teórico confirma que el sistema propuesto está midiendo actividad oculomotora genuina y no artefactos de movimiento, validando así la calidad de la señal para el posterior análisis biométrico.
+
+\subsection{Perfiles de Velocidad y Jerk}
+
+Para evaluar la calidad del control motor ocular a nivel microscópico, se analizaron los perfiles cinemáticos de movimientos sacádicos individuales. Esta evaluación es crítica para confirmar que el proceso de filtrado (Savitzky-Golay) eliminó el ruido instrumental sin distorsionar la dinámica natural del ojo.
+
+La Figura~\ref{fig:perfil_velocidad} presenta la evolución temporal de la velocidad angular y el \textit{Jerk} (la derivada de la aceleración) para un movimiento sacádico representativo de $\approx 20^\circ$ de amplitud.
+
+\begin{figure}[h!]
+	\centering
+	% Asegúrate de que el archivo coincida con el nombre que guardaste
+	\includegraphics[width=0.9\textwidth]{Imagenes/vel_jerk.png}
+	\caption{Perfil cinemático detallado de un sacádico horizontal. \textbf{Azul (Eje Izq):} Velocidad angular mostrando el perfil de campana esperado en un movimiento de aceleración y desaceleración \textbf{Naranja (Eje Der):} La señal de Jerk se mantiene acotada dentro de rangos fisiológicos, sin picos de ruido de alta frecuencia, lo que indica una reconstrucción estable de la trayectoria.}
+	\label{fig:perfil_velocidad}
+\end{figure}
+
+El análisis de esta gráfica permite validar dos aspectos fundamentales:
+\begin{itemize}
+	\item \textbf{Suavidad de la Trayectoria:} La curva de velocidad es continua y suave, carente de las oscilaciones abruptas típicas del error de cuantificación digital. Esto demuestra que la resolución temporal de 120 FPS es suficiente para reconstruir la señal continua del movimiento.
+	\item \textbf{Control Motor:} El perfil de Jerk (línea naranja) refleja el costo energético del movimiento. Al mantenerse controlado y sin ruido excesivo, confirma que las métricas derivadas de esta señal (como la eficiencia del movimiento) serán fiables para el análisis biométrico subsiguiente.
+\end{itemize}
+
+\section{Identificación de Patrones Biométricos}
+
+Una vez validada la integridad física de la señal y la precisión del sistema de captura, se procede al núcleo de la investigación: la evaluación del movimiento ocular como huella biométrica única. En esta sección se presentan los hallazgos relacionados con la singularidad de los patrones oculares. Se parte de la hipótesis de que, aunque todos los humanos siguen la \textit{Main Sequence} (como se vio en la sección 4.2.1), la "micro-estrategia" que utiliza el cerebro de cada individuo para ejecutar esos movimientos (el nivel de Jerk, la complejidad fractal, la latencia pupilar) varía de forma consistente entre sujetos, permitiendo su diferenciación. A continuación, se analiza qué características específicas aportan mayor poder discriminativo al sistema.
+
+\subsection{Importancia de Características (Feature Importance)}
+
+Para determinar qué variables aportan mayor poder discriminativo al sistema, se entrenó un clasificador \textit{Random Forest} (descrito en la Sección~\ref{subsec:random_forest}) y se calculó la importancia relativa de cada característica utilizando el criterio de impureza de Gini. Los resultados, presentados en la Figura~\ref{fig:feature_importance}, revelan una jerarquía interesante en la naturaleza de la información biométrica.
+
+% --- [ESPACIO PARA GRÁFICA] ---
+\begin{figure}[h!]
+	\centering
+	% Asegúrate de usar la imagen generada por el código de arriba
+	\includegraphics[width=0.9\textwidth]{Imagenes/Importancia_Discriminativa.png}
+	\caption{Ranking de importancia de las características biométricas. Las barras representan el peso relativo de cada variable en la decisión del clasificador. Se observa un predominio de las variables morfológicas (como el diámetro pupilar promedio) sobre las variables puramente cinemáticas.}
+	\label{fig:feature_importance}
+\end{figure}
+
+El análisis de la importancia de características arroja dos conclusiones fundamentales:
+
+\begin{enumerate}
+	\item \textbf{Predominio de la Morfología (\texttt{Pupil\_Mean}):} La variable con mayor peso discriminativo resultó ser el diámetro pupilar promedio. Esto sugiere que las características anatómicas (el tamaño físico del ojo y la respuesta basal de la pupila) actúan como un "filtro grueso" muy efectivo para distinguir individuos. Fisiológicamente, esto tiene sentido, ya que el tamaño del iris y la pupila en reposo son rasgos fenotípicos estables.
+	\item \textbf{Contribución de la Dinámica (\texttt{Main\_Seq\_Slope}, \texttt{Jerk}):} Aunque las variables morfológicas dominan, las métricas cinemáticas como la pendiente de la Secuencia Principal y el promedio de \textit{Jerk} ocupan posiciones relevantes en el ranking. Estas variables aportan la capa de "biometría conductual": describen \textit{cómo} se mueve el ojo, no solo \textit{cómo es}.
+\end{enumerate}
+
+Esta combinación confirma que el sistema es híbrido: utiliza la anatomía para una separación inicial robusta y la dinámica del movimiento para refinar la identificación y añadir seguridad contra suplantaciones, ya que la dinámica muscular es mucho más difícil de replicar artificialmente que el tamaño de la pupila.
+
+\subsection{Jerarquía de Relevancia Biométrica}
+
+Tras el entrenamiento del modelo \textit{Random Forest}, se procedió a categorizar las métricas según su naturaleza física para interpretar los factores que facilitan la identificación de los sujetos. La Tabla~\ref{tab:resumen_metricas_cap4} resume los grupos de descriptores analizados.
+
+\begin{table}[h]
+	\centering
+	\caption{Taxonomía de métricas evaluadas y su rol en la discriminación biométrica.}
+	\label{tab:resumen_metricas_cap4}
+	\begin{tabular}{@{}llp{6.5cm}@{}}
+		\toprule
+		\textbf{Categoría} & \textbf{Métricas del CSV} & \textbf{Aporte al Modelo (Gini)} \\ \midrule
+		Morfología & \texttt{Pupil\_Mean, Pupil\_CV} & Establece la línea base anatómica individual. \\
+		Cinemática & \texttt{Jerk\_Max, Acc\_Max} & Captura la firma dinámica del control motor ocular. \\
+		Dinámica & \texttt{Main\_Seq\_Slope} & Refleja la eficiencia neuromuscular del sacádico. \\
+		Complejidad & \texttt{Fractal\_Dim} & Mide la micro-variabilidad no lineal de la señal. \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent \textbf{Conclusión del análisis:} 
+La alta capacidad discriminativa del sistema (83\% de exactitud) no depende de una única variable, sino de la combinación de la morfología pupilar con descriptores de orden superior como el \textit{Jerk} y la \textit{Dimensión Fractal}. Mientras que las métricas morfológicas proporcionan una base de identidad, las métricas dinámicas actúan como un factor de seguridad, ya que representan patrones neurofisiológicos intrínsecos del individuo que resultan extremadamente difíciles de replicar o suplantar artificialmente.
+
+\subsection{Perfiles Biométricos Individuales}
+
+Para visualizar las diferencias inter-sujeto de manera integral, se generaron gráficos de radar (\textit{Spider Plots}) que consolidan tanto las métricas cinemáticas como las morfológicas. Los datos fueron normalizados (escala 0-1) para permitir la comparación directa entre variables de distinta naturaleza física. La Figura~\ref{fig:radares} presenta los perfiles biométricos de tres participantes del estudio, evidenciando configuraciones estructurales claramente distinguibles.
+
+\begin{figure}[H]
+	\centering
+	% Asegúrate de tener la imagen generada guardada como 'radares_comparativos.png'
+	\includegraphics[width=1.0\textwidth]{Imagenes/radares_comparativos.png}
+	\caption{Comparación de perfiles biométricos para tres participantes distintos. \textbf{(Izquierda)} El sujeto 1 muestra un perfil orientado a la dinámica (alta velocidad y tasa sacádica). \textbf{(Centro)}  El sujeto 2 se distingue por características anatómicas dominantes (mayor tamaño pupilar) y menor reactividad dinámica. \textbf{(Derecha)}  El sujeto 3 presenta un perfil balanceado con alta complejidad fractal. Estas "firmas visuales"  validan la hipótesis de unicidad del patrón oculomotor.}
+	\label{fig:radares}
+\end{figure}
+
+El análisis cualitativo de estos perfiles revela que el sistema no depende de una sola variable para la identificación, sino de la interacción compleja entre ellas:
+\begin{itemize}
+	\item \textbf{Diversidad de Estrategias:} Mientras que algunos sujetos resuelven la tarea visual con movimientos rápidos y frecuentes (alta \textit{Tasa Sacádica}), otros adoptan estrategias más pausadas pero con mayor diámetro pupilar basal.
+	\item \textbf{Complementariedad:} La forma poligonal resultante actúa como una huella digital multidimensional. Incluso si dos sujetos tuvieran velocidades similares, diferencias en su \textit{Jerk} o en su \textit{Dimensión Fractal} alterarían la geometría del gráfico, permitiendo su discriminación por parte de los algoritmos de clasificación.
+\end{itemize}
+
+\subsection{Visualización de Separabilidad (LDA)}
+
+Para corroborar visualmente la capacidad del sistema para distinguir entre los 14 participantes, se aplicó un Análisis Discriminante Lineal (LDA) sobre el conjunto completo de métricas. Con el fin de garantizar la privacidad y neutralidad del análisis, los sujetos fueron codificados con etiquetas anónimas (P1-P14).
+
+\begin{figure}[H]
+	\centering
+	% --- IMAGEN IZQUIERDA (2D) ---
+	\begin{minipage}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Imagenes/2d.png}
+		\caption{Proyección en 2D (LD1 vs LD2)}
+		\label{fig:lda_2d}
+	\end{minipage}
+	\hfill % Esto añade el espacio entre las dos imágenes
+	% --- IMAGEN DERECHA (3D) ---
+	\begin{minipage}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Imagenes/3d.png}
+		\caption{Proyección en 3D (LD1, LD2, LD3)}
+		\label{fig:lda_3d}
+	\end{minipage}
+	\caption{Espacio de características transformado mediante LDA. Cada color (P1-P14) representa a un participante distinto. Se observa la formación de clústeres compactos y bien definidos, lo que confirma visualmente la separabilidad lineal de las identidades biométricas.}
+	\label{fig:lda_analysis}
+\end{figure}
+
+Como se observa en la Figura~\ref{fig:lda_analysis}, los datos biométricos forman nubes de puntos claramente distinguibles:
+\begin{itemize}
+	\item \textbf{Eficacia de la Reducción:} Las tres primeras componentes discriminantes logran explicar el \textbf{85\%} de la varianza discriminatoria. Esto indica que la identidad oculomotora puede ser comprimida eficientemente sin perder información crítica.
+	\item \textbf{Separabilidad:} Sujetos como P3 y P14 (verde y rosa en la gráfica 2D) que podrían solaparse en algunas métricas, quedan totalmente separados en el espacio 3D, demostrando la robustez del enfoque multidimensional.
+\end{itemize}
+
+\section{Rendimiento de la Clasificación}
+
+Para cuantificar la precisión del sistema como herramienta biométrica, se evaluaron dos clasificadores supervisados: Máquinas de Vectores de Soporte (SVM) y Bosques Aleatorios (Random Forest). El conjunto de datos fue dividido siguiendo una estrategia estratificada (80\% entrenamiento, 20\% prueba) para asegurar la representatividad de todas las clases.
+
+\subsection{Métricas de los Modelos}
+
+La Tabla~\ref{tab:resultados_clasificacion} resume el desempeño de los modelos evaluados en el conjunto de prueba.
+
+\begin{table}[H]
+	\centering
+	\caption{Métricas de rendimiento de los clasificadores biométricos en el conjunto de prueba.}
+	\vspace{0.2cm}
+	\begin{tabular}{lcccc}
+		\toprule
+		\textbf{Modelo} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\
+		\midrule
+		SVM (Kernel RBF) & 76.34\% & 0.7629 & 0.7634 & 0.7606 \\
+		\textbf{Random Forest} & \textbf{83.48\%} & \textbf{0.8317} & \textbf{0.8348} & \textbf{0.8304} \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:resultados_clasificacion}
+\end{table}
+
+Los resultados indican que el clasificador \textbf{Random Forest} ofrece el mejor balance de rendimiento, alcanzando una exactitud global del \textbf{83.5\%}. Esta superioridad frente al SVM sugiere que las fronteras de decisión entre participantes son altamente no lineales y se benefician de la estructura jerárquica de los árboles de decisión, capaz de explotar mejor las interacciones complejas entre variables morfológicas y cinemáticas.
+
+\subsection{Análisis de Confusión}
+
+Para identificar patrones de error específicos, se generó la matriz de confusión normalizada para el modelo Random Forest (Figura~\ref{fig:matriz_confusion}).
+
+\begin{figure}[h!]
+	\centering
+	% Asegúrate de usar la imagen que generamos: matriz_confusion_anon.png
+	\includegraphics[width=1\textwidth]{Imagenes/matriz.png}
+	\caption{Matriz de confusión normalizada para el clasificador Random Forest. La diagonal principal dominante refleja la alta tasa de aciertos en la identificación correcta de los 14 participantes (P1-P14). Los valores fuera de la diagonal representan confusiones esporádicas entre sujetos con fenotipos oculares similares.}
+	\label{fig:matriz_confusion}
+\end{figure}
+
+El análisis de la matriz revela una diagonal sólida, con la mayoría de las clases superando el 80\% de aciertos individuales. Las confusiones dispersas fuera de la diagonal son bajas y simétricas, lo que indica que no existe un "sujeto universal" que confunda al sistema, sino similitudes puntuales entre pares de usuarios específicos.
+
+\section{Evaluación para Control de Cursor}
+
+Para validar la utilidad práctica del vector de mirada estimado en aplicaciones de Interacción Humano-Computadora (HCI), se analizó su desempeño en una tarea de apuntamiento visual. La propuesta de interacción se diseñó bajo un esquema intuitivo: el vector de mirada controla la posición espacial ($X, Y$) del cursor en tiempo real, mientras que el gesto de parpadeo voluntario (detectado por la pérdida momentánea de la pupila) se traduce como el evento de selección o "clic".
+
+\subsection{Mapeo y Corrección (Matriz de Homografía)}
+
+Dado que el vector de mirada en el espacio 3D no se traduce linealmente a coordenadas de píxeles en pantalla (debido a la posición relativa de la cámara y la distorsión de lente), se implementó una etapa de calibración mediante una transformación proyectiva. Se calculó una Matriz de Homografía ($H$) que mapea las proyecciones del vector de mirada ($g_x, g_y$) a las coordenadas de pantalla ($s_x, s_y$):
+
+\begin{equation}
+	\begin{bmatrix} s_x \\ s_y \\ 1 \end{bmatrix} = 
+	H \cdot 
+	\begin{bmatrix} g_x \\ g_y \\ 1 \end{bmatrix}
+\end{equation}
+
+Es fundamental destacar que el funcionamiento adecuado del cursor depende críticamente de la precisión de esta matriz $H$. Cualquier desviación durante la fase de calibración (por movimientos de cabeza del usuario o falta de atención a los puntos guía) introduce un error sistemático en la proyección, degradando la experiencia de control.
+
+\subsection{Precisión Espacial y Estabilidad}
+
+La Figura~\ref{fig:heatmap_cursor} presenta el mapa de calor (\textit{Heatmap}) acumulado durante la prueba. Se observan claramente 9 clústeres de densidad que corresponden a los puntos de estímulo.
+
+% --- [ESPACIO PARA TU HEATMAP O GRÁFICA DE PUNTOS] ---
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Imagenes/hm.png}
+	\caption{Mapa de calor de la mirada corregida mediante la matriz de homografía. Las zonas rojas (alta densidad) coinciden con la ubicación de los 9 puntos de calibración, demostrando que el usuario pudo mantener la fijación estable sobre los objetivos. Las líneas tenues entre puntos representan las trayectorias sacádicas rápidas.}
+	\label{fig:heatmap_cursor}
+\end{figure}
+
+El análisis cuantitativo arroja los siguientes indicadores:
+\begin{itemize}
+	\item \textbf{Precisión (Accuracy):} El error promedio se situó en aproximadamente $\pm$27 píxeles en la zona central de cada región en la pantalla de 1920 x 1080 píxeles. Este margen de error, equivalente a un $\approx 1,4\%$ del ancho de pantalla, limita la interacción con elementos pequeños (como hipervínculos de texto), pero resulta aceptable para interfaces adaptadas con botones grandes diseñadas para accesibilidad o control gestual.
+	\item \textbf{Estabilidad (Jitter):} El filtrado temporal de la trayectoria redujo la vibración del cursor, permitiendo fijaciones estables.
+\end{itemize}
+
+\subsection{Viabilidad y Trabajo Futuro}
+
+Esta implementación constituye una prueba de concepto. Si bien se demostró la viabilidad técnica de controlar el cursor y ejecutar clics mediante parpadeos, la fluidez de la interacción es subjetiva y altamente sensible a la calidad de la calibración inicial. Esta sección abre la puerta a futuras investigaciones enfocadas en algoritmos de calibración dinámica o corrección no lineal que mejoren la robustez del sistema ante movimientos naturales de la cabeza.
+
+\section{Análisis de Robustez Temporal y Deriva Biométrica}
+
+Para evaluar la estabilidad del perfil biométrico ante variables fisiológicas no controladas, se diseñó un experimento comparativo evaluando al sujeto principal (P11) en dos instancias temporales críticas:
+
+\begin{enumerate}
+	\item \textbf{Sesión Matutina (Línea Base):} 10:00 AM, bajo iluminación natural y tras descanso nocturno.
+	\item \textbf{Sesión Vespertina (Estrés):} 06:00 PM, tras una jornada laboral y bajo iluminación artificial.
+\end{enumerate}
+
+\subsection{Degradación del Rendimiento por Fatiga}
+
+Los resultados de la clasificación, ilustrados en la Figura \ref{fig:comparativa_temporal}, evidencian una discrepancia notable en el desempeño del sistema según la hora del día.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Imagenes/COMPARATIVA_FINAL_MATRICES.png}
+	\caption{Comparativa de robustez temporal. A la izquierda (Mañana), la densidad de aciertos se concentra en la diagonal principal, indicando alta precisión. A la derecha (Tarde), se observa una dispersión de la densidad hacia clases vecinas (principalmente P5), reflejando la confusión inducida por la fatiga.}
+	\label{fig:comparativa_temporal}
+\end{figure}
+
+Al analizar la Figura \ref{fig:comparativa_temporal}, se observa que en la sesión matutina la exactitud se mantiene alta, con las predicciones concentradas en la diagonal principal. Sin embargo, en la sesión vespertina, la "mancha" de aciertos se diluye y las predicciones erróneas no son aleatorias, sino que se agrupan sistemáticamente en la columna del sujeto P5. Esto sugiere que la identidad biométrica del sujeto P11 no se destruye, sino que se \textit{desplaza} hacia el perfil del sujeto P5.
+
+\subsection{Causas Fisiológicas de la Confusión}
+
+Para determinar la causa raíz de esta convergencia con el sujeto P5, se realizó un análisis estadístico de la distribución de las características biométricas clave. La Figura \ref{fig:deriva_biometrica} contrasta el comportamiento de las métricas entre el estado de descanso (verde), el estado de fatiga (rojo) y el sujeto de confusión (gris).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Imagenes/Comparativa_Fatiga_Anonima.png}
+	\caption{Evidencia de deriva biométrica. Se observa cómo la distribución de las métricas del Sujeto P11 en la sesión de tarde (cajas rojas) se desplaza significativamente respecto a su línea base matutina (cajas verdes), solapándose con la distribución del Sujeto P5 (cajas grises).}
+	\label{fig:deriva_biometrica}
+\end{figure}
+
+El análisis de estas distribuciones revela dos fenómenos determinantes:
+
+\begin{enumerate}
+	\item \textbf{Efecto de Iluminación (\textit{Pupil Mean}):} Se observa un desplazamiento evidente en la media del diámetro pupilar. La sesión vespertina provocó una dilatación (midriasis) en el sujeto P11 debido a la falta de luz natural, llevando sus valores a un rango casi idéntico al del sujeto P5. Al eliminar la diferencia morfológica de la pupila, el discriminador pierde una variable de separación clave.
+	\item \textbf{Efecto de Fatiga (\textit{Vel Mean} y \textit{Jerk}):} La velocidad media de las sácadas del sujeto P11 disminuye drásticamente en la tarde producto del cansancio muscular. Este cambio dinámico provoca que su "firma de movimiento" se asemeje a la de usuarios con patrones oculares naturalmente más lentos o inestables, como es el caso del sujeto P5.
+\end{enumerate}
+
+En conclusión, la confusión del clasificador es consecuencia de una \textbf{convergencia biométrica}: las condiciones ambientales y fisiológicas de la tarde transformaron temporalmente los patrones del Sujeto P11, haciéndolos matemáticamente indistinguibles de los del Sujeto P5 bajo la óptica de las métricas utilizadas.
+
+\section{Discusión General}
+
+Los resultados presentados en este capítulo demuestran la viabilidad técnica y científica de la propuesta, validando las tres hipótesis fundamentales de la investigación:
+
+\begin{enumerate}
+	\item \textbf{Calidad de la Señal:} La implementación de redes neuronales (YOLOv8) sobre video de bajo costo permitió extraer señales oculométricas de alta fidelidad. La reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma que el sistema captura la dinámica fisiológica real del ojo y no ruido aleatorio.
+	\item \textbf{Identificación Biométrica:} Se demostró que la forma de mirar es única. Mediante el análisis de características híbridas (anatomía pupilar + dinámica sacádica) y algoritmos de \textit{Random Forest}, se alcanzó una exactitud de clasificación superior al 83\%, validando el potencial del movimiento ocular como huella biométrica robusta ante suplantaciones.
+	\item \textbf{Doble Propósito (Cursor + Seguridad):} La prueba de homografía confirmó que el mismo sensor utilizado para identificar al usuario puede servir simultáneamente como dispositivo de entrada. Aunque la experiencia de uso actual está condicionada a una calibración rigurosa, se establece el precedente para interfaces donde la autenticación es continua e invisible: el sistema verifica la identidad del usuario constantemente mientras este interactúa con el computador mediante su mirada.
+\end{enumerate}

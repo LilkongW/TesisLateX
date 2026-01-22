@@ -1,0 +1,172 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Agradecimientos}{\es@scroman {ii}}{chapter*.1}%
+\contentsline {chapter}{Resumen}{\es@scroman {iii}}{chapter*.2}%
+\contentsline {chapter}{Lista de Figuras}{\es@scroman {x}}{chapter*.4}%
+\contentsline {chapter}{Lista de Tablas}{\es@scroman {xi}}{chapter*.5}%
+\contentsline {chapter}{Introducción}{\es@scroman {xii}}{chapter*.6}%
+\contentsline {chapter}{\numberline {1}Planteamiento del Problema}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}El problema}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{2}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Objetivo general}{2}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Objetivos específicos}{2}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Justificación}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Organización de la tesis}{3}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Marco Teórico}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Antecedentes teóricos de la investigación}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Eye Aspect Ratio (EAR) para Detección de Somnolencia}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Introduction to Eye Tracking: A Hands-On Tutorial}{5}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Remote Photoplethysmography}{5}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}AI in Medical Imaging Technology}{5}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Abnormal Ocular Movement in Multiple-System Atrophy}{5}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Aplicación de la convolución de matrices}{6}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Analysis of eye-tracking experiments on Tobii T60}{6}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2}Bases conceptuales}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Anatomía del Ojo Humano}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Movimientos oculares básicos}{7}{subsection.2.2.2}%
+\contentsline {subsubsection}{Fijaciones}{7}{subsection.2.2.2}%
+\contentsline {subsubsection}{Sacádicos}{8}{subsection.2.2.2}%
+\contentsline {subsubsection}{Movimientos de seguimiento suave (Smooth Pursuit)}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}La secuencia principal (Main Sequence)}{8}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Sistema de captura y procesamiento}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Tecnologías de seguimiento ocular}{9}{subsection.2.3.1}%
+\contentsline {subsubsection}{Clasificación según el contacto con el usuario}{9}{subsection.2.3.1}%
+\contentsline {subsubsection}{Configuraciones de captura}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Fundamentos de la captura por video}{9}{subsection.2.3.2}%
+\contentsline {subsubsection}{Características de las cámaras}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Preprocesamiento de la señal}{10}{subsection.2.3.3}%
+\contentsline {subsubsection}{Conversión a escala de grises}{10}{subsection.2.3.3}%
+\contentsline {subsubsection}{Umbralización global}{10}{equation.2.3}%
+\contentsline {subsubsection}{Filtro de Savitzky-Golay}{11}{equation.2.4}%
+\contentsline {subsubsection}{Método de la pupila oscura (Dark Pupil)}{11}{equation.2.5}%
+\contentsline {section}{\numberline {2.4}Caracterización biométrica y dinámica de la señal}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Biometría oculomotora}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Pupilometría dinámica y cognitiva}{13}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Análisis de la calidad del movimiento: Jerk y suavidad}{13}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Análisis de señales no lineales y complejidad fractal}{14}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Técnicas de análisis y clasificación}{14}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Estadística descriptiva}{15}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Análisis Discriminante Lineal (LDA)}{15}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Máquinas de Vectores de Soporte (SVM)}{16}{subsection.2.5.3}%
+\contentsline {subsubsection}{Formulación matemática}{16}{subsection.2.5.3}%
+\contentsline {subsubsection}{Kernel RBF para datos no lineales}{17}{equation.2.11}%
+\contentsline {subsection}{\numberline {2.5.4}Random Forest (Bosque Aleatorio)}{17}{subsection.2.5.4}%
+\contentsline {subsubsection}{Principios fundamentales}{17}{subsection.2.5.4}%
+\contentsline {subsubsection}{Criterio de Selección de Atributos: Índice de Gini}{18}{Item.14}%
+\contentsline {subsubsection}{Importancia de las Variables (Feature Importance)}{18}{equation.2.13}%
+\contentsline {subsubsection}{Predicción y ventajas}{19}{equation.2.14}%
+\contentsline {chapter}{\numberline {3}Marco Metodológico}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Diseño y Tipo de Investigación}{20}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Enfoque Cuantitativo}{20}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Diseño Experimental}{21}{subsection.3.1.2}%
+\contentsline {subsubsection}{Variables del estudio}{21}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Sistema Experimental y Herramientas}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Hardware e Instrumentación}{22}{subsection.3.2.1}%
+\contentsline {subsubsection}{Equipo de cómputo}{22}{subsection.3.2.1}%
+\contentsline {subsubsection}{Sistema de captura de video}{23}{figure.caption.10}%
+\contentsline {subsection}{\numberline {3.2.2}Entorno y Condiciones de Iluminación}{25}{subsection.3.2.2}%
+\contentsline {subsubsection}{Configuración espacial}{25}{subsection.3.2.2}%
+\contentsline {subsubsection}{Control de iluminación}{25}{Item.20}%
+\contentsline {subsection}{\numberline {3.2.3}Herramientas de Software}{26}{subsection.3.2.3}%
+\contentsline {subsubsection}{Procesamiento de imágenes y visión por computadora}{26}{subsection.3.2.3}%
+\contentsline {subsubsection}{Procesamiento de señales}{26}{subsection.3.2.3}%
+\contentsline {subsubsection}{Análisis estadístico y visualización}{27}{subsection.3.2.3}%
+\contentsline {subsubsection}{Aprendizaje automático}{27}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Disponibilidad del Código}{27}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Arquitectura del Flujo de Datos (Pipeline)}{28}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Protocolo de Adquisición de Datos}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Población y Muestra}{30}{subsection.3.3.1}%
+\contentsline {subsubsection}{Caracterización de la población objetivo}{30}{subsection.3.3.1}%
+\contentsline {subsubsection}{Criterios de selección}{30}{subsection.3.3.1}%
+\contentsline {subsubsection}{Tamaño y composición de la muestra}{31}{subsection.3.3.1}%
+\contentsline {subsubsection}{Consideraciones éticas}{32}{table.caption.14}%
+\contentsline {subsection}{\numberline {3.3.2}Diseño del Estímulo Visual}{33}{subsection.3.3.2}%
+\contentsline {subsubsection}{Cuadrícula de calibración y prueba (Grid 3×3)}{33}{subsection.3.3.2}%
+\contentsline {subsubsection}{Secuencia temporal de presentación}{34}{figure.caption.15}%
+\contentsline {subsection}{\numberline {3.3.3}Procedimiento Experimental}{34}{subsection.3.3.3}%
+\contentsline {subsubsection}{Fase 1: Recepción y consentimiento informado}{35}{subsection.3.3.3}%
+\contentsline {subsubsection}{Fase 2: Colocación del dispositivo y configuración óptica}{35}{Item.25}%
+\contentsline {subsubsection}{Fase 3: Ejecución de la prueba principal}{36}{Item.28}%
+\contentsline {subsubsection}{Fase 4: Repetición y consistencia de datos}{36}{Item.32}%
+\contentsline {subsubsection}{Fase 5: Cierre de la sesión}{37}{Item.35}%
+\contentsline {section}{\numberline {3.4}Procesamiento Digital de Imágenes}{37}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Preprocesamiento}{37}{subsection.3.4.1}%
+\contentsline {subsubsection}{Conversión a escala de grises}{37}{subsection.3.4.1}%
+\contentsline {subsubsection}{Reducción de ruido mediante filtrado}{38}{equation.3.1}%
+\contentsline {paragraph}{Filtro Gaussiano}{38}{equation.3.1}%
+\contentsline {subsection}{\numberline {3.4.2}Segmentación y Detección de Pupila}{38}{subsection.3.4.2}%
+\contentsline {subsubsection}{Localización y Seguimiento de la Pupila mediante Deep Learning}{38}{subsection.3.4.2}%
+\contentsline {paragraph}{Arquitectura y Entrenamiento (Fine-Tuning)}{39}{subsection.3.4.2}%
+\contentsline {paragraph}{Inferencia en tiempo de ejecución}{39}{Item.41}%
+\contentsline {subsubsection}{Pre-procesamiento y mejora de contraste}{40}{Item.44}%
+\contentsline {subsubsection}{Segmentación y Ajuste Geométrico}{40}{Item.46}%
+\contentsline {paragraph}{1. Binarización}{40}{Item.46}%
+\contentsline {paragraph}{2. Optimización de Contornos por Ángulo}{40}{equation.3.4}%
+\contentsline {paragraph}{3. Ajuste de Elipse (Least Squares Fitting)}{41}{algorithm.1}%
+\contentsline {subsection}{\numberline {3.4.3}Estimación del Vector de Mirada (Gaze Vector)}{41}{subsection.3.4.3}%
+\contentsline {subsubsection}{Validación y Justificación del Enfoque Híbrido}{43}{figure.caption.18}%
+\contentsline {paragraph}{Robustez en la detección}{43}{figure.caption.18}%
+\contentsline {paragraph}{Eficiencia Computacional}{43}{figure.caption.18}%
+\contentsline {section}{\numberline {3.5}Procesamiento de Señales y Extracción de Métricas}{43}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Cálculo de la Cinemática Angular}{44}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Filtrado y Derivación}{44}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Nuevas Métricas Biométricas Integradas}{44}{subsection.3.5.3}%
+\contentsline {subsubsection}{Pendiente de la Secuencia Principal (Main Sequence Slope)}{44}{subsection.3.5.3}%
+\contentsline {subsubsection}{Dimensión Fractal de Higuchi (HFD)}{45}{equation.3.10}%
+\contentsline {subsubsection}{Velocidad Pupilar Dinámica}{45}{equation.3.11}%
+\contentsline {section}{\numberline {3.6}Resumen del Capítulo}{45}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Resultados y Discusión}{46}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Validación del Sistema de Captura y Procesamiento}{46}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Calidad de la Señal y Filtrado}{46}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Precisión de la Detección (YOLOv8)}{47}{subsection.4.1.2}%
+\contentsline {subsubsection}{Métricas de Entrenamiento y Validación}{47}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Caracterización Cinemática y Fisiológica}{49}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Análisis de la Secuencia Principal (Main Sequence)}{49}{subsection.4.2.1}%
+\contentsline {subsubsection}{Discusión de Parámetros}{50}{figure.caption.21}%
+\contentsline {subsection}{\numberline {4.2.2}Perfiles de Velocidad y Jerk}{51}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Identificación de Patrones Biométricos}{52}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Importancia de Características (Feature Importance)}{52}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Jerarquía de Relevancia Biométrica}{53}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Perfiles Biométricos Individuales}{54}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Visualización de Separabilidad (LDA)}{55}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Rendimiento de la Clasificación}{56}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Métricas de los Modelos}{56}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Análisis de Confusión}{56}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Evaluación para Control de Cursor}{56}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Mapeo y Corrección (Matriz de Homografía)}{57}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Precisión Espacial y Estabilidad}{58}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Viabilidad y Trabajo Futuro}{59}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Análisis de Robustez Temporal y Deriva Biométrica}{59}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Degradación del Rendimiento por Fatiga}{59}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Causas Fisiológicas de la Confusión}{59}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Discusión General}{61}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Discusión, Conclusiones y Recomendaciones}{63}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Discusión General de Resultados}{63}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Cumplimiento del Objetivo General y Validación de Hipótesis}{63}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Contraste con el Estado del Arte}{63}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Impacto y Relevancia en el Contexto Científico-Tecnológico}{64}{subsection.5.1.3}%
+\contentsline {subsubsection}{Democratización Tecnológica}{64}{subsection.5.1.3}%
+\contentsline {subsubsection}{Integración Interdisciplinaria}{64}{subsection.5.1.3}%
+\contentsline {subsubsection}{Aplicaciones Sociales}{64}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Sensibilidad Temporal y Variabilidad Intra-sujeto}{65}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Conclusiones}{65}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Sobre el Cumplimiento de Objetivos Específicos}{65}{subsection.5.2.1}%
+\contentsline {subsubsection}{Objetivo Específico 1: Sistema de Captura}{65}{subsection.5.2.1}%
+\contentsline {subsubsection}{Objetivo Específico 2: Procesamiento de Señal}{66}{subsection.5.2.1}%
+\contentsline {subsubsection}{Objetivo Específico 3: Identificación de Patrones Biométricos}{66}{subsection.5.2.1}%
+\contentsline {subsubsection}{Objetivo Específico 4: Aplicación Práctica (Control de Cursor)}{67}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Conclusión General}{67}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Limitaciones del Estudio}{67}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Limitaciones Técnicas}{68}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Limitaciones Metodológicas}{68}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Limitaciones Teóricas}{69}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Recomendaciones y Trabajos Futuros}{69}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Mejoras en el Hardware y Configuración Experimental}{69}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Propuesta Teórica Avanzada: Métrica Mejorada de Apertura Ocular (Improved EAR)}{70}{subsection.5.4.2}%
+\contentsline {subsubsection}{Fundamentación Matemática}{70}{subsection.5.4.2}%
+\contentsline {subsubsection}{Validación Experimental}{70}{equation.5.1}%
+\contentsline {subsubsection}{Aplicaciones Potenciales}{71}{figure.caption.33}%
+\contentsline {subsection}{\numberline {5.4.3}Integración con Otras Tecnologías Emergentes}{71}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Nuevas Líneas de Investigación: Salud Ocupacional}{71}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.5}Reflexión Final}{72}{section.5.5}%
+\contentsline {chapter}{Referencias Bibliográficas}{73}{section*.34}%
+\contentsline {chapter}{Anexo: Compendio de Formulación Matemática}{75}{appendix*.36}%

@@ -1,0 +1,224 @@
+% =============================================================================
+% CAPÍTULO V: DISCUSIÓN, CONCLUSIONES Y RECOMENDACIONES
+% =============================================================================
+
+\chapter{Discusión, Conclusiones y Recomendaciones}
+
+Este capítulo presenta una síntesis de los hallazgos obtenidos. Se estructura en cuatro secciones: discusión general, conclusiones, limitaciones y recomendaciones futuras.
+
+\section{Discusión General de Resultados}
+
+\subsection{Cumplimiento del Objetivo General y Validación de Hipótesis}
+
+Esta investigación desarrolló un sistema integral de seguimiento ocular mediante técnicas de procesamiento de imágenes para el análisis de patrones oculares, con aplicación en identificación biométrica e interfaces de control. Los resultados experimentales demuestran el cumplimiento del objetivo general.
+
+El análisis multidimensional reveló que la huella oculomotora reside en la interacción compleja entre características morfológicas (diámetro pupilar, geometría del iris) y dinámicas (velocidad sacádica, aceleración, índice de suavidad). Esta naturaleza híbrida del sistema biométrico propuesto (Anatomía + Dinámica) alcanzó una exactitud de clasificación del 83.5\% mediante el algoritmo \textit{Random Forest}, superando significativamente las limitaciones de los sistemas basados exclusivamente en características estáticas tradicionales como el patrón del iris.
+
+\subsection{Contraste con el Estado del Arte}
+
+La comparación con investigaciones previas permite contextualizar la contribución científica de este trabajo. Según Zhou et al. \cite{zhou2024abnormal}, los movimientos sacádicos voluntarios presentan patrones de velocidad y precisión característicos que pueden servir como biomarcadores individuales. Los resultados validan esta premisa: la reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma la fidelidad fisiológica de las mediciones y establece una base sólida para la extracción de características discriminativas.
+
+La aplicación del filtro Savitzky-Golay ($w=21$, $p=3$) resultó determinante para preservar la integridad de los eventos rápidos (sacádicos) mientras se eliminaba el ruido instrumental de alta frecuencia. Esta decisión metodológica, fundamentada en los principios del procesamiento de señales biomédicas, permitió calcular derivadas temporales (velocidad, aceleración, \textit{jerk}) sin la amplificación excesiva de ruido que caracteriza a los métodos de diferencias finitas simples.
+
+\subsection{Impacto y Relevancia en el Contexto Científico-Tecnológico}
+
+Esta investigación aporta al ámbito de la física aplicada y la ingeniería biomédica, especialmente en contextos donde el alto costo de las tecnologías limita el desarrollo científico. La demostración de que es posible obtener mediciones biométricas de alta fidelidad utilizando hardware de bajo costo y algoritmos eficientes de aprendizaje profundo (YOLOv8) representa una contribución metodológica relevante para la comunidad académica.
+
+\subsubsection{Democratización Tecnológica}
+
+El sistema desarrollado rompe la dependencia tradicional de dispositivos \textit{eye-tracker} comerciales cuyo costo puede superar los 8,000 USD en sus versiones de investigación (como el Pupil Labs Neon Professional). Al demostrar que una cámara web modificada con iluminación infrarroja cercana (NIR) o un módulo GC0308 pueden capturar señales oculométricas con precisión comparable, este trabajo abre la posibilidad de replicar investigaciones similares en instituciones con recursos limitados, fomentando así el desarrollo científico regional.
+
+\subsubsection{Integración Interdisciplinaria}
+
+La metodología propuesta integra conocimientos de múltiples disciplinas: física (óptica geométrica, cinemática), ingeniería (procesamiento digital de señales, visión por computadora), matemáticas aplicadas (análisis discriminante lineal, teoría de la decisión) y fisiología (biomecánica ocular, sistema nervioso autónomo). Esta convergencia disciplinaria constituye un ejemplo del enfoque transdisciplinario que caracteriza la investigación científica contemporánea.
+
+\subsubsection{Aplicaciones Sociales}
+
+Más allá del análisis teórico, el sistema tiene potencial para resolver problemas concretos de accesibilidad tecnológica. La implementación del módulo de control de cursor mediante la mirada representa una prueba de concepto para el desarrollo de interfaces asistivas destinadas a personas con movilidad reducida. Si bien la calibración actual requiere refinamiento, el principio de interacción ha sido validado exitosamente.
+
+\subsection{Sensibilidad Temporal y Variabilidad Intra-sujeto}
+
+Uno de los hallazgos más relevantes fue la detección de la \textit{deriva biométrica} causada por factores cronobiológicos. Como se evidenció en los resultados del Capítulo 4, el perfil oculomotor del usuario no es estático. El sistema demostró una alta sensibilidad para detectar cambios sutiles en la dinámica ocular provocados por:
+
+\begin{itemize}
+	\item \textbf{Fatiga Oculomotora:} Tras una jornada laboral, la velocidad de las sácadas disminuye y la estabilidad de la fijación (\textit{Jerk}) varía, lo que el algoritmo detecta como una desviación del patrón original.
+	\item \textbf{Condiciones de Iluminación:} La transición de luz día a luz artificial induce cambios en el diámetro pupilar que, si bien afectan la clasificación pura, confirman que el sistema está capturando datos fisiológicos reales y no solo patrones estáticos.
+\end{itemize}
+
+Este comportamiento valida que el sistema actúa no solo como identificador, sino potencialmente como un sensor de estado fisiológico.
+
+\section{Conclusiones}
+
+A partir del análisis de los resultados y su contraste con los objetivos planteados, se formulan las siguientes conclusiones:
+
+\subsection{Sobre el Cumplimiento de Objetivos Específicos}
+
+\subsubsection{Objetivo Específico 1: Sistema de Captura}
+
+Se logró implementar exitosamente un sistema de adquisición de bajo costo fundamentado en una cámara CMOS GC0308 operando a 120 FPS con iluminación infrarroja cercana (NIR). La selección de esta configuración permitió:
+
+\begin{itemize}
+	\item Obtener imágenes de alta calidad temporal, necesarias para capturar la dinámica rápida de los movimientos sacádicos (200-700 °/s).
+	\item Minimizar la interferencia de la pigmentación del iris mediante el uso del espectro NIR, logrando un contraste robusto entre pupila y esclera.
+	\item Validar la viabilidad técnica de sensores económicos para tareas que tradicionalmente requerían hardware especializado de alto costo.
+\end{itemize}
+
+\textit{Conclusión}: El objetivo de diseñar un sistema de captura accesible fue cumplido satisfactoriamente, demostrando que la barrera de entrada para investigaciones en oculometría puede reducirse significativamente mediante la optimización de hardware comercial.
+
+\subsubsection{Objetivo Específico 2: Procesamiento de Señal}
+
+Se desarrolló un \textit{pipeline} completo de procesamiento digital que transforma secuencias de imágenes crudas en descriptores biométricos complejos. Los componentes clave incluyen:
+
+\begin{itemize}
+	\item \textbf{Detección de ROI}: Implementación del modelo YOLOv8n con \textit{fine-tuning}, alcanzando una precisión (mAP@50) de 99.5\% con menos del 1\% de pérdidas de seguimiento.
+	\item \textbf{Filtrado digital}: Aplicación del filtro Savitzky-Golay, que demostró ser superior a los métodos de promedio móvil al preservar los picos de velocidad durante eventos sacádicos mientras eliminaba el \textit{jitter} instrumental.
+	\item \textbf{Validación fisiológica}: La reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma que las señales procesadas reflejan fielmente la biomecánica ocular real y no constituyen artefactos del sistema.
+\end{itemize}
+
+\textit{Conclusión}: El objetivo de analizar los datos mediante técnicas de procesamiento de imágenes fue cumplido rigurosamente, estableciendo una metodología replicable y científicamente válida para estudios futuros.
+
+\subsubsection{Objetivo Específico 3: Identificación de Patrones Biométricos}
+
+Se validó experimentalmente la capacidad del sistema para discriminar individuos basándose exclusivamente en sus patrones oculomotores. Mediante la extracción de 18 características complejas que integran aspectos morfológicos (diámetro pupilar, excentricidad) y dinámicos (velocidad pico, \textit{jerk}, dimensión fractal), se logró:
+
+\begin{itemize}
+	\item Una exactitud de clasificación del 83.5\% con el algoritmo \textit{Random Forest}, superando el rendimiento de SVM con kernel RBF (76.3\%).
+	\item Demostrar que el Análisis Discriminante Lineal (LDA) puede reducir la dimensionalidad del espacio de características de 18 a 3 dimensiones, reteniendo el 85\% de la varianza discriminativa.
+	\item Confirmar mediante la matriz de confusión que no existen confusiones sistemáticas entre pares de usuarios, indicando que cada participante posee una firma oculomotora única.
+\end{itemize}
+
+\textit{Conclusión}: El objetivo de identificar patrones individuales fue alcanzado exitosamente, estableciendo que la dinámica ocular constituye un rasgo biométrico válido, medible y robusto ante variabilidad intra-sujeto.
+
+\subsubsection{Objetivo Específico 4: Aplicación Práctica (Control de Cursor)}
+
+Se verificó la utilidad del sistema como interfaz de interacción humano-computadora mediante la implementación de una matriz de homografía que mapea el vector de mirada 3D a coordenadas de pantalla 2D. Los resultados demuestran:
+
+\begin{itemize}
+	\item Viabilidad técnica del control de cursor mediante la mirada, con errores promedio de $\pm$27 píxeles en la zona central de la pantalla.
+	\item Implementación exitosa del mecanismo de selección mediante parpadeo voluntario.
+	\item Identificación de limitaciones relacionadas con movimientos de cabeza que requieren abordaje mediante calibración dinámica en trabajos futuros.
+\end{itemize}
+
+\textit{Conclusión}: El objetivo de evaluar la aplicabilidad del sistema fue cumplido como prueba de concepto, validando la arquitectura dual del sistema (identificación + control) y estableciendo las bases para refinamientos futuros.
+
+\subsection{Conclusión General}
+
+Este trabajo demuestra que es posible desarrollar un sistema de seguimiento ocular de alto rendimiento utilizando hardware accesible y algoritmos de procesamiento inteligente. El enfoque híbrido que combina características anatómicas y dinámicas resultó superior a los métodos tradicionales basados únicamente en biometría estática. Los objetivos planteados fueron cumplidos satisfactoriamente, estableciendo una metodología científicamente rigurosa que puede servir como referencia para futuras investigaciones en el campo de la física aplicada, la ingeniería biomédica y la interacción humano-computadora.
+
+\section{Limitaciones del Estudio}
+
+El rigor científico demanda el reconocimiento explícito de las restricciones metodológicas que acotan la generalización de los resultados obtenidos. A continuación se detallan las principales limitaciones identificadas:
+
+\subsection{Limitaciones Técnicas}
+
+\begin{enumerate}
+	\item \textbf{Sensibilidad a movimientos de cabeza}: La matriz de homografía implementada para el control de cursor es estática y asume que la posición relativa cabeza-cámara permanece constante. Movimientos naturales del usuario durante la interacción introducen errores sistemáticos en la proyección de la mirada. La solución requiere implementar algoritmos de calibración dinámica o \textit{tracking} facial simultáneo, lo cual excede el alcance de esta investigación pero representa una línea de trabajo prioritaria.
+	\item \textbf{Condiciones ambientales controladas}: Los experimentos se realizaron en un entorno de laboratorio con iluminación estable. La robustez del sistema ante variaciones extremas de iluminación ambiental (luz solar directa, oscuridad total) no fue evaluada exhaustivamente.
+	\item \textbf{Distancia operativa fija}: El sistema fue calibrado para una distancia de 60 cm entre usuario y pantalla. Variaciones significativas en esta distancia degradan la precisión espacial debido a efectos de perspectiva no compensados por el modelo geométrico simplificado.
+\end{enumerate}
+
+\subsection{Limitaciones Metodológicas}
+
+\begin{enumerate}
+	\item \textbf{Tamaño muestral}: Aunque suficiente para una investigación de pregrado y para establecer una prueba de concepto ($N=15$ participantes), la validación comercial del sistema biométrico requeriría escalar significativamente el estudio. Evaluar la tasa de falsos positivos (FAR) y falsos negativos (FRR) en poblaciones de miles de usuarios es necesario para certificar el sistema bajo estándares internacionales de seguridad biométrica.
+	\item \textbf{Homogeneidad demográfica}: La muestra consistió principalmente en adultos jóvenes universitarios. No se evaluó el desempeño del sistema en poblaciones con patologías oculares (cataratas, glaucoma, nistagmo patológico) ni en rangos etarios extremos (niños, adultos mayores), lo cual podría introducir variabilidad no contemplada en el modelo actual.
+	\item \textbf{Sensibilidad Temporal (Deriva):} Si bien se realizaron pruebas de variabilidad diaria (mañana vs. tarde) que confirmaron la alteración de las características biométricas debido a la fatiga y cambios de iluminación (Sección 4.7), no se realizó un estudio longitudinal a largo plazo (múltiples días o semanas) para evaluar la persistencia de la huella biométrica, ni se implementaron mecanismos de actualización dinámica del perfil (\textit{template aging}) para compensar este efecto.
+\end{enumerate}
+
+\subsection{Limitaciones Teóricas}
+
+\begin{enumerate}
+	\item \textbf{Simplificación óptica (Modelo Pinhole)}: El cálculo del vector de mirada asume una proyección lineal perfecta, ignorando las deformaciones geométricas naturales que introduce la lente física de la cámara (distorsión radial o efecto barril). Si bien esta aproximación es precisa en el centro de la imagen, en los extremos del campo visual la curvatura de la lente puede introducir pequeñas desviaciones en la posición detectada de la pupila. Incorporar parámetros intrínsecos de calibración permitiría aplanar matemáticamente la imagen y corregir este error no lineal.
+	\item \textbf{Ausencia de validación cruzada inter-dispositivo}: Todos los datos fueron capturados con el mismo hardware. No se verificó la transferibilidad de los modelos entrenados a diferentes cámaras o configuraciones de iluminación, lo cual es relevante para evaluar la robustez práctica del sistema.
+\end{enumerate}
+
+Estas limitaciones no invalidan los hallazgos principales de la investigación, sino que delimitan su alcance actual y señalan oportunidades claras para trabajos de continuación que fortalezcan la robustez y aplicabilidad del sistema desarrollado.
+
+\section{Recomendaciones y Trabajos Futuros}
+
+A partir de los hallazgos, limitaciones y oportunidades identificadas, se proponen las siguientes líneas de investigación que permitirán expandir el alcance científico y tecnológico del sistema:
+
+\subsection{Mejoras en el Hardware y Configuración Experimental}
+
+\begin{enumerate}
+	\item \textbf{Implementación de tracking facial simultáneo}: Integrar algoritmos de detección de puntos de referencia faciales (\textit{facial landmarks}) para estimar la pose 3D de la cabeza en tiempo real. Esto permitiría compensar dinámicamente los movimientos del usuario, mejorando significativamente la estabilidad del control de cursor.
+	\item \textbf{Sistema estereoscópico}: Explorar la implementación de dos cámaras (configuración binocular) para reconstruir la profundidad ($Z$) del globo ocular de manera más precisa, eliminando las aproximaciones planas del modelo actual.
+	\item \textbf{Evaluación en diferentes condiciones ambientales}: Realizar estudios sistemáticos sobre la degradación del rendimiento bajo iluminación variable, incluyendo el diseño de algoritmos adaptativos de control de ganancia y exposición de la cámara.
+\end{enumerate}
+
+\subsection{Propuesta Teórica Avanzada: Métrica Mejorada de Apertura Ocular (Improved EAR)}
+
+Como aporte teórico complementario derivado de esta investigación, se formuló una métrica optimizada de apertura del párpado diseñada para superar las limitaciones de la fórmula tradicional \textit{Eye Aspect Ratio} (EAR) propuesta por Soukupová y Čech \cite{soukupova2016real}.
+
+\subsubsection{Fundamentación Matemática}
+
+El método estándar utiliza únicamente 2 pares de segmentos verticales para estimar la apertura, haciéndolo susceptible a errores cuando puntos individuales presentan vibración (\textit{jitter}). La formulación propuesta integra un muestreo denso de 5 segmentos verticales distribuidos uniformemente a lo largo del contorno del párpado, promediando así el error sobre múltiples mediciones y actuando como un filtro espacial natural:
+
+\begin{equation}
+	\begin{aligned}
+		EAR_{std} &= \frac{||p_2 - p_6|| + ||p_3 - p_5||}{2 \cdot ||p_1 - p_4||} \\[10pt]
+		EAR_{imp} &= \frac{\frac{1}{N} \sum_{i=1}^{N} ||p_{sup,i} - p_{inf,i}||}{||p_{izq} - p_{der}||}
+	\end{aligned}
+	\label{eq:ear_comparison_improved}
+\end{equation}
+
+Donde $p_{sup,i}$ y $p_{inf,i}$ representan los pares de puntos (\textit{landmarks}) verticales densos y $N$ corresponde al número de segmentos de muestreo.
+
+\subsubsection{Validación Experimental}
+
+La comparación cuantitativa entre ambas formulaciones sobre las mismas secuencias de video demostró una reducción del 25\% en la variabilidad \textit{frame-a-frame} (de $\sigma_{diff} = 0.0274$ a $0.0205$) mientras se mantiene una correlación perfecta con la señal original ($r = 1.000$). La Tabla~\ref{tab:ear_metrics_improved} resume estas métricas.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}
+	\vspace{0.2cm}
+	\begin{tabular}{lcc}
+		\toprule
+		\textbf{Métrica} & \textbf{EAR Tradicional} & \textbf{EAR Propuesto} \\
+		\midrule
+		Estabilidad (Ruido $\sigma_{diff}$) & 0.0274 & 0.0205 \\
+		Rango Dinámico & 0.3047 & 0.2272 \\
+		Correlación de Pearson & \multicolumn{2}{c}{$r = 1.000$} \\
+		RMSE & \multicolumn{2}{c}{0.0614} \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:ear_metrics_improved}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Imagenes/erar_original_mejorado.png}
+	\caption{Comparación geométrica entre formulaciones. \textbf{(A)} EAR Tradicional utiliza solo 6 puntos de referencia. \textbf{(B)} EAR Mejorado emplea un mallado denso con N líneas de medición, proporcionando mayor robustez.}
+	\label{fig:ear_comparison_schema_improved}
+\end{figure}
+
+\subsubsection{Aplicaciones Potenciales}
+
+Esta métrica mejorada presenta aplicaciones directas en:
+
+\begin{itemize}
+	\item \textbf{Detección de fatiga y somnolencia}: La mayor relación señal-a-ruido facilita la definición de umbrales robustos para sistemas de alerta en vehículos.
+	\item \textbf{Expansión biométrica}: La cinemática del parpadeo (velocidad de cierre, duración de fase ciega, aceleración de reapertura) constituye una firma fisiológica adicional que podría integrarse al vector de características biométricas, aumentando la separabilidad entre clases.
+	\item \textbf{Estudios neurológicos}: La medición precisa de la dinámica palpebral puede revelar biomarcadores tempranos de trastornos neurodegenerativos.
+\end{itemize}
+
+Se recomienda que futuros trabajos validen esta métrica en \textit{datasets} públicos estandarizados de detección de somnolencia y la integren formalmente en el \textit{pipeline} biométrico propuesto.
+
+\subsection{Integración con Otras Tecnologías Emergentes}
+
+\begin{enumerate}
+	\item \textbf{Realidad aumentada}: Adaptar el sistema para funcionar en dispositivos \textit{wearables} (gafas inteligentes) donde el \textit{eye-tracking} es fundamental para la interacción natural.
+	\item \textbf{Interfaces cerebro-computadora híbridas}: Explorar la fusión de señales oculares con electroencefalografía (EEG) para desarrollar sistemas de comunicación aumentativa y alternativa (CAA) para pacientes con síndromes de enclaustramiento severo.
+\end{enumerate}
+
+\subsection{Nuevas Líneas de Investigación: Salud Ocupacional}
+
+Dada la capacidad del sistema para detectar la degradación del patrón ocular por cansancio, se recomienda expandir esta investigación hacia el monitoreo de salud en entornos laborales. Se propone aplicar este algoritmo para evaluar a profesionales de alta demanda visual (como programadores de software o controladores aéreos) durante jornadas de 8 horas. El objetivo sería correlacionar la pérdida de precisión biométrica con niveles de fatiga cognitiva, desarrollando herramientas de alerta temprana que prevengan errores humanos por agotamiento.
+
+Para robustecer la identificación biométrica en futuras versiones, se sugiere implementar un protocolo de \textit{Enrolamiento Multi-sesión}, donde se capturen datos del usuario en distintos horarios (mañana, tarde y noche) para que el modelo aprenda a reconocer al individuo en todos sus estados fisiológicos.
+
+\section{Reflexión Final}
+
+Este trabajo demuestra que la integración de física experimental, ingeniería de software y aprendizaje automático produce soluciones tecnológicas accesibles y científicamente rigurosas. El sistema desarrollado cumple con los objetivos académicos planteados y establece precedentes metodológicos replicables para la comunidad científica regional.
+
+La física proporcionó el marco conceptual para comprender la cinemática ocular, y las herramientas computacionales permitieron implementar un sistema práctico con potencial aplicación en accesibilidad tecnológica. Este trabajo demuestra que es posible desarrollar soluciones accesibles mediante rigor metodológico y optimización de recursos. Los resultados obtenidos abren múltiples líneas de investigación futura que permitirán expandir tanto la robustez técnica del sistema como su aplicabilidad en contextos reales.

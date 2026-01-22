@@ -1,0 +1,12 @@
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+
+El análisis del movimiento ocular permite comprender aspectos fundamentales de la fisiología humana y desarrollar nuevas interfaces tecnológicas. El ojo proporciona información biológica y cinemática única: el patrón del iris y la pupila constituyen identificadores morfológicos robustos, mientras que las trayectorias oculares permiten inferir estados neurológicos y patrones de comportamiento \textcite{komogortsev2010}.
+
+El desarrollo científico en este campo se ha visto limitado por la barrera económica de los dispositivos comerciales de seguimiento ocular (\textit{eye-trackers}), cuyos costos restringen su aplicación masiva. Esta investigación desarrolla un sistema integral de seguimiento ocular de bajo costo fundamentado en técnicas de procesamiento de imágenes y visión artificial.
+
+El objetivo es doble: validar la viabilidad de la biometría oculomotora para identificación de individuos y evaluar su aplicabilidad como interfaz de control humano-máquina. Se diseñó un sistema de captura basado en sensores CMOS operando a 120 FPS en el espectro infrarrojo cercano (NIR), permitiendo la reconstrucción de la dinámica ocular con alta fidelidad temporal.
+
+La metodología integra principios de óptica geométrica con algoritmos de aprendizaje profundo. Se implementó una arquitectura basada en la red neuronal YOLOv8 para la detección de la pupila, complementada con filtros Savitzky-Golay para el cálculo de derivadas cinemáticas (velocidad, aceleración y \textit{Jerk}). A diferencia de los sistemas biométricos estáticos tradicionales, esta investigación utiliza una huella oculomotora dinámica, demostrando que la interacción entre anatomía ocular y micro-estrategia de movimiento es única para cada sujeto.
+
+Los resultados experimentales, obtenidos de 15 participantes, validan el cumplimiento de leyes fisiológicas fundamentales como la \textit{Main Sequence} \textcite{bahill1975} ($R^2 > 0.90$), y demuestran una exactitud de clasificación biométrica del 83.5\% mediante \textit{Random Forest} \textcite{breiman2001}. Asimismo, se presenta una prueba de concepto para control de cursor mediante la mirada, estableciendo las bases para tecnologías asistivas accesibles.
