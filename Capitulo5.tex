@@ -41,7 +41,7 @@ Más allá del análisis teórico, el sistema tiene potencial para resolver prob
 Uno de los hallazgos más relevantes fue la detección de la \textit{deriva biométrica} causada por factores cronobiológicos. Como se evidenció en los resultados del Capítulo 4, el perfil oculomotor del usuario no es estático. El sistema demostró una alta sensibilidad para detectar cambios sutiles en la dinámica ocular provocados por:
 
 \begin{itemize}
-	\item \textbf{Fatiga Oculomotora:} Tras una jornada laboral, la velocidad de las sácadas disminuye y la estabilidad de la fijación (\textit{Jerk}) varía, lo que el algoritmo detecta como una desviación del patrón original.
+	\item \textbf{Fatiga Oculomotora:} Tras una jornada laboral, la velocidad de las sácadas disminuye y la estabilidad de la fijación (\textit{jerk}) varía, lo que el algoritmo detecta como una desviación del patrón original.
 	\item \textbf{Condiciones de Iluminación:} La transición de luz día a luz artificial induce cambios en el diámetro pupilar que, si bien afectan la clasificación pura, confirman que el sistema está capturando datos fisiológicos reales y no solo patrones estáticos.
 \end{itemize}
 
@@ -58,7 +58,7 @@ A partir del análisis de los resultados y su contraste con los objetivos plante
 Se logró implementar exitosamente un sistema de adquisición de bajo costo fundamentado en una cámara CMOS GC0308 operando a 120 FPS con iluminación infrarroja cercana (NIR). La selección de esta configuración permitió:
 
 \begin{itemize}
-	\item Obtener imágenes de alta calidad temporal, necesarias para capturar la dinámica rápida de los movimientos sacádicos (200-700 °/s).
+	\item Obtener imágenes de alta calidad temporal, necesarias para capturar la dinámica rápida de los movimientos sacádicos (200-700 $^\circ/\text{s}$).
 	\item Minimizar la interferencia de la pigmentación del iris mediante el uso del espectro NIR, logrando un contraste robusto entre pupila y esclera.
 	\item Validar la viabilidad técnica de sensores económicos para tareas que tradicionalmente requerían hardware especializado de alto costo.
 \end{itemize}
@@ -168,7 +168,7 @@ Donde $p_{sup,i}$ y $p_{inf,i}$ representan los pares de puntos (\textit{landmar
 
 La comparación cuantitativa entre ambas formulaciones sobre las mismas secuencias de video demostró una reducción del 25\% en la variabilidad \textit{frame-a-frame} (de $\sigma_{diff} = 0.0274$ a $0.0205$) mientras se mantiene una correlación perfecta con la señal original ($r = 1.000$). La Tabla~\ref{tab:ear_metrics_improved} resume estas métricas.
 
-\begin{table}[H]
+\begin{table}[h!]
 	\centering
 	\caption{Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}
 	\vspace{0.2cm}
@@ -185,7 +185,7 @@ La comparación cuantitativa entre ambas formulaciones sobre las mismas secuenci
 	\label{tab:ear_metrics_improved}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{Imagenes/erar_original_mejorado.png}
 	\caption{Comparación geométrica entre formulaciones. \textbf{(A)} EAR Tradicional utiliza solo 6 puntos de referencia. \textbf{(B)} EAR Mejorado emplea un mallado denso con N líneas de medición, proporcionando mayor robustez.}

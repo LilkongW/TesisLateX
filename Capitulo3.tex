@@ -8,11 +8,11 @@ Este capítulo describe el marco metodológico de la investigación: el diseño 
 \subsection{Enfoque Cuantitativo}
 
 La presente investigación adopta un enfoque cuantitativo, sustentado en la recolección sistemática de datos numéricos y su posterior análisis mediante técnicas estadísticas y computacionales.
-Esta elección metodológica se justifica por la naturaleza física y medible de las variables bajo estudio: posiciones espaciales del ojo expresadas en coordenadas $(x, y)$, velocidades angulares (en °/s), aceleraciones, y otras métricas cinemáticas que describen la dinámica del sistema oculomotor.
+Esta elección metodológica se justifica por la naturaleza física y medible de las variables bajo estudio: posiciones espaciales del ojo expresadas en coordenadas $(x, y)$, velocidades angulares (en $^\circ/\text{s}$), aceleraciones, y otras métricas cinemáticas que describen la dinámica del sistema oculomotor.
 El uso de variables numéricas permite cuantificar de manera precisa los fenómenos físicos involucrados en el movimiento ocular.
 Según Ramírez et al. \cite{ramirez2004}, el enfoque cuantitativo es apropiado cuando se busca establecer patrones de comportamiento, probar hipótesis y generalizar resultados a partir de muestras representativas mediante el análisis estadístico.
 Las trayectorias oculares registradas se traducen en series temporales multidimensionales que pueden ser analizadas mediante herramientas matemáticas rigurosas.
-Las características extraídas —tales como la velocidad pico de los sacádicos, el índice de suavidad (Jerk), la dimensión fractal de Higuchi, y las variaciones del diámetro pupilar— constituyen descriptores cuantitativos que permiten:
+Las características extraídas —tales como la velocidad pico de los sacádicos, el índice de suavidad (jerk), la dimensión fractal de Higuchi, y las variaciones del diámetro pupilar— constituyen descriptores cuantitativos que permiten:
 
 \begin{itemize}
 	\item Caracterizar objetivamente el comportamiento oculomotor de cada participante
@@ -42,9 +42,9 @@ El diseño experimental se estructura en torno a las siguientes variables:
 \textbf{Variables dependientes (observadas):}
 \begin{itemize}
 	\item Coordenadas espaciales del centroide de la pupila $(x_p(t), y_p(t))$ en función del tiempo
-	\item Velocidad angular del movimiento ocular $v(t)$ [°/s]
-	\item Aceleración angular $a(t)$ [°/s$^2$]
-	\item Índice de suavidad del movimiento (Jerk) $J(t)$ [°/s$^3$]
+	\item Velocidad angular del movimiento ocular $v(t)$ [$^\circ/\text{s}$]
+	\item Aceleración angular $a(t)$ [$^\circ/\text{s}^2$]
+	\item Índice de suavidad del movimiento (jerk) $J(t)$ [$^\circ/\text{s}^3$]
 	\item Diámetro pupilar $d(t)$ [mm] y su tasa de cambio
 	\item Duración de las fijaciones y características de los movimientos sacádicos
 \end{itemize}
@@ -85,7 +85,7 @@ Este equipo proporciona el poder de cómputo necesario para:
 	\item Almacenar y gestionar grandes volúmenes de datos experimentales
 \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/pc.jpg}
 	\caption{Estación de trabajo utilizada para el procesamiento de datos y entrenamiento de la red neuronal.
@@ -107,7 +107,7 @@ La captura de imágenes del ojo se realizó mediante un módulo de cámara infra
 	\item \textbf{Enfoque}: Lente de enfoque fijo manual (montura M12) ajustado para macro-distancia
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Imagenes/gc0308.png} 
 	\caption{Módulo de cámara con sensor GalaxyCore GC0308 adaptado para visión infrarroja cercana (NIR).
@@ -176,7 +176,7 @@ El pipeline de procesamiento, desde la adquisición de imágenes hasta la clasif
 	Se utilizó extensivamente para:
 	\begin{itemize}
 		\item Manipulación de arrays de imágenes (tensores de dimensión $H \times W \times C$)
-		\item Cálculo de derivadas numéricas para obtener velocidad, aceleración y Jerk
+		\item Cálculo de derivadas numéricas para obtener velocidad, aceleración y jerk
 		\item Operaciones de álgebra lineal (productos matriciales, descomposiciones)
 	\end{itemize}
 \end{itemize}
@@ -246,7 +246,7 @@ El sistema se diseñó bajo una arquitectura modular secuencial compuesta por tr
 Este flujo garantiza la trazabilidad de los datos desde la captura cruda hasta el análisis estadístico final.
 La Figura \ref{fig:pipeline_flujo} ilustra la secuencia de transformación de los datos, vinculando los algoritmos descritos con los módulos de software implementados.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth, height=20cm, keepaspectratio]{Imagenes/flow.png}
 	\caption{Diagrama de flujo de la arquitectura de procesamiento de datos.
@@ -256,7 +256,7 @@ La Figura \ref{fig:pipeline_flujo} ilustra la secuencia de transformación de lo
 
 Adicionalmente, la Tabla \ref{tab:flujo_datos} detalla la función específica de cada módulo de software dentro del repositorio del proyecto, especificando las entradas y salidas de cada etapa.
 
-\begin{table}[H]
+\begin{table}[h!]
 	\centering
 	\caption{Descripción funcional de los módulos de software del sistema.}
 	\vspace{0.2cm}
@@ -267,7 +267,7 @@ Adicionalmente, la Tabla \ref{tab:flujo_datos} detalla la función específica d
 			\midrule
 			\textbf{1. Extracción} & \texttt{main.py} \newline \texttt{eye\_tracker\_utils.py} & Videos del ojo ($120$ FPS) & Archivos \texttt{\_data.csv} con centroides y vector mirada $(g_x, g_y, g_z)$. \\
 			\midrule
-			\textbf{2. Métricas} & \texttt{Generar\_Metricas.py} & Series temporales de posición ($P(t)$) & Dataset \texttt{BIOMETRIC.csv} con 18 descriptores (Jerk, HFD, etc.) \\
+			\textbf{2. Métricas} & \texttt{Generar\_Metricas.py} & Series temporales de posición ($P(t)$) & Dataset \texttt{BIOMETRIC.csv} con 18 descriptores (jerk, HFD, etc.) \\
 			\midrule
 			\textbf{3. Análisis} & \texttt{Analizar\_Metricas.py} & Dataset Biométrico consolidado & Gráficos de Radar, Clusters LDA y Matrices de Confusión. \\
 			\bottomrule
@@ -311,7 +311,7 @@ Este tamaño de muestra, aunque limitado, es consistente con estudios piloto en 
 Investigaciones previas como las de Komogortsev et al. \cite{komogortsev2010} han demostrado que muestras de 10-20 participantes son suficientes para validar la viabilidad de sistemas de seguimiento ocular y establecer la singularidad de patrones oculomotores individuales en condiciones controladas.
 A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condiciones específicas registradas para cada uno de los 15 participantes durante las sesiones experimentales.
 
-\begin{table}[H]
+\begin{table}[h!]
 	\centering
 	\caption{Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}
 	\vspace{0.2cm}
@@ -705,8 +705,8 @@ Estos parámetros se seleccionaron mediante optimización empírica, evaluando d
 Las derivadas se obtuvieron analíticamente a partir de los coeficientes del polinomio ajustado, lo que reduce significativamente la amplificación de ruido comparado con las diferencias finitas:
 
 \begin{align}
-	V(t) &= \frac{d}{dt} \text{SavGol}(P(t)) \quad [\text{°/s}] \\
-	a(t) &= \frac{d}{dt} V(t) \quad [\text{°/s}^2]
+	V(t) &= \frac{d}{dt} \text{SavGol}(P(t)) \quad [^\circ/\text{s}] \\
+	a(t) &= \frac{d}{dt} V(t) \quad [^\circ/\text{s}^2]
 \end{align}
 
 \subsection{Nuevas Métricas Biométricas Integradas}
@@ -736,6 +736,6 @@ La métrica \texttt{Pupil\_Vel\_Max} captura la reactividad máxima del sistema 
 \section{Resumen del Capítulo}
 
 En este capítulo se ha detallado la metodología del sistema, fundamentada en un enfoque híbrido que combina la robustez del aprendizaje profundo (YOLOv8) con la precisión de la óptica geométrica y el análisis de señales.
-Se ha descrito el diseño experimental controlado con 15 participantes, la configuración del hardware de captura de alta velocidad (120 FPS) y el pipeline de procesamiento que transforma imágenes crudas en descriptores biométricos complejos como el Jerk y la Dimensión Fractal.
+Se ha descrito el diseño experimental controlado con 15 participantes, la configuración del hardware de captura de alta velocidad (120 FPS) y el pipeline de procesamiento que transforma imágenes crudas en descriptores biométricos complejos como el jerk y la Dimensión Fractal.
 Esta metodología garantiza que los datos obtenidos sean precisos espacialmente y preserven la riqueza dinámica necesaria para caracterizar el comportamiento oculomotor.
 En el Capítulo 4 se presentarán los resultados obtenidos tras aplicar este procesamiento a la muestra recolectada, evaluando la capacidad de estas métricas para diferenciar patrones individuales y validar el rendimiento del sistema propuesto.
