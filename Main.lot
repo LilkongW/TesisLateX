@@ -3,10 +3,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces Descripción funcional de los módulos de software del sistema.}}{30}{table.caption.13}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}}{32}{table.caption.14}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}}{32}{table.caption.15}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Métricas finales de rendimiento del modelo YOLOv8n tras 80 épocas de entrenamiento.}}{47}{table.caption.20}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Taxonomía de métricas evaluadas y su rol en la discriminación biométrica.}}{54}{table.caption.24}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Métricas de rendimiento de los clasificadores biométricos en el conjunto de prueba.}}{56}{table.caption.27}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Métricas finales de rendimiento del modelo YOLOv8n tras 80 épocas de entrenamiento.}}{51}{table.caption.22}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Estadísticas descriptivas del corpus de sacádicos utilizado para el ajuste de la \textit {Main Sequence} ($n = 2{,}157$ eventos, $N = 15$ sujetos).}}{54}{table.caption.24}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparación de los parámetros de la \textit {Main Sequence} obtenidos experimentalmente frente a los rangos normativos reportados para adultos sanos.}}{55}{table.caption.25}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Taxonomía de métricas retenidas por el clasificador \textit {Random Forest} y su rol en la discriminación biométrica. Solo se incluyen las variables con importancia de Gini estadísticamente superior a cero tras el entrenamiento con $|\mathcal {T}|=300$ árboles.}}{61}{table.caption.28}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Métricas de rendimiento de los algoritmos de clustering no supervisado.}}{67}{table.caption.34}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Métricas de rendimiento de los clasificadores biométricos en el conjunto de prueba ($k=15$ sujetos, $n_{test}=672$). Para el \textit {Random Forest}, los valores de precisión, recall y F1 se reportan como media $\pm $ desviación estándar entre clases.}}{67}{table.caption.35}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Hiperparámetros del clasificador \textit {Random Forest} optimizados mediante búsqueda en rejilla (\textit {grid search}).}}{68}{table.caption.36}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Rendimiento del clasificador \textit {Random Forest} en función del número de sujetos ($k$). La confianza reportada corresponde a la probabilidad de clase promedio asignada por el ensemble de 300 árboles.}}{69}{table.caption.37}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Métricas de clasificación por sujeto para el modelo \textit {Random Forest} ($k=15$). Precisión: fracción de predicciones de la clase que son correctas. Recall: fracción de instancias reales de la clase correctamente identificadas. F1: media armónica de ambas.}}{70}{table.caption.38}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Comparativa de precisión espacial entre los tres protocolos de validación del sistema de control de cursor.}}{79}{table.caption.46}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}}{70}{table.caption.32}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}}{90}{table.caption.49}%

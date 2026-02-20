@@ -311,6 +311,18 @@ Este tamaño de muestra, aunque limitado, es consistente con estudios piloto en 
 Investigaciones previas como las de Komogortsev et al. \cite{komogortsev2010} han demostrado que muestras de 10-20 participantes son suficientes para validar la viabilidad de sistemas de seguimiento ocular y establecer la singularidad de patrones oculomotores individuales en condiciones controladas.
 A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condiciones específicas registradas para cada uno de los 15 participantes durante las sesiones experimentales.
 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Imagenes/voluntarios.png}
+	\caption{Muestra representativa de los ojos capturados durante la sesión 
+		experimental. Cada imagen corresponde a un participante distinto del estudio 
+		($N=15$), evidenciando la variabilidad morfológica inter-sujeto en 
+		características como el diámetro pupilar y rasgos que el sistema explota como descriptores 
+		biométricos primarios.}
+	\label{fig:voluntarios}
+\end{figure}
+
 \begin{table}[H]
 	\centering
 	\caption{Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}
@@ -349,6 +361,8 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 		\end{itemize}
 	\end{minipage}
 \end{table}
+
+
 
 \subsubsection{Consideraciones éticas}
 
@@ -679,6 +693,21 @@ Además de la robustez, el uso de YOLO para recortar la Región de Interés (ROI
 Al limitar el procesamiento matemático costoso (ajuste de elipses, CLAHE, algoritmos de contornos) exclusivamente al área delimitada por el \textit{bounding box} ($< 10\%$ del área total de la imagen), se reduce drásticamente la carga computacional.
 Esto libera recursos del CPU para mantener una tasa de muestreo estable de 120 FPS, algo que sería insostenible procesando la matriz de imagen completa con algoritmos iterativos.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Imagenes/correlacion.png}
+	\caption{Correspondencia entre la señal visual capturada y su representación 
+		computacional. \textbf{Izquierda:} imagen infrarroja del ojo adquirida por la 
+		cámara, donde se aprecia la pupila detectada. 
+		\textbf{Derecha:} modelo tridimensional resultante, en el que el diámetro 
+		pupilar estimado determina la escala del globo ocular y el vector de mirada 
+		(\textit{gaze vector}) que define su orientación en el espacio 3D. Esta 
+		transformación constituye el núcleo del pipeline de estimación oculomotora 
+		propuesto.}
+	\label{fig:correlacion}
+\end{figure}
+
+
 \section{Procesamiento de Señales y Extracción de Métricas}
 
 El archivo \texttt{Generar\_Metricas.py} procesó las series temporales de vectores de mirada $\hat{g}(t)$ para extraer los descriptores biométricos.
@@ -732,6 +761,93 @@ Un valor de $D_H$ más alto indica una señal más compleja y caótica, mientras
 \subsubsection{Velocidad Pupilar Dinámica}
 Se calculó la derivada temporal del diámetro pupilar para obtener la velocidad de constricción/dilatación.
 La métrica \texttt{Pupil\_Vel\_Max} captura la reactividad máxima del sistema nervioso autónomo ante la carga cognitiva del estímulo.
+
+
+\subsection{Justificación y Selección del Espacio de Características}
+\label{subsec:justificacion_metricas}
+
+La selección de los descriptores biométricos no fue arbitraria: cada métrica fue elegida por su capacidad para capturar una dimensión fisiológica independiente del comportamiento oculomotor, maximizando la información biométrica disponible mientras se minimiza la redundancia entre variables. A continuación se justifica teóricamente el conjunto de 15 descriptores organizados en cuatro categorías funcionales, y se explica el criterio de selección automática posterior mediante el índice de impureza de Gini.
+
+% ===== CATEGORÍA 1 =====
+\subsubsection*{Categoría I — Cinemática Sacádica}
+
+Las métricas de esta categoría describen la dinámica del movimiento 
+sacádico a distintas escalas de derivación temporal:
+
+\begin{itemize}
+	\item \texttt{Vel\_Mean}
+	\item \texttt{Acc\_Max}
+	\item \texttt{Jerk\_Mean}
+	\item \texttt{Jerk\_Max}
+	\item \texttt{Velocity\_Transition\_Smoothness}
+\end{itemize}
+
+Su justificación biométrica se fundamenta en el 
+trabajo de Komogortsev et al.\ \cite{komogortsev2010}, quienes 
+demostraron que los parámetros del modelo de la planta oculomotora 
+---incluyendo la velocidad y la aceleración--- son lo suficientemente 
+estables inter-sesión e idiosincrásicos inter-sujeto como para 
+constituir una firma biométrica. En particular, el \textit{Jerk} 
+(derivada de la aceleración, $J = \dddot{\theta}$) es especialmente 
+relevante porque cuantifica el costo energético del movimiento:
+
+\begin{equation}
+	J(t) = \frac{d^3\theta}{dt^3} \quad [\text{°/s}^3]
+	\label{eq:jerk}
+\end{equation}
+
+El cerebro minimiza el \textit{jerk} cuadrático integrado al planificar movimientos oculares óptimos \cite{leigh2015neurology}, y la forma exacta en que cada individuo alcanza ese mínimo está determinada por la geometría muscular única de su sistema oculomotor \cite{bahill1975}. Así, \texttt{Jerk\_Max} captura el límite superior del esfuerzo neuromuscular, mientras que \texttt{Jerk\_Mean} describe la estrategia promedio de control motor. La métrica \texttt{Velocity\_Transition\_Smoothness} complementa estas variables midiendo la continuidad de la curva de velocidad, un indicador de la calidad del control motor de lazo cerrado que varía entre individuos con distinta coordinación oculomotora \cite{vanopstal1987skewness}.
+
+% ===== CATEGORÍA 2 =====
+\subsubsection*{Categoría II — Morfología Pupilar}
+
+Las métricas \texttt{Pupil\_Mean}, \texttt{Pupil\_Std}, \texttt{Pupil\_CV} y \texttt{Pupil\_Vel\_Max} caracterizan la geometría y la dinámica del diámetro pupilar. La justificación de su inclusión es doble.
+
+En primer lugar, el diámetro pupilar en reposo es un rasgo fenotípico estable determinado por la anatomía del músculo esfínter del iris \cite{duchowski2017}. Su valor medio (\texttt{Pupil\_Mean}) actúa como un descriptor morfológico, análogo al diámetro del iris en los sistemas de reconocimiento biométrico clásico \cite{komogortsev2010}. El coeficiente de variación (\texttt{Pupil\_CV} $= \sigma / \mu$) normaliza la dispersión por la media, haciéndolo comparable entre sujetos con distintos tamaños pupilares basales:
+
+\begin{equation}
+	CV_{pupil} = \frac{\sigma_{pupil}}{\mu_{pupil}} \times 100\%
+	\label{eq:cv_pupil}
+\end{equation}
+
+En segundo lugar, la dinámica pupilar (\texttt{Pupil\_Vel\_Max}) refleja la reactividad del sistema nervioso autónomo ante la carga cognitiva del estímulo \cite{beatty1982}. Beatty demostró que la dilatación pupilar evocada por la tarea (\textit{task-evoked pupillary response}) es proporcional al esfuerzo cognitivo y presenta alta consistencia intra-sujeto, lo que la convierte en un marcador conductual de la estrategia de procesamiento visual individual.
+
+% ===== CATEGORÍA 3 =====
+\subsubsection*{Categoría III — Estructura Temporal del Movimiento}
+
+Las métricas de esta categoría describen la organización temporal de 
+la exploración visual: cuántos movimientos se producen, con qué 
+frecuencia, y qué tan eficientemente se realizan:
+
+\begin{itemize}
+	\item \texttt{Microsaccade\_Rate}
+	\item \texttt{Saccade\_Rate}
+	\item \texttt{Fixation\_Vel\_Mean}
+	\item \texttt{Main\_Seq\_Slope}
+\end{itemize}
+
+La tasa de microsacadas (\texttt{Microsaccade\_Rate}) es particularmente relevante como descriptor de biometría conductual: los microsacadas son movimientos involuntarios de fijación que ocurren durante la fixación ocular, y su frecuencia y dirección están moduladas por factores atencionales y neurofisiológicos propios de cada individuo \cite{holmqvist2011eye}. La pendiente de la Secuencia Principal (\texttt{Main\_Seq\_Slope}) cuantifica la eficiencia neuromuscular del sistema sacádico como fue descrito en la Sección~\ref{subsec:justificacion_metricas}, y su inclusión como métrica independiente permite capturar variaciones individuales en la curva velocidad-amplitud que el modelo exponencial completo de Bahill \cite{bahill1975} no resume en un único escalar. La velocidad durante fijación (\texttt{Fixation\_Vel\_Mean}) captura la micro-deriva residual del ojo durante los periodos de aparente reposo, un marcador de la estabilidad del sistema de mantenimiento de fijación que varía entre individuos sanos \cite{leigh2015neurology}.
+
+% ===== CATEGORÍA 4 =====
+\subsubsection*{Categoría IV — Complejidad No Lineal}
+
+Las métricas \texttt{Fractal\_Dim} y \texttt{Gaze\_Z\_Mean} aportan información de orden superior que los descriptores lineales no pueden capturar.
+
+La Dimensión Fractal de Higuchi (\texttt{Fractal\_Dim}) cuantifica la auto-similaridad de la señal de velocidad a través de múltiples escalas temporales \cite{higuchi1988}. Señales de mayor dimensión fractal ($D_H$ próxima a 2) reflejan estrategias de exploración visual más complejas y caóticas, mientras que valores bajos ($D_H$ próxima a 1) corresponden a movimientos más suaves y predecibles. Esta métrica es especialmente valiosa porque es invariante a transformaciones lineales de la señal, lo que la hace robusta ante variaciones de ganancia del sensor. La componente $Z$ del vector de mirada (\texttt{Gaze\_Z\_Mean}) codifica la profundidad de la dirección de mirada en el espacio tridimensional, capturando diferencias individuales en la postura de convergencia ocular que son invisibles para los sistemas de eye-tracking 2D convencionales \cite{duchowski2017}.
+
+% ===== SELECCIÓN POR GINI =====
+\subsubsection*{Reducción del Espacio de Características mediante Impureza de Gini}
+
+El conjunto inicial de 15 descriptores fue sometido a un proceso de selección automática usando el índice de impureza de Gini calculado durante el entrenamiento del clasificador \textit{Random Forest} \cite{breiman2001}. El criterio de Gini mide, para cada característica $X_j$, la reducción promedio de impureza que produce en los nodos de decisión del ensemble:
+
+\begin{equation}
+	\text{Importancia}(X_j) = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} \sum_{n \in t} \mathbb{1}[X_j \text{ divide } n] \cdot \Delta\text{Gini}(n)
+	\label{eq:gini_importance}
+\end{equation}
+
+donde $\mathcal{T}$ es el conjunto de árboles del ensemble y $\Delta\text{Gini}(n)$ es la reducción de impureza en el nodo $n$. Las características con importancia de Gini cercana a cero indican que, una vez que las demás variables han realizado sus particiones, dicha característica no aporta información adicional para separar las clases. Su eliminación no degrada el rendimiento del clasificador pero sí reduce el riesgo de sobreajuste (\textit{overfitting}) al disminuir la dimensionalidad efectiva del espacio de decisión \cite{breiman2001}.
+
+Este mecanismo de selección tiene dos ventajas metodológicas frente a métodos externos como la correlación de Pearson o el análisis de componentes principales (PCA): opera directamente sobre el criterio de clasificación (no sobre la varianza de los datos), y es no paramétrico, por lo que detecta relaciones no lineales entre características y clases que los métodos lineales pasarían por alto. El resultado —reportado en la Figura~\ref{fig:feature_importance} del Capítulo 4— constituye así tanto una herramienta de interpretación fisiológica como una regularización implícita del modelo de clasificación.
 
 \section{Resumen del Capítulo}
 

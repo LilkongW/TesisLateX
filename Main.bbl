@@ -767,6 +767,294 @@
       \field{title}{The Nature of Statistical Learning Theory}
       \field{year}{1995}
     \endentry
+    \entry{leigh2015neurology}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=26a50a03eedbc4b7796df8bd74a7e750}{%
+           family={Leigh},
+           familyi={L\bibinitperiod},
+           given={R.\bibnamedelimi John},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=187437ecaf05486b22bb8e1c88e51305}{%
+           family={Zee},
+           familyi={Z\bibinitperiod},
+           given={David\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{026813b7b90f11363399f819db5480c0}
+      \strng{fullhash}{026813b7b90f11363399f819db5480c0}
+      \strng{fullhashraw}{026813b7b90f11363399f819db5480c0}
+      \strng{bibnamehash}{026813b7b90f11363399f819db5480c0}
+      \strng{authorbibnamehash}{026813b7b90f11363399f819db5480c0}
+      \strng{authornamehash}{026813b7b90f11363399f819db5480c0}
+      \strng{authorfullhash}{026813b7b90f11363399f819db5480c0}
+      \strng{authorfullhashraw}{026813b7b90f11363399f819db5480c0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{isbn}{978-0-19-991961-8}
+      \field{title}{The Neurology of Eye Movements}
+      \field{year}{2015}
+    \endentry
+    \entry{collewijn1988binocular}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d581f18aea2cc5c2419aba5aa58a9c8c}{%
+           family={Collewijn},
+           familyi={C\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=1ebe6618f775bcbc2e0be509bc70ab04}{%
+           family={Erkelens},
+           familyi={E\bibinitperiod},
+           given={Casper\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=f510148a602e9448d02601339158dc42}{%
+           family={Steinman},
+           familyi={S\bibinitperiod},
+           given={Robert\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{10289eee8ec89af7779400438bf4d452}
+      \strng{fullhash}{b22464b52a78fd51db30f1742e88fa12}
+      \strng{fullhashraw}{b22464b52a78fd51db30f1742e88fa12}
+      \strng{bibnamehash}{b22464b52a78fd51db30f1742e88fa12}
+      \strng{authorbibnamehash}{b22464b52a78fd51db30f1742e88fa12}
+      \strng{authornamehash}{10289eee8ec89af7779400438bf4d452}
+      \strng{authorfullhash}{b22464b52a78fd51db30f1742e88fa12}
+      \strng{authorfullhashraw}{b22464b52a78fd51db30f1742e88fa12}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Physiology}
+      \field{number}{1}
+      \field{title}{Binocular co-ordination of human horizontal saccadic eye movements}
+      \field{volume}{404}
+      \field{year}{1988}
+      \field{pages}{157\bibrangedash 182}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1113/jphysiol.1988.sp017284
+      \endverb
+    \endentry
+    \entry{vanopstal1987skewness}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=9cc5842932a790fd0369e89177435ada}{%
+           family={Van\bibnamedelima Opstal},
+           familyi={V\bibinitperiod\bibinitdelim O\bibinitperiod},
+           given={A.\bibnamedelimi J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=21f095386833f5c2454e1bac8aeb602c}{%
+           family={Van\bibnamedelima Gisbergen},
+           familyi={V\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={J.\bibnamedelimi A.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{fullhash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{fullhashraw}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{bibnamehash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{authorbibnamehash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{authornamehash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{authorfullhash}{5d2ac02365c05d69bfbe3faa37906344}
+      \strng{authorfullhashraw}{5d2ac02365c05d69bfbe3faa37906344}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Vision Research}
+      \field{number}{5}
+      \field{title}{Skewness of saccadic velocity profiles: a unifying parameter for normal and slow saccades}
+      \field{volume}{27}
+      \field{year}{1987}
+      \field{pages}{731\bibrangedash 745}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1016/0042-6989(87)90071-1
+      \endverb
+    \endentry
+    \entry{holmqvist2011eye}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=90192fd4c61867acecba2e339dbf8265}{%
+           family={Holmqvist},
+           familyi={H\bibinitperiod},
+           given={Kenneth},
+           giveni={K\bibinitperiod}}}%
+        {{hash=65e8cf3d7a5f94a2bc958ff647594399}{%
+           family={Nyström},
+           familyi={N\bibinitperiod},
+           given={Marcus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5a16c3d583ab028e799700b879dccfb3}{%
+           family={Andersson},
+           familyi={A\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=dc9bcda117452af8c382afff14f9e5d0}{%
+           family={Dewhurst},
+           familyi={D\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d4d4c888380296316f44b4b272136b6b}{%
+           family={Jarodzka},
+           familyi={J\bibinitperiod},
+           given={Halszka},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5d365a935aae07e2a3e57e22241be7b5}{%
+           family={Van\bibnamedelimb de\bibnamedelima Weijer},
+           familyi={V\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Joost},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{8be145564a46ddc180c4fa6688ea9b67}
+      \strng{fullhash}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \strng{fullhashraw}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \strng{bibnamehash}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \strng{authorbibnamehash}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \strng{authornamehash}{8be145564a46ddc180c4fa6688ea9b67}
+      \strng{authorfullhash}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \strng{authorfullhashraw}{0daacb1be921a0a7cc5fdd3f1cf1c8a2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{OUP Oxford}
+      \field{title}{Eye Tracking: A Comprehensive Guide to Methods and Measures}
+      \field{year}{2011}
+    \endentry
+    \entry{boghen1974velocity}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=1337fab13d9f322d8d06b484e9f8178e}{%
+           family={Boghen},
+           familyi={B\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0f488a622fb12423ee9a6517a7af246e}{%
+           family={Troost},
+           familyi={T\bibinitperiod},
+           given={B.\bibnamedelimi T.},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=de7570b1c9ab33b90c6bb77e05a91ec2}{%
+           family={Daroff},
+           familyi={D\bibinitperiod},
+           given={R.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=c98887d8ea0b68ca88a4dd14ab55ae9d}{%
+           family={Dell'Osso},
+           familyi={D\bibinitperiod},
+           given={L.\bibnamedelimi F.},
+           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=59411f7f1b37751a110ec250bc864537}{%
+           family={Birkett},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{bbdbcb741ad058a46a72871278b62675}
+      \strng{fullhash}{ecc021241654cd8b8c57d45225e83ec0}
+      \strng{fullhashraw}{ecc021241654cd8b8c57d45225e83ec0}
+      \strng{bibnamehash}{ecc021241654cd8b8c57d45225e83ec0}
+      \strng{authorbibnamehash}{ecc021241654cd8b8c57d45225e83ec0}
+      \strng{authornamehash}{bbdbcb741ad058a46a72871278b62675}
+      \strng{authorfullhash}{ecc021241654cd8b8c57d45225e83ec0}
+      \strng{authorfullhashraw}{ecc021241654cd8b8c57d45225e83ec0}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Investigative Ophthalmology \& Visual Science}
+      \field{number}{8}
+      \field{title}{Velocity characteristics of normal human saccades}
+      \field{volume}{13}
+      \field{year}{1974}
+      \field{pages}{619\bibrangedash 623}
+      \range{pages}{5}
+    \endentry
+    \entry{nyquist1928certain}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d4106f7089207ce4f2ef970e8aa5c210}{%
+           family={Nyquist},
+           familyi={N\bibinitperiod},
+           given={Harry},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{fullhash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{fullhashraw}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{bibnamehash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{authorbibnamehash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{authornamehash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{authorfullhash}{d4106f7089207ce4f2ef970e8aa5c210}
+      \strng{authorfullhashraw}{d4106f7089207ce4f2ef970e8aa5c210}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transactions of the American Institute of Electrical Engineers}
+      \field{number}{2}
+      \field{title}{Certain Topics in Telegraph Transmission Theory}
+      \field{volume}{47}
+      \field{year}{1928}
+      \field{pages}{617\bibrangedash 644}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1109/T-AIEE.1928.5055024
+      \endverb
+    \endentry
+    \entry{harwood1999spectral}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=93d8925dee71661cd45deaaf7a8ebc93}{%
+           family={Harwood},
+           familyi={H\bibinitperiod},
+           given={Mark\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=78a647fb1cb7b55898c3a5231592d4b2}{%
+           family={Mezey},
+           familyi={M\bibinitperiod},
+           given={Laura\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=8628cf1d53fc18ab283a30ef56118fe5}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3c0b994c9cbc485952837c0907849a01}
+      \strng{fullhash}{0ed3d23129eec597eeded47bed61c901}
+      \strng{fullhashraw}{0ed3d23129eec597eeded47bed61c901}
+      \strng{bibnamehash}{0ed3d23129eec597eeded47bed61c901}
+      \strng{authorbibnamehash}{0ed3d23129eec597eeded47bed61c901}
+      \strng{authornamehash}{3c0b994c9cbc485952837c0907849a01}
+      \strng{authorfullhash}{0ed3d23129eec597eeded47bed61c901}
+      \strng{authorfullhashraw}{0ed3d23129eec597eeded47bed61c901}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Neuroscience}
+      \field{number}{20}
+      \field{title}{The spectral main sequence of human saccades}
+      \field{volume}{19}
+      \field{year}{1999}
+      \field{pages}{9098\bibrangedash 9106}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1523/JNEUROSCI.19-20-09098.1999
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
