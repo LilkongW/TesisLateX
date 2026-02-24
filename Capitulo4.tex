@@ -12,25 +12,104 @@ Antes de abordar el análisis biométrico, es fundamental verificar la integrida
 
 \subsection{Calidad de la Señal y Filtrado}
 
-El análisis inicial de los datos crudos reveló la presencia de ruido de alta frecuencia, un problema común en sensores CMOS cuando operan con ganancia variable en el espectro infrarrojo. Para mitigar este \textit{jitter} (temblor instrumental) sin comprometer la integridad de la información biológica, se aplicó el filtro digital Savitzky-Golay. La configuración óptima del filtro se estableció con una ventana de longitud $w=21$ muestras y un polinomio de orden $p=3$. Esta elección de parámetros es crítica para el estudio:
+El análisis inicial de los datos crudos reveló la presencia de ruido de
+alta frecuencia, un problema común en sensores CMOS cuando operan con
+ganancia variable en el espectro infrarrojo. Holmqvist et al.\
+\cite{holmqvist2011eye} señalan que este tipo de \textit{jitter}
+instrumental es inherente a los sistemas de captura basados en cámaras
+no especializadas, y que su mitigación mediante filtrado digital es un
+paso indispensable antes de cualquier análisis cinemático, dado que las
+derivadas temporales (velocidad, aceleración) amplifican exponencialmente
+el ruido de alta frecuencia si se calculan sobre la señal cruda.
+
+Para mitigar este \textit{jitter} sin comprometer la integridad de la
+información biológica, se aplicó el filtro digital Savitzky-Golay.
+Savitzky y Golay \cite{savitzky1964smoothing} demostraron que el ajuste
+polinomial local sobre ventanas deslizantes preserva los momentos
+estadísticos de la señal —media, varianza y curtosis— con mayor fidelidad
+que los filtros de promedio móvil convencionales, precisamente porque el
+polinomio se adapta a la curvatura local de la señal en lugar de
+promediarla hacia cero. La configuración óptima del filtro se estableció
+con una ventana de longitud $w=21$ muestras y un polinomio de orden
+$p=3$. Esta elección de parámetros es crítica para el estudio:
 
 \begin{itemize}
-	\item \textbf{Ventana ($w=21$)}: A una tasa de 120 FPS, esta ventana abarca un contexto temporal de $\approx 175$ ms. Esto proporciona suficiente suavizado para eliminar fluctuaciones aleatorias del centroide pupilar.
-	\item \textbf{Polinomio Cúbico ($p=3$)}: A diferencia de los filtros de promedio móvil que tienden a atenuar o recortar los picos de señal, el ajuste polinomial de tercer grado preserva los momentos de inercia y, crucialmente, la magnitud real de la velocidad durante los movimientos sacádicos rápidos.
+	\item \textbf{Ventana ($w=21$)}: A una tasa de 120 FPS, esta ventana
+	abarca un contexto temporal de $\approx 175$ ms. Según el criterio de
+	Nyquist \cite{nyquist1928certain}, la frecuencia de muestreo de 120 Hz
+	permite reconstruir fielmente componentes de señal de hasta 60 Hz, rango
+	que cubre toda la dinámica fisiológica relevante del sistema oculomotor.
+	La ventana de 175 ms proporciona suavizado suficiente para eliminar
+	fluctuaciones aleatorias del centroide pupilar sin suprimir los eventos
+	sacádicos, cuya duración mínima supera los 20 ms \cite{bahill1975}.
+	
+	\item \textbf{Polinomio Cúbico ($p=3$)}: A diferencia de los filtros de
+	promedio móvil que tienden a atenuar o recortar los picos de señal, el
+	ajuste polinomial de tercer grado preserva los momentos de inercia y,
+	crucialmente, la magnitud real de la velocidad durante los movimientos
+	sacádicos rápidos. Harwood, Mezey y Harris \cite{harwood1999spectral}
+	confirmaron que el contenido frecuencial de los sacádicos se concentra
+	por debajo de los 50 Hz, lo que hace al polinomio cúbico una
+	aproximación suficientemente flexible para capturar esa dinámica sin
+	sobreajustar el ruido.
 \end{itemize}
 
-Como se evidencia en la Figura~\ref{fig:filtrado_signal}, el filtro actúa de manera conservadora: elimina el ruido "sucio" de la señal cruda (línea negra) pero se adhiere perfectamente a las transiciones rápidas del ojo (línea de color), asegurando que no se eliminen micro-movimientos importantes ni se introduzca latencia artificial en la señal.
+Como se evidencia en la Figura~\ref{fig:filtrado_signal}, el filtro actúa
+de manera conservadora: elimina el ruido ``sucio'' de la señal cruda
+(línea negra) pero se adhiere perfectamente a las transiciones rápidas del
+ojo (línea de color), asegurando que no se eliminen micro-movimientos
+importantes ni se introduzca latencia artificial en la señal.
 
 % --- [GRÁFICA: SEÑAL CRUDA VS FILTRADA EN 3 EJES] ---
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	% Asegúrate de que el archivo se llame así en tu carpeta Imagenes
 	\includegraphics[width=1\textwidth]{Imagenes/senal_filtrada.png}
-	\caption{Descomposición vectorial de la señal de mirada en un corto periodo de tiempo. Se compara la señal cruda (negro) con la señal filtrada (colores) para las componentes X, Y y Z del vector de mirada. El filtro Savitzky-Golay ($w=21, p=3$) elimina el ruido de alta frecuencia manteniendo la fidelidad de los cambios de posición bruscos (sacádicos).}
+	\caption{Descomposición vectorial de la señal de mirada en un corto
+		periodo de tiempo. Se compara la señal cruda (negro) con la señal
+		filtrada (colores) para las componentes X, Y y Z del vector de mirada.
+		El filtro Savitzky-Golay ($w=21,\ p=3$) elimina el ruido de alta
+		frecuencia manteniendo la fidelidad de los cambios de posición bruscos
+		(sacádicos).}
 	\label{fig:filtrado_signal}
 \end{figure}
 
-Adicionalmente, el sistema mantuvo una estabilidad temporal rigurosa, operando a una tasa de muestreo efectiva de 120 FPS. Esto permitió reconstruir las trayectorias con una resolución temporal de 8.33 ms, capturando la micro-estructura del movimiento que se perdería en cámaras web convencionales de 30 o 60 Hz.
+Adicionalmente, el sistema mantuvo una estabilidad temporal rigurosa,
+operando a una tasa de muestreo efectiva de 120 FPS. Esto permitió
+reconstruir las trayectorias con una resolución temporal de 8.33 ms,
+capturando la micro-estructura del movimiento que se perdería en cámaras
+web convencionales de 30 o 60 Hz. Gao et al.\ \cite{gao2025eye_tracking_tutorial}
+establecen que una frecuencia de muestreo mínima de 60 Hz es necesaria
+para detectar sacádicos con fiabilidad, y que tasas superiores a 100 Hz
+son recomendables cuando el objetivo es la extracción de características
+cinemáticas de precisión como la aceleración o el \textit{jerk}; el
+sistema implementado cumple ampliamente con ambos criterios.
+
+A partir de la señal filtrada, se aplicó un umbral de velocidad angular
+$v > 80~^\circ/s$ para clasificar automáticamente los eventos oculares en
+dos categorías mutuamente excluyentes: sacádicos balísticos y períodos de
+fijación estable. Este umbral es consistente con el criterio estándar
+reportado por Engbert y Kliegl \cite{engbert2003microsaccades}, quienes
+establecen que los movimientos sacádicos voluntarios superan invariablemente
+este valor mientras que los micro-movimientos de fijación —incluyendo
+microsácadas y deriva— permanecen por debajo de él en condiciones normales
+de visión. La Figura~\ref{fig:deteccion_eventos} ilustra el resultado de
+aplicar este criterio sobre la señal de un voluntario representativo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Imagenes/eventos.png}
+	\caption{Perfil temporal de la velocidad del vector de mirada para un
+		voluntario representativo, obtenido tras la aplicación del filtro
+		Savitzky-Golay. Los picos en rojo identifican eventos
+		sacádicos y microsacádicos detectados mediante el umbral $v > 80~^\circ/s$
+		\cite{engbert2003microsaccades}, y las franjas
+		verdes delimitan los períodos de fijación
+		estable entre movimientos balísticos consecutivos. Esta clasificación
+		constituye la base para la extracción de las características biométricas
+		analizadas en las secciones siguientes.}
+	\label{fig:deteccion_eventos}
+\end{figure}
+
 
 \subsection{Precisión de la Detección (YOLOv8)}
 
@@ -63,7 +142,7 @@ La Tabla~\ref{tab:yolo_metrics} resume las métricas de rendimiento obtenidas en
 Los resultados evidencian una robustez excepcional:
 \begin{itemize}
 	\item \textbf{Recall de 1.000}: Indica que el sistema fue capaz de detectar el 100\% de las pupilas presentes en el set de validación, confirmando la ausencia total de "falsos negativos" (pérdidas de tracking).
-	\item \textbf{mAP@50-95 de 0.912}: Este valor, inusualmente alto para detección de objetos en tiempo real, demuestra que no solo se detecta la pupila, sino que el cuadro delimitador (\textit{bounding box}) se ajusta con precisión sub-píxel al contorno real del ojo, lo cual es crítico para el posterior cálculo del centroide.
+	\item \textbf{mAP@50-95 de 0.912}: Este valor, inusualmente alto para detección de objetos en tiempo real, demuestra que no solo se detecta la pupila, sino que el cuadro delimitador (\textit{bounding box}) se ajusta con alta precisión al contorno real del ojo, lo cual es crítico para el posterior cálculo del centroide.
 \end{itemize}
 
 \section{Caracterización Cinemática y Fisiológica}
@@ -201,6 +280,8 @@ El coeficiente de determinación $R^2 = 0.9216$ confirma que el modelo exponenci
 La media de los residuos es prácticamente nula ($\bar{\varepsilon} \approx 0$), lo que descarta la existencia de sesgo sistemático en la estimación. El error cuadrático medio ($\text{RMSE} = 18.18~^\circ/s$) representa únicamente el $2.77\%$ de $V_{sat}$, ratio que se mantiene dentro de los márgenes de error esperados para sistemas de eye-tracking basados en video \cite{holmqvist2011eye}. Adicionalmente, el $97.5\%$ de los residuos se encuentra dentro de la banda $\pm 2\sigma_\varepsilon$ ($\pm 36.36~^\circ/s$), comportamiento consistente con una distribución normal de los errores de ajuste, lo que valida los supuestos del método de regresión no lineal por mínimos cuadrados empleado.
 
 \noindent\textbf{Síntesis:} Los tres criterios de validación se cumplen simultáneamente: (i) $V_{sat} \in [400, 800]~^\circ/s$, (ii) $C \in [10, 20]^\circ$, y (iii) $R^2 > 0.85$. Esta triple condición —y no cada criterio por separado— constituye la evidencia de que el sistema de captura registra actividad oculomotora genuina y no artefactos de detección o submuestreo, validando así la integridad de los datos para el posterior análisis biométrico.
+
+
 
 \subsection{Perfiles de Velocidad y Jerk}
 
@@ -956,47 +1037,293 @@ interacción con interfaces gráficas de forma libre.
 
 Esta implementación constituye una prueba de concepto. Si bien se demostró la viabilidad técnica de controlar el cursor y ejecutar clics mediante parpadeos, la fluidez de la interacción es subjetiva y altamente sensible a la calidad de la calibración inicial. Esta sección abre la puerta a futuras investigaciones enfocadas en algoritmos de calibración dinámica o corrección no lineal que mejoren la robustez del sistema ante movimientos naturales de la cabeza.
 
+
 \section{Análisis de Robustez Temporal y Deriva Biométrica}
 
-Para evaluar la estabilidad del perfil biométrico ante variables fisiológicas no controladas, se diseñó un experimento comparativo evaluando al sujeto principal (P11) en dos instancias temporales críticas:
+La estabilidad de una firma biométrica ante variables fisiológicas y
+ambientales no controladas es un requisito fundamental para su viabilidad
+en aplicaciones de seguridad reales. Komogortsev et al.\
+\cite{komogortsev2010} señalan que la variabilidad intra-sujeto
+inter-sesión es el principal factor limitante en sistemas de biometría
+oculomotora, y que dicha variabilidad se amplifica significativamente
+bajo condiciones de fatiga o cambios de iluminación. Para cuantificar
+este efecto en el sistema propuesto, se diseñó un experimento
+cronobiológico comparando al sujeto P11 en dos instancias temporales:
 
 \begin{enumerate}
-	\item \textbf{Sesión Matutina (Línea Base):} 10:00 AM, bajo iluminación natural y tras descanso nocturno.
-	\item \textbf{Sesión Vespertina (Estrés):} 06:00 PM, tras una jornada laboral y bajo iluminación artificial.
+	\item \textbf{Sesión Matutina (Línea Base):} 10:00 AM, bajo
+	iluminación natural y tras descanso nocturno completo ($n=479$
+	muestras).
+	\item \textbf{Sesión Vespertina (Condición de Estrés):} 06:00 PM,
+	tras una jornada laboral completa y bajo iluminación artificial
+	($n=320$ muestras).
 \end{enumerate}
+
+Adicionalmente, se incorporó el perfil del sujeto P5 como referencia de
+confusión ($n=159$ muestras), por ser el sujeto hacia el cual el
+clasificador tiende a desplazar erróneamente las predicciones de P11
+en la sesión vespertina. El análisis abarca ocho métricas biométricas
+de las cuatro categorías definidas en la
+Sección~\ref{subsec:justificacion_metricas}.
 
 \subsection{Degradación del Rendimiento por Fatiga}
 
-Los resultados de la clasificación, ilustrados en la Figura \ref{fig:comparativa_temporal}, evidencian una discrepancia notable en el desempeño del sistema según la hora del día.
+Los resultados de la clasificación, ilustrados en la
+Figura~\ref{fig:comparativa_temporal}, evidencian una discrepancia notable
+en el desempeño del sistema según la hora del día.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]{Imagenes/COMPARATIVA_FINAL_MATRICES.png}
-	\caption{Comparativa de robustez temporal. A la izquierda (Mañana), la densidad de aciertos se concentra en la diagonal principal, indicando alta precisión. A la derecha (Tarde), se observa una dispersión de la densidad hacia clases vecinas (principalmente P5), reflejando la confusión inducida por la fatiga.}
+	\caption{Comparativa de robustez temporal para el sujeto P11.
+		\textbf{Izquierda (Mañana):} la densidad de aciertos se concentra
+		en la diagonal principal, indicando alta precisión. \textbf{Derecha
+			(Tarde):} el desplazamiento sistemático de predicciones hacia la
+		columna de P5 refleja la convergencia biométrica selectiva inducida
+		por el cambio de iluminación.}
 	\label{fig:comparativa_temporal}
 \end{figure}
 
-Al analizar la Figura \ref{fig:comparativa_temporal}, se observa que en la sesión matutina la exactitud se mantiene alta, con las predicciones concentradas en la diagonal principal. Sin embargo, en la sesión vespertina, la "mancha" de aciertos se diluye y las predicciones erróneas no son aleatorias, sino que se agrupan sistemáticamente en la columna del sujeto P5. Esto sugiere que la identidad biométrica del sujeto P11 no se destruye, sino que se \textit{desplaza} hacia el perfil del sujeto P5.
+En la sesión matutina, las predicciones se concentran en la diagonal
+principal de la matriz. En la sesión vespertina, en cambio, la distribución
+de predicciones se desplaza sistemáticamente hacia P5, sugiriendo que la
+identidad biométrica de P11 no se destruye globalmente sino que se
+\textit{desplaza selectivamente} en una dimensión específica del espacio
+de características.
 
-\subsection{Causas Fisiológicas de la Confusión}
+\subsection{Análisis Estadístico de la Deriva: Ocho Métricas}
+Para identificar el mecanismo específico de la confusión, se analizaron
+ocho métricas de las cuatro categorías biométricas. Para cada métrica
+se calcularon: el cambio porcentual entre sesiones ($\Delta\%$), la
+significancia estadística mediante la prueba de Mann-Whitney-U
+(no paramétrica, adecuada dado que no se asume normalidad), el tamaño
+del efecto mediante la $d$ de Cohen:
 
-Para determinar la causa raíz de esta convergencia con el sujeto P5, se realizó un análisis estadístico de la distribución de las características biométricas clave. La Figura \ref{fig:deriva_biometrica} contrasta el comportamiento de las métricas entre el estado de descanso (verde), el estado de fatiga (rojo) y el sujeto de confusión (gris).
+\begin{equation}
+	d = \frac{\mu_1 - \mu_2}{\sqrt{\frac{s_1^2 + s_2^2}{2}}}
+	\label{eq:cohen_d}
+\end{equation}
 
-\begin{figure}[h!]
+\noindent donde $\mu_1$ y $\mu_2$ son las medias de cada sesión y $s_1$, $s_2$
+sus desviaciones estándar respectivas; y el \textbf{coeficiente de convergencia} $\lambda$:
+
+\begin{equation}
+	\lambda_j = \frac{\bar{X}_{j,\text{tarde}} - \bar{X}_{j,\text{mañ}}}
+	{\bar{X}_{j,P5} - \bar{X}_{j,\text{mañ}}}
+	\label{eq:lambda_convergencia}
+\end{equation}
+
+donde $\bar{X}_{j,c}$ es la media de la métrica $j$ bajo la condición
+$c$. Un valor $\lambda_j > 0$ indica que la fatiga \textit{acerca} a P11
+hacia P5 en esa dimensión (\textit{convergencia}); $\lambda_j < 0$ indica
+que los \textit{aleja} (\textit{divergencia}); $\lambda_j = 1$ implica
+convergencia completa. La Tabla~\ref{tab:deriva_completa} consolida
+los resultados de las ocho métricas.
+
+\begin{table}[h!]
 	\centering
-	\includegraphics[width=1.0\textwidth]{Imagenes/Comparativa_Fatiga_Anonima.png}
-	\caption{Evidencia de deriva biométrica. Se observa cómo la distribución de las métricas del Sujeto P11 en la sesión de tarde (cajas rojas) se desplaza significativamente respecto a su línea base matutina (cajas verdes), solapándose con la distribución del Sujeto P5 (cajas grises).}
-	\label{fig:deriva_biometrica}
-\end{figure}
+	\caption{Análisis estadístico de la deriva biométrica para ocho
+		métricas. Prueba de Mann-Whitney-U (M$\to$T: Mañana vs Tarde).
+		$d$: $d$ de Cohen. $\lambda$: coeficiente de convergencia hacia P5
+		(Ec.~\ref{eq:lambda_convergencia}). En negrita: efectos de mayor
+		relevancia clínica o clasificatoria.}
+	\label{tab:deriva_completa}
+	\vspace{0.2cm}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{lrrrrrrc}
+			\toprule
+			\textbf{Métrica} &
+			\textbf{Mañana} &
+			\textbf{Tarde} &
+			\textbf{P5} &
+			\textbf{$\Delta$\% M$\to$T} &
+			\textbf{$p$ (M$\to$T)} &
+			\textbf{$d$ (M$\to$T)} &
+			\textbf{$\lambda$} \\
+			\midrule
+			\texttt{Pupil\_Mean}
+			& $58.73 \pm 11.08$
+			& $75.55 \pm 9.13$
+			& $80.05 \pm 6.68$
+			& $\mathbf{+28.64\%}$
+			& $< 0.001$
+			& $\mathbf{-1.626}$
+			& $\mathbf{+0.789}$ \\
+			
+			\texttt{Pupil\_CV}
+			& $0.045 \pm 0.023$
+			& $0.056 \pm 0.034$
+			& $0.037 \pm 0.015$
+			& $+23.30\%$
+			& $< 0.001$
+			& $-0.384$
+			& $-1.188$ \\
+			
+			\texttt{Pupil\_Vel\_Max}
+			& $240.0 \pm 415.9$
+			& $258.7 \pm 230.7$
+			& $299.1 \pm 171.5$
+			& $+7.79\%$
+			& $< 0.001$
+			& $-0.053$
+			& $+0.316$ \\
+			
+			\texttt{Vel\_Mean}
+			& $26.98 \pm 8.05$
+			& $26.09 \pm 7.85$
+			& $28.78 \pm 9.81$
+			& $-3.29\%$
+			& $0.049$
+			& $0.111$
+			& $-0.494$ \\
+			
+			\texttt{Jerk\_Mean}
+			& $11{,}419 \pm 3{,}249$
+			& $12{,}646 \pm 2{,}929$
+			& $11{,}025 \pm 3{,}706$
+			& $+10.75\%$
+			& $< 0.001$
+			& $-0.393$
+			& $-3.113$ \\
+			
+			\texttt{Jerk\_Max}
+			& $129{,}549 \pm 32{,}638$
+			& $144{,}029 \pm 19{,}920$
+			& $123{,}419 \pm 30{,}327$
+			& $+11.18\%$
+			& $< 0.001$
+			& $\mathbf{-0.513}$
+			& $-2.362$ \\
+			
+			\texttt{Main\_Seq\_Slope}
+			& $1{,}187 \pm 336$
+			& $1{,}183 \pm 308$
+			& $1{,}041 \pm 310$
+			& $-0.35\%$
+			& $0.289$
+			& $0.013$
+			& $+0.029$ \\
+			
+			\texttt{Fractal\_Dim}
+			& $1.111 \pm 0.026$
+			& $1.098 \pm 0.022$
+			& $1.119 \pm 0.026$
+			& $-1.13\%$
+			& $< 0.001$
+			& $0.514$
+			& $-1.572$ \\
+			\bottomrule
+	\end{tabular}}
+\end{table}
 
-El análisis de estas distribuciones revela dos fenómenos determinantes:
 
-\begin{enumerate}
-	\item \textbf{Efecto de Iluminación (\textit{Pupil Mean}):} Se observa un desplazamiento evidente en la media del diámetro pupilar. La sesión vespertina provocó una dilatación (midriasis) en el sujeto P11 debido a la falta de luz natural, llevando sus valores a un rango casi idéntico al del sujeto P5. Al eliminar la diferencia morfológica de la pupila, el discriminador pierde una variable de separación clave.
-	\item \textbf{Efecto de Fatiga (\textit{Vel Mean} y \textit{Jerk}):} La velocidad media de las sácadas del sujeto P11 disminuye drásticamente en la tarde producto del cansancio muscular. Este cambio dinámico provoca que su "firma de movimiento" se asemeje a la de usuarios con patrones oculares naturalmente más lentos o inestables, como es el caso del sujeto P5.
-\end{enumerate}
+\subsection{Mecanismo de Confusión: Convergencia Unidimensional}
 
-En conclusión, la confusión del clasificador es consecuencia de una \textbf{convergencia biométrica}: las condiciones ambientales y fisiológicas de la tarde transformaron temporalmente los patrones del Sujeto P11, haciéndolos matemáticamente indistinguibles de los del Sujeto P5 bajo la óptica de las métricas utilizadas.
+El hallazgo central de la Tabla~\ref{tab:deriva_completa} es contraintuitivo
+y de alta relevancia para el diseño del sistema: \textbf{la confusión del
+	clasificador no es producto de una convergencia multidimensional general,
+	sino de una convergencia unidimensional concentrada en \texttt{Pupil\_Mean},
+	la variable de mayor peso de Gini del modelo}.
+
+\paragraph{Convergencia en \texttt{Pupil\_Mean} ($\lambda = +0.789$).}
+Esta es la única métrica que converge sustancialmente hacia P5. El
+diámetro pupilar de P11 se incrementa un $\mathbf{+28.64\%}$ entre
+sesiones ($58.73 \to 75.55$ unidades), con un efecto de Cohen de
+$d = -1.626$ (\textbf{grande}), el mayor de todas las métricas
+analizadas. Este aumento corresponde a la midriasis inducida por la
+reducción de iluminación ambiental: Beatty \cite{beatty1982} demostró
+que el diámetro pupilar en reposo es inversamente proporcional a la
+iluminancia del entorno. El resultado es que P11-tarde se sitúa al
+$78.9\%$ del camino hacia el perfil de P5 en esta dimensión,
+expresado formalmente como:
+
+\begin{equation}
+	\lambda_{Pupil} =
+	\frac{\bar{X}_{Pupil,tarde} - \bar{X}_{Pupil,man}}
+	{\bar{X}_{Pupil,P5}   - \bar{X}_{Pupil,man}}
+	= \frac{75.55 - 58.73}{80.05 - 58.73} = \frac{16.82}{21.32}
+	\approx 0.789
+	\label{eq:lambda_pupil_num}
+\end{equation}
+
+Dado que \texttt{Pupil\_Mean} es la característica con mayor importancia
+de Gini en el modelo (Figura~\ref{fig:feature_importance}), esta
+convergencia unidimensional es suficiente para dominar la decisión del
+ensemble y producir clasificaciones erróneas hacia P5.
+
+\paragraph{Divergencia activa en las métricas cinemáticas.}
+El aspecto más relevante del análisis es que todas las métricas
+cinemáticas presentan \textbf{divergencia} ($\lambda < 0$), es decir,
+la fatiga aleja a P11 de P5 en esas dimensiones:
+
+\begin{itemize}
+	\item \texttt{Jerk\_Mean}: $\lambda = -3.113$ — el Jerk medio de P11
+	aumenta un $+10.75\%$ en la tarde ($d = -0.393$, efecto pequeño),
+	alejándose del perfil de P5 en más de tres veces la distancia
+	original. Leigh y Zee \cite{leigh2015neurology} atribuyen este
+	aumento a la irregularidad en la fase de desaceleración sacádica
+	bajo fatiga.
+	
+	\item \texttt{Jerk\_Max}: $\lambda = -2.362$, $d = -0.513$ (mediano)
+	— el Jerk máximo aumenta un $+11.18\%$, alejándose aún más de P5
+	cuyo Jerk máximo es $\mathbf{15.4\%}$ menor ($123{,}419$ vs
+	$144{,}029$). La diferencia tarde$\to$P5 es grande ($d = 0.863$,
+	$p < 0.001$), lo que en condiciones ideales debería \textit{ayudar}
+	al clasificador a separar a P11.
+	
+	\item \texttt{Fractal\_Dim}: $\lambda = -1.572$, $d = 0.514$
+	(mediano) — la dimensión fractal de P11 disminuye levemente
+	($-1.13\%$) pero la diferencia con P5 se amplifica
+	($d_{T\to P5} = -0.898$, efecto grande), indicando que esta
+	métrica diverge activamente de P5 con la fatiga.
+\end{itemize}
+
+\paragraph{\texttt{Main\_Seq\_Slope}: anclaje biométrico estable.}
+La pendiente de la Secuencia Principal es la métrica más robusta de
+todo el análisis: $\Delta\% = -0.35\%$, $d = 0.013$ (efecto
+negligible) y $p = 0.289$ (no significativo). Este resultado confirma
+lo documentado por Bahill et al.\ \cite{bahill1975}: la eficiencia
+neuromuscular del sistema sacádico es una característica altamente
+estable incluso bajo fatiga de corta duración, lo que la convierte
+en un ancla biométrica confiable en entornos de iluminación variable.
+
+\subsection{Síntesis: Dominancia Unidimensional y Fragilidad del Sistema}
+
+Los resultados permiten caracterizar con precisión el mecanismo de fallo
+del sistema mediante el siguiente modelo conceptual:
+
+\begin{equation}
+	\vec{\mu}_{P11,tarde} = \vec{\mu}_{P11,man}
+	+ \underbrace{\lambda_{Pupil} \cdot
+		(\bar{X}_{Pupil,P5} - \bar{X}_{Pupil,man}) \cdot \hat{e}_{Pupil}}_{
+		\text{convergencia en Pupil\_Mean } (\lambda=0.789)}
+	+ \underbrace{\sum_{j \neq Pupil} \delta_j \hat{e}_j}_{\substack{
+			\text{divergencia en} \\ \text{métricas cinemáticas}}}
+	\label{eq:modelo_deriva}
+\end{equation}
+
+donde $\hat{e}_j$ es el vector unitario en la dirección de la característica
+$j$ en el espacio de decisión. La ecuación expresa que el vector de
+características de P11-tarde es el de P11-mañana desplazado hacia P5
+\textit{únicamente} en la dimensión pupilar, mientras que las métricas
+cinemáticas añaden perturbaciones en direcciones opuestas. El clasificador
+colapsa hacia P5 porque el peso de Gini de \texttt{Pupil\_Mean} supera
+a la suma de las contribuciones divergentes de las demás métricas.
+
+\noindent\textbf{Conclusión e implicaciones de diseño:}
+La confusión identificada es consecuencia de un fallo de \textbf{dominancia
+	de característica}: un único descriptor morfológico (\texttt{Pupil\_Mean})
+concentra tanto poder discriminativo que su deriva ambiental domina la
+decisión del ensemble sobre las señales contrarias de siete métricas
+cinemáticas. Esto señala dos líneas de mejora concretas para el sistema:
+\textit{(i)} normalización del diámetro pupilar por iluminancia ambiental
+estimada, de modo que \texttt{Pupil\_Mean} represente la anatomía
+individual y no las condiciones de luz \cite{beatty1982, duchowski2017};
+\textit{(ii)} re-ponderación del peso relativo de los descriptores
+morfológicos frente a los cinemáticos en el ensemble, potenciando
+\texttt{Main\_Seq\_Slope} (La pendiente de la secuencia principal) ---que demuestra ser el indicador más estable
+($d = 0.013$, $p = 0.289$)--- como ancla biométrica principal
+\cite{bahill1975}.
 
 \section{Discusión General}
 

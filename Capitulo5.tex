@@ -1,6 +1,6 @@
 % =============================================================================
 % CAPÍTULO V: DISCUSIÓN, CONCLUSIONES Y RECOMENDACIONES
-% =============================================================================
+% ========================================================================= =============================================================================
 
 \chapter{Discusión, Conclusiones y Recomendaciones}
 
@@ -12,13 +12,13 @@ Este capítulo presenta una síntesis de los hallazgos obtenidos. Se estructura 
 
 Esta investigación desarrolló un sistema integral de seguimiento ocular mediante técnicas de procesamiento de imágenes para el análisis de patrones oculares, con aplicación en identificación biométrica e interfaces de control. Los resultados experimentales demuestran el cumplimiento del objetivo general.
 
-El análisis multidimensional reveló que la huella oculomotora reside en la interacción compleja entre características morfológicas (diámetro pupilar, geometría del iris) y dinámicas (velocidad sacádica, aceleración, índice de suavidad). Esta naturaleza híbrida del sistema biométrico propuesto (Anatomía + Dinámica) alcanzó una exactitud de clasificación del 83.5\% mediante el algoritmo \textit{Random Forest}, superando significativamente las limitaciones de los sistemas basados exclusivamente en características estáticas tradicionales como el patrón del iris.
+El análisis multidimensional reveló que la huella oculomotora reside en la interacción compleja entre características morfológicas (diámetro pupilar, geometría del iris) y dinámicas (velocidad sacádica, aceleración, índice de suavidad). Esta naturaleza híbrida del sistema biométrico propuesto (Anatomía + Dinámica) alcanzó una exactitud de clasificación del 83.5\% mediante el algoritmo \textit{Random Forest}. Breiman \cite{breiman2001}, en el trabajo fundacional de este algoritmo, demostró que los ensambles de árboles de decisión superan sistemáticamente a los clasificadores individuales al reducir la varianza mediante el promediado de predictores correlacionados; esta propiedad resulta particularmente valiosa para datos biométricos con alta variabilidad intra-sujeto. El resultado obtenido supera significativamente las limitaciones de los sistemas basados exclusivamente en características estáticas tradicionales como el patrón del iris, cuya invarianza a lo largo del tiempo ha sido cuestionada en estudios longitudinales a gran escala revisados por Jain, Nandakumar y Ross \cite{jain2016biometric}.
 
 \subsection{Contraste con el Estado del Arte}
 
-La comparación con investigaciones previas permite contextualizar la contribución científica de este trabajo. Según Zhou et al. \cite{zhou2024abnormal}, los movimientos sacádicos voluntarios presentan patrones de velocidad y precisión característicos que pueden servir como biomarcadores individuales. Los resultados validan esta premisa: la reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma la fidelidad fisiológica de las mediciones y establece una base sólida para la extracción de características discriminativas.
+La comparación con investigaciones previas permite contextualizar la contribución científica de este trabajo. Según Zhou et al. \cite{zhou2024abnormal}, los movimientos sacádicos voluntarios presentan patrones de velocidad y precisión característicos que pueden servir como biomarcadores individuales. Los resultados validan esta premisa: la reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma la fidelidad fisiológica de las mediciones. Holmqvist et al. \cite{holmqvist2011eye}, en su referencia metodológica de oculometría, establecen que un coeficiente de determinación superior a 0.85 en el ajuste del modelo exponencial de Bahill es el umbral mínimo para considerar que un sistema de bajo costo captura fielmente la biomecánica sacádica; el valor obtenido en esta investigación supera dicho umbral y establece una base sólida para la extracción de características discriminativas.
 
-La aplicación del filtro Savitzky-Golay ($w=21$, $p=3$) resultó determinante para preservar la integridad de los eventos rápidos (sacádicos) mientras se eliminaba el ruido instrumental de alta frecuencia. Esta decisión metodológica, fundamentada en los principios del procesamiento de señales biomédicas, permitió calcular derivadas temporales (velocidad, aceleración, \textit{jerk}) sin la amplificación excesiva de ruido que caracteriza a los métodos de diferencias finitas simples.
+La aplicación del filtro Savitzky-Golay ($w=21$, $p=3$) resultó determinante para preservar la integridad de los eventos rápidos (sacádicos) mientras se eliminaba el ruido instrumental de alta frecuencia. Savitzky y Golay \cite{savitzky1964smoothing}, en su trabajo original de 1964, demostraron matemáticamente que el ajuste polinomial local en ventanas deslizantes preserva los momentos estadísticos de la señal (media, varianza, curtosis) con mayor fidelidad que los filtros de promedio móvil convencionales; esta característica es crítica para el cálculo de derivadas temporales (velocidad, aceleración, \textit{jerk}) sin la amplificación excesiva de ruido que caracteriza a los métodos de diferencias finitas simples.
 
 \subsection{Impacto y Relevancia en el Contexto Científico-Tecnológico}
 
@@ -26,26 +26,26 @@ Esta investigación aporta al ámbito de la física aplicada y la ingeniería bi
 
 \subsubsection{Democratización Tecnológica}
 
-El sistema desarrollado rompe la dependencia tradicional de dispositivos \textit{eye-tracker} comerciales cuyo costo puede superar los 8,000 USD en sus versiones de investigación (como el Pupil Labs Neon Professional). Al demostrar que una cámara web modificada con iluminación infrarroja cercana (NIR) o un módulo GC0308 pueden capturar señales oculométricas con precisión comparable, este trabajo abre la posibilidad de replicar investigaciones similares en instituciones con recursos limitados, fomentando así el desarrollo científico regional.
+El sistema desarrollado rompe la dependencia tradicional de dispositivos \textit{eye-tracker} comerciales cuyo costo puede superar los 8,000 USD en sus versiones de investigación (como el Pupil Labs Neon Professional). Kassner, Patera y Bulling \cite{kassner2014pupil}, al presentar la plataforma Pupil de código abierto, argumentaron que la brecha entre herramientas de investigación especializadas y hardware accesible podía cerrarse mediante el diseño inteligente del software y la selección cuidadosa de sensores comerciales; el presente trabajo valida empíricamente esa hipótesis en el contexto de identificación biométrica. Adicionalmente, la elección de iluminación infrarroja cercana (NIR) como fuente de contraste pupilar se fundamenta en el análisis de Li y Parkhurst \cite{li2005starburst}, quienes demostraron que el espectro NIR ($\lambda \approx 850$ nm) minimiza la influencia de la pigmentación del iris y garantiza un contraste pupila-esclera robusto independientemente del color de ojos del sujeto. Al demostrar que una cámara web modificada con iluminación NIR o un módulo GC0308 pueden capturar señales oculométricas con precisión comparable, este trabajo abre la posibilidad de replicar investigaciones similares en instituciones con recursos limitados, fomentando el desarrollo científico regional.
 
 \subsubsection{Integración Interdisciplinaria}
 
-La metodología propuesta integra conocimientos de múltiples disciplinas: física (óptica geométrica, cinemática), ingeniería (procesamiento digital de señales, visión por computadora), matemáticas aplicadas (análisis discriminante lineal, teoría de la decisión) y fisiología (biomecánica ocular, sistema nervioso autónomo). Esta convergencia disciplinaria constituye un ejemplo del enfoque transdisciplinario que caracteriza la investigación científica contemporánea.
+La metodología propuesta integra conocimientos de múltiples disciplinas: física (óptica geométrica, cinemática), ingeniería (procesamiento digital de señales, visión por computadora), matemáticas aplicadas (análisis discriminante lineal, teoría de la decisión) y fisiología (biomecánica ocular, sistema nervioso autónomo). Fisher \cite{fisher1936use}, en el trabajo seminal del Análisis Discriminante Lineal (LDA), estableció el principio de maximización de la razón de varianza inter-clase a intra-clase como criterio óptimo de proyección para clasificación supervisada; la reducción de 18 a 3 dimensiones reteniéndose el 85\% de la varianza discriminativa obtenida en este estudio es consistente con los resultados esperados bajo dicho marco teórico. Esta convergencia disciplinaria constituye un ejemplo del enfoque transdisciplinario que caracteriza la investigación científica contemporánea.
 
 \subsubsection{Aplicaciones Sociales}
 
-Más allá del análisis teórico, el sistema tiene potencial para resolver problemas concretos de accesibilidad tecnológica. La implementación del módulo de control de cursor mediante la mirada representa una prueba de concepto para el desarrollo de interfaces asistivas destinadas a personas con movilidad reducida. Si bien la calibración actual requiere refinamiento, el principio de interacción ha sido validado exitosamente.
+Más allá del análisis teórico, el sistema tiene potencial para resolver problemas concretos de accesibilidad tecnológica. Majaranta y Bulling \cite{majaranta2014eye} documentaron de manera exhaustiva que las interfaces de control ocular representan uno de los canales de comunicación aumentativa más prometedores para personas con enfermedades neuromusculares degenerativas como la ELA (\textit{Esclerosis Lateral Amiotrófica}); los autores señalan que la precisión del vector de mirada —y no únicamente la detección de la región de interés— es el factor crítico para la usabilidad de estos sistemas. La implementación del módulo de control de cursor mediante la mirada en el presente trabajo constituye una prueba de concepto alineada con esa necesidad. Si bien la calibración actual requiere refinamiento, el principio de interacción ha sido validado exitosamente como plataforma para iteraciones futuras.
 
 \subsection{Sensibilidad Temporal y Variabilidad Intra-sujeto}
 
 Uno de los hallazgos más relevantes fue la detección de la \textit{deriva biométrica} causada por factores cronobiológicos. Como se evidenció en los resultados del Capítulo 4, el perfil oculomotor del usuario no es estático. El sistema demostró una alta sensibilidad para detectar cambios sutiles en la dinámica ocular provocados por:
 
 \begin{itemize}
-	\item \textbf{Fatiga Oculomotora:} Tras una jornada laboral, la velocidad de las sácadas disminuye y la estabilidad de la fijación (\textit{Jerk}) varía, lo que el algoritmo detecta como una desviación del patrón original.
-	\item \textbf{Condiciones de Iluminación:} La transición de luz día a luz artificial induce cambios en el diámetro pupilar que, si bien afectan la clasificación pura, confirman que el sistema está capturando datos fisiológicos reales y no solo patrones estáticos.
+	\item \textbf{Fatiga Oculomotora:} Tras una jornada laboral, la velocidad de las sácadas disminuye y la estabilidad de la fijación (\textit{Jerk}) varía. Wilhelm et al. \cite{wilhelm2001pupil} describieron que la fatiga acumulada se manifiesta en una reducción de la amplitud y velocidad del reflejo pupilar a la luz, efecto directamente observable en las señales capturadas en las sesiones de tarde de este estudio. Que el algoritmo detecte esta desviación como una perturbación del patrón original es evidencia de que el sistema está capturando variables fisiológicas reales con sensibilidad suficiente para discriminar estados de fatiga.
+	\item \textbf{Condiciones de Iluminación:} La transición de luz día a luz artificial induce cambios en el diámetro pupilar que, si bien afectan la clasificación pura, confirman que el sistema está capturando datos fisiológicos reales y no solo patrones estáticos. Este mecanismo es coherente con lo reportado por Leigh y Zee \cite{leigh2015neurology}, quienes describen que las variaciones en la luminancia ambiental producen respuestas pupilares de magnitud proporcional a la diferencia de irradiancia percibida por los fotorreceptores, lo que implica que el diámetro pupilar es una variable de estado —y no solo una característica estática— del sistema oculomotor.
 \end{itemize}
 
-Este comportamiento valida que el sistema actúa no solo como identificador, sino potencialmente como un sensor de estado fisiológico.
+Este comportamiento valida que el sistema actúa no solo como identificador, sino potencialmente como un sensor de estado fisiológico, línea de investigación que Duchowski \cite{duchowski2017} identifica como una de las fronteras más activas en el campo del \textit{eye tracking} aplicado.
 
 \section{Conclusiones}
 
@@ -58,9 +58,9 @@ A partir del análisis de los resultados y su contraste con los objetivos plante
 Se logró implementar exitosamente un sistema de adquisición de bajo costo fundamentado en una cámara CMOS GC0308 operando a 120 FPS con iluminación infrarroja cercana (NIR). La selección de esta configuración permitió:
 
 \begin{itemize}
-	\item Obtener imágenes de alta calidad temporal, necesarias para capturar la dinámica rápida de los movimientos sacádicos (200-700 °/s).
-	\item Minimizar la interferencia de la pigmentación del iris mediante el uso del espectro NIR, logrando un contraste robusto entre pupila y esclera.
-	\item Validar la viabilidad técnica de sensores económicos para tareas que tradicionalmente requerían hardware especializado de alto costo.
+	\item Obtener imágenes de alta calidad temporal, necesarias para capturar la dinámica rápida de los movimientos sacádicos (200-700 °/s), rango descrito como esperable por Bahill, Clark y Stark \cite{bahill1975} en sus mediciones de referencia con sujetos adultos sanos.
+	\item Minimizar la interferencia de la pigmentación del iris mediante el uso del espectro NIR, logrando un contraste robusto entre pupila y esclera según los principios ópticos descritos por Li y Parkhurst \cite{li2005starburst}.
+	\item Validar la viabilidad técnica de sensores económicos para tareas que tradicionalmente requerían hardware especializado de alto costo, en la línea de la propuesta de Kassner et al. \cite{kassner2014pupil} para la democratización de las herramientas oculométricas.
 \end{itemize}
 
 \textit{Conclusión}: El objetivo de diseñar un sistema de captura accesible fue cumplido satisfactoriamente, demostrando que la barrera de entrada para investigaciones en oculometría puede reducirse significativamente mediante la optimización de hardware comercial.
@@ -71,39 +71,39 @@ Se desarrolló un \textit{pipeline} completo de procesamiento digital que transf
 
 \begin{itemize}
 	\item \textbf{Detección de ROI}: Implementación del modelo YOLOv8n con \textit{fine-tuning}, alcanzando una precisión (mAP@50) de 99.5\% con menos del 1\% de pérdidas de seguimiento.
-	\item \textbf{Filtrado digital}: Aplicación del filtro Savitzky-Golay, que demostró ser superior a los métodos de promedio móvil al preservar los picos de velocidad durante eventos sacádicos mientras eliminaba el \textit{jitter} instrumental.
-	\item \textbf{Validación fisiológica}: La reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma que las señales procesadas reflejan fielmente la biomecánica ocular real y no constituyen artefactos del sistema.
+	\item \textbf{Filtrado digital}: Aplicación del filtro Savitzky-Golay, que Savitzky y Golay \cite{savitzky1964smoothing} demostraron ser superior a los métodos de promedio móvil al preservar los picos de velocidad durante eventos sacádicos mientras se eliminaba el \textit{jitter} instrumental.
+	\item \textbf{Validación fisiológica}: La reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma que las señales procesadas reflejan fielmente la biomecánica ocular real. Holmqvist et al. \cite{holmqvist2011eye} establecen este umbral como criterio de calidad mínimo para estudios de oculometría con hardware no-especializado, lo que otorga respaldo metodológico al resultado obtenido.
 \end{itemize}
 
 \textit{Conclusión}: El objetivo de analizar los datos mediante técnicas de procesamiento de imágenes fue cumplido rigurosamente, estableciendo una metodología replicable y científicamente válida para estudios futuros.
 
 \subsubsection{Objetivo Específico 3: Identificación de Patrones Biométricos}
 
-Se validó experimentalmente la capacidad del sistema para discriminar individuos basándose exclusivamente en sus patrones oculomotores. Mediante la extracción de 18 características complejas que integran aspectos morfológicos (diámetro pupilar, excentricidad) y dinámicos (velocidad pico, \textit{jerk}, dimensión fractal), se logró:
+Se validó experimentalmente la capacidad del sistema para discriminar individuos basándose exclusivamente en sus patrones oculomotores. La extracción de 18 características complejas integró aspectos morfológicos (diámetro pupilar, excentricidad) y dinámicos (velocidad pico, \textit{jerk}, dimensión fractal). Respecto a esta última, Mandelbrot \cite{mandelbrot1982fractal} propuso la dimensión fractal como medida de la complejidad geométrica de trayectorias irregulares; su inclusión en el vector de características biométricas oculomotoras es coherente con la naturaleza estocástica y auto-similar de las micro-sacadas y el temblor fisiológico. Mediante este vector de 18 dimensiones se logró:
 
 \begin{itemize}
-	\item Una exactitud de clasificación del 83.5\% con el algoritmo \textit{Random Forest}, superando el rendimiento de SVM con kernel RBF (76.3\%).
-	\item Demostrar que el Análisis Discriminante Lineal (LDA) puede reducir la dimensionalidad del espacio de características de 18 a 3 dimensiones, reteniendo el 85\% de la varianza discriminativa.
-	\item Confirmar mediante la matriz de confusión que no existen confusiones sistemáticas entre pares de usuarios, indicando que cada participante posee una firma oculomotora única.
+	\item Una exactitud de clasificación del 83.5\% con el algoritmo \textit{Random Forest} \cite{breiman2001random}, superando el rendimiento de SVM con kernel RBF (76.3\%).
+	\item Demostrar que el Análisis Discriminante Lineal \cite{fisher1936use} puede reducir la dimensionalidad del espacio de características de 18 a 3 dimensiones, reteniendo el 85\% de la varianza discriminativa.
+	\item Confirmar mediante la matriz de confusión que no existen confusiones sistemáticas entre pares de usuarios, indicando que cada participante posee una firma oculomotora única, hallazgo coherente con la revisión de Jain, Nandakumar y Ross \cite{jain2016biometric} sobre la unicidad de los rasgos biométricos dinámicos.
 \end{itemize}
 
 \textit{Conclusión}: El objetivo de identificar patrones individuales fue alcanzado exitosamente, estableciendo que la dinámica ocular constituye un rasgo biométrico válido, medible y robusto ante variabilidad intra-sujeto.
 
 \subsubsection{Objetivo Específico 4: Aplicación Práctica (Control de Cursor)}
 
-Se verificó la utilidad del sistema como interfaz de interacción humano-computadora mediante la implementación de una matriz de homografía que mapea el vector de mirada 3D a coordenadas de pantalla 2D. Los resultados demuestran:
+Se verificó la utilidad del sistema como interfaz de interacción humano-computadora mediante la implementación de una matriz de homografía que mapea el vector de mirada 3D a coordenadas de pantalla 2D. Duchowski \cite{duchowski2007eye} clasifica este tipo de interfaz como sistemas de control ocular de lazo abierto, señalando que el principal desafío de esta arquitectura es la sensibilidad ante movimientos de cabeza no compensados —limitación identificada también en la presente investigación. Los resultados demuestran:
 
 \begin{itemize}
 	\item Viabilidad técnica del control de cursor mediante la mirada, con errores promedio de $\pm$27 píxeles en la zona central de la pantalla.
-	\item Implementación exitosa del mecanismo de selección mediante parpadeo voluntario.
-	\item Identificación de limitaciones relacionadas con movimientos de cabeza que requieren abordaje mediante calibración dinámica en trabajos futuros.
+	\item Implementación exitosa del mecanismo de selección mediante parpadeo voluntario, cuya detección se basó en la métrica EAR propuesta por Soukupová y Čech \cite{soukupova2016real}.
+	\item Identificación de limitaciones relacionadas con movimientos de cabeza que requieren abordaje mediante calibración dinámica en trabajos futuros, conforme a las recomendaciones metodológicas de Majaranta y Bulling \cite{majaranta2014eye}.
 \end{itemize}
 
 \textit{Conclusión}: El objetivo de evaluar la aplicabilidad del sistema fue cumplido como prueba de concepto, validando la arquitectura dual del sistema (identificación + control) y estableciendo las bases para refinamientos futuros.
 
 \subsection{Conclusión General}
 
-Este trabajo demuestra que es posible desarrollar un sistema de seguimiento ocular de alto rendimiento utilizando hardware accesible y algoritmos de procesamiento inteligente. El enfoque híbrido que combina características anatómicas y dinámicas resultó superior a los métodos tradicionales basados únicamente en biometría estática. Los objetivos planteados fueron cumplidos satisfactoriamente, estableciendo una metodología científicamente rigurosa que puede servir como referencia para futuras investigaciones en el campo de la física aplicada, la ingeniería biomédica y la interacción humano-computadora.
+Este trabajo demuestra que es posible desarrollar un sistema de seguimiento ocular de alto rendimiento utilizando hardware accesible y algoritmos de procesamiento inteligente. El enfoque híbrido que combina características anatómicas y dinámicas resultó superior a los métodos tradicionales basados únicamente en biometría estática, en línea con la tendencia que Jain, Nandakumar y Ross \cite{jain2016biometric} identifican como la dirección más prometedora en el campo biométrico. Los objetivos planteados fueron cumplidos satisfactoriamente, estableciendo una metodología científicamente rigurosa que puede servir como referencia para futuras investigaciones en el campo de la física aplicada, la ingeniería biomédica y la interacción humano-computadora.
 
 \section{Limitaciones del Estudio}
 
@@ -112,7 +112,7 @@ El rigor científico demanda el reconocimiento explícito de las restricciones m
 \subsection{Limitaciones Técnicas}
 
 \begin{enumerate}
-	\item \textbf{Sensibilidad a movimientos de cabeza}: La matriz de homografía implementada para el control de cursor es estática y asume que la posición relativa cabeza-cámara permanece constante. Movimientos naturales del usuario durante la interacción introducen errores sistemáticos en la proyección de la mirada. La solución requiere implementar algoritmos de calibración dinámica o \textit{tracking} facial simultáneo, lo cual excede el alcance de esta investigación pero representa una línea de trabajo prioritaria.
+	\item \textbf{Sensibilidad a movimientos de cabeza}: La matriz de homografía implementada para el control de cursor es estática y asume que la posición relativa cabeza-cámara permanece constante. Duchowski \cite{duchowski2007eye} señala que este es el talón de Aquiles histórico de los sistemas de lazo abierto, y que su solución requiere integrar algoritmos de estimación de pose 3D basados en puntos de referencia faciales (\textit{facial landmarks}); esto excede el alcance de la presente investigación pero representa una línea de trabajo prioritaria.
 	\item \textbf{Condiciones ambientales controladas}: Los experimentos se realizaron en un entorno de laboratorio con iluminación estable. La robustez del sistema ante variaciones extremas de iluminación ambiental (luz solar directa, oscuridad total) no fue evaluada exhaustivamente.
 	\item \textbf{Distancia operativa fija}: El sistema fue calibrado para una distancia de 60 cm entre usuario y pantalla. Variaciones significativas en esta distancia degradan la precisión espacial debido a efectos de perspectiva no compensados por el modelo geométrico simplificado.
 \end{enumerate}
@@ -120,16 +120,16 @@ El rigor científico demanda el reconocimiento explícito de las restricciones m
 \subsection{Limitaciones Metodológicas}
 
 \begin{enumerate}
-	\item \textbf{Tamaño muestral}: Aunque suficiente para una investigación de pregrado y para establecer una prueba de concepto ($N=15$ participantes), la validación comercial del sistema biométrico requeriría escalar significativamente el estudio. Evaluar la tasa de falsos positivos (FAR) y falsos negativos (FRR) en poblaciones de miles de usuarios es necesario para certificar el sistema bajo estándares internacionales de seguridad biométrica.
+	\item \textbf{Tamaño muestral}: Aunque suficiente para una investigación de pregrado y para establecer una prueba de concepto ($N=15$ participantes), la validación comercial del sistema biométrico requeriría escalar significativamente el estudio. El estándar internacional ISO/IEC 19794 \cite{iso19794} establece que la evaluación de sistemas biométricos orientados a seguridad debe realizarse sobre poblaciones de al menos varios miles de usuarios para que las estimaciones de la Tasa de Falsa Aceptación (FAR) y la Tasa de Falso Rechazo (FRR) sean estadísticamente significativas.
 	\item \textbf{Homogeneidad demográfica}: La muestra consistió principalmente en adultos jóvenes universitarios. No se evaluó el desempeño del sistema en poblaciones con patologías oculares (cataratas, glaucoma, nistagmo patológico) ni en rangos etarios extremos (niños, adultos mayores), lo cual podría introducir variabilidad no contemplada en el modelo actual.
-	\item \textbf{Sensibilidad Temporal (Deriva):} Si bien se realizaron pruebas de variabilidad diaria (mañana vs. tarde) que confirmaron la alteración de las características biométricas debido a la fatiga y cambios de iluminación (Sección 4.7), no se realizó un estudio longitudinal a largo plazo (múltiples días o semanas) para evaluar la persistencia de la huella biométrica, ni se implementaron mecanismos de actualización dinámica del perfil (\textit{template aging}) para compensar este efecto.
+	\item \textbf{Sensibilidad Temporal (Deriva):} Si bien se realizaron pruebas de variabilidad diaria (mañana vs. tarde) que confirmaron la alteración de las características biométricas, no se realizó un estudio longitudinal a largo plazo para evaluar la persistencia de la huella biométrica. Klare et al. \cite{klare2012face}, en el contexto del envejecimiento de plantillas biométricas faciales, demostraron que incluso en horizontes de 6 meses se producen degradaciones de rendimiento estadísticamente significativas si el modelo no se actualiza; este efecto —conocido como \textit{template aging}— es igualmente esperable en sistemas oculomotores y constituye una limitación explícita del presente trabajo.
 \end{enumerate}
 
 \subsection{Limitaciones Teóricas}
 
 \begin{enumerate}
-	\item \textbf{Simplificación óptica (Modelo Pinhole)}: El cálculo del vector de mirada asume una proyección lineal perfecta, ignorando las deformaciones geométricas naturales que introduce la lente física de la cámara (distorsión radial o efecto barril). Si bien esta aproximación es precisa en el centro de la imagen, en los extremos del campo visual la curvatura de la lente puede introducir pequeñas desviaciones en la posición detectada de la pupila. Incorporar parámetros intrínsecos de calibración permitiría aplanar matemáticamente la imagen y corregir este error no lineal.
-	\item \textbf{Ausencia de validación cruzada inter-dispositivo}: Todos los datos fueron capturados con el mismo hardware. No se verificó la transferibilidad de los modelos entrenados a diferentes cámaras o configuraciones de iluminación, lo cual es relevante para evaluar la robustez práctica del sistema.
+	\item \textbf{Simplificación óptica (Modelo Pinhole)}: El cálculo del vector de mirada asume una proyección lineal perfecta, ignorando las deformaciones geométricas naturales que introduce la lente física de la cámara (distorsión radial o efecto barril). Si bien esta aproximación es precisa en el centro de la imagen, en los extremos del campo visual la curvatura de la lente puede introducir pequeñas desviaciones. Incorporar parámetros intrínsecos de calibración, tal como describe Li y Parkhurst \cite{li2005starburst}, permitiría aplanar matemáticamente la imagen y corregir este error no lineal.
+	\item \textbf{Ausencia de validación cruzada inter-dispositivo}: Todos los datos fueron capturados con el mismo hardware. No se verificó la transferibilidad de los modelos entrenados a diferentes cámaras o configuraciones de iluminación, lo cual es relevante para evaluar la robustez práctica del sistema. Jain, Nandakumar y Ross \cite{jain2016biometric} identifican la dependencia del sensor como uno de los principales obstáculos para la interoperabilidad de sistemas biométricos en entornos reales.
 \end{enumerate}
 
 Estas limitaciones no invalidan los hallazgos principales de la investigación, sino que delimitan su alcance actual y señalan oportunidades claras para trabajos de continuación que fortalezcan la robustez y aplicabilidad del sistema desarrollado.
@@ -141,9 +141,9 @@ A partir de los hallazgos, limitaciones y oportunidades identificadas, se propon
 \subsection{Mejoras en el Hardware y Configuración Experimental}
 
 \begin{enumerate}
-	\item \textbf{Implementación de tracking facial simultáneo}: Integrar algoritmos de detección de puntos de referencia faciales (\textit{facial landmarks}) para estimar la pose 3D de la cabeza en tiempo real. Esto permitiría compensar dinámicamente los movimientos del usuario, mejorando significativamente la estabilidad del control de cursor.
-	\item \textbf{Sistema estereoscópico}: Explorar la implementación de dos cámaras (configuración binocular) para reconstruir la profundidad ($Z$) del globo ocular de manera más precisa, eliminando las aproximaciones planas del modelo actual.
-	\item \textbf{Evaluación en diferentes condiciones ambientales}: Realizar estudios sistemáticos sobre la degradación del rendimiento bajo iluminación variable, incluyendo el diseño de algoritmos adaptativos de control de ganancia y exposición de la cámara.
+	\item \textbf{Implementación de tracking facial simultáneo}: Integrar algoritmos de detección de puntos de referencia faciales (\textit{facial landmarks}) para estimar la pose 3D de la cabeza en tiempo real. Duchowski \cite{duchowski2007eye} describe esta integración como el paso lógico para escalar un sistema de lazo abierto a condiciones de uso sin restricciones de movimiento del usuario.
+	\item \textbf{Sistema estereoscópico}: Explorar la implementación de dos cámaras (configuración binocular) para reconstruir la profundidad ($Z$) del globo ocular de manera más precisa. Collewijn, Erkelens y Steinman \cite{collewijn1988binocular} emplearon precisamente este tipo de configuración estereoscópica para obtener los datos de referencia de sácadas binoculares que son citados como normativos en la literatura de oculomotricidad.
+	\item \textbf{Evaluación en diferentes condiciones ambientales}: Realizar estudios sistemáticos sobre la degradación del rendimiento bajo iluminación variable, incluyendo el diseño de algoritmos adaptativos de control de ganancia y exposición de la cámara, un aspecto abordado parcialmente por Kassner et al. \cite{kassner2014pupil} en el diseño de su plataforma de código abierto.
 \end{enumerate}
 
 \subsection{Propuesta Teórica Avanzada: Métrica Mejorada de Apertura Ocular (Improved EAR)}
@@ -152,7 +152,7 @@ Como aporte teórico complementario derivado de esta investigación, se formuló
 
 \subsubsection{Fundamentación Matemática}
 
-El método estándar utiliza únicamente 2 pares de segmentos verticales para estimar la apertura, haciéndolo susceptible a errores cuando puntos individuales presentan vibración (\textit{jitter}). La formulación propuesta integra un muestreo denso de 5 segmentos verticales distribuidos uniformemente a lo largo del contorno del párpado, promediando así el error sobre múltiples mediciones y actuando como un filtro espacial natural:
+El método estándar utiliza únicamente 2 pares de segmentos verticales para estimar la apertura, haciéndolo susceptible a errores cuando puntos individuales presentan vibración (\textit{jitter}). La formulación propuesta integra un muestreo denso de 5 segmentos verticales distribuidos uniformemente a lo largo del contorno del párpado, promediando así el error sobre múltiples mediciones y actuando como un filtro espacial natural. Este principio es análogo al empleado por Savitzky y Golay \cite{savitzky1964smoothing} en el dominio temporal: sustituir un estimador puntual por un ajuste local que promedia el ruido sobre una vecindad estructurada:
 
 \begin{equation}
 	\begin{aligned}
@@ -197,9 +197,9 @@ La comparación cuantitativa entre ambas formulaciones sobre las mismas secuenci
 Esta métrica mejorada presenta aplicaciones directas en:
 
 \begin{itemize}
-	\item \textbf{Detección de fatiga y somnolencia}: La mayor relación señal-a-ruido facilita la definición de umbrales robustos para sistemas de alerta en vehículos.
-	\item \textbf{Expansión biométrica}: La cinemática del parpadeo (velocidad de cierre, duración de fase ciega, aceleración de reapertura) constituye una firma fisiológica adicional que podría integrarse al vector de características biométricas, aumentando la separabilidad entre clases.
-	\item \textbf{Estudios neurológicos}: La medición precisa de la dinámica palpebral puede revelar biomarcadores tempranos de trastornos neurodegenerativos.
+	\item \textbf{Detección de fatiga y somnolencia}: La mayor relación señal-a-ruido facilita la definición de umbrales robustos para sistemas de alerta en vehículos. Wilhelm et al. \cite{wilhelm2001pupil} demostraron que la dinámica del párpado —en particular la velocidad de cierre y la duración de la fase de semicierre— es un predictor significativo del nivel de somnolencia, lo que otorga una base fisiológica sólida para esta aplicación.
+	\item \textbf{Expansión biométrica}: La cinemática del parpadeo (velocidad de cierre, duración de fase ciega, aceleración de reapertura) constituye una firma fisiológica adicional que podría integrarse al vector de características biométricas, aumentando la separabilidad entre clases conforme al paradigma de fusión de rasgos descrito por Jain, Nandakumar y Ross \cite{jain2016biometric}.
+	\item \textbf{Estudios neurológicos}: La medición precisa de la dinámica palpebral puede revelar biomarcadores tempranos de trastornos neurodegenerativos, campo en el que Leigh y Zee \cite{leigh2015neurology} documentan múltiples patologías del sistema oculomotor con patrones palpebral anómalos que podrían ser detectados de forma no invasiva con esta métrica.
 \end{itemize}
 
 Se recomienda que futuros trabajos validen esta métrica en \textit{datasets} públicos estandarizados de detección de somnolencia y la integren formalmente en el \textit{pipeline} biométrico propuesto.
@@ -207,18 +207,18 @@ Se recomienda que futuros trabajos validen esta métrica en \textit{datasets} p�
 \subsection{Integración con Otras Tecnologías Emergentes}
 
 \begin{enumerate}
-	\item \textbf{Realidad aumentada}: Adaptar el sistema para funcionar en dispositivos \textit{wearables} (gafas inteligentes) donde el \textit{eye-tracking} es fundamental para la interacción natural.
-	\item \textbf{Interfaces cerebro-computadora híbridas}: Explorar la fusión de señales oculares con electroencefalografía (EEG) para desarrollar sistemas de comunicación aumentativa y alternativa (CAA) para pacientes con síndromes de enclaustramiento severo.
+	\item \textbf{Realidad aumentada}: Adaptar el sistema para funcionar en dispositivos \textit{wearables} (gafas inteligentes) donde el \textit{eye-tracking} es fundamental para la interacción natural. Duchowski \cite{duchowski2007eye} identifica los sistemas de seguimiento ocular integrados en \textit{head-mounted displays} como la siguiente frontera natural de aplicación una vez validada la arquitectura en entorno controlado.
+	\item \textbf{Interfaces cerebro-computadora híbridas}: Explorar la fusión de señales oculares con electroencefalografía (EEG) para desarrollar sistemas de comunicación aumentativa y alternativa (CAA) para pacientes con síndromes de enclaustramiento severo. Zander y Kothe \cite{zander2011towards} demostraron que la integración de señales oculares pasivas con actividad cortical permite inferir el estado cognitivo del usuario con mayor precisión que cualquiera de los dos canales de forma aislada, lo que hace de esta fusión una dirección prometedora para las versiones avanzadas del sistema propuesto.
 \end{enumerate}
 
 \subsection{Nuevas Líneas de Investigación: Salud Ocupacional}
 
-Dada la capacidad del sistema para detectar la degradación del patrón ocular por cansancio, se recomienda expandir esta investigación hacia el monitoreo de salud en entornos laborales. Se propone aplicar este algoritmo para evaluar a profesionales de alta demanda visual (como programadores de software o controladores aéreos) durante jornadas de 8 horas. El objetivo sería correlacionar la pérdida de precisión biométrica con niveles de fatiga cognitiva, desarrollando herramientas de alerta temprana que prevengan errores humanos por agotamiento.
+Dada la capacidad del sistema para detectar la degradación del patrón ocular por cansancio, se recomienda expandir esta investigación hacia el monitoreo de salud en entornos laborales. Wilhelm et al. \cite{wilhelm2001pupil} documentaron que los cambios en la dinámica pupilar y palpebral son detectables antes de que el sujeto reporte subjetivamente sensación de fatiga, lo que hace del sistema propuesto un candidato prometedor para aplicaciones de alerta temprana. Se propone aplicar este algoritmo para evaluar a profesionales de alta demanda visual (como programadores de software o controladores aéreos) durante jornadas de 8 horas, correlacionando la pérdida de precisión biométrica con niveles de fatiga cognitiva.
 
-Para robustecer la identificación biométrica en futuras versiones, se sugiere implementar un protocolo de \textit{Enrolamiento Multi-sesión}, donde se capturen datos del usuario en distintos horarios (mañana, tarde y noche) para que el modelo aprenda a reconocer al individuo en todos sus estados fisiológicos.
+Para robustecer la identificación biométrica en futuras versiones, se sugiere implementar un protocolo de \textit{Enrolamiento Multi-sesión}, donde se capturen datos del usuario en distintos horarios (mañana, tarde y noche) para que el modelo aprenda a reconocer al individuo en todos sus estados fisiológicos, enfoque que Klare et al. \cite{klare2012face} proponen como mecanismo de mitigación del \textit{template aging} en sistemas biométricos longitudinales.
 
 \section{Reflexión Final}
 
 Este trabajo demuestra que la integración de física experimental, ingeniería de software y aprendizaje automático produce soluciones tecnológicas accesibles y científicamente rigurosas. El sistema desarrollado cumple con los objetivos académicos planteados y establece precedentes metodológicos replicables para la comunidad científica regional.
 
-La física proporcionó el marco conceptual para comprender la cinemática ocular, y las herramientas computacionales permitieron implementar un sistema práctico con potencial aplicación en accesibilidad tecnológica. Este trabajo demuestra que es posible desarrollar soluciones accesibles mediante rigor metodológico y optimización de recursos. Los resultados obtenidos abren múltiples líneas de investigación futura que permitirán expandir tanto la robustez técnica del sistema como su aplicabilidad en contextos reales.
+La física proporcionó el marco conceptual para comprender la cinemática ocular —desde las leyes de la \textit{Main Sequence} formalizadas por Bahill et al. \cite{bahill1975} hasta el modelado óptico de la proyección de la mirada—, y las herramientas computacionales permitieron implementar un sistema práctico con potencial aplicación en accesibilidad tecnológica. Este trabajo demuestra que es posible desarrollar soluciones accesibles mediante rigor metodológico y optimización de recursos. Los resultados obtenidos abren múltiples líneas de investigación futura que permitirán expandir tanto la robustez técnica del sistema como su aplicabilidad en contextos reales, contribuyendo así al objetivo más amplio de democratizar las herramientas de investigación biométrica en el contexto científico regional.

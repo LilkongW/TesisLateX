@@ -1,17 +1,19 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'Main.blg'
-[90] biber-MSWIN64:342> INFO - === 
-[120] Biber.pm:421> INFO - Reading 'Main.bcf'
-[212] Biber.pm:1002> INFO - Found 26 citekeys in bib section 0
-[225] Biber.pm:4487> INFO - Processing section 0
-[234] Biber.pm:4678> INFO - Looking for bibtex file 'referencias.bib' for section 0
-[285] bibtex.pm:1713> INFO - LaTeX decoding ...
-[319] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
-[477] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[477] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[477] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'es-ES'
-[490] bbl.pm:676> INFO - Writing 'Main.bbl' with encoding 'UTF-8'
-[503] bbl.pm:779> INFO - Output to Main.bbl
-[503] Biber.pm:132> WARN - ISBN '980-366-098-6' in entry 'ramirez2004' is invalid - run biber with '--validate_datamodel' for details.
-[503] Biber.pm:132> WARN - ISBN '978-0-19-991961-8' in entry 'leigh2015neurology' is invalid - run biber with '--validate_datamodel' for details.
-[503] Biber.pm:134> INFO - WARNINGS: 2
+[96] biber-MSWIN64:342> INFO - === 
+[126] Biber.pm:421> INFO - Reading 'Main.bcf'
+[231] Biber.pm:1002> INFO - Found 40 citekeys in bib section 0
+[243] Biber.pm:4487> INFO - Processing section 0
+[253] Biber.pm:4678> INFO - Looking for bibtex file 'referencias.bib' for section 0
+[299] bibtex.pm:1713> INFO - LaTeX decoding ...
+[342] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
+[546] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[546] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[546] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'es-ES'
+[565] bbl.pm:676> INFO - Writing 'Main.bbl' with encoding 'UTF-8'
+[584] bbl.pm:779> INFO - Output to Main.bbl
+[584] Biber.pm:132> WARN - ISBN '980-366-098-6' in entry 'ramirez2004' is invalid - run biber with '--validate_datamodel' for details.
+[584] Biber.pm:132> WARN - ISBN '978-0-19-991961-8' in entry 'leigh2015neurology' is invalid - run biber with '--validate_datamodel' for details.
+[584] Biber.pm:132> WARN - I didn't find a database entry for 'breiman2001random' (section 0)
+[584] Biber.pm:132> WARN - I didn't find a database entry for 'duchowski2007eye' (section 0)
+[584] Biber.pm:134> INFO - WARNINGS: 4
