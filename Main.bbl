@@ -839,7 +839,7 @@
       \verb 10.1016/0042-6989(87)90071-1
       \endverb
     \endentry
-    \entry{holmqvist2011eye}{article}{}{}
+    \entry{holmqvist2011eye}{book}{}{}
       \name{author}{6}{}{%
         {{hash=90192fd4c61867acecba2e339dbf8265}{%
            family={Holmqvist},
@@ -890,7 +890,6 @@
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{OUP Oxford}
       \field{title}{Eye Tracking: A Comprehensive Guide to Methods and Measures}
       \field{year}{2011}
     \endentry
@@ -1127,7 +1126,7 @@
       \field{pages}{619\bibrangedash 623}
       \range{pages}{5}
     \endentry
-    \entry{jain2016biometric}{book}{}{}
+    \entry{jain2016biometric}{article}{}{}
       \name{author}{3}{}{%
         {{hash=cd01587a47d1084d2adebe55a57d1c5c}{%
            family={Jain},
@@ -1519,8 +1518,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{breiman2001random}
-  \missing{duchowski2007eye}
 \endrefsection
 \endinput
 

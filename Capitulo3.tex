@@ -298,7 +298,7 @@ Para garantizar la homogeneidad de la muestra y la validez de las mediciones, se
 
 \subsubsection{Tamaño y composición de la muestra}
 
-La muestra final consistió en 15 participantes (N = 15), seleccionados mediante muestreo no probabilístico por conveniencia.
+La muestra final consistió en 14 participantes (N = 14), seleccionados mediante muestreo no probabilístico por conveniencia.
 La composición demográfica fue:
 
 \begin{itemize}
@@ -309,7 +309,7 @@ La composición demográfica fue:
 
 Este tamaño de muestra, aunque limitado, es consistente con estudios piloto en el campo de la biometría oculomotora.
 Investigaciones previas como las de Komogortsev et al. \cite{komogortsev2010} han demostrado que muestras de 10-20 participantes son suficientes para validar la viabilidad de sistemas de seguimiento ocular y establecer la singularidad de patrones oculomotores individuales en condiciones controladas.
-A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condiciones específicas registradas para cada uno de los 15 participantes durante las sesiones experimentales.
+A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condiciones específicas registradas para cada uno de los 14 participantes durante las sesiones experimentales.
 
 
 \begin{figure}[htbp]
@@ -317,7 +317,7 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 	\includegraphics[width=0.9\textwidth]{Imagenes/voluntarios.png}
 	\caption{Muestra representativa de los ojos capturados durante la sesión 
 		experimental. Cada imagen corresponde a un participante distinto del estudio 
-		($N=15$), evidenciando la variabilidad morfológica inter-sujeto en 
+		($N=14$), evidenciando la variabilidad morfológica inter-sujeto en 
 		características como el diámetro pupilar y rasgos que el sistema explota como descriptores 
 		biométricos primarios.}
 	\label{fig:voluntarios}
@@ -345,7 +345,6 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 		P12 & 24 & 60 & 615 \\
 		P13 & 30  & 59 & 800 \\
 		P14 & 22  & 60 & 560 \\
-		P15 & 26  & 60 & 675 \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:participantes_detalle}
@@ -367,7 +366,7 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 \subsubsection{Consideraciones éticas}
 
 Todos los participantes fueron informados sobre los objetivos del estudio, los procedimientos a seguir, y el uso que se daría a los datos recolectados.
-Se garantizó la confidencialidad de la información personal mediante la asignación de códigos anónimos (P01-P15).
+Se garantizó la confidencialidad de la información personal mediante la asignación de códigos anónimos (P01-P14).
 No se registraron imágenes que permitieran la identificación facial de los participantes, únicamente las regiones oculares necesarias para el análisis.
 
 \subsection{Diseño del Estímulo Visual}
@@ -380,11 +379,11 @@ Para una resolución estándar de $1920 \times 1080$ píxeles, esto resulta en u
 
 \begin{figure}[htbp]
 	\centering
+	\includegraphics[width=0.7\textwidth]{Imagenes/experimento.png} % Ajusta el nombre del archivo y la ruta si es necesario
 	\caption{Esquema de la cuadrícula de estímulos visuales $3 \times 3$. Los números indican el orden secuencial de presentación.
 		Para una resolución de $1920 \times 1080$, la separación horizontal entre estímulos ($\Delta x$) es de 640 px y la vertical ($\Delta y$) es de 360 px.}
 	\label{fig:grid_stimulus}
 \end{figure}
-
 \textbf{Características geométricas y cromáticas del estímulo:}
 
 \begin{itemize}
@@ -436,7 +435,7 @@ Los estímulos se presentaron siguiendo una secuencia determinista controlada po
 
 \subsection{Procedimiento Experimental}
 
-El protocolo experimental se diseñó para garantizar condiciones estandarizadas y replicables entre todos los participantes ($N=15$).
+El protocolo experimental se diseñó para garantizar condiciones estandarizadas y replicables entre todos los participantes ($N=14$).
 Cada sesión individual tuvo una duración aproximada de 10 minutos e incluyó las siguientes etapas secuenciales:
 
 \subsubsection{Fase 1: Recepción y consentimiento informado}
@@ -482,7 +481,7 @@ Para garantizar la robustez estadística y filtrar posibles artefactos (parpadeo
 	\text{Frames totales} = N_{\text{sujetos}} \times N_{\text{intentos}} \times (T_{\text{ensayo}} \times FPS)
 	\]
 	\[
-	15 \times 3 \times (18\,\text{s} \times 120\,\text{fps}) \approx 97,200\,\text{imágenes oculares}
+	14 \times 3 \times (18\,\text{s} \times 120\,\text{fps}) = 90,720\,\text{imágenes oculares}
 	\]
 \end{enumerate}
 
@@ -766,7 +765,7 @@ La métrica \texttt{Pupil\_Vel\_Max} captura la reactividad máxima del sistema 
 \subsection{Justificación y Selección del Espacio de Características}
 \label{subsec:justificacion_metricas}
 
-La selección de los descriptores biométricos no fue arbitraria: cada métrica fue elegida por su capacidad para capturar una dimensión fisiológica independiente del comportamiento oculomotor, maximizando la información biométrica disponible mientras se minimiza la redundancia entre variables. A continuación se justifica teóricamente el conjunto de 15 descriptores organizados en cuatro categorías funcionales, y se explica el criterio de selección automática posterior mediante el índice de impureza de Gini.
+La selección de los descriptores biométricos no fue arbitraria: cada métrica fue elegida por su capacidad para capturar una dimensión fisiológica independiente del comportamiento oculomotor, maximizando la información biométrica disponible mientras se minimiza la redundancia entre variables. A continuación se justifica teóricamente el conjunto de 14 descriptores organizados en cuatro categorías funcionales, y se explica el criterio de selección automática posterior mediante el índice de impureza de Gini.
 
 % ===== CATEGORÍA 1 =====
 \subsubsection*{Categoría I — Cinemática Sacádica}
@@ -838,7 +837,7 @@ La Dimensión Fractal de Higuchi (\texttt{Fractal\_Dim}) cuantifica la auto-simi
 % ===== SELECCIÓN POR GINI =====
 \subsubsection*{Reducción del Espacio de Características mediante Impureza de Gini}
 
-El conjunto inicial de 15 descriptores fue sometido a un proceso de selección automática usando el índice de impureza de Gini calculado durante el entrenamiento del clasificador \textit{Random Forest} \cite{breiman2001}. El criterio de Gini mide, para cada característica $X_j$, la reducción promedio de impureza que produce en los nodos de decisión del ensemble:
+El conjunto inicial de 14 descriptores fue sometido a un proceso de selección automática usando el índice de impureza de Gini calculado durante el entrenamiento del clasificador \textit{Random Forest} \cite{breiman2001}. El criterio de Gini mide, para cada característica $X_j$, la reducción promedio de impureza que produce en los nodos de decisión del ensemble:
 
 \begin{equation}
 	\text{Importancia}(X_j) = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} \sum_{n \in t} \mathbb{1}[X_j \text{ divide } n] \cdot \Delta\text{Gini}(n)
@@ -852,6 +851,6 @@ Este mecanismo de selección tiene dos ventajas metodológicas frente a métodos
 \section{Resumen del Capítulo}
 
 En este capítulo se ha detallado la metodología del sistema, fundamentada en un enfoque híbrido que combina la robustez del aprendizaje profundo (YOLOv8) con la precisión de la óptica geométrica y el análisis de señales.
-Se ha descrito el diseño experimental controlado con 15 participantes, la configuración del hardware de captura de alta velocidad (120 FPS) y el pipeline de procesamiento que transforma imágenes crudas en descriptores biométricos complejos como el Jerk y la Dimensión Fractal.
+Se ha descrito el diseño experimental controlado con 14 participantes, la configuración del hardware de captura de alta velocidad (120 FPS) y el pipeline de procesamiento que transforma imágenes crudas en descriptores biométricos complejos como el Jerk y la Dimensión Fractal.
 Esta metodología garantiza que los datos obtenidos sean precisos espacialmente y preserven la riqueza dinámica necesaria para caracterizar el comportamiento oculomotor.
 En el Capítulo 4 se presentarán los resultados obtenidos tras aplicar este procesamiento a la muestra recolectada, evaluando la capacidad de estas métricas para diferenciar patrones individuales y validar el rendimiento del sistema propuesto.

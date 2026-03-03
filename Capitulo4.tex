@@ -4,7 +4,7 @@
 \chapter{Resultados y Discusión}
 
 % --- INTRODUCCIÓN DEL CAPÍTULO ---
-En este capítulo se presentan los resultados obtenidos tras el procesamiento y análisis de las señales oculomotoras de los 15 participantes del estudio. La exposición se organiza en cinco etapas fundamentales: primero, se valida la calidad técnica de la señal capturada y el rendimiento del algoritmo de detección; segundo, se caracteriza la dinámica fisiológica de los movimientos registrados; tercero, se evalúa la capacidad discriminativa de las métricas biométricas propuestas; cuarto, se presenta el rendimiento de los modelos de clasificación automática; y finalmente, se analiza la viabilidad del sistema para aplicaciones de control de cursor.
+En este capítulo se presentan los resultados obtenidos tras el procesamiento y análisis de las señales oculomotoras de los 14 participantes del estudio. La exposición se organiza en cinco etapas fundamentales: primero, se valida la calidad técnica de la señal capturada y el rendimiento del algoritmo de detección; segundo, se caracteriza la dinámica fisiológica de los movimientos registrados; tercero, se evalúa la capacidad discriminativa de las métricas biométricas propuestas; cuarto, se presenta el rendimiento de los modelos de clasificación automática; y finalmente, se analiza la viabilidad del sistema para aplicaciones de control de cursor.
 
 \section{Validación del Sistema de Captura y Procesamiento}
 
@@ -151,7 +151,7 @@ Una vez validada la señal, se procedió a verificar que los movimientos registr
 
 \subsection{Análisis de la Secuencia Principal (Main Sequence)}
 
-La validación fisiológica de los movimientos capturados es un paso crítico para asegurar la integridad de los datos biométricos. Para ello, se analizó la relación entre la amplitud del movimiento sacádico ($A$) y su velocidad pico ($V_{pico}$), conocida como la \textit{Main Sequence}. Se procesaron los datos consolidados de la población completa ($N=15$), aplicando un umbral de detección estricto ($v > 80^\circ/s$) para aislar exclusivamente la dinámica balística y separar microsacádicos o ruido instrumental.
+La validación fisiológica de los movimientos capturados es un paso crítico para asegurar la integridad de los datos biométricos. Para ello, se analizó la relación entre la amplitud del movimiento sacádico ($A$) y su velocidad pico ($V_{pico}$), conocida como la \textit{Main Sequence}. Se procesaron los datos consolidados de la población completa ($N=14$), aplicando un umbral de detección estricto ($v > 80^\circ/s$) para aislar exclusivamente la dinámica balística y separar microsacádicos o ruido instrumental.
 
 La Figura~\ref{fig:main_sequence} muestra la distribución de los sacádicos registrados junto con el ajuste del modelo exponencial teórico de Bahill, definido por la Ecuación~\ref{eq:bahill}.
 
@@ -161,19 +161,19 @@ La Figura~\ref{fig:main_sequence} muestra la distribución de los sacádicos reg
 	\centering
 	% Asegúrate de que el nombre del archivo coincida con el que guardaste
 	\includegraphics[width=0.85\textwidth]{Imagenes/secuencia_principal.png}
-	\caption{Diagrama de dispersión de la Secuencia Principal para la población completa ($N=15$). Los puntos representan los eventos oculares individuales detectados, mientras que la línea continua indica el ajuste del modelo exponencial de Bahill. La clara adherencia a la curva ($R^2 = 0.9216$) confirma que el sistema captura fielmente la saturación biomecánica del movimiento ocular humano.}
+	\caption{Diagrama de dispersión de la Secuencia Principal para la población completa ($N=14$). Los puntos representan los eventos oculares individuales detectados, mientras que la línea continua indica el ajuste del modelo exponencial de Bahill. La clara adherencia a la curva ($R^2 = 0.9216$) confirma que el sistema captura fielmente la saturación biomecánica del movimiento ocular humano.}
 	\label{fig:main_sequence}
 \end{figure}
 
 
 \subsubsection{Discusión de Parámetros}
 
-El ajuste de regresión no lineal sobre el corpus completo de movimientos sacádicos detectados ($n = 2{,}157$ eventos, provenientes de los $N = 15$ participantes) permitió extraer los parámetros del modelo exponencial de Bahill (Ecuación~\ref{eq:bahill}). La Tabla~\ref{tab:datos_descriptivos} resume las estadísticas descriptivas del conjunto de datos, y la Tabla~\ref{tab:mainseq_vs_literatura} contrasta los parámetros obtenidos con los rangos normativos consolidados en la literatura de oculomotricidad.
+El ajuste de regresión no lineal sobre el corpus completo de movimientos sacádicos detectados ($n = 2{,}157$ eventos, provenientes de los $N = 14$ participantes) permitió extraer los parámetros del modelo exponencial de Bahill (Ecuación~\ref{eq:bahill}). La Tabla~\ref{tab:datos_descriptivos} resume las estadísticas descriptivas del conjunto de datos, y la Tabla~\ref{tab:mainseq_vs_literatura} contrasta los parámetros obtenidos con los rangos normativos consolidados en la literatura de oculomotricidad.
 
 % --- Tabla 1: estadísticas descriptivas del corpus ---
 \begin{table}[h!]
 	\centering
-	\caption{Estadísticas descriptivas del corpus de sacádicos utilizado para el ajuste de la \textit{Main Sequence} ($n = 2{,}157$ eventos, $N = 15$ sujetos).}
+	\caption{Estadísticas descriptivas del corpus de sacádicos utilizado para el ajuste de la \textit{Main Sequence} ($n = 2{,}157$ eventos, $N = 14$ sujetos).}
 	\label{tab:datos_descriptivos}
 	\vspace{0.2cm}
 	\begin{tabular}{lcccccc}
@@ -488,7 +488,7 @@ la combinación de ambas categorías supere a cualquiera de ellas por
 separado.
 
 \noindent\textbf{Conclusión del análisis:}
-La exactitud del sistema ($82.59\%$ para $k=15$ sujetos,
+La exactitud del sistema ($82.59\%$ para $k=14$ sujetos,
 $\bar{F1} = 0.823 \pm 0.087$) no depende de una única variable
 sino de la interacción entre los cuatro grupos de la
 Tabla~\ref{tab:resumen_metricas_cap4}. Esta arquitectura de
@@ -583,7 +583,7 @@ El análisis de componentes principales se aplicó inicialmente para determinar 
 		\caption{Proyección tridimensional de los datos sobre las tres primeras componentes principales (PC1, PC2 y PC3). Aunque se incorpora una dimensión adicional, el solapamiento entre sujetos persiste, confirmando que la varianza explicada por estas componentes es insuficiente para una discriminación fiable.}
 		\label{fig:pca_3d}
 	\end{minipage}
-	\caption{Análisis de componentes principales (PCA) del espacio de características biométricas. Las proyecciones en 2D y 3D muestran la dificultad de separar linealmente a los 15 participantes, lo que justifica la necesidad de métodos no lineales o supervisados.}
+	\caption{Análisis de componentes principales (PCA) del espacio de características biométricas. Las proyecciones en 2D y 3D muestran la dificultad de separar linealmente a los 14 participantes, lo que justifica la necesidad de métodos no lineales o supervisados.}
 	\label{fig:pca_2d_3d}
 \end{figure}
 
@@ -603,7 +603,7 @@ Dado que PCA no lograba una separación nítida, se recurrió a técnicas de vis
 	\begin{minipage}[b]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{Imagenes/UMAP.png}
-		\caption{Proyección mediante UMAP (n\_neighbors = 15, min\_dist = 0.1) del mismo espacio de características.}
+		\caption{Proyección mediante UMAP (n\_neighbors = 14, min\_dist = 0.1) del mismo espacio de características.}
 		\label{fig:umap}
 	\end{minipage}
 	\caption{Visualización no lineal del espacio biométrico mediante t-SNE (izquierda) y UMAP (derecha). Ambas técnicas confirman la existencia de una estructura subyacente, pero al carecer de capacidad de generalización, su utilidad se limita a la exploración visual. Estos resultados refuerzan la necesidad de métodos supervisados como Random Forest para la identificación de sujetos.}
@@ -612,9 +612,9 @@ Dado que PCA no lograba una separación nítida, se recurrió a técnicas de vis
 
 \subsubsection{Clustering no supervisado: KMeans y DBSCAN}
 
-Para evaluar si los datos se agrupan naturalmente en las 15 identidades, se aplicaron dos algoritmos de clustering representativos.
+Para evaluar si los datos se agrupan naturalmente en las 14 identidades, se aplicaron dos algoritmos de clustering representativos.
 
-\textbf{KMeans} (con \(k=15\)) arrojó un \textbf{ARI de 0.1334} y un \textbf{NMI de 0.2926} (Tabla~\ref{tab:resumen_clustering}). Estos valores, cercanos a cero, indican que la correspondencia entre los clústeres encontrados y las clases reales es prácticamente aleatoria. Además, la métrica de silueta (\(0.1295\)) sugiere que los clústeres no son compactos ni están bien separados, lo que descarta la hipótesis de que las identidades formen agrupaciones esféricas en el espacio de características.
+\textbf{KMeans} (con \(k=14\)) arrojó un \textbf{ARI de 0.1334} y un \textbf{NMI de 0.2926} (Tabla~\ref{tab:resumen_clustering}). Estos valores, cercanos a cero, indican que la correspondencia entre los clústeres encontrados y las clases reales es prácticamente aleatoria. Además, la métrica de silueta (\(0.1295\)) sugiere que los clústeres no son compactos ni están bien separados, lo que descarta la hipótesis de que las identidades formen agrupaciones esféricas en el espacio de características.
 
 \textbf{DBSCAN}, por su parte, produjo un resultado aún más revelador: con una parametrización que buscaba evitar el ruido excesivo, el algoritmo \textbf{agrupó el 79.6\,\% de las muestras como ruido} y el resto en un único clúster (ARI = 0.0). Esto demuestra que \textbf{no existe una estructura de densidad uniforme} que permita separar a los sujetos; las clases no están definidas por regiones de alta densidad separadas por zonas de baja densidad, sino que se entremezclan de forma compleja.
 
@@ -626,7 +626,7 @@ Para evaluar si los datos se agrupan naturalmente en las 15 identidades, se apli
 		\toprule
 		\textbf{Algoritmo} & \textbf{ARI} & \textbf{NMI} & \textbf{Silhouette} & \textbf{Observaciones} \\
 		\midrule
-		KMeans ($k=15$) & 0.1334 & 0.2926 & 0.1295 & --- \\
+		KMeans ($k=14$) & 0.1334 & 0.2926 & 0.1295 & --- \\
 		DBSCAN          & 0.0000 & ---    & ---    & 79.6\,\% de puntos clasificados como ruido \\
 		\bottomrule
 	\end{tabular}
@@ -648,7 +648,7 @@ La Tabla~\ref{tab:resultados_clasificacion} resume el desempeño de los modelos 
 \begin{table}[H]
 	\centering
 	\caption{Métricas de rendimiento de los clasificadores biométricos 
-		en el conjunto de prueba ($k=15$ sujetos, $n_{test}=672$). Para el 
+		en el conjunto de prueba ($k=14$ sujetos, $n_{test}=672$). Para el 
 		\textit{Random Forest}, los valores de precisión, recall y F1 se 
 		reportan como media $\pm$ desviación estándar entre clases.}
 	\vspace{0.2cm}
@@ -672,7 +672,7 @@ Los resultados indican que el clasificador \textbf{Random Forest} ofrece el mejo
 
 \subsection{Análisis de Confusión y Escalabilidad del Clasificador}
 
-Para caracterizar el rendimiento real del sistema de identificación biométrica se evaluó el clasificador \textit{Random Forest} bajo tres configuraciones de escalabilidad ($k = 5$, $10$ y $15$ sujetos), con los hiperparámetros optimizados que se detallan en la Tabla~\ref{tab:hiperparametros_rf}. Este enfoque escalonado permite cuantificar cómo la complejidad del problema de clasificación crece con el número de identidades, y establecer la degradación esperada del rendimiento a medida que el espacio de clases se expande \cite{breiman2001}.
+Para caracterizar el rendimiento real del sistema de identificación biométrica se evaluó el clasificador \textit{Random Forest} bajo tres configuraciones de escalabilidad ($k = 5$, $10$ y $14$ sujetos), con los hiperparámetros optimizados que se detallan en la Tabla~\ref{tab:hiperparametros_rf}. Este enfoque escalonado permite cuantificar cómo la complejidad del problema de clasificación crece con el número de identidades, y establecer la degradación esperada del rendimiento a medida que el espacio de clases se expande \cite{breiman2001}.
 
 % --- Tabla de hiperparámetros ---
 \begin{table}[h!]
@@ -713,25 +713,25 @@ La Tabla~\ref{tab:escalabilidad} resume el rendimiento del clasificador en funci
 		\midrule
 		5  & 240 & 92.92\% & 0.821 & 0.621 \\
 		10 & 480 & 92.29\% & 0.669 & 0.407 \\
-		15 & 672 & 82.59\% & 0.621 & 0.383 \\
+		14 & 672 & 82.59\% & 0.621 & 0.383 \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 Dos patrones cuantitativamente relevantes emergen de la Tabla~\ref{tab:escalabilidad}:
 
-\textbf{(1) Degradación escalonada de la exactitud.} El sistema mantiene un rendimiento prácticamente estable al pasar de $k=5$ a $k=10$ sujetos (caída de apenas $0.63$ puntos porcentuales, $\Delta_{5\to10} = -0.63\%$), pero experimenta una caída más pronunciada al incorporar los cinco sujetos adicionales ($\Delta_{10\to15} = -9.70\%$). Este comportamiento es consistente con la teoría de clasificación multiclase: la probabilidad de confusión entre pares crece combinatoriamente con el número de clases ($\binom{k}{2}$ pares posibles: $10$, $45$ y $105$ para $k=5$, $10$ y $15$ respectivamente), de modo que la degradación no es lineal sino que se acelera a medida que el espacio de clases se satura \cite{komogortsev2010}.
+\textbf{(1) Degradación escalonada de la exactitud.} El sistema mantiene un rendimiento prácticamente estable al pasar de $k=5$ a $k=10$ sujetos (caída de apenas $0.63$ puntos porcentuales, $\Delta_{5\to10} = -0.63\%$), pero experimenta una caída más pronunciada al incorporar los cinco sujetos adicionales ($\Delta_{10\to15} = -9.70\%$). Este comportamiento es consistente con la teoría de clasificación multiclase: la probabilidad de confusión entre pares crece combinatoriamente con el número de clases ($\binom{k}{2}$ pares posibles: $10$, $45$ y $105$ para $k=5$, $10$ y $14$ respectivamente), de modo que la degradación no es lineal sino que se acelera a medida que el espacio de clases se satura \cite{komogortsev2010}.
 
-\textbf{(2) Separabilidad de la confianza como indicador de calidad.} En los tres escenarios existe una diferencia estadísticamente significativa entre la confianza media de las predicciones correctas y la de los errores. Para $k=15$: $\bar{c}_{aciertos} = 0.621$ frente a $\bar{c}_{errores} = 0.383$, una brecha de $\Delta c = 0.238$. Este resultado indica que el ensemble no solo predice una clase, sino que asigna masas de probabilidad notablemente distintas cuando acierta versus cuando falla. Dicha propiedad es deseable en aplicaciones biométricas, donde un umbral de confianza mínimo puede implementarse para rechazar predicciones de baja certeza en lugar de emitir una identidad incorrecta \cite{duchowski2017}.
+\textbf{(2) Separabilidad de la confianza como indicador de calidad.} En los tres escenarios existe una diferencia estadísticamente significativa entre la confianza media de las predicciones correctas y la de los errores. Para $k=14$: $\bar{c}_{aciertos} = 0.621$ frente a $\bar{c}_{errores} = 0.383$, una brecha de $\Delta c = 0.238$. Este resultado indica que el ensemble no solo predice una clase, sino que asigna masas de probabilidad notablemente distintas cuando acierta versus cuando falla. Dicha propiedad es deseable en aplicaciones biométricas, donde un umbral de confianza mínimo puede implementarse para rechazar predicciones de baja certeza en lugar de emitir una identidad incorrecta \cite{duchowski2017}.
 
-% ===== Análisis de confusión 15 sujetos =====
-\subsubsection{Análisis de Confusión por Sujeto (k = 15)}
+% ===== Análisis de confusión 14 sujetos =====
+\subsubsection{Análisis de Confusión por Sujeto (k = 14)}
 
 El modelo \textit{Random Forest} con los hiperparámetros de la Tabla~\ref{tab:hiperparametros_rf} fue evaluado sobre el conjunto de test balanceado ($48$ muestras por sujeto, $672$ en total). La Tabla~\ref{tab:metricas_por_sujeto} detalla las métricas por clase obtenidas.
 
 \begin{table}[h!]
 	\centering
-	\caption{Métricas de clasificación por sujeto para el modelo \textit{Random Forest} ($k=15$). Precisión: fracción de predicciones de la clase que son correctas. Recall: fracción de instancias reales de la clase correctamente identificadas. F1: media armónica de ambas.}
+	\caption{Métricas de clasificación por sujeto para el modelo \textit{Random Forest} ($k=14$). Precisión: fracción de predicciones de la clase que son correctas. Recall: fracción de instancias reales de la clase correctamente identificadas. F1: media armónica de ambas.}
 	\label{tab:metricas_por_sujeto}
 	\vspace{0.2cm}
 	\begin{tabular}{lcccc}
@@ -762,7 +762,7 @@ Las siguientes observaciones emergen del análisis por clase:
 
 \textbf{Sujetos de alto rendimiento (F1 $\geq$ 0.90):} P2 ($F1 = 0.969$), P4 ($F1 = 0.938$), P8 ($F1 = 0.905$) y P12 ($F1 = 0.902$) son clasificados con alta fiabilidad. Estos sujetos presentan perfiles biométricos con alta varianza inter-clase relativa a su varianza intra-clase, lo que en términos del criterio de Gini implica particiones de nodo más puras y, consecuentemente, mayor importancia discriminativa de sus características en el ensemble \cite{breiman2001}.
 
-\textbf{Sujetos de bajo rendimiento (F1 $<$ 0.75):} P6 ($F1 = 0.636$), P9 ($F1 = 0.714$) y P13 ($F1 = 0.721$) concentran la mayoría de los errores. En particular, P6 registró 20 clasificaciones incorrectas de 48 posibles ($\text{Recall} = 0.583$), siendo el sujeto más confundido del dataset. El hecho de que P9 sea el destino más frecuente de las predicciones erróneas (15 instancias de otros sujetos clasificadas como P9) sugiere que su perfil biométrico ocupa una región central del espacio de características, actuando como atractor de clases cercanas.
+\textbf{Sujetos de bajo rendimiento (F1 $<$ 0.75):} P6 ($F1 = 0.636$), P9 ($F1 = 0.714$) y P13 ($F1 = 0.721$) concentran la mayoría de los errores. En particular, P6 registró 20 clasificaciones incorrectas de 48 posibles ($\text{Recall} = 0.583$), siendo el sujeto más confundido del dataset. El hecho de que P9 sea el destino más frecuente de las predicciones erróneas (14 instancias de otros sujetos clasificadas como P9) sugiere que su perfil biométrico ocupa una región central del espacio de características, actuando como atractor de clases cercanas.
 
 \textbf{Asimetría precisión-recall en P1, P13 y P14:} Estos sujetos presentan recall alto pero precisión moderada (P1: $P=0.825$, $R=0.979$), o bien el patrón inverso (P13: $P=0.816$, $R=0.646$). El primer caso indica que el clasificador tiende a asignar la clase a instancias de otros sujetos (falsos positivos); el segundo, que instancias reales del sujeto son atribuidas a otros (falsos negativos). Esta distinción es relevante en el contexto de seguridad biométrica: los falsos negativos implican denegación de acceso a usuarios legítimos, mientras que los falsos positivos implican acceso no autorizado, siendo estos últimos el escenario de mayor riesgo \cite{duchowski2017}.
 
@@ -771,7 +771,7 @@ Las siguientes observaciones emergen del análisis por clase:
 % ===== Figuras de matrices =====
 \subsubsection{Matrices de Confusión por Configuración}
 
-Las Figuras~\ref{fig:matriz_confusion2}, \ref{fig:matriz_confusion3} y \ref{fig:matriz_confusion} presentan las matrices de confusión normalizadas para $k = 5$, $10$ y $15$ sujetos respectivamente. La normalización por fila transforma cada celda $(i,j)$ en la probabilidad condicional $P(\hat{y}=j \mid y=i)$, facilitando la interpretación de la tasa de error específica por clase independientemente del número total de muestras \cite{holmqvist2011eye}.
+Las Figuras~\ref{fig:matriz_confusion2}, \ref{fig:matriz_confusion3} y \ref{fig:matriz_confusion} presentan las matrices de confusión normalizadas para $k = 5$, $10$ y $14$ sujetos respectivamente. La normalización por fila transforma cada celda $(i,j)$ en la probabilidad condicional $P(\hat{y}=j \mid y=i)$, facilitando la interpretación de la tasa de error específica por clase independientemente del número total de muestras \cite{holmqvist2011eye}.
 
 \begin{figure}[H]
 	\centering
@@ -790,7 +790,7 @@ Las Figuras~\ref{fig:matriz_confusion2}, \ref{fig:matriz_confusion3} y \ref{fig:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Imagenes/matriz.png}
-	\caption{Matriz de confusión normalizada — \textit{Random Forest} con $k=15$ sujetos (exactitud: $82.59\%$, $\bar{F1} = 0.823 \pm 0.087$). La diagonal dominante confirma el alto rendimiento global del sistema. Las confusiones fuera de la diagonal se concentran en P6 y P9, sujetos cuyo perfil biométrico presenta mayor solapamiento inter-clase.}
+	\caption{Matriz de confusión normalizada — \textit{Random Forest} con $k=14$ sujetos (exactitud: $82.59\%$, $\bar{F1} = 0.823 \pm 0.087$). La diagonal dominante confirma el alto rendimiento global del sistema. Las confusiones fuera de la diagonal se concentran en P6 y P9, sujetos cuyo perfil biométrico presenta mayor solapamiento inter-clase.}
 	\label{fig:matriz_confusion}
 \end{figure}
 

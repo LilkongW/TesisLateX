@@ -82,7 +82,7 @@
 \contentsline {subsection}{\numberline {3.3.2}Diseño del Estímulo Visual}{33}{subsection.3.3.2}%
 \contentsline {subsubsection}{Cuadrícula de calibración y prueba (Grid 3×3)}{33}{subsection.3.3.2}%
 \contentsline {subsubsection}{Secuencia temporal de presentación}{34}{figure.caption.16}%
-\contentsline {subsection}{\numberline {3.3.3}Procedimiento Experimental}{34}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Procedimiento Experimental}{35}{subsection.3.3.3}%
 \contentsline {subsubsection}{Fase 1: Recepción y consentimiento informado}{35}{subsection.3.3.3}%
 \contentsline {subsubsection}{Fase 2: Colocación del dispositivo y configuración óptica}{35}{Item.25}%
 \contentsline {subsubsection}{Fase 3: Ejecución de la prueba principal}{36}{Item.28}%
@@ -142,7 +142,7 @@
 \contentsline {subsection}{\numberline {4.4.1}Métricas de los Modelos}{69}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Análisis de Confusión y Escalabilidad del Clasificador}{70}{subsection.4.4.2}%
 \contentsline {subsubsection}{Análisis de Escalabilidad}{70}{table.caption.37}%
-\contentsline {subsubsection}{Análisis de Confusión por Sujeto (k = 15)}{71}{table.caption.38}%
+\contentsline {subsubsection}{Análisis de Confusión por Sujeto (k = 14)}{71}{table.caption.38}%
 \contentsline {subsubsection}{Matrices de Confusión por Configuración}{72}{table.caption.39}%
 \contentsline {section}{\numberline {4.5}Evaluación para Control de Cursor}{76}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Mapeo y Corrección (Matriz de Homografía)}{76}{subsection.4.5.1}%
@@ -191,4 +191,3 @@
 \contentsline {subsection}{\numberline {5.4.4}Nuevas Líneas de Investigación: Salud Ocupacional}{98}{subsection.5.4.4}%
 \contentsline {section}{\numberline {5.5}Reflexión Final}{98}{section.5.5}%
 \contentsline {chapter}{Referencias Bibliográficas}{99}{section*.52}%
-\contentsline {chapter}{Anexo: Compendio de Formulación Matemática}{103}{appendix*.54}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  24 FEB 2026 00:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  25 FEB 2026 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1318,13 +1318,10 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
 \l__siunitx_unit_total_int=\count514
 )
 
-Package siunitx Info: Option "detect-all" has been deprecated in this release.
+Package siunitx Info: Option "detect-mode" has been deprecated in this
+(siunitx)             release.
 (siunitx)             
-(siunitx)             Use "mode = match, propagate-math-font = true,
-(siunitx)             reset-math-version = false, reset-text-family = false,
-(siunitx)             reset-text-series = false, reset-text-shape = false,
-(siunitx)             text-family-to-math = true, text-series-to-math = true"
-(siunitx)             as a replacement.
+(siunitx)             Use "mode = match" as a replacement.
 
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -1466,22 +1463,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Main.bbl' found.
- (Main.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                breiman2001random
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                duchowski2007eye
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (Main.bbl)
 Package biblatex Info: Reference section=0 on input line 163.
 Package biblatex Info: Reference segment=0 on input line 163.
 Package hyperref Info: Link coloring ON on input line 163.
@@ -1783,24 +1765,28 @@ File: Imagenes/voluntarios.png Graphic file (type png)
 Package pdftex.def Info: Imagenes/voluntarios.png  used on input line 317.
 (pdftex.def)             Requested size: 412.02156pt x 203.7187pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 357.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 357.
- [31 <./Imagenes/voluntarios.png>] [32] [33]
-<Imagenes/experimento.png, id=1129, 709.90219pt x 398.99063pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 356.
+ [31 <./Imagenes/voluntarios.png>] [32]
+<Imagenes/experimento.png, id=1124, 709.90219pt x 398.99063pt>
 File: Imagenes/experimento.png Graphic file (type png)
 <use Imagenes/experimento.png>
-Package pdftex.def Info: Imagenes/experimento.png  used on input line 431.
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 382.
 (pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
-
-[34] [35 <./Imagenes/experimento.png>] [36] [37] [38] [39]
+ [33 <./Imagenes/experimento.png>]
+File: Imagenes/experimento.png Graphic file (type png)
+<use Imagenes/experimento.png>
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 430.
+(pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
+ [34] [35] [36] [37] [38] [39]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 612.
+put line 611.
  [40]
 <Imagenes/preprocesamiento.png, id=1192, 823.57687pt x 352.31625pt>
 File: Imagenes/preprocesamiento.png Graphic file (type png)
 <use Imagenes/preprocesamiento.png>
-Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 648.
+Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 647.
 
 (pdftex.def)             Requested size: 457.80486pt x 195.84425pt.
  [41]
@@ -1808,16 +1794,15 @@ Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 648.
 File: Imagenes/calculo_vector_mirada.png Graphic file (type png)
 <use Imagenes/calculo_vector_mirada.png>
 Package pdftex.def Info: Imagenes/calculo_vector_mirada.png  used on input line
- 668.
+ 667.
 (pdftex.def)             Requested size: 412.02156pt x 99.46371pt.
  [42 <./Imagenes/preprocesamiento.png> <./Imagenes/calculo_vector_mirada.png>]
 <Imagenes/correlacion.png, id=1207, 604.50844pt x 247.67531pt>
 File: Imagenes/correlacion.png Graphic file (type png)
 <use Imagenes/correlacion.png>
-Package pdftex.def Info: Imagenes/correlacion.png  used on input line 698.
+Package pdftex.def Info: Imagenes/correlacion.png  used on input line 697.
 (pdftex.def)             Requested size: 412.02156pt x 168.81001pt.
- [43]
-[44 <./Imagenes/correlacion.png>] [45] [46] [47] [48]) [49]
+ [43] [44 <./Imagenes/correlacion.png>] [45] [46] [47] [48]) [49]
 \openout2 = `Capitulo4.aux'.
 
  (Capitulo4.tex
@@ -2030,45 +2015,14 @@ Cap\'{\i }tulo 5.
 
 
 
-] [88] [89] [90]
-
-LaTeX Warning: Citation 'breiman2001random' on page 91 undefined on input line 
-85.
-
-
-Overfull \hbox (23.98494pt too wide) in paragraph at lines 85--86
-[]\T1/ptm/m/n/12 (-20) Una exac-ti-tud de cla-si-fi-ca-ción del 83.5$ $% con el
- al-go-rit-mo \T1/ptm/m/it/12 (-20) Ran-dom Fo-rest []\T1/ptm/m/n/12 (-20) ,
- []
-
-[91]
-
-LaTeX Warning: Citation 'duchowski2007eye' on page 92 undefined on input line 9
-4.
-
-[92]
-
-LaTeX Warning: Citation 'duchowski2007eye' on page 93 undefined on input line 1
-15.
-
-[93] [94]
-
-LaTeX Warning: Citation 'duchowski2007eye' on page 95 undefined on input line 1
-44.
-
-[95]
-<Imagenes/erar_original_mejorado.png, id=1690, 685.05937pt x 167.87718pt>
+] [88] [89] [90] [91] [92] [93] [94] [95]
+<Imagenes/erar_original_mejorado.png, id=1694, 685.05937pt x 167.87718pt>
 File: Imagenes/erar_original_mejorado.png Graphic file (type png)
 <use Imagenes/erar_original_mejorado.png>
 Package pdftex.def Info: Imagenes/erar_original_mejorado.png  used on input lin
 e 190.
 (pdftex.def)             Requested size: 434.91321pt x 106.58032pt.
- [96 <./Imagenes/erar_original_mejorado.png>]
-
-LaTeX Warning: Citation 'duchowski2007eye' on page 97 undefined on input line 2
-10.
-
-[97]) [98] [99
+ [96 <./Imagenes/erar_original_mejorado.png>] [97]) [98] [99
 
 
 
@@ -2084,14 +2038,21 @@ Package biblatex Warning: No driver for 'standard'.
  (formulas.tex [103
 
 
-] [104]) [105] (Main.aux (portada.aux)
+] [104]
+Overfull \hbox (49.05228pt too wide) in paragraph at lines 90--91
+[]\T1/ptm/m/n/12 (-20) Algoritmo pa-ra cuan-ti-fi-car la com-ple-ji-dad y auto-
+similaridad de una se-rie tem-po-ral $\OML/ztmcm/m/it/12 X\OT1/ztmcm/m/n/12 (1)
+\OML/ztmcm/m/it/12 ; X\OT1/ztmcm/m/n/12 (2)\OML/ztmcm/m/it/12 ; [] ; X\OT1/ztmc
+m/m/n/12 (\OML/ztmcm/m/it/12 N\OT1/ztmcm/m/n/12 )$\T1/ptm/m/n/12 (-20) : 
+ []
+
+[105] [106] [107] (Main.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 13.
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
-
-(dedicatoria.aux) (agradecimientos.aux) (resumen.aux) (introduccion.aux)
-(Capitulo1.aux) (Capitulo2.aux) (Capitulo3.aux) (Capitulo4.aux) (Capitulo5.aux)
-(formulas.aux))
+ (dedicatoria.aux)
+(agradecimientos.aux) (resumen.aux) (introduccion.aux) (Capitulo1.aux)
+(Capitulo2.aux) (Capitulo3.aux) (Capitulo4.aux) (Capitulo5.aux) (formulas.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -2101,33 +2062,37 @@ Package rerunfilecheck Info: File `Main.out' has not changed.
 Package logreq Info: Writing requests to 'Main.run.xml'.
 \openout1 = `Main.run.xml'.
 
- ) 
+ ) )
+(\end occurred when \iftrue on line 221 was incomplete)
+(\end occurred when \ifx on line 221 was incomplete)
+(\end occurred when \ifnum on line 221 was incomplete) 
 Here is how much of TeX's memory you used:
- 44681 strings out of 467871
- 889120 string characters out of 5417892
- 1736397 words of memory out of 5000000
- 71721 multiletter control sequences out of 15000+600000
- 764218 words of font info for 607 fonts, out of 8000000 for 9000
+ 44674 strings out of 467871
+ 888904 string characters out of 5417892
+ 1736139 words of memory out of 5000000
+ 71714 multiletter control sequences out of 15000+600000
+ 764086 words of font info for 605 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,94p,1437b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmex10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmr10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Victor/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Victor/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/Victor/App
-Data/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/Victor/
-AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Vict
-or/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Vict
-or/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Vict
-or/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Vic
-tor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/V
-ictor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/
-Victor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Main.pdf (121 pages, 16464596 bytes).
+<C:/Users/Victor/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Victo
+r/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
+sers/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/rsfs/rsfs10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/
+fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/Victor/AppData/Local/Programs/MiKT
+eX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Victor/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Victor/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Victor/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Victor/AppData/Local/Programs/
+MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Victor/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Victor/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Main.pdf (123 pages, 16470134 bytes).
 PDF statistics:
- 1945 PDF objects out of 2073 (max. 8388607)
- 445 named destinations out of 1000 (max. 500000)
+ 1958 PDF objects out of 2073 (max. 8388607)
+ 447 named destinations out of 1000 (max. 500000)
  125575 words of extra memory for PDF output out of 128383 (max. 10000000)
 

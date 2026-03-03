@@ -2502,19 +2502,19 @@
     <bcf:citekey order="119" intorder="1">savitzky1964smoothing</bcf:citekey>
     <bcf:citekey order="120" intorder="1">holmqvist2011eye</bcf:citekey>
     <bcf:citekey order="121" intorder="1">mandelbrot1982fractal</bcf:citekey>
-    <bcf:citekey order="122" intorder="1">breiman2001random</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">breiman2001</bcf:citekey>
     <bcf:citekey order="123" intorder="1">fisher1936use</bcf:citekey>
     <bcf:citekey order="124" intorder="1">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="125" intorder="1">duchowski2007eye</bcf:citekey>
+    <bcf:citekey order="125" intorder="1">duchowski2017</bcf:citekey>
     <bcf:citekey order="126" intorder="1">soukupova2016real</bcf:citekey>
     <bcf:citekey order="127" intorder="1">majaranta2014eye</bcf:citekey>
     <bcf:citekey order="128" intorder="1">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="129" intorder="1">duchowski2007eye</bcf:citekey>
+    <bcf:citekey order="129" intorder="1">duchowski2017</bcf:citekey>
     <bcf:citekey order="130" intorder="1">iso19794</bcf:citekey>
     <bcf:citekey order="131" intorder="1">klare2012face</bcf:citekey>
     <bcf:citekey order="132" intorder="1">li2005starburst</bcf:citekey>
     <bcf:citekey order="133" intorder="1">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="134" intorder="1">duchowski2007eye</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">duchowski2017</bcf:citekey>
     <bcf:citekey order="135" intorder="1">collewijn1988binocular</bcf:citekey>
     <bcf:citekey order="136" intorder="1">kassner2014pupil</bcf:citekey>
     <bcf:citekey order="137" intorder="1">soukupova2016real</bcf:citekey>
@@ -2522,7 +2522,7 @@
     <bcf:citekey order="139" intorder="1">wilhelm2001pupil</bcf:citekey>
     <bcf:citekey order="140" intorder="1">jain2016biometric</bcf:citekey>
     <bcf:citekey order="141" intorder="1">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="142" intorder="1">duchowski2007eye</bcf:citekey>
+    <bcf:citekey order="142" intorder="1">duchowski2017</bcf:citekey>
     <bcf:citekey order="143" intorder="1">zander2011towards</bcf:citekey>
     <bcf:citekey order="144" intorder="1">wilhelm2001pupil</bcf:citekey>
     <bcf:citekey order="145" intorder="1">klare2012face</bcf:citekey>
