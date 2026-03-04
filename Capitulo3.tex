@@ -88,7 +88,7 @@ Este equipo proporciona el poder de cómputo necesario para:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/pc.jpg}
-	\caption{Estación de trabajo utilizada para el procesamiento de datos y entrenamiento de la red neuronal.
+	\caption[Estación de trabajo para procesamiento y entrenamiento.]{Estación de trabajo utilizada para el procesamiento de datos y entrenamiento de la red neuronal.
 		El equipo operó bajo entorno Linux (Ubuntu 24.04 LTS) para maximizar la eficiencia en la gestión de procesos en tiempo real.}
 	\label{fig:computador_specs}
 \end{figure}
@@ -110,7 +110,7 @@ La captura de imágenes del ojo se realizó mediante un módulo de cámara infra
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Imagenes/gc0308.png} 
-	\caption{Módulo de cámara con sensor GalaxyCore GC0308 adaptado para visión infrarroja cercana (NIR).
+	\caption[Módulo de cámara infrarroja GalaxyCore GC0308.]{Módulo de cámara con sensor GalaxyCore GC0308 adaptado para visión infrarroja cercana (NIR).
 		Se observa la lente con montura M12 ajustable.}
 	\label{fig:camara_gc0308}
 \end{figure}
@@ -249,7 +249,7 @@ La Figura \ref{fig:pipeline_flujo} ilustra la secuencia de transformación de lo
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth, height=20cm, keepaspectratio]{Imagenes/flow.png}
-	\caption{Diagrama de flujo de la arquitectura de procesamiento de datos.
+	\caption[Diagrama de flujo de la arquitectura de procesamiento.]{Diagrama de flujo de la arquitectura de procesamiento de datos.
 		Se ilustra la secuencia desde la captura de video hasta la generación de resultados biométricos.}
 	\label{fig:pipeline_flujo}
 \end{figure}
@@ -315,7 +315,7 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/voluntarios.png}
-	\caption{Muestra representativa de los ojos capturados durante la sesión 
+	\caption[Muestra representativa de ojos capturados ($N=14$).]{Muestra representativa de los ojos capturados durante la sesión 
 		experimental. Cada imagen corresponde a un participante distinto del estudio 
 		($N=14$), evidenciando la variabilidad morfológica inter-sujeto en 
 		características como el diámetro pupilar y rasgos que el sistema explota como descriptores 
@@ -325,7 +325,7 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 
 \begin{table}[H]
 	\centering
-	\caption{Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}
+	\caption[Caracterización demográfica y condiciones por participante.]{Caracterización demográfica y condiciones ambientales por participante con incertidumbres asociadas.}
 	\vspace{0.2cm}
 	\begin{tabular}{ccccc}
 		\toprule
@@ -380,7 +380,7 @@ Para una resolución estándar de $1920 \times 1080$ píxeles, esto resulta en u
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/experimento.png} % Ajusta el nombre del archivo y la ruta si es necesario
-	\caption{Esquema de la cuadrícula de estímulos visuales $3 \times 3$. Los números indican el orden secuencial de presentación.
+	\caption[Esquema de la cuadrícula de estímulos $3 \times 3$.]{Esquema de la cuadrícula de estímulos visuales $3 \times 3$. Los números indican el orden secuencial de presentación.
 		Para una resolución de $1920 \times 1080$, la separación horizontal entre estímulos ($\Delta x$) es de 640 px y la vertical ($\Delta y$) es de 360 px.}
 	\label{fig:grid_stimulus}
 \end{figure}
@@ -428,7 +428,7 @@ Los estímulos se presentaron siguiendo una secuencia determinista controlada po
 \begin{figure}[ht!]  
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/experimento.png}
-	\caption{Visualización del protocolo de estímulos (Experimento 1). La matriz de $3 \times 3$ puntos rojos sobre fondo negro se utiliza para inducir movimientos sacádicos controlados.
+	\caption[Protocolo de estímulos del Experimento 1 ($3 \times 3$).]{Visualización del protocolo de estímulos (Experimento 1). La matriz de $3 \times 3$ puntos rojos sobre fondo negro se utiliza para inducir movimientos sacádicos controlados.
 		Los puntos aparecen de forma secuencial con una duración de 2 segundos por posición, cubriendo la totalidad del campo de visión efectivo.}
 	\label{fig:experimento_grid}
 \end{figure}
@@ -645,7 +645,7 @@ Esto retorna el centroide con precisión sub-pixel $(x_c, y_c)$, los ejes mayor 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.0\textwidth]{Imagenes/preprocesamiento.png}
-	\caption{Pipeline de procesamiento de imagen implementado. La secuencia muestra: (Arriba) Mejora de la imagen mediante escala de grises y realce de contraste CLAHE.
+	\caption[Pipeline de procesamiento de imagen con YOLOv8 y CLAHE.]{Pipeline de procesamiento de imagen implementado. La secuencia muestra: (Arriba) Mejora de la imagen mediante escala de grises y realce de contraste CLAHE.
 		(Abajo) Detección de la ROI con YOLOv8, binarización inversa adaptativa y superposición final del contorno elíptico ajustado sobre la imagen original.}
 	\label{fig:pipeline_procesamiento}
 \end{figure}
@@ -665,7 +665,7 @@ Este enfoque vectorial permite calcular la cinemática angular de manera más fi
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/calculo_vector_mirada.png}
-	\caption{Esquema de la estimación del vector de mirada. (Izquierda) Identificación del contorno pupilar.
+	\caption[Esquema de estimación del vector de mirada en 3D.]{Esquema de la estimación del vector de mirada. (Izquierda) Identificación del contorno pupilar.
 		(Centro) Cálculo del centro del modelo ocular (punto azul) respecto al centroide de la pupila.
 		(Derecha) Proyección del vector de mirada resultante (línea roja) en el espacio 3D.}
 	\label{fig:vector_mirada}
@@ -695,7 +695,7 @@ Esto libera recursos del CPU para mantener una tasa de muestreo estable de 120 F
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/correlacion.png}
-	\caption{Correspondencia entre la señal visual capturada y su representación 
+	\caption[Correspondencia entre imagen infrarroja y modelo 3D ocular.]{Correspondencia entre la señal visual capturada y su representación 
 		computacional. \textbf{Izquierda:} imagen infrarroja del ojo adquirida por la 
 		cámara, donde se aprecia la pupila detectada. 
 		\textbf{Derecha:} modelo tridimensional resultante, en el que el diámetro 

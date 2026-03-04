@@ -1,9 +1,9 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{Agradecimientos}{\es@scroman {ii}}{chapter*.1}%
 \contentsline {chapter}{Resumen}{\es@scroman {iii}}{chapter*.2}%
-\contentsline {chapter}{Lista de Figuras}{\es@scroman {xii}}{chapter*.4}%
-\contentsline {chapter}{Lista de Tablas}{\es@scroman {xiv}}{chapter*.5}%
-\contentsline {chapter}{Introducción}{\es@scroman {xv}}{chapter*.6}%
+\contentsline {chapter}{Lista de Figuras}{\es@scroman {ix}}{chapter*.4}%
+\contentsline {chapter}{Lista de Tablas}{\es@scroman {x}}{chapter*.5}%
+\contentsline {chapter}{Introducción}{\es@scroman {xi}}{chapter*.6}%
 \contentsline {chapter}{\numberline {1}Planteamiento del Problema}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}El problema}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Objetivos}{2}{section.1.2}%
