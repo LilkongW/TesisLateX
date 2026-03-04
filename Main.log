@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  3 MAR 2026 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  3 MAR 2026 22:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1482,7 +1482,7 @@ or `spanish'. on input line 163.
 \openout2 = `portada.aux'.
 
  (portada.tex
-<Imagenes/logo_ULA.png, id=470, 226.8475pt x 307.1475pt>
+<Imagenes/logo_ULA.png, id=482, 226.8475pt x 307.1475pt>
 File: Imagenes/logo_ULA.png Graphic file (type png)
 <use Imagenes/logo_ULA.png>
 Package pdftex.def Info: Imagenes/logo_ULA.png  used on input line 11.
@@ -1633,69 +1633,60 @@ Cap\'{\i }tulo 2.
 
 
 
-] [5]
-<Imagenes/ojo.png, id=796, 2152.04pt x 1991.44pt>
-File: Imagenes/ojo.png Graphic file (type png)
-<use Imagenes/ojo.png>
-Package pdftex.def Info: Imagenes/ojo.png  used on input line 64.
-(pdftex.def)             Requested size: 320.46199pt x 296.54564pt.
+] [5] [6] [7]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
+5.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
-2.
- (C:\Users\Victor\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+(C:\Users\Victor\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[7 <./Imagenes/ojo.png>] [8] [9] [10]
-<Imagenes/dark_pupil.png, id=832, 935.74594pt x 694.84593pt>
+<Imagenes/ojo.png, id=817, 2152.04pt x 1991.44pt>
+File: Imagenes/ojo.png Graphic file (type png)
+<use Imagenes/ojo.png>
+Package pdftex.def Info: Imagenes/ojo.png  used on input line 110.
+(pdftex.def)             Requested size: 320.46199pt x 296.54564pt.
+
+[8] [9 <./Imagenes/ojo.png>] [10] [11] [12] [13]
+<Imagenes/dark_pupil.png, id=857, 935.74594pt x 694.84593pt>
 File: Imagenes/dark_pupil.png Graphic file (type png)
 <use Imagenes/dark_pupil.png>
-Package pdftex.def Info: Imagenes/dark_pupil.png  used on input line 205.
+Package pdftex.def Info: Imagenes/dark_pupil.png  used on input line 251.
 (pdftex.def)             Requested size: 274.6857pt x 203.97054pt.
+ [14 <./Imagenes/dark_pupil.png>] [15] [16] [17] [18] [19] [20]
+<Imagenes/rf_architecture.png, id=910, 2119.92pt x 1156.32pt>
+File: Imagenes/rf_architecture.png Graphic file (type png)
+<use Imagenes/rf_architecture.png>
+Package pdftex.def Info: Imagenes/rf_architecture.png  used on input line 473.
+(pdftex.def)             Requested size: 457.80486pt x 249.69788pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 474.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 474.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 474.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12 <./Imagenes/dark_pupil.png>] [13] [14] [15] [16] [17] [18]
-<Imagenes/rf_architecture.png, id=892, 2119.92pt x 1156.32pt>
-File: Imagenes/rf_architecture.png Graphic file (type png)
-<use Imagenes/rf_architecture.png>
-Package pdftex.def Info: Imagenes/rf_architecture.png  used on input line 427.
-(pdftex.def)             Requested size: 412.02156pt x 224.73161pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 428.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 428.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 428.
-) [19 <./Imagenes/rf_architecture.png>]
+) [21] [22 <./Imagenes/rf_architecture.png>]
 \openout2 = `Capitulo3.aux'.
 
  (Capitulo3.tex
 Cap\'{\i }tulo 3.
-[20
+[23
 
 
 
 
-] [21]
-<Imagenes/pc.jpg, id=911, 791.95876pt x 609.27625pt>
-File: Imagenes/pc.jpg Graphic file (type jpg)
-<use Imagenes/pc.jpg>
-Package pdftex.def Info: Imagenes/pc.jpg  used on input line 90.
-(pdftex.def)             Requested size: 320.46199pt x 246.5417pt.
- [22]
-<Imagenes/gc0308.png, id=920, 525.965pt x 402.50375pt>
+] [24] [25]
+<Imagenes/gc0308.png, id=942, 525.965pt x 402.50375pt>
 File: Imagenes/gc0308.png Graphic file (type png)
 <use Imagenes/gc0308.png>
-Package pdftex.def Info: Imagenes/gc0308.png  used on input line 112.
+Package pdftex.def Info: Imagenes/gc0308.png  used on input line 105.
 (pdftex.def)             Requested size: 274.6857pt x 210.21826pt.
- [23 <./Imagenes/pc.jpg>] [24 <./Imagenes/gc0308.png>] [25]
+ [26 <./Imagenes/gc0308.png>] [27] [28]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 18
-9.
+1.
 
 (C:\Users\Victor\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -1705,340 +1696,320 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-[26]
-Overfull \hbox (87.40506pt too wide) in paragraph at lines 227--228
-[]\T1/ptm/m/n/12 (-20) Métricas de eva-lua-ción: \T1/pcr/m/n/12 accuracy_score\
-T1/ptm/m/n/12 (-20) , \T1/pcr/m/n/12 classification_report\T1/ptm/m/n/12 (-20) 
-, \T1/pcr/m/n/12 confusion_matrix 
- []
-
-[27]
-<Imagenes/flow.png, id=950, 1289.81876pt x 4486.7625pt>
+[29]
+<Imagenes/flow.png, id=966, 1289.81876pt x 4486.7625pt>
 File: Imagenes/flow.png Graphic file (type png)
 <use Imagenes/flow.png>
-Package pdftex.def Info: Imagenes/flow.png  used on input line 251.
+Package pdftex.def Info: Imagenes/flow.png  used on input line 243.
 (pdftex.def)             Requested size: 163.56898pt x 568.99097pt.
- [28]
-Overfull \hbox (1.73616pt too wide) in paragraph at lines 275--275
+ [30]
+Overfull \hbox (1.73616pt too wide) in paragraph at lines 267--267
 \T1/pcr/m/n/12 eye_tracker_utils.py| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 267--267
 []|\T1/ptm/m/n/12 (+20) Archivos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 267--267
 \T1/pcr/m/n/12 _data.csv \T1/ptm/m/n/12 (+20) con
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
-[]|\T1/ptm/m/n/12 (+20) Dataset
+Underfull \hbox (badness 10000) in paragraph at lines 267--267
+[]|\T1/ptm/m/it/12 (+20) Dataset
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 267--267
 \T1/pcr/m/n/12 BIOMETRIC.csv
  []
 
 
-Overfull \hbox (1.73616pt too wide) in paragraph at lines 275--275
+Overfull \hbox (1.73616pt too wide) in paragraph at lines 267--267
 []|\T1/pcr/m/n/12 Analizar_Metricas.py| 
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 275--275
-[]|\T1/ptm/m/n/12 (+20) Dataset Bio-mé-tri-co
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 275--275
+Underfull \hbox (badness 2302) in paragraph at lines 267--267
 []|\T1/ptm/m/n/12 (+20) Gráficos de Ra-dar,
  []
 
-[29 <./Imagenes/flow.png>] [30]
-<Imagenes/voluntarios.png, id=967, 607.51968pt x 300.3722pt>
+[31 <./Imagenes/flow.png>] [32]
+<Imagenes/voluntarios.png, id=985, 607.51968pt x 300.3722pt>
 File: Imagenes/voluntarios.png Graphic file (type png)
 <use Imagenes/voluntarios.png>
-Package pdftex.def Info: Imagenes/voluntarios.png  used on input line 317.
+Package pdftex.def Info: Imagenes/voluntarios.png  used on input line 309.
 (pdftex.def)             Requested size: 412.02156pt x 203.7187pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 356.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 356.
- [31 <./Imagenes/voluntarios.png>] [32]
-<Imagenes/experimento.png, id=978, 709.90219pt x 398.99063pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 348.
+ [33 <./Imagenes/voluntarios.png>] [34]
+<Imagenes/experimento.png, id=995, 709.90219pt x 398.99063pt>
 File: Imagenes/experimento.png Graphic file (type png)
 <use Imagenes/experimento.png>
-Package pdftex.def Info: Imagenes/experimento.png  used on input line 382.
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 374.
 (pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
- [33 <./Imagenes/experimento.png>]
+ [35 <./Imagenes/experimento.png>]
 File: Imagenes/experimento.png Graphic file (type png)
 <use Imagenes/experimento.png>
-Package pdftex.def Info: Imagenes/experimento.png  used on input line 430.
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 422.
 (pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
- [34] [35] [36] [37] [38] [39]
+ [36] [37] [38] [39] [40] [41]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 611.
- [40]
-<Imagenes/preprocesamiento.png, id=1045, 823.57687pt x 352.31625pt>
+put line 603.
+ [42]
+<Imagenes/preprocesamiento.png, id=1062, 823.57687pt x 352.31625pt>
 File: Imagenes/preprocesamiento.png Graphic file (type png)
 <use Imagenes/preprocesamiento.png>
-Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 647.
+Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 639.
 
 (pdftex.def)             Requested size: 457.80486pt x 195.84425pt.
- [41]
-<Imagenes/calculo_vector_mirada.png, id=1052, 1072.75781pt x 258.9675pt>
+ [43]
+<Imagenes/calculo_vector_mirada.png, id=1070, 1072.75781pt x 258.9675pt>
 File: Imagenes/calculo_vector_mirada.png Graphic file (type png)
 <use Imagenes/calculo_vector_mirada.png>
 Package pdftex.def Info: Imagenes/calculo_vector_mirada.png  used on input line
- 667.
+ 659.
 (pdftex.def)             Requested size: 412.02156pt x 99.46371pt.
- [42 <./Imagenes/preprocesamiento.png> <./Imagenes/calculo_vector_mirada.png>]
-<Imagenes/correlacion.png, id=1060, 604.50844pt x 247.67531pt>
+ [44 <./Imagenes/preprocesamiento.png> <./Imagenes/calculo_vector_mirada.png>]
+<Imagenes/correlacion.png, id=1078, 604.50844pt x 247.67531pt>
 File: Imagenes/correlacion.png Graphic file (type png)
 <use Imagenes/correlacion.png>
-Package pdftex.def Info: Imagenes/correlacion.png  used on input line 697.
+Package pdftex.def Info: Imagenes/correlacion.png  used on input line 689.
 (pdftex.def)             Requested size: 412.02156pt x 168.81001pt.
- [43] [44 <./Imagenes/correlacion.png>] [45] [46] [47] [48]) [49]
+ [45] [46 <./Imagenes/correlacion.png>] [47] [48] [49] [50]) [51] [52]
 \openout2 = `Capitulo4.aux'.
 
  (Capitulo4.tex
 Cap\'{\i }tulo 4.
-[50
+[53
 
 
 
 
 ]
-<Imagenes/senal_filtrada.png, id=1131, 1337.99875pt x 1606.0pt>
+<Imagenes/senal_filtrada.png, id=1157, 1337.99875pt x 1606.0pt>
 File: Imagenes/senal_filtrada.png Graphic file (type png)
 <use Imagenes/senal_filtrada.png>
-Package pdftex.def Info: Imagenes/senal_filtrada.png  used on input line 66.
+Package pdftex.def Info: Imagenes/senal_filtrada.png  used on input line 71.
 (pdftex.def)             Requested size: 457.80486pt x 549.51257pt.
- [51] [52 <./Imagenes/senal_filtrada.png>]
-<Imagenes/eventos.png, id=1145, 1156.32pt x 578.16pt>
+ [54] [55 <./Imagenes/senal_filtrada.png>]
+<Imagenes/eventos.png, id=1172, 1156.32pt x 578.16pt>
 File: Imagenes/eventos.png Graphic file (type png)
 <use Imagenes/eventos.png>
-Package pdftex.def Info: Imagenes/eventos.png  used on input line 100.
+Package pdftex.def Info: Imagenes/eventos.png  used on input line 110.
 (pdftex.def)             Requested size: 434.91321pt x 217.45346pt.
- [53 <./Imagenes/eventos.png>]
-[54]
-<Imagenes/secuencia_principal.png, id=1160, 722.7pt x 505.89pt>
+ [56 <./Imagenes/eventos.png>]
+[57]
+<Imagenes/erar_original_mejorado.png, id=1186, 685.05937pt x 167.87718pt>
+File: Imagenes/erar_original_mejorado.png Graphic file (type png)
+<use Imagenes/erar_original_mejorado.png>
+Package pdftex.def Info: Imagenes/erar_original_mejorado.png  used on input lin
+e 187.
+(pdftex.def)             Requested size: 434.91321pt x 106.58032pt.
+<Imagenes/secuencia_principal.png, id=1189, 722.7pt x 505.89pt>
 File: Imagenes/secuencia_principal.png Graphic file (type png)
 <use Imagenes/secuencia_principal.png>
-Package pdftex.def Info: Imagenes/secuencia_principal.png  used on input line 1
-63.
+Package pdftex.def Info: Imagenes/secuencia_principal.png  used on input line 2
+07.
 (pdftex.def)             Requested size: 389.13692pt x 272.39688pt.
+ [58 <./Imagenes/erar_original_mejorado.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[55 <./Imagenes/secuencia_principal.png>] [56] [57]
-<Imagenes/vel_jerk.png, id=1206, 1606.0pt x 963.6pt>
+[59 <./Imagenes/secuencia_principal.png>] [60] [61]
+<Imagenes/vel_jerk.png, id=1240, 1606.0pt x 963.6pt>
 File: Imagenes/vel_jerk.png Graphic file (type png)
 <use Imagenes/vel_jerk.png>
-Package pdftex.def Info: Imagenes/vel_jerk.png  used on input line 295.
+Package pdftex.def Info: Imagenes/vel_jerk.png  used on input line 345.
 (pdftex.def)             Requested size: 412.02156pt x 247.20714pt.
- [58] [59 <./Imagenes/vel_jerk.png>]
-<Imagenes/Importancia_Discriminativa.png, id=1221, 1003.5894pt x 643.203pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[62] [63 <./Imagenes/vel_jerk.png>]
+<Imagenes/Importancia_Discriminativa.png, id=1255, 1003.5894pt x 643.203pt>
 File: Imagenes/Importancia_Discriminativa.png Graphic file (type png)
 <use Imagenes/Importancia_Discriminativa.png>
 Package pdftex.def Info: Imagenes/Importancia_Discriminativa.png  used on input
- line 348.
+ line 405.
 (pdftex.def)             Requested size: 412.02156pt x 264.06825pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[60] [61 <./Imagenes/Importancia_Discriminativa.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 441--441
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 503--503
 []|\T1/pcr/m/n/12 Pupil_Mean\T1/ptm/m/n/12 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 510--510
 []|\T1/pcr/m/n/12 Jerk_Max\T1/ptm/m/n/12 (+20) ,
  []
 
-[62]
-<Imagenes/radares_comparativos.png, id=1264, 1887.6924pt x 550.2156pt>
+[65 <./Imagenes/Importancia_Discriminativa.png>] [66]
+<Imagenes/radares_comparativos.png, id=1296, 1887.6924pt x 550.2156pt>
 File: Imagenes/radares_comparativos.png Graphic file (type png)
 <use Imagenes/radares_comparativos.png>
 Package pdftex.def Info: Imagenes/radares_comparativos.png  used on input line 
-514.
+582.
 (pdftex.def)             Requested size: 457.80486pt x 133.43132pt.
- [63 <./Imagenes/radares_comparativos.png>]
-<Imagenes/2d.png, id=1270, 1606.0pt x 1071.00125pt>
+ [67 <./Imagenes/radares_comparativos.png>]
+<Imagenes/2d.png, id=1303, 1606.0pt x 1071.00125pt>
 File: Imagenes/2d.png Graphic file (type png)
 <use Imagenes/2d.png>
-Package pdftex.def Info: Imagenes/2d.png  used on input line 534.
+Package pdftex.def Info: Imagenes/2d.png  used on input line 607.
 (pdftex.def)             Requested size: 219.74437pt x 146.53998pt.
-<Imagenes/3d.png, id=1271, 1606.0pt x 1147.28625pt>
+<Imagenes/3d.png, id=1304, 1606.0pt x 1147.28625pt>
 File: Imagenes/3d.png Graphic file (type png)
 <use Imagenes/3d.png>
-Package pdftex.def Info: Imagenes/3d.png  used on input line 542.
+Package pdftex.def Info: Imagenes/3d.png  used on input line 615.
 (pdftex.def)             Requested size: 219.74437pt x 156.97769pt.
- [64 <./Imagenes/2d.png> <./Imagenes/3d.png>]
-<Imagenes/varianza.png, id=1279, 1651.16875pt x 1172.38pt>
+ [68 <./Imagenes/2d.png> <./Imagenes/3d.png>]
+<Imagenes/varianza.png, id=1312, 1651.16875pt x 1172.38pt>
 File: Imagenes/varianza.png Graphic file (type png)
 <use Imagenes/varianza.png>
-Package pdftex.def Info: Imagenes/varianza.png  used on input line 566.
+Package pdftex.def Info: Imagenes/varianza.png  used on input line 644.
 (pdftex.def)             Requested size: 320.46199pt x 227.53088pt.
- [65]
-<Imagenes/pca_2d.png, id=1284, 470.50781pt x 300.3722pt>
+<Imagenes/pca_2d.png, id=1313, 470.50781pt x 300.3722pt>
 File: Imagenes/pca_2d.png Graphic file (type png)
 <use Imagenes/pca_2d.png>
-Package pdftex.def Info: Imagenes/pca_2d.png  used on input line 575.
+Package pdftex.def Info: Imagenes/pca_2d.png  used on input line 655.
 (pdftex.def)             Requested size: 219.74437pt x 140.28578pt.
-<Imagenes/pca_3d.png, id=1285, 1194.71344pt x 1029.8475pt>
+<Imagenes/pca_3d.png, id=1314, 1194.71344pt x 1029.8475pt>
 File: Imagenes/pca_3d.png Graphic file (type png)
 <use Imagenes/pca_3d.png>
-Package pdftex.def Info: Imagenes/pca_3d.png  used on input line 582.
+Package pdftex.def Info: Imagenes/pca_3d.png  used on input line 663.
 (pdftex.def)             Requested size: 219.74437pt x 189.41881pt.
- [66 <./Imagenes/varianza.png>]
-<Imagenes/tSNE.png, id=1293, 2364.835pt x 1901.1025pt>
+ [69 <./Imagenes/varianza.png>]
+<Imagenes/tSNE.png, id=1322, 2364.835pt x 1901.1025pt>
 File: Imagenes/tSNE.png Graphic file (type png)
 <use Imagenes/tSNE.png>
-Package pdftex.def Info: Imagenes/tSNE.png  used on input line 598.
+Package pdftex.def Info: Imagenes/tSNE.png  used on input line 684.
 (pdftex.def)             Requested size: 219.74437pt x 176.63245pt.
-<Imagenes/UMAP.png, id=1294, 2365.83875pt x 1901.1025pt>
+<Imagenes/UMAP.png, id=1323, 2365.83875pt x 1901.1025pt>
 File: Imagenes/UMAP.png Graphic file (type png)
 <use Imagenes/UMAP.png>
-Package pdftex.def Info: Imagenes/UMAP.png  used on input line 605.
+Package pdftex.def Info: Imagenes/UMAP.png  used on input line 691.
 (pdftex.def)             Requested size: 219.74437pt x 176.57443pt.
- [67 <./Imagenes/pca_2d.png> <./Imagenes/pca_3d.png>]
-Overfull \hbox (4.01506pt too wide) in paragraph at lines 625--633
+ [70 <./Imagenes/pca_2d.png> <./Imagenes/pca_3d.png>]
+Overfull \hbox (2.6949pt too wide) in paragraph at lines 714--722
  [][] 
  []
 
-[68 <./Imagenes/tSNE.png> <./Imagenes/UMAP.png>] [69]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[70]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[71]
-<Imagenes/matriz_5_sujetos.png, id=1339, 787.743pt x 715.2321pt>
+[71 <./Imagenes/tSNE.png> <./Imagenes/UMAP.png>] [72] [73] [74]
+<Imagenes/matriz_5_sujetos.png, id=1368, 787.743pt x 715.2321pt>
 File: Imagenes/matriz_5_sujetos.png Graphic file (type png)
 <use Imagenes/matriz_5_sujetos.png>
-Package pdftex.def Info: Imagenes/matriz_5_sujetos.png  used on input line 778.
+Package pdftex.def Info: Imagenes/matriz_5_sujetos.png  used on input line 877.
 
 (pdftex.def)             Requested size: 457.80486pt x 415.67526pt.
- [72]
-<Imagenes/matriz_10_sujetos.png, id=1344, 788.2248pt x 715.2321pt>
+ [75]
+<Imagenes/matriz_10_sujetos.png, id=1373, 788.2248pt x 715.2321pt>
 File: Imagenes/matriz_10_sujetos.png Graphic file (type png)
 <use Imagenes/matriz_10_sujetos.png>
-Package pdftex.def Info: Imagenes/matriz_10_sujetos.png  used on input line 785
+Package pdftex.def Info: Imagenes/matriz_10_sujetos.png  used on input line 885
 .
 (pdftex.def)             Requested size: 457.80486pt x 415.40242pt.
- [73 <./Imagenes/matriz_5_sujetos.png>]
-<Imagenes/matriz.png, id=1351, 788.2248pt x 715.2321pt>
+ [76 <./Imagenes/matriz_5_sujetos.png>]
+<Imagenes/matriz.png, id=1379, 788.2248pt x 715.2321pt>
 File: Imagenes/matriz.png Graphic file (type png)
 <use Imagenes/matriz.png>
-Package pdftex.def Info: Imagenes/matriz.png  used on input line 792.
+Package pdftex.def Info: Imagenes/matriz.png  used on input line 893.
 (pdftex.def)             Requested size: 457.80486pt x 415.40242pt.
- [74 <./Imagenes/matriz_10_sujetos.png>] [75 <./Imagenes/matriz.png>]
-<Imagenes/correccion_homografica.png, id=1363, 514.92375pt x 416.30531pt>
+ [77 <./Imagenes/matriz_10_sujetos.png>] [78 <./Imagenes/matriz.png>]
+<Imagenes/correccion_homografica.png, id=1391, 514.92375pt x 416.30531pt>
 File: Imagenes/correccion_homografica.png Graphic file (type png)
 <use Imagenes/correccion_homografica.png>
 Package pdftex.def Info: Imagenes/correccion_homografica.png  used on input lin
-e 817.
+e 924.
 (pdftex.def)             Requested size: 389.13692pt x 314.61667pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[76]
-<Imagenes/hm.png, id=1371, 925.7787pt x 534.798pt>
+[79] [80 <./Imagenes/correccion_homografica.png>]
+<Imagenes/hm.png, id=1407, 925.7787pt x 534.798pt>
 File: Imagenes/hm.png Graphic file (type png)
 <use Imagenes/hm.png>
-Package pdftex.def Info: Imagenes/hm.png  used on input line 851.
+Package pdftex.def Info: Imagenes/hm.png  used on input line 965.
 (pdftex.def)             Requested size: 389.13692pt x 224.79315pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[77 <./Imagenes/correccion_homografica.png>]
-<Imagenes/hm_5_puntos.png, id=1380, 1084.05pt x 650.43pt>
+ [81 <./Imagenes/hm.png>]
+<Imagenes/hm_5_puntos.png, id=1415, 1084.05pt x 650.43pt>
 File: Imagenes/hm_5_puntos.png Graphic file (type png)
 <use Imagenes/hm_5_puntos.png>
-Package pdftex.def Info: Imagenes/hm_5_puntos.png  used on input line 895.
+Package pdftex.def Info: Imagenes/hm_5_puntos.png  used on input line 1011.
 (pdftex.def)             Requested size: 389.13692pt x 233.47974pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[78 <./Imagenes/hm.png>]
-<Imagenes/mapeo_espiral.png, id=1391, 886.81313pt x 504.38437pt>
+<Imagenes/mapeo_espiral.png, id=1419, 886.81313pt x 504.38437pt>
 File: Imagenes/mapeo_espiral.png Graphic file (type png)
 <use Imagenes/mapeo_espiral.png>
-Package pdftex.def Info: Imagenes/mapeo_espiral.png  used on input line 954.
+Package pdftex.def Info: Imagenes/mapeo_espiral.png  used on input line 1071.
 (pdftex.def)             Requested size: 389.13692pt x 221.3295pt.
-
+[82]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[79 <./Imagenes/hm_5_puntos.png>] [80 <./Imagenes/mapeo_espiral.png>] [81]
-<Imagenes/COMPARATIVA_FINAL_MATRICES.png, id=1416, 1598.3715pt x 668.9793pt>
+[83 <./Imagenes/hm_5_puntos.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[84 <./Imagenes/mapeo_espiral.png>]
+<Imagenes/COMPARATIVA_FINAL_MATRICES.png, id=1445, 1598.3715pt x 668.9793pt>
 File: Imagenes/COMPARATIVA_FINAL_MATRICES.png Graphic file (type png)
 <use Imagenes/COMPARATIVA_FINAL_MATRICES.png>
 Package pdftex.def Info: Imagenes/COMPARATIVA_FINAL_MATRICES.png  used on input
- line 1077.
+ line 1196.
 (pdftex.def)             Requested size: 457.80486pt x 191.6104pt.
-
-[82 <./Imagenes/COMPARATIVA_FINAL_MATRICES.png>] [83]
-Overfull \hbox (0.19704pt too wide) in paragraph at lines 1267--1273
+ [85] [86 <./Imagenes/COMPARATIVA_FINAL_MATRICES.png>] [87]
+Overfull \hbox (0.74763pt too wide) in paragraph at lines 1394--1401
 []\T1/pcr/m/n/12 Jerk_Max\T1/ptm/m/n/12 (-20) : $\OML/ztmcm/m/it/12 ^^U \OT1/zt
 mcm/m/n/12 = \OMS/ztmcm/m/n/12 ^^@\OT1/ztmcm/m/n/12 2\OML/ztmcm/m/it/12 :\OT1/z
 tmcm/m/n/12 362$\T1/ptm/m/n/12 (-20) , $\OML/ztmcm/m/it/12 d \OT1/ztmcm/m/n/12 
 = \OMS/ztmcm/m/n/12 ^^@\OT1/ztmcm/m/n/12 0\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12
- 513$ \T1/ptm/m/n/12 (-20) (me-diano) ^^V el Jerk má-xi-mo au-men-ta un $\OT1/z
-tmcm/m/n/12 +11\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 18 %[]$\T1/ptm/m/n/12 (-20
-) ,
+ 513$ \T1/ptm/m/n/12 (-20) (me-diano) ^^V el \T1/ptm/m/it/12 (-20) Jerk \T1/ptm
+/m/n/12 (-20) má-xi-mo au-men-ta un $\OT1/ztmcm/m/n/12 +11\OML/ztmcm/m/it/12 :\
+OT1/ztmcm/m/n/12 18 %[]$\T1/ptm/m/n/12 (-20) ,
  []
 
-[84] [85]) [86]
+[88]) [89]
 \openout2 = `Capitulo5.aux'.
 
  (Capitulo5.tex
 Cap\'{\i }tulo 5.
-[87
+[90
 
 
 
 
-] [88] [89] [90] [91] [92] [93] [94] [95]
-<Imagenes/erar_original_mejorado.png, id=1550, 685.05937pt x 167.87718pt>
-File: Imagenes/erar_original_mejorado.png Graphic file (type png)
-<use Imagenes/erar_original_mejorado.png>
-Package pdftex.def Info: Imagenes/erar_original_mejorado.png  used on input lin
-e 190.
-(pdftex.def)             Requested size: 434.91321pt x 106.58032pt.
- [96 <./Imagenes/erar_original_mejorado.png>] [97]) [98] [99
+] [91] [92] [93] [94] [95] [96] [97] [98] [99]) [100] [101
 
 
 
 
-] [100]
+] [102]
 
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 217.
 
-[101] [102]
+[103] [104]
 \openout2 = `formulas.aux'.
 
- (formulas.tex [103
+ (formulas.tex [105
 
 
-] [104]
+] [106]
 Overfull \hbox (49.05228pt too wide) in paragraph at lines 90--91
 []\T1/ptm/m/n/12 (-20) Algoritmo pa-ra cuan-ti-fi-car la com-ple-ji-dad y auto-
 similaridad de una se-rie tem-po-ral $\OML/ztmcm/m/it/12 X\OT1/ztmcm/m/n/12 (1)
@@ -2046,7 +2017,7 @@ similaridad de una se-rie tem-po-ral $\OML/ztmcm/m/it/12 X\OT1/ztmcm/m/n/12 (1)
 m/m/n/12 (\OML/ztmcm/m/it/12 N\OT1/ztmcm/m/n/12 )$\T1/ptm/m/n/12 (-20) : 
  []
 
-[105] [106] [107] (Main.aux (portada.aux)
+[107] [108] [109] (Main.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 13.
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
@@ -2057,8 +2028,16 @@ LaTeX Info: Redefining \% on input line 13.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Main.out' has not changed.
-(rerunfilecheck)             Checksum: 29EE6B1DCE640FB9F2D092A2C389E831;26288.
+(rerunfilecheck)             Checksum: 6F2DA891FDB326C26F7A952580DBE850;27649.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Main.run.xml'.
 \openout1 = `Main.run.xml'.
 
@@ -2067,13 +2046,13 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 (\end occurred when \ifx on line 221 was incomplete)
 (\end occurred when \ifnum on line 221 was incomplete) 
 Here is how much of TeX's memory you used:
- 44677 strings out of 467871
- 889048 string characters out of 5417892
- 1713353 words of memory out of 5000000
- 71727 multiletter control sequences out of 15000+600000
- 763734 words of font info for 601 fonts, out of 8000000 for 9000
+ 44711 strings out of 467871
+ 889232 string characters out of 5417892
+ 1713229 words of memory out of 5000000
+ 71719 multiletter control sequences out of 15000+600000
+ 765878 words of font info for 626 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,94p,1437b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,94p,1196b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Victor/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Victo
 r/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
@@ -2090,9 +2069,9 @@ iKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Victor/AppData/Local/Programs/
 MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Victor/AppData/Local/Program
 s/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Victor/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Main.pdf (119 pages, 21032749 bytes).
+Output written on Main.pdf (121 pages, 19627977 bytes).
 PDF statistics:
- 1813 PDF objects out of 2073 (max. 8388607)
- 443 named destinations out of 1000 (max. 500000)
- 125575 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 1835 PDF objects out of 2073 (max. 8388607)
+ 449 named destinations out of 1000 (max. 500000)
+ 125594 words of extra memory for PDF output out of 128383 (max. 10000000)
 

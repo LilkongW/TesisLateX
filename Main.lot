@@ -2,19 +2,19 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Descripción funcional de los módulos de software del sistema.}}{30}{table.caption.13}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Caracterización demográfica y condiciones por participante.}}{32}{table.caption.15}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Descripción funcional de los módulos de software del sistema.}}{32}{table.caption.12}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Caracterización demográfica y condiciones por participante.}}{34}{table.caption.14}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Métricas finales de rendimiento del modelo YOLOv8n tras 80 épocas de entrenamiento.}}{54}{table.caption.23}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Estadísticas descriptivas del corpus de sacádicos ($n=2{,}157$, $N=14$).}}{56}{table.caption.25}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Parámetros de la \textit {Main Sequence} vs. rangos normativos.}}{56}{table.caption.26}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Taxonomía de métricas biométricas retenidas por \textit {Random Forest}.}}{62}{table.caption.29}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Métricas de rendimiento de los algoritmos de clustering no supervisado.}}{69}{table.caption.35}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Rendimiento de los clasificadores biométricos en el conjunto de prueba.}}{69}{table.caption.36}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Hiperparámetros del clasificador \textit {Random Forest} optimizados mediante búsqueda en rejilla (\textit {grid search}).}}{70}{table.caption.37}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Rendimiento del \textit {Random Forest} según el número de sujetos ($k$).}}{71}{table.caption.38}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Métricas de clasificación por sujeto — \textit {Random Forest} ($k=14$).}}{72}{table.caption.39}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Comparativa de precisión entre los tres protocolos de validación.}}{81}{table.caption.47}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Análisis estadístico de la deriva biométrica (ocho métricas).}}{83}{table.caption.49}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Métricas finales de rendimiento del modelo YOLOv8n tras 80 épocas de entrenamiento.}}{57}{table.caption.22}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}}{58}{table.caption.23}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Estadísticas descriptivas del corpus de sacádicos ($n=2{,}157$, $N=14$).}}{60}{table.caption.26}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Parámetros de la \textit {Main Sequence} vs. rangos normativos.}}{60}{table.caption.27}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Taxonomía de métricas biométricas retenidas por \textit {Random Forest}.}}{66}{table.caption.30}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Métricas de rendimiento de los algoritmos de \textit {clustering} no supervisado.}}{71}{table.caption.36}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Rendimiento de los clasificadores biométricos en el conjunto de prueba.}}{72}{table.caption.37}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Hiperparámetros del clasificador \textit {Random Forest} optimizados mediante búsqueda en rejilla (\textit {grid search}).}}{73}{table.caption.38}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Rendimiento del \textit {Random Forest} según el número de sujetos ($k$).}}{73}{table.caption.39}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Métricas de clasificación por sujeto — \textit {Random Forest} ($k=14$).}}{74}{table.caption.40}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Comparativa de precisión entre los tres protocolos de validación.}}{85}{table.caption.48}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Análisis estadístico de la deriva biométrica (ocho métricas).}}{87}{table.caption.50}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Comparación cuantitativa entre EAR Tradicional y EAR Propuesto.}}{96}{table.caption.50}%

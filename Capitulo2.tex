@@ -4,51 +4,97 @@
 % ===================================================================
 % 2.1 ANTECEDENTES
 % ===================================================================
+
 \section{Antecedentes teóricos de la investigación}
 
 El seguimiento ocular es una técnica que permite registrar y analizar los movimientos de los ojos, proporcionando información valiosa sobre cómo interactúan los individuos con su entorno visual. Esta tecnología ha sido ampliamente utilizada en diversos campos, como la neurociencia, la psicología, la investigación de la experiencia del usuario y el desarrollo de interfaces hombre-máquina.
 
 La física ha contribuido significativamente a este campo, aportando métodos cuantitativos para el análisis del movimiento ocular. Otras áreas del conocimiento también han desarrollado interés por comprender el fenómeno del movimiento ocular y su aplicación en el desarrollo científico.
 
-A continuación se presentan diversos artículos que constituyen la base teórica de la presente investigación. Estos trabajos sustentan la metodología empleada y las técnicas aplicadas.
+A continuación se presentan diversos artículos que constituyen la base teórica de la presente investigación. Se han estructurado detallando a sus autores, año de publicación, una descripción de la investigación, sus principales conclusiones vinculadas a este proyecto y las métricas más relevantes aportadas al campo.
 
-\subsection{Eye Aspect Ratio (EAR) para Detección de Somnolencia}
+\subsection{\textit{Eye Aspect Ratio} (EAR) para Detección de Somnolencia}
+\begin{itemize}
+	\item \textbf{Autores:} Dewi, Christine et al. \cite{dewi2022eye}
+	\item \textbf{Fecha:} 2022
+	\item \textbf{Descripción del trabajo:} Presenta un método innovador para detectar la somnolencia en conductores en tiempo real, basándose en la métrica geométrica conocida como Relación de Aspecto del Ojo (EAR), calculada a partir de puntos de referencia faciales (\textit{landmarks}).
+	\item \textbf{Conclusiones asociadas a esta investigación:} Este estudio demuestra la viabilidad de evaluar la apertura ocular sin un alto costo computacional de procesamiento de píxeles. En la presente tesis, este principio geométrico se toma como base y se expande formulando un EAR mejorado (muestreo denso) para aumentar la robustez ante ruido instrumental y ser utilizado como el mecanismo de selección (''clic'') para la interfaz del cursor.
+	\item \textbf{Métricas destacadas:} Determinaron que un umbral de EAR de 0.18 ofrece el mejor compromiso entre precisión y rendimiento algorítmico en la detección del estado del ojo.
+\end{itemize}
 
-El trabajo de Dewi et al. \cite{dewi2022eye} presenta un método innovador para detectar la somnolencia en conductores en tiempo real, basándose en la métrica conocida como Relación de Aspecto del Ojo (EAR), propuesta originalmente por Soukupová y Čech \cite{soukupova2016real}.
+\subsection{\textit{Introduction to Eye Tracking: A Hands-On Tutorial}}
+\begin{itemize}
+	\item \textbf{Autores:} Gao, Hong et al. \cite{gao2025eye_tracking_tutorial}
+	\item \textbf{Fecha:} 2025
+	\item \textbf{Descripción del trabajo:} Ofrece una guía accesible sobre los fundamentos del seguimiento ocular, combinando teoría y práctica para explicar el funcionamiento de cámaras infrarrojas y la interpretación de métricas oculares en interfaces humano-computadora.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Establece los estándares técnicos contemporáneos para la captura oculométrica. Su recomendación sobre las tasas de muestreo fundamenta la decisión arquitectónica de este trabajo de utilizar hardware (módulo GC0308) configurado a 120 FPS para extraer descriptores cinemáticos fiables.
+	\item \textbf{Métricas destacadas:} Señalan que una frecuencia mínima de 60 Hz es vital para detectar sacádicos básicos, pero recomiendan tasas $>100$ Hz para extraer derivadas cinemáticas de alta precisión (aceleración y \textit{jerk}).
+\end{itemize}
 
-Este estudio de Soukupová y Čech es considerado fundamental en la literatura de visión artificial, ya que marcó un cambio de paradigma en el análisis facial: abandonó el procesamiento intensivo de texturas y píxeles en favor de un modelo puramente geométrico basado en puntos de referencia (\textit{landmarks}). Esta abstracción permitió, por primera vez, ejecutar algoritmos de detección de parpadeo con alta precisión en hardware de recursos limitados (como sistemas embebidos), estableciendo el estándar de eficiencia que domina el campo hasta la actualidad.
+\subsection{\textit{Remote Photoplethysmography}}
+\begin{itemize}
+	\item \textbf{Autores:} Allado, Edem et al. \cite{allado2022remote}
+	\item \textbf{Fecha:} 2022
+	\item \textbf{Descripción del trabajo:} Evalúan la precisión de la fotopletismografía remota (rPPG) para medir la frecuencia respiratoria de forma no invasiva utilizando únicamente cámaras convencionales sin sensores físicos de contacto.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Demuestra que es factible y preciso capturar variables biomédicas fisiológicas sutiles de forma remota y con sensores ópticos genéricos. Esto valida la premisa metodológica de esta tesis de extraer micro-movimientos musculares del ojo y pupilares utilizando hardware accesible en lugar de equipos médicos especializados.
+	\item \textbf{Métricas destacadas:} La técnica rPPG demostró una correlación estadísticamente significativa con los métodos de contacto tradicionales de uso clínico-hospitalario.
+\end{itemize}
 
-La técnica se fundamenta en la identificación de 6 puntos de referencia faciales alrededor del contorno ocular. Matemáticamente, el EAR se calcula mediante la relación entre las distancias verticales y la distancia horizontal del ojo, tal como se expresa en la Ecuación \ref{eq:ear_original}:
+\subsection{\textit{AI in Medical Imaging Technology}}
+\begin{itemize}
+	\item \textbf{Autores:} National Center for Biotechnology Information (NCBI) \cite{ncbi2023ai}
+	\item \textbf{Fecha:} 2023
+	\item \textbf{Descripción del trabajo:} Una revisión exhaustiva sobre cómo la inteligencia artificial, específicamente las redes neuronales convolucionales (CNN) y redes GAN, están transformando el análisis y procesamiento de imágenes médicas.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Justifica la transición de los métodos clásicos de visión artificial (basados puramente en umbralización y morfología) a arquitecturas de aprendizaje profundo. Esta investigación adopta dicha filosofía al implementar YOLOv8 para la detección pupilar, logrando inmunidad ante pestañeos y pérdidas de seguimiento que afectaban algoritmos anteriores.
+	\item \textbf{Métricas destacadas:} Reportan aumentos drásticos en la precisión y reducciones significativas en los falsos negativos en tareas de segmentación visual respecto a métodos convencionales.
+\end{itemize}
 
-\begin{equation}
-	EAR = \frac{||p_2 - p_6|| + ||p_3 - p_5||}{2 \cdot ||p_1 - p_4||}
-	\label{eq:ear_original}
-\end{equation}
+\subsection{\textit{Abnormal Ocular Movement in Multiple-System Atrophy}}
+\begin{itemize}
+	\item \textbf{Autores:} Zhou, Hongyu et al. \cite{zhou2024abnormal}
+	\item \textbf{Fecha:} 2024
+	\item \textbf{Descripción del trabajo:} Compara los movimientos oculares entre pacientes con atrofia multisistémica y enfermedad de Parkinson para identificar factores diferenciadores en la dinámica neurológica visual.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Confirma empíricamente que la micro-dinámica del ojo contiene información idiosincrásica e indicativa del estado del sistema nervioso. En nuestra investigación, este concepto se traslada al entorno de biometría: la dinámica de movimiento (cómo el cerebro controla el ojo) posee propiedades suficientemente únicas como para emplearse en reconocimiento individual.
+	\item \textbf{Métricas destacadas:} Utilizaron las alteraciones en la velocidad máxima sacádica y la precisión espacial como marcadores (biomarcadores) efectivos para el diagnóstico.
+\end{itemize}
 
-Donde $p_1$ y $p_4$ corresponden a las comisuras (extremos horizontales), mientras que los pares $(p_2, p_6)$ y $(p_3, p_5)$ representan los puntos del párpado superior e inferior respectivamente. El numerador calcula el promedio de la apertura vertical, y el denominador normaliza esta medida respecto al ancho del ojo, haciendo la métrica invariante a la escala de la imagen y a la distancia del usuario.
+\subsection{Aplicación de la convolución de matrices al filtrado de imágenes}
+\begin{itemize}
+	\item \textbf{Autores:} Giménez-Palomares, Fernando et al. \cite{gimenez2016aplicacion}
+	\item \textbf{Fecha:} 2016
+	\item \textbf{Descripción del trabajo:} Aborda el uso analítico de la convolución de matrices como herramienta matemática esencial en el procesamiento digital de imágenes, explicando cómo operan los \textit{kernels} para tareas como suavizado o detección de bordes.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Proporciona la base teórica matricial que se implementa en la etapa de preprocesamiento de esta tesis, fundamentando la aplicación de operaciones de suavizado (como el filtro Gaussiano y CLAHE) antes de someter la imagen infrarroja al modelo de segmentación de pupila.
+	\item \textbf{Métricas destacadas:} Demostraciones matemáticas de la conservación de información estructural al emplear \textit{kernels} de convolución dimensionalmente adaptados.
+\end{itemize}
 
-En su estudio aplicado, Dewi et al. \cite{dewi2022eye} concluyen que un umbral de EAR de 0.18 ofrece el mejor compromiso entre precisión y rendimiento. Este método tiene un alto potencial para sistemas de seguridad vial en tiempo real, aunque, como se discutirá en el Capítulo 5, la fórmula original presenta limitaciones de estabilidad ante ruido de alta frecuencia que esta tesis busca mitigar mediante una propuesta geométrica densa.
+\subsection{\textit{Analysis of eye-tracking experiments performed on a Tobii T60}}
+\begin{itemize}
+	\item \textbf{Autores:} Weigle, Chris y Banks, David C. \cite{weigle2008analysis}
+	\item \textbf{Fecha:} 2008
+	\item \textbf{Descripción del trabajo:} Analizan el rendimiento, la exactitud y las limitaciones prácticas de un dispositivo comercial de \textit{eye tracking} (Tobii T60) de grado de investigación.
+	\item \textbf{Conclusiones asociadas a esta investigación:} Los autores advierten que, incluso en equipos altamente especializados y costosos, la precisión de los datos se degrada por factores no controlados como los pequeños movimientos de la cabeza o la luz ambiental. Esto fundamenta las limitaciones de la homografía estática experimentadas en el Capítulo 4 de esta tesis y justifica la necesidad de utilizar un entorno de captura \textit{head-mounted}.
+	\item \textbf{Métricas destacadas:} Evaluación en frecuencia nominal de 60 Hz y cuantificación de los márgenes de error de proyección espacial introducidos por variaciones de paralaje.
+\end{itemize}
 
-\subsection{Introduction to Eye Tracking: A Hands-On Tutorial}
-Gao et al. \cite{gao2025eye_tracking_tutorial} ofrecen una guía accesible sobre los fundamentos del seguimiento ocular. Combina teoría y práctica para facilitar la comprensión de conceptos clave como el funcionamiento de los dispositivos (cámaras infrarrojas), métricas comunes (fijaciones, sacádicos) y su interpretación en contextos como la interacción humano-computadora.
+\subsection{\textit{The main sequence, a tool for studying human eye movements}}
+\begin{itemize}
+	\item \textbf{Autores:} Bahill, A. Terry; Clark, Michael R. y Stark, Lawrence \cite{bahill1975}
+	\item \textbf{Fecha:} 1975
+	\item \textbf{Descripción del trabajo:} Trabajo fundacional clásico en la fisiología ocular que describe matemáticamente la relación exponencial y determinista entre la amplitud angular de un movimiento sacádico y su velocidad pico (\textit{Main Sequence}).
+	\item \textbf{Conclusiones asociadas a esta investigación:} Constituye la ley neurofisiológica central sobre la cual este proyecto valida la calidad de su señal biométrica. Ajustar los datos al modelo exponencial de Bahill asegura rigurosamente que las trayectorias capturadas con la cámara de bajo costo obedecen a la biomecánica ocular genuina y no a artefactos de cuantificación digital.
+	\item \textbf{Métricas destacadas:} Establece matemáticamente que la velocidad de saturación asintótica ($V_{sat}$) se encuentra típicamente en el intervalo fisiológico de 400 a 800 °/s, con una constante de curvatura ($C$) de 10° a 20°.
+\end{itemize}
 
-\subsection{Remote Photoplethysmography}
-Allado et al. \cite{allado2022remote} evalúan la precisión de la fotopletismografía remota (rPPG) para medir la frecuencia respiratoria de forma no invasiva utilizando cámaras convencionales. La rPPG demostró una correlación significativa con métodos tradicionales, evitando el uso de sensores físicos.
+\subsection{\textit{Biometric identification via an oculomotor plant mathematical model}}
+\begin{itemize}
+	\item \textbf{Autores:} Komogortsev, Oleg V. et al. \cite{komogortsev2010}
+	\item \textbf{Fecha:} 2010
+	\item \textbf{Descripción del trabajo:} Propone y evalúa el uso de movimientos oculares como firma biométrica conductual, utilizando un modelo matemático de la planta oculomotora para extraer características anatómicas y neurológicas (como inercia y tensión muscular).
+	\item \textbf{Conclusiones asociadas a esta investigación:} Este artículo representa el pilar conceptual fundamental para el objetivo biométrico de esta tesis. Valida científicamente que los factores musculares y neurológicos detrás del movimiento son únicos e irreplicables entre individuos, lo que justifica de manera directa nuestra estrategia de clasificar vectores multidimensionales (como el \textit{Jerk} y morfología) mediante algoritmos como \textit{Random Forest}.
+	\item \textbf{Métricas destacadas:} Documentan tasas de identificación correcta (exactitud) que oscilan entre el 70\% y el 95\% en cohortes de usuarios utilizando biometría oculomotora. Estos valores se emplean en nuestra investigación como referencia estándar para validar la exactitud del 82.6\% lograda.
+\end{itemize}
 
-\subsection{AI in Medical Imaging Technology}
-Según estudios recientes \cite{ncbi2023ai}, la inteligencia artificial está transformando la imagen médica. Destacan el uso de redes neuronales convolucionales (CNN) y redes generativas antagónicas (GAN) para mejorar la precisión en la detección de anomalías.
-
-\subsection{Abnormal Ocular Movement in Multiple-System Atrophy}
-Zhou et al. \cite{zhou2024abnormal} comparan movimientos oculares en pacientes con atrofia multisistémica y enfermedad de Parkinson. Hallaron que las alteraciones en la velocidad y precisión de los sacádicos voluntarios, así como el nistagmo vertical, son marcadores potenciales para el diagnóstico diferencial.
-
-\subsection{Aplicación de la convolución de matrices}
-Giménez et al. \cite{gimenez2016aplicacion} abordan la convolución de matrices como herramienta fundamental en el procesamiento de imágenes. Explican cómo los kernels de convolución permiten aplicar filtros (suavizado, detección de bordes) esenciales para las CNN.
-
-\subsection{Analysis of eye-tracking experiments on Tobii T60}
-Weigle et al. \cite{weigle2008analysis} analizan el desempeño del dispositivo Tobii T60. Los resultados muestran que proporciona datos útiles para estudios de visualización, aunque su exactitud puede verse afectada por movimientos de cabeza y condiciones ambientales, sugiriendo la necesidad de una calibración cuidadosa.
-
-La revisión bibliográfica expuesta evidencia el vacío existente en soluciones de bajo costo, nicho que esta investigación pretende ocupar, integrando fundamentos matemáticos, principios físicos y avances computacionales.
-
+La revisión bibliográfica expuesta evidencia tanto las sólidas bases matemáticas y neurológicas del movimiento ocular, como el vacío tecnológico existente en soluciones de identificación de bajo costo, nicho que esta investigación pretende ocupar integrando principios físicos y avances computacionales.
 
 % ===================================================================
 % 2.2 BASES CONCEPTUALES (Anatomía y Movimientos básicos)
@@ -62,7 +108,7 @@ El ojo es un órgano que permite percibir la luz, convirtiéndola en señales el
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Imagenes/ojo.png}
-	\caption[Anatomía del ojo humano.]{Imagen descriptiva del ojo humano.}
+	\caption[Anatomía del ojo humano.]{Imagen descriptiva de los músculos que mueven ojo humano.}
 	\label{fig:ojo_anatomia}
 \end{figure}
 
@@ -83,18 +129,18 @@ Según Cárdenas \cite{cardenas2024}, las partes principales son:
 
 \subsection{Movimientos oculares básicos}
 
-El sistema oculomotor permite diversos tipos de movimientos, cada uno con funciones específicas \cite{duchowski2017}:
+Según Duchowski \cite{duchowski2017}, el sistema oculomotor humano ejecuta diversos tipos de movimientos, cada uno orientado a cumplir funciones visuales y cognitivas específicas. El autor clasifica estos comportamientos fundamentales de la siguiente manera:
 
 \subsubsection{Fijaciones}
-Son períodos durante los cuales el ojo permanece relativamente estático sobre un punto de interés, permitiendo la adquisición de información visual detallada. Típicamente duran entre 200 y 400 ms.
+Duchowski describe las fijaciones como períodos durante los cuales el ojo permanece relativamente estático sobre un punto de interés, lo que permite la adquisición de información visual detallada. De acuerdo con su análisis, estos eventos tienen típicamente una duración que oscila entre 200 y 400 ms.
 
 \subsubsection{Sacádicos}
-Movimientos rápidos y balísticos que redirigen la fóvea hacia un nuevo objetivo visual. Son los movimientos más veloces del cuerpo humano, alcanzando velocidades de hasta 900°/s.
+El autor señala que los sacádicos son movimientos rápidos y balísticos cuya función principal es redirigir la fóvea hacia un nuevo objetivo visual. Constituyen los movimientos más veloces del cuerpo humano, pudiendo alcanzar velocidades de hasta 900°/s.
 
-\subsubsection{Movimientos de seguimiento suave (Smooth Pursuit)}
-Permiten al ojo seguir un objeto en movimiento, manteniendo su imagen en la fóvea. Su velocidad máxima es de aproximadamente 30°/s.
+\subsubsection{Movimientos de seguimiento suave (\textit{Smooth Pursuit})}
+Finalmente, respecto a los movimientos de seguimiento suave, Duchowski explica que estos permiten al ojo rastrear un objeto en movimiento continuo para mantener su imagen estabilizada en la fóvea. A diferencia de los sacádicos, este tipo de movimiento está limitado a una velocidad máxima fisiológica de aproximadamente 30°/s.
 
-\subsection{La secuencia principal (Main Sequence)}
+\subsection{La secuencia principal (\textit{Main Sequence})}
 
 Bahill et al. \cite{bahill1975} establecieron una relación fundamental conocida como la secuencia principal (\textit{Main Sequence}), que describe la relación matemática y determinista entre la amplitud angular de un movimiento sacádico y su velocidad pico. Esta relación modela el comportamiento balístico del ojo mediante la siguiente expresión exponencial:
 
@@ -105,10 +151,10 @@ Bahill et al. \cite{bahill1975} establecieron una relación fundamental conocida
 
 donde los parámetros tienen la siguiente interpretación física:
 \begin{itemize}
-	\item $V_{\text{max}}$ es la velocidad pico alcanzada durante el movimiento (en °/s).
-	\item $A$ es la amplitud angular total del desplazamiento (en grados).
-	\item $V_{\text{sat}}$ es la velocidad de saturación asintótica ($\approx$ 400-800 °/s en adultos sanos). Este valor representa el límite biomecánico máximo de contracción de los músculos extraoculares.
-	\item $C$ es la constante de forma ($\approx$ 10°-20°). Este parámetro define la curvatura de la función y delimita la transición entre movimientos pequeños y grandes.
+	\item $V_{\text{max}}$: es la velocidad pico alcanzada durante el movimiento (en °/s).
+	\item $A$: es la amplitud angular total del desplazamiento (en grados).
+	\item $V_{\text{sat}}$: es la velocidad de saturación asintótica ($\approx$ 400-800 °/s en adultos sanos). Este valor representa el límite biomecánico máximo de contracción de los músculos extraoculares.
+	\item $C$: es la constante de forma ($\approx$ 10°-20°). Este parámetro define la curvatura de la función y delimita la transición entre movimientos pequeños y grandes.
 \end{itemize}
 
 Desde el punto de vista dinámico, esta ecuación revela dos regímenes de comportamiento del sistema oculomotor:
@@ -126,7 +172,7 @@ Esta ley neurofisiológica es fundamental no solo para describir la cinemática 
 
 \subsection{Tecnologías de seguimiento ocular}
 
-Los sistemas de seguimiento ocular (eye trackers) emplean diversas tecnologías para registrar la posición y el movimiento de los ojos. La mayoría de los dispositivos modernos utilizan cámaras que operan en el espectro infrarrojo cercano (NIR), específicamente entre 850 nm y 940 nm, longitudes de onda imperceptibles para el ojo humano pero que permiten una captura eficiente en diferentes condiciones de iluminación.
+Los sistemas de seguimiento ocular (\textit{eye trackers}) emplean diversas tecnologías para registrar la posición y el movimiento de los ojos. La mayoría de los dispositivos modernos utilizan cámaras que operan en el espectro infrarrojo cercano (NIR), específicamente entre 850 nm y 940 nm, longitudes de onda imperceptibles para el ojo humano pero que permiten una captura eficiente en diferentes condiciones de iluminación.
 
 \subsubsection{Clasificación según el contacto con el usuario}
 
@@ -141,9 +187,9 @@ Los sistemas de seguimiento ocular (eye trackers) emplean diversas tecnologías 
 Los sistemas VOG pueden ser:
 
 \begin{itemize}
-	\item \textbf{Montados en cabeza (head-mounted):} Cámaras integradas en gafas o cascos, permitiendo movilidad total del usuario. Ideales para estudios en ambientes naturales.
+	\item \textbf{Montados en cabeza (\textit{head-mounted}):} Cámaras integradas en gafas o cascos, permitiendo movilidad total del usuario. Ideales para estudios en ambientes naturales.
 	
-	\item \textbf{Remotos (remote):} Cámaras fijas ubicadas frente al usuario, típicamente integradas en monitores. Requieren que el usuario mantenga la cabeza relativamente estable pero ofrecen mayor comodidad para tareas frente a pantallas.
+	\item \textbf{Remotos (\textit{remote}):} Cámaras fijas ubicadas frente al usuario, típicamente integradas en monitores. Requieren que el usuario mantenga la cabeza relativamente estable pero ofrecen mayor comodidad para tareas frente a pantallas.
 \end{itemize}
 
 \subsection{Fundamentos de la captura por video}
@@ -166,7 +212,7 @@ Para un sistema de seguimiento ocular efectivo, las cámaras deben cumplir con:
 
 \subsection{Preprocesamiento de la señal}
 
-Las imágenes capturadas requieren una serie de transformaciones para extraer información útil sobre la posición ocular. Este pipeline de procesamiento incluye:
+Las imágenes capturadas requieren una serie de transformaciones para extraer información útil sobre la posición ocular. Estas series de pasos \textit{ó pipeline} de procesamiento incluye:
 
 \subsubsection{Conversión a escala de grises}
 La mayoría de algoritmos de seguimiento ocular operan sobre imágenes monocromáticas. La conversión se realiza mediante una combinación ponderada de los canales RGB basada en la percepción luminosa humana:
@@ -197,8 +243,8 @@ donde $x[i]$ es la señal original, $y[i]$ la señal suavizada, y $c_k$ son los 
 
 La principal ventaja de este enfoque radica en su capacidad para preservar la forma de la onda (\textit{waveform preservation}). A diferencia de los filtros de media móvil, que actúan como filtros paso bajo agresivos y tienden a atenuar la amplitud de los picos (reduciendo artificialmente la velocidad máxima medida) y ensanchar el ancho temporal de los eventos, el filtro Savitzky-Golay mantiene fielmente los momentos estadísticos de orden superior de la señal. Esto resulta crítico para el análisis de movimientos sacádicos, donde la precisión en la detección de la velocidad pico y la aceleración es prioritaria frente a la simple reducción de ruido estocástico.
 
-\subsubsection{Método de la pupila oscura (Dark Pupil)}
-Esta técnica utiliza iluminación infrarroja fuera del eje óptico de la cámara (off-axis illumination). La retina absorbe la luz infrarroja, resultando en una pupila que aparece oscura en la imagen, mientras que la esclera y el iris reflejan la luz. Este alto contraste facilita la segmentación automática de la pupila mediante algoritmos de detección de contornos o ajuste de elipses.
+\subsubsection{Método de la pupila oscura (\textit{Dark Pupil})}
+Esta técnica utiliza iluminación infrarroja fuera del eje óptico de la cámara (\textit{off-axis illumination}). La retina absorbe la luz infrarroja, resultando en una pupila que aparece oscura en la imagen, mientras que la esclera y el iris reflejan la luz. Este alto contraste facilita la segmentación automática de la pupila mediante algoritmos de detección de contornos o ajuste de elipses.
 
 \begin{figure}[h]
 	\centering
@@ -241,7 +287,7 @@ Investigaciones clásicas como \cite{beatty1982} establecen que la dilatación p
 
 En este estudio, se analiza la velocidad máxima de cambio del diámetro pupilar (\textit{Pupil Velocity}, medida en mm/s) como una métrica de la reactividad del sistema nervioso del individuo. Esta característica temporal, sumada al análisis de la amplitud de las fluctuaciones pupilares, aporta información valiosa para la discriminación entre sujetos, especialmente cuando se combina con características de los movimientos sacádicos.
 
-\subsection{Análisis de la calidad del movimiento: Jerk y suavidad}
+\subsection{Análisis de la calidad del movimiento: \textit{Jerk} y suavidad}
 
 Para evaluar la eficiencia y fluidez del control motor ocular, se emplea el concepto físico de \textit{Jerk} (también llamado sobreaceleración o tirón), definido formalmente como la derivada temporal de la aceleración, o equivalentemente, la tercera derivada de la posición respecto al tiempo:
 
@@ -251,7 +297,7 @@ Para evaluar la eficiencia y fluidez del control motor ocular, se emplea el conc
 
 donde $x(t)$ es la posición angular del ojo en el tiempo $t$, y $a(t)$ es la aceleración.
 
-El sistema nervioso humano optimiza los movimientos voluntarios para minimizar el Jerk, logrando trayectorias suaves y energéticamente eficientes. Un índice elevado de Jerk o una baja suavidad (\textit{smoothness}) en la transición de velocidades durante un sacádico puede indicar:
+El sistema nervioso humano optimiza los movimientos voluntarios para minimizar el \textit{Jerk}, logrando trayectorias suaves y energéticamente eficientes. Un índice elevado de \textit{Jerk} o una baja suavidad (\textit{smoothness}) en la transición de velocidades durante un sacádico puede indicar:
 
 \begin{itemize}
 	\item Fatiga muscular o neurológica
@@ -260,13 +306,13 @@ El sistema nervioso humano optimiza los movimientos voluntarios para minimizar e
 	\item Efectos de sustancias psicoactivas o medicamentos
 \end{itemize}
 
-Para cuantificar la suavidad, se utiliza comúnmente el logaritmo de la magnitud adimensional del Jerk (Log Dimensionless Jerk, LDLJ), que permite comparaciones entre movimientos de diferentes amplitudes y duraciones.
+Para cuantificar la suavidad, se utiliza comúnmente el logaritmo de la magnitud adimensional del \textit{Jerk} (\textit{Log Dimensionless Jerk}, LDLJ), que permite comparaciones entre movimientos de diferentes amplitudes y duraciones.
 
 \subsection{Análisis de señales no lineales y complejidad fractal}
 
 Los movimientos oculares exhiben comportamientos que no pueden ser descritos completamente por la estadística lineal tradicional (media, varianza, correlación), presentando estructuras caóticas y propiedades fractales que reflejan la complejidad del sistema de control neuromuscular.
 
-Para cuantificar esta complejidad intrínseca, se utiliza la Dimensión Fractal de Higuchi (Higuchi Fractal Dimension, HFD).
+Para cuantificar esta complejidad intrínseca, se utiliza la Dimensión Fractal de Higuchi (\textit{Higuchi Fractal Dimension}, HFD).
 
 Propuesto por Higuchi \cite{higuchi1988}, este algoritmo calcula la rugosidad o complejidad geométrica de una serie temporal sin requerir que la señal sea estacionaria. El método construye múltiples subsecuencias de la señal original con diferentes intervalos de tiempo y calcula la longitud de curva de cada una.
 
@@ -312,7 +358,7 @@ El análisis de los datos oculométricos requiere una caracterización inicial m
 
 \subsection{Análisis Discriminante Lineal (LDA)}
 
-El Análisis Discriminante Lineal (Linear Discriminant Analysis, LDA) es una técnica estadística de aprendizaje supervisado utilizada para la reducción de dimensionalidad y la clasificación de patrones. Su propósito es proyectar un conjunto de datos de alta dimensión ($d$ características) a un subespacio de menor dimensión ($k$ dimensiones, donde $k < d$), maximizando la separabilidad lineal entre las distintas clases.
+El Análisis Discriminante Lineal (\textit{Linear Discriminant Analysis}, LDA) es una técnica estadística de aprendizaje supervisado utilizada para la reducción de dimensionalidad y la clasificación de patrones. Su propósito es proyectar un conjunto de datos de alta dimensión ($d$ características) a un subespacio de menor dimensión ($k$ dimensiones, donde $k < d$), maximizando la separabilidad lineal entre las distintas clases.
 
 A diferencia del Análisis de Componentes Principales (PCA), que es un método no supervisado centrado en maximizar la varianza total de los datos sin considerar las etiquetas de clase, el LDA busca explícitamente modelar la diferencia entre las clases. Para lograr esto, el algoritmo maximiza el Criterio de Fisher, una función objetivo que busca simultáneamente dos metas:
 
@@ -333,7 +379,7 @@ El resultado es una transformación lineal que preserva la información discrimi
 
 \subsection{Máquinas de Vectores de Soporte (SVM)}
 
-Las Máquinas de Vectores de Soporte (Support Vector Machines, SVM) constituyen un conjunto de algoritmos de aprendizaje supervisado desarrollados por Vapnik \cite{vapnik1995}, fundamentados en la teoría del aprendizaje estadístico y la minimización del riesgo estructural. 
+Las Máquinas de Vectores de Soporte (\textit{Support Vector Machines}, SVM) constituyen un conjunto de algoritmos de aprendizaje supervisado desarrollados por Vapnik \cite{vapnik1995}, fundamentados en la teoría del aprendizaje estadístico y la minimización del riesgo estructural. 
 
 El objetivo central de una SVM es encontrar el hiperplano óptimo de separación en un espacio multidimensional. Este hiperplano se elige de tal manera que maximice el margen entre las clases, entendiendo el margen como la distancia geométrica entre la frontera de decisión y los puntos de entrenamiento más cercanos de cada clase, a los cuales se les denomina vectores de soporte.
 
@@ -349,9 +395,9 @@ El problema de optimización busca maximizar el margen, lo cual equivale a minim
 	y_i(w^T x_i + b) \geq 1, \quad \forall i
 \end{equation}
 
-\subsubsection{Kernel RBF para datos no lineales}
+\subsubsection{\textit{Kernel} RBF para datos no lineales}
 
-Debido a que los datos biométricos y oculares frecuentemente presentan fronteras de decisión complejas y no lineales, este trabajo implementa SVM utilizando el truco del kernel, específicamente la Función de Base Radial (Radial Basis Function, RBF):
+Debido a que los datos biométricos y oculares frecuentemente presentan fronteras de decisión complejas y no lineales, este trabajo implementa SVM utilizando el truco del \textit{kernel}, específicamente la Función de Base Radial (\textit{Radial Basis Function}, RBF):
 
 \begin{equation}
 	K(x_i, x_j) = \exp\left(-\gamma ||x_i - x_j||^2\right)
@@ -359,19 +405,19 @@ Debido a que los datos biométricos y oculares frecuentemente presentan frontera
 
 donde $\gamma$ es un hiperparámetro que controla la influencia de cada vector de soporte.
 
-Esta técnica matemática permite mapear implícitamente los vectores de entrada originales a un espacio de características de mayor (incluso infinita) dimensión donde las clases se vuelven linealmente separables. Esto dota al modelo de la capacidad para capturar relaciones no lineales complejas en la dinámica ocular sin incurrir en un costo computacional prohibitivo, ya que el cálculo se realiza mediante productos internos en el espacio original a través de la función kernel.
+Esta técnica matemática permite mapear implícitamente los vectores de entrada originales a un espacio de características de mayor (incluso infinita) dimensión donde las clases se vuelven linealmente separables. Esto dota al modelo de la capacidad para capturar relaciones no lineales complejas en la dinámica ocular sin incurrir en un costo computacional prohibitivo, ya que el cálculo se realiza mediante productos internos en el espacio original a través de la función \textit{kernel}.
 
-\subsection{Random Forest (Bosque Aleatorio)}
+\subsection{\textit{Random Forest} (Bosque Aleatorio)}
 \label{subsec:random_forest}
 
-Random Forest es un algoritmo de aprendizaje conjunto (\textit{ensemble learning}) diseñado para tareas de clasificación y regresión, propuesto originalmente por Breiman \cite{breiman2001}. Su funcionamiento se basa en la construcción de una colección de múltiples clasificadores base, específicamente árboles de decisión, durante la etapa de entrenamiento, para luego combinar sus predicciones mediante votación.
+\textit{Random Forest} es un algoritmo de aprendizaje conjunto (\textit{ensemble learning}) diseñado para tareas de clasificación y regresión, propuesto originalmente por Breiman \cite{breiman2001}. Su funcionamiento se basa en la construcción de una colección de múltiples clasificadores base, específicamente árboles de decisión, durante la etapa de entrenamiento, para luego combinar sus predicciones mediante votación.
 
 \subsubsection{Principios fundamentales}
 
 La robustez del algoritmo radica en combinar dos técnicas complementarias:
 
 \begin{enumerate}
-	\item \textbf{Bagging (Bootstrap Aggregating):} Para construir cada árbol, se genera una muestra de entrenamiento distinta mediante un muestreo con reemplazo (\textit{bootstrap sampling}) del conjunto de datos original. Esto significa que cada árbol se entrena con aproximadamente el 63.2\% de las muestras únicas, mientras que el resto (out-of-bag samples) pueden usarse para validación interna.
+	\item \textbf{\textit{Bagging} (\textit{Bootstrap Aggregating}):} Para construir cada árbol, se genera una muestra de entrenamiento distinta mediante un muestreo con reemplazo (\textit{bootstrap sampling}) del conjunto de datos original. Esto significa que cada árbol se entrena con aproximadamente el 63.2\% de las muestras únicas, mientras que el resto (\textit{out-of-bag samples}) pueden usarse para validación interna.
 	
 	\item \textbf{Selección aleatoria de características:} En cada nodo de decisión del árbol, el algoritmo no evalúa todas las $d$ variables posibles para determinar la mejor partición, sino únicamente un subconjunto aleatorio de $\sqrt{d}$ características (para clasificación) o $d/3$ (para regresión). Esta aleatorización fuerza a los árboles a explorar diferentes aspectos de los datos.
 \end{enumerate}
@@ -392,11 +438,11 @@ Donde:
 	\item $p(i|t)$ es la probabilidad relativa de la clase $i$ en el nodo $t$.
 \end{itemize}
 
-Un índice de Gini igual a 0 indica un nodo puro (todos los elementos pertenecen a la misma clase), mientras que un valor cercano a 1 indica una distribución aleatoria de clases. El algoritmo busca, en cada paso, la característica y el punto de corte que maximicen la reducción de la impureza total, permitiendo así que el modelo aprenda los patrones más discriminativos de las señales oculomotoras.
+Un índice de Gini igual a cero indica un nodo puro (todos los elementos pertenecen a la misma clase), mientras que un valor cercano a uno indica una distribución aleatoria de clases. El algoritmo busca, en cada paso, la característica y el punto de corte que maximicen la reducción de la impureza total, permitiendo así que el modelo aprenda los patrones más discriminativos de las señales oculomotoras.
 
-\subsubsection{Importancia de las Variables (Feature Importance)}
+\subsubsection{Importancia de las Variables (\textit{Feature Importance})}
 
-Más allá de la clasificación, el algoritmo de Random Forest permite cuantificar la relevancia de cada métrica extraída (como la velocidad sacádica o la dimensión fractal) mediante la \textit{Importancia de Características por Impureza de Gini}.
+Más allá de la clasificación, el algoritmo de \textit{Random Forest} permite cuantificar la relevancia de cada métrica extraída (como la velocidad sacádica o la dimensión fractal) mediante la \textit{Importancia de Características por Impureza de Gini}.
 
 Este valor se calcula sumando todas las reducciones del índice de Gini que ocurren cada vez que una variable específica se utiliza para dividir un nodo, promediando dicho valor sobre todos los árboles del bosque. Matemáticamente, la importancia de una característica $X_j$ se define como:
 
@@ -424,9 +470,9 @@ donde $h_t(x)$ es la predicción del árbol $t$-ésimo y $T$ es el número total
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{Imagenes/rf_architecture.png}
-	\caption[Arquitectura del clasificador Random Forest.]{Arquitectura del clasificador Random Forest. El diagrama ilustra el mecanismo de ensamble: múltiples árboles de decisión ($Tree_1 \dots Tree_n$) procesan la entrada independientemente. La clase final se determina mediante la mayoría de votos (Majority Voting), lo que reduce la varianza y mejora la generalización del modelo.}
+	\includegraphics[width=1\textwidth]{Imagenes/rf_architecture.png}
+	\caption[Arquitectura del clasificador \textit{Random Forest}.]{Arquitectura del clasificador \textit{Random Forest}. El diagrama ilustra el mecanismo de ensamble: múltiples árboles de decisión ($Tree_1 \dots Tree_n$) procesan la entrada independientemente. La clase final se determina mediante la mayoría de votos (\textit{Majority Voting}), lo que reduce la varianza y mejora la generalización del modelo.}
 	\label{fig:rf_architecture}
 \end{figure}
 
-Como se ilustra en la Figura \ref{fig:rf_architecture}, esta estrategia de doble aleatorización reduce significativamente la correlación entre los árboles individuales y mitiga eficazmente el riesgo de sobreajuste (\textit{overfitting}), resultando en un modelo con una alta capacidad de generalización. Adicionalmente, Random Forest proporciona estimaciones automáticas de la importancia de cada característica, lo cual es valioso para interpretar qué aspectos de los movimientos oculares son más discriminativos para la identificación de individuos.
+Como se ilustra en la Figura \ref{fig:rf_architecture}, esta estrategia de doble aleatorización reduce significativamente la correlación entre los árboles individuales y mitiga eficazmente el riesgo de sobreajuste (\textit{overfitting}), resultando en un modelo con una alta capacidad de generalización. Adicionalmente, \textit{Random Forest} proporciona estimaciones automáticas de la importancia de cada característica, lo cual es valioso para interpretar qué aspectos de los movimientos oculares son más discriminativos para la identificación de individuos.
