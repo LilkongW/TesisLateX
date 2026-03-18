@@ -50,8 +50,8 @@
       \strng{authornamehash}{3acb33a589cd36feaebe3e758b95b6df}
       \strng{authorfullhash}{b65a658513a4d0c294cef72e7248cb82}
       \strng{authorfullhashraw}{b65a658513a4d0c294cef72e7248cb82}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 2010 Symposium on Eye-Tracking Research \& Applications}
@@ -86,8 +86,8 @@
       \strng{authornamehash}{7392254d670a0fdf0decda8612a9b092}
       \strng{authorfullhash}{44a8a06418b9b663fc93ec1002ace624}
       \strng{authorfullhashraw}{44a8a06418b9b663fc93ec1002ace624}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Mathematical Biosciences}
@@ -114,8 +114,8 @@
       \strng{authornamehash}{132b7100417675d55d5d4d8b244f7a34}
       \strng{authorfullhash}{132b7100417675d55d5d4d8b244f7a34}
       \strng{authorfullhashraw}{132b7100417675d55d5d4d8b244f7a34}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Machine Learning}
@@ -150,8 +150,8 @@
       \strng{authornamehash}{4cd80f80fafed96173ecb0aeea785910}
       \strng{authorfullhash}{4cd80f80fafed96173ecb0aeea785910}
       \strng{authorfullhashraw}{4cd80f80fafed96173ecb0aeea785910}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Revista de Investigación en Educación Matemática}
@@ -186,8 +186,8 @@
       \strng{authornamehash}{1cc1c97dea3b42546af4e57e0222452a}
       \strng{authorfullhash}{1cc1c97dea3b42546af4e57e0222452a}
       \strng{authorfullhashraw}{1cc1c97dea3b42546af4e57e0222452a}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{980-366-098-6}
@@ -213,8 +213,8 @@
       \strng{authornamehash}{715d4e2589c0ed4081203b7343b822ba}
       \strng{authorfullhash}{715d4e2589c0ed4081203b7343b822ba}
       \strng{authorfullhashraw}{715d4e2589c0ed4081203b7343b822ba}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{6}
@@ -262,8 +262,8 @@
       \strng{authornamehash}{1a2f0654971107576f4e122dffcfe8c7}
       \strng{authorfullhash}{41bbbf041c50aa135ffa3672ca41ebba}
       \strng{authorfullhashraw}{41bbbf041c50aa135ffa3672ca41ebba}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Electronics}
@@ -276,44 +276,6 @@
       \verb{doi}
       \verb 10.3390/electronics11193183
       \endverb
-    \endentry
-    \entry{soukupova2016real}{inproceedings}{}{}
-      \name{author}{2}{}{%
-        {{hash=30087b674e74264a8013c47b557bc59f}{%
-           family={Soukupová},
-           familyi={S\bibinitperiod},
-           given={Tereza},
-           giveni={T\bibinitperiod}}}%
-        {{hash=d533695313e8e2ca5a1b2590281321e9}{%
-           family={Čech},
-           familyi={Č\bibinitperiod},
-           given={Jan},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Rimske Toplice, Slovenia}%
-      }
-      \list{organization}{1}{%
-        {Slovenian Pattern Recognition Society}%
-      }
-      \strng{namehash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{fullhash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{fullhashraw}{680ef02e4823d4c15e8e13b141436004}
-      \strng{bibnamehash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{authorbibnamehash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{authornamehash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{authorfullhash}{680ef02e4823d4c15e8e13b141436004}
-      \strng{authorfullhashraw}{680ef02e4823d4c15e8e13b141436004}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{21st Computer Vision Winter Workshop (CVWW 2016)}
-      \field{title}{Real-Time Eye Blink Detection using Facial Landmarks}
-      \field{volume}{1}
-      \field{year}{2016}
-      \field{pages}{1\bibrangedash 8}
-      \range{pages}{8}
     \endentry
     \entry{gao2025eye_tracking_tutorial}{misc}{}{}
       \name{author}{8}{}{%
@@ -369,8 +331,8 @@
       \strng{authornamehash}{5d210feb2b58619e71ea4899b530a7f4}
       \strng{authorfullhash}{0f793ab54011748a33d13abf0d815507}
       \strng{authorfullhashraw}{0f793ab54011748a33d13abf0d815507}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Unpublished tutorial}
@@ -428,8 +390,8 @@
       \strng{authornamehash}{54294aaa60e9b8d7af4068096f5d63ef}
       \strng{authorfullhash}{f6bf9c9a9a2072ab5efdfb98fddee1f2}
       \strng{authorfullhashraw}{f6bf9c9a9a2072ab5efdfb98fddee1f2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Clinical Medicine}
@@ -767,6 +729,150 @@
       \field{title}{The Nature of Statistical Learning Theory}
       \field{year}{1995}
     \endentry
+    \entry{iso9241_5}{standard}{}{}
+      \name{author}{1}{}{%
+        {{hash=5b512ee8a59deb284ad0a6a035ba10b1}{%
+           family={{ISO}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Geneva, Switzerland}%
+      }
+      \list{organization}{1}{%
+        {International Organization for Standardization}%
+      }
+      \strng{namehash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{fullhash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{fullhashraw}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{bibnamehash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{authorbibnamehash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{authornamehash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{authorfullhash}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \strng{authorfullhashraw}{5b512ee8a59deb284ad0a6a035ba10b1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ISO 9241-5:1998 Ergonomic requirements for office work with visual display terminals (VDTs) --- Part 5: Workstation layout and postural requirements}
+      \field{year}{1998}
+    \endentry
+    \entry{jocher_yolov8_2023}{software}{}{}
+      \name{author}{3}{}{%
+        {{hash=c5c5e5cd7f4f477f617289b32613deb0}{%
+           family={Jocher},
+           familyi={J\bibinitperiod},
+           given={Glenn},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ec281637802454e8df4de72f3b1ee401}{%
+           family={Chaurasia},
+           familyi={C\bibinitperiod},
+           given={Ayush},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b8739ebbf3f871d471b6720a02ed541f}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{b71b7268164b9120e178882fafc98c9e}
+      \strng{fullhash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{fullhashraw}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{bibnamehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authorbibnamehash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authornamehash}{b71b7268164b9120e178882fafc98c9e}
+      \strng{authorfullhash}{dde928f96d7839eed6effd0fbfbe5acc}
+      \strng{authorfullhashraw}{dde928f96d7839eed6effd0fbfbe5acc}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ultralytics YOLOv8}
+      \field{version}{8.0.0}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/ultralytics/ultralytics
+      \endverb
+      \verb{url}
+      \verb https://github.com/ultralytics/ultralytics
+      \endverb
+    \endentry
+    \entry{soukupova2016real}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=30087b674e74264a8013c47b557bc59f}{%
+           family={Soukupová},
+           familyi={S\bibinitperiod},
+           given={Tereza},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d533695313e8e2ca5a1b2590281321e9}{%
+           family={Čech},
+           familyi={Č\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Rimske Toplice, Slovenia}%
+      }
+      \list{organization}{1}{%
+        {Slovenian Pattern Recognition Society}%
+      }
+      \strng{namehash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{fullhash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{fullhashraw}{680ef02e4823d4c15e8e13b141436004}
+      \strng{bibnamehash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{authorbibnamehash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{authornamehash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{authorfullhash}{680ef02e4823d4c15e8e13b141436004}
+      \strng{authorfullhashraw}{680ef02e4823d4c15e8e13b141436004}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{21st Computer Vision Winter Workshop (CVWW 2016)}
+      \field{title}{Real-Time Eye Blink Detection using Facial Landmarks}
+      \field{volume}{1}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+    \endentry
+    \entry{savitzky1964smoothing}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=862022f8b60e1e458eeea912c2aebb64}{%
+           family={Savitzky},
+           familyi={S\bibinitperiod},
+           given={Abraham},
+           giveni={A\bibinitperiod}}}%
+        {{hash=df692f035afc974d1e8cce4539414a42}{%
+           family={Golay},
+           familyi={G\bibinitperiod},
+           given={Marcel\bibnamedelimb J.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{fullhash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{fullhashraw}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{bibnamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{authorbibnamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{authornamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{authorfullhash}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \strng{authorfullhashraw}{ee11a85cc2ceb499b4ff721ccbf18112}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Analytical Chemistry}
+      \field{number}{8}
+      \field{title}{Smoothing and Differentiation of Data by Simplified Least Squares Procedures}
+      \field{volume}{36}
+      \field{year}{1964}
+      \field{pages}{1627\bibrangedash 1639}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1021/ac60214a047
+      \endverb
+    \endentry
     \entry{leigh2015neurology}{book}{}{}
       \name{author}{2}{}{%
         {{hash=26a50a03eedbc4b7796df8bd74a7e750}{%
@@ -893,42 +999,6 @@
       \field{title}{Eye Tracking: A Comprehensive Guide to Methods and Measures}
       \field{year}{2011}
     \endentry
-    \entry{savitzky1964smoothing}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=862022f8b60e1e458eeea912c2aebb64}{%
-           family={Savitzky},
-           familyi={S\bibinitperiod},
-           given={Abraham},
-           giveni={A\bibinitperiod}}}%
-        {{hash=df692f035afc974d1e8cce4539414a42}{%
-           family={Golay},
-           familyi={G\bibinitperiod},
-           given={Marcel\bibnamedelimb J.\bibnamedelimi E.},
-           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \strng{namehash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{fullhash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{fullhashraw}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{bibnamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{authorbibnamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{authornamehash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{authorfullhash}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \strng{authorfullhashraw}{ee11a85cc2ceb499b4ff721ccbf18112}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Analytical Chemistry}
-      \field{number}{8}
-      \field{title}{Smoothing and Differentiation of Data by Simplified Least Squares Procedures}
-      \field{volume}{36}
-      \field{year}{1964}
-      \field{pages}{1627\bibrangedash 1639}
-      \range{pages}{13}
-      \verb{doi}
-      \verb 10.1021/ac60214a047
-      \endverb
-    \endentry
     \entry{nyquist1928certain}{article}{}{}
       \name{author}{1}{}{%
         {{hash=d4106f7089207ce4f2ef970e8aa5c210}{%
@@ -986,8 +1056,8 @@
       \strng{authornamehash}{3c0b994c9cbc485952837c0907849a01}
       \strng{authorfullhash}{0ed3d23129eec597eeded47bed61c901}
       \strng{authorfullhashraw}{0ed3d23129eec597eeded47bed61c901}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Neuroscience}
@@ -1022,8 +1092,8 @@
       \strng{authornamehash}{bb4a47798d56ee0ddd15928d392a2689}
       \strng{authorfullhash}{bb4a47798d56ee0ddd15928d392a2689}
       \strng{authorfullhashraw}{bb4a47798d56ee0ddd15928d392a2689}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Vision Research}
@@ -1114,8 +1184,8 @@
       \strng{authornamehash}{bbdbcb741ad058a46a72871278b62675}
       \strng{authorfullhash}{ecc021241654cd8b8c57d45225e83ec0}
       \strng{authorfullhashraw}{ecc021241654cd8b8c57d45225e83ec0}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Investigative Ophthalmology \& Visual Science}
