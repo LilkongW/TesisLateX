@@ -1,44 +1,46 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Anatomía del ojo humano.}}{9}{figure.caption.7}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Método de pupila oscura y vector de dirección de la mirada.}}{14}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Arquitectura del clasificador \textit {Random Forest}.}}{22}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Anatomía del ojo humano.}}{11}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Método de pupila oscura y vector de dirección de la mirada.}}{16}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Arquitectura del clasificador \textit {Random Forest}.}}{24}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Módulo de cámara infrarroja GalaxyCore GC0308.}}{26}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Configuración del sistema de captura montado en cabeza.}}{27}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Luxómetro digital UNI-T UT383.}}{29}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de flujo de la arquitectura de procesamiento.}}{32}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Muestra representativa de ojos capturados ($N=14$).}}{34}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema de la cuadrícula de estímulos $3 \times 3$.}}{36}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Protocolo de estímulos del Experimento 1 ($3 \times 3$).}}{38}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces \textit {Pipeline} de procesamiento de imagen con YOLOv8 y CLAHE.}}{45}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Esquema de estimación del vector de mirada en 3D.}}{45}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Correspondencia entre imagen infrarroja y modelo 3D ocular.}}{47}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Módulo de cámara infrarroja GalaxyCore GC0308.}}{28}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Configuración del sistema de captura montado en cabeza.}}{29}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Luxómetro digital UNI-T UT383.}}{31}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de flujo de la arquitectura de procesamiento.}}{34}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Muestra representativa de ojos capturados ($N=14$).}}{36}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema de la cuadrícula de estímulos $3 \times 3$.}}{38}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Protocolo de estímulos del Experimento 1 ($3 \times 3$).}}{40}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Curva de pérdida durante el entrenamiento.}}{45}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Curva de precisión media (mAP) durante el entrenamiento.}}{45}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces \textit {Pipeline} de procesamiento de imagen con YOLOv8 y CLAHE.}}{49}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Esquema de estimación del vector de mirada en 3D.}}{49}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Correspondencia entre imagen infrarroja y modelo 3D ocular.}}{51}{figure.caption.23}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Señal cruda vs. filtrada (Savitzky-Golay) en los tres ejes.}}{56}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Perfil de velocidad con detección de sacádicos y fijaciones.}}{57}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparación geométrica: EAR Tradicional vs. EAR Mejorado.}}{59}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama de dispersión de la Secuencia Principal ($N=14$, $R^2=0.9216$).}}{60}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Perfil cinemático de velocidad y Jerk de un sacádico horizontal.}}{64}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Ranking de importancia de Gini de las características biométricas.}}{66}{figure.caption.31}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparación de perfiles biométricos de tres participantes.}}{68}{figure.caption.33}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Proyección en 2D (LD1 vs LD2)}}{69}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Proyección en 3D (LD1, LD2, LD3)}}{69}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Proyección LDA del espacio de características (P1–P14).}}{69}{figure.caption.34}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Gráfico de sedimentación del PCA (10 componentes para el 95\,\% de varianza).}}{70}{figure.caption.35}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Proyección PCA en 2D (PC1 y PC2, $\approx $20\,\% de varianza).}}{71}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Proyección PCA en 3D (PC1, PC2 y PC3).}}{71}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Análisis PCA: proyecciones 2D y 3D del espacio biométrico.}}{71}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Visualización mediante t-SNE (perplejidad = 30) de las características biométricas.}}{72}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Proyección mediante UMAP (n\_neighbors = 14, min\_dist = 0.1) del mismo espacio de características.}}{72}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Visualización no lineal del espacio biométrico: t-SNE y UMAP.}}{72}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=5$ sujetos (92.92\,\%).}}{77}{figure.caption.43}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=10$ sujetos (92.29\,\%).}}{78}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=14$ sujetos (82.59\,\%).}}{79}{figure.caption.45}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Distribución espacial sin corrección homográfica (mapeo lineal).}}{81}{figure.caption.46}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Mapa de calor de la mirada corregida — cuadrícula $3\times 3$.}}{82}{figure.caption.47}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Mapa de calor de la mirada — cuadrícula de 5 puntos.}}{84}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Seguimiento de trayectoria espiral: referencia vs. mirada registrada.}}{85}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Comparativa de robustez temporal para P11 (mañana vs. tarde).}}{87}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Señal cruda vs. filtrada (Savitzky-Golay) en los tres ejes.}}{60}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Perfil de velocidad con detección de sacádicos y fijaciones.}}{61}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparación geométrica: EAR Tradicional vs. EAR Mejorado.}}{63}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama de dispersión de la Secuencia Principal ($N=14$, $R^2=0.9216$).}}{64}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Perfil cinemático de velocidad y Jerk de un sacádico horizontal.}}{68}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ranking de importancia de Gini de las características biométricas.}}{70}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparación de perfiles biométricos de tres participantes.}}{72}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Proyección en 2D (LD1 vs LD2)}}{73}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Proyección en 3D (LD1, LD2, LD3)}}{73}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Proyección LDA del espacio de características (P1–P14).}}{73}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Gráfico de sedimentación del PCA (10 componentes para el 95\,\% de varianza).}}{74}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Proyección PCA en 2D (PC1 y PC2, $\approx $20\,\% de varianza).}}{75}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Proyección PCA en 3D (PC1, PC2 y PC3).}}{75}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Análisis PCA: proyecciones 2D y 3D del espacio biométrico.}}{75}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Visualización mediante t-SNE de las características biométricas.}}{76}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Proyección mediante UMAP del mismo espacio de características.}}{76}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Visualización no lineal del espacio biométrico: t-SNE y UMAP.}}{76}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=5$ sujetos (92.92\,\%).}}{81}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=10$ sujetos (92.29\,\%).}}{82}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Matriz de confusión — \textit {Random Forest}, $k=14$ sujetos (82.59\,\%).}}{83}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Distribución espacial sin corrección homográfica (mapeo lineal).}}{85}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Mapa de calor de la mirada corregida — cuadrícula $3\times 3$.}}{86}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Mapa de calor de la mirada — cuadrícula de 5 puntos.}}{88}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Seguimiento de trayectoria espiral: referencia vs. mirada registrada.}}{89}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Comparativa de robustez temporal para P11 (mañana vs. tarde).}}{91}{figure.caption.53}%
 \addvspace {10\p@ }

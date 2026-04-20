@@ -34,9 +34,9 @@ El diseño experimental se estructura en torno a las siguientes variables:
 
 \textbf{Variables independientes (manipuladas):}
 \begin{itemize}
-	\item \textit{Posición espacial del estímulo visual}: Una cuadrícula de $3 \times 3$ puntos que cubren el campo visual de la pantalla, generando 9 posiciones discretas que provocan movimientos sacádicos dirigidos.
-	\item \textit{Duración de presentación del estímulo}: Cada punto permanece visible durante 2 segundos, tiempo suficiente para garantizar la estabilización de la fijación ocular según los criterios establecidos por Duchowski \cite{duchowski2017}.
-	\item \textit{Secuencia de presentación}: Los estímulos se presentan siguiendo un orden determinado (de izquierda a derecha, de arriba hacia abajo), lo que induce un patrón predecible de movimientos oculares.
+	\item\textbf{\textit{Posición espacial del estímulo visual}}: Una cuadrícula de $3 \times 3$ puntos que cubren el campo visual de la pantalla, generando 9 posiciones discretas que provocan movimientos sacádicos dirigidos.
+	\item\textbf{\textit{Duración de presentación del estímulo}}: Cada punto permanece visible durante 2 segundos, tiempo suficiente para garantizar la estabilización de la fijación ocular según los criterios establecidos por Duchowski \cite{duchowski2017}.
+	\item\textbf{\textit{Secuencia de presentación}}: Los estímulos se presentan siguiendo un orden determinado (de izquierda a derecha, de arriba hacia abajo), lo que induce un patrón predecible de movimientos oculares.
 \end{itemize}
 
 \textbf{Variables dependientes (observadas):}
@@ -98,6 +98,7 @@ La captura de imágenes del ojo se realizó mediante un módulo de cámara infra
 	\item \textbf{Interfaz de datos}: USB 2.0 de alta velocidad
 	\item \textbf{Formato de salida}: MJPEG
 	\item \textbf{Enfoque}: Lente de enfoque fijo manual (montura M12) ajustado para macro-distancia
+	\item \textbf{Precio}: 15 USD (Amazon)
 \end{itemize}
 
 \begin{figure}[H]
@@ -322,8 +323,7 @@ A continuación, la Tabla \ref{tab:participantes_detalle} detalla las condicione
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/voluntarios.png}
 	\caption[Muestra representativa de ojos capturados ($N=14$).]{Muestra representativa de los ojos capturados durante la sesión 
-		experimental. Cada imagen corresponde a un participante distinto del estudio 
-		($N=14$), evidenciando la variabilidad morfológica inter-sujeto en 
+		experimental. Cada imagen corresponde a un participante distinto del estudio, evidenciando la variabilidad morfológica inter-sujeto en 
 		características como el diámetro pupilar y rasgos que el sistema explota como descriptores 
 		biométricos primarios.}
 	\label{fig:voluntarios}
@@ -569,6 +569,27 @@ El modelo no se utilizó de caja (\textit{out-of-the-box}), sino que se sometió
 \end{enumerate}
 
 Esta estrategia de entrenamiento específico resultó fundamental para mitigar la pérdida de seguimiento durante parpadeos o movimientos sacádicos rápidos, superando las limitaciones de los métodos tradicionales de visión artificial.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Imagenes/Loss.png}
+	\caption[Curva de pérdida durante el entrenamiento.]{Curva de pérdida (\textit{loss}) durante el entrenamiento del modelo. Se observa la evolución de la función de pérdida en los conjuntos de entrenamiento y validación a lo largo de las épocas.}
+	\label{fig:loss}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Imagenes/MaP.png}
+	\caption[Curva de precisión media (mAP) durante el entrenamiento.]{Evolución de la precisión media (\textit{mean Average Precision}, mAP) durante el entrenamiento del modelo de detección. Refleja la capacidad del modelo para localizar y clasificar correctamente la pupila a lo largo de las épocas.}
+	\label{fig:map}
+\end{figure}
+
+
+\paragraph{Análisis de convergencia del modelo}
+
+A partir de los resultados del entrenamiento, se observa que el modelo \textit{YOLOv8n} aprendió a identificar la pupila de forma rápida y estable. En apenas 10 épocas, la precisión alcanzó el $99\%$, lo que indica una excelente capacidad de detección.
+
+La reducción constante de los errores de localización y clasificación (alcanzando valores mínimos de $0,531$ y $0,295$) demuestra que el sistema no solo encuentra el ojo, sino que ajusta el cuadro de detección a la forma de la pupila con gran exactitud. Esta precisión al extraer la Región de Interés (\textit{ROI}) garantiza que los datos obtenidos sean confiables para las siguientes etapas de análisis del movimiento y clasificación de los usuarios.
 
 \paragraph{Inferencia en tiempo de ejecución}
 Durante la fase experimental, el algoritmo opera de la siguiente manera para cada fotograma $I_t$:
@@ -851,7 +872,7 @@ frecuencia, y qué tan eficientemente se realizan:
 	\item \texttt{Main\_Seq\_Slope}
 \end{itemize}
 
-La tasa de microsacadas (\texttt{Microsaccade\_Rate}) es particularmente relevante como descriptor de biometría conductual: los microsacadas son movimientos involuntarios de fijación que ocurren durante la fixación ocular, y su frecuencia y dirección están moduladas por factores atencionales y neurofisiológicos propios de cada individuo \cite{holmqvist2011eye}. La pendiente de la Secuencia Principal (\texttt{Main\_Seq\_Slope}) cuantifica la eficiencia neuromuscular del sistema sacádico como fue descrito en la Sección~\ref{subsec:justificacion_metricas}, y su inclusión como métrica independiente permite capturar variaciones individuales en la curva velocidad-amplitud que el modelo exponencial completo de Bahill \cite{bahill1975} no resume en un único escalar. La velocidad durante fijación (\texttt{Fixation\_Vel\_Mean}) captura la micro-deriva residual del ojo durante los periodos de aparente reposo, un marcador de la estabilidad del sistema de mantenimiento de fijación que varía entre individuos sanos \cite{leigh2015neurology}.
+La tasa de microsacadas (\texttt{Microsaccade\_Rate}) es particularmente relevante como descriptor de biometría conductual: los microsacadas son movimientos involuntarios de fijación donde su frecuencia y dirección están moduladas por factores atencionales y neurofisiológicos propios de cada individuo \cite{holmqvist2011eye}. La pendiente de la Secuencia Principal (\texttt{Main\_Seq\_Slope}) cuantifica la eficiencia neuromuscular del sistema sacádico como fue descrito en la Sección~\ref{subsec:justificacion_metricas}, y su inclusión como métrica independiente permite capturar variaciones individuales en la curva velocidad-amplitud que el modelo exponencial completo de Bahill \cite{bahill1975} no resume en un único escalar. La velocidad durante fijación (\texttt{Fixation\_Vel\_Mean}) captura la micro-deriva residual del ojo durante los periodos de aparente reposo, un marcador de la estabilidad del sistema de mantenimiento de fijación que varía entre individuos sanos \cite{leigh2015neurology}.
 
 % ===== CATEGORÍA 4 =====
 \subsubsection*{Categoría IV — Complejidad No Lineal}
