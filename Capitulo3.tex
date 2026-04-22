@@ -677,62 +677,118 @@ Esto retorna el centroide con precisión sub-pixel $(x_c, y_c)$, los ejes mayor 
 	\label{fig:pipeline_procesamiento}
 \end{figure}
 
+
 \subsection{Estimación del Vector de Mirada (\textit{Gaze Vector})}
 
-A diferencia de los mapeos polinomiales 2D simples, este estudio implementó un modelo geométrico 3D simplificado para estimar la dirección de la mirada.
-El algoritmo calcula un Centro del Modelo (aproximación del centro de rotación ocular o centro óptico virtual) mediante la intersección promedio de los vectores normales a la superficie del ojo a lo largo del tiempo.
-Posteriormente, tal como se ilustra en la Figura~\ref{fig:vector_mirada}, el vector de mirada unitario $\hat{g}$ se calcula normalizando la diferencia entre el centro de la pupila detectado $\mathbf{p} = (x_p, y_p, 0)$ y el centro del modelo $\mathbf{c} = (x_c, y_c, z_c)$:
+A diferencia de los mapeos polinomiales 2D simples, este trabajo implementa un modelo geométrico tridimensional simplificado para estimar la dirección de la mirada de forma más fiel a la fisiología del ojo.
+
+\subsubsection{Cálculo del Centro del Modelo Ocular}
+
+El primer paso consiste en estimar un \textbf{Centro del Modelo} $\mathbf{c} = (x_c, y_c)$, que actúa como aproximación del centro de rotación del globo ocular. Este punto se estima de forma acumulativa e incremental a lo largo del tiempo, aprovechando la geometría de las elipses ajustadas a la pupila en fotogramas sucesivos.
+
+Para cada par de elipses consecutivas, se calcula la intersección de sus ejes menores —que aproximan la dirección normal a la superficie del globo ocular en ese instante— mediante la resolución del siguiente sistema lineal:
 
 \begin{equation}
-	\vec{v} = \mathbf{p} - \mathbf{c}, \quad \hat{g} = \frac{\vec{v}}{\|\vec{v}\|} = (g_x, g_y, g_z)
+	\begin{bmatrix} \Delta x_1 & -\Delta x_2 \\ \Delta y_1 & -\Delta y_2 \end{bmatrix}
+	\begin{bmatrix} t_1 \\ t_2 \end{bmatrix}
+	=
+	\begin{bmatrix} x_{c2} - x_{c1} \\ y_{c2} - y_{c1} \end{bmatrix}
+	\label{eq:interseccion_ejes}
 \end{equation}
 
-Este enfoque vectorial permite calcular la cinemática angular de manera más fiel a la fisiología del ojo.
+donde $(x_{c1}, y_{c1})$ y $(x_{c2}, y_{c2})$ son los centros de cada elipse, y $(\Delta x_i, \Delta y_i)$ son las componentes direccionales de sus respectivos ejes menores. La intersección resultante $\mathbf{q}_k = (x_{c1} + t_1\,\Delta x_1,\; y_{c1} + t_1\,\Delta y_1)$ se acepta únicamente si cae dentro del fotograma y a una distancia menor que un umbral de confianza $\delta$ respecto al centro estimado previamente.
 
-\begin{figure}[htbp]
+El Centro del Modelo se obtiene como el promedio acumulado de todas las intersecciones válidas recolectadas hasta el instante $t$, limitado a una ventana histórica de $M$ muestras para garantizar adaptabilidad:
+
+\begin{equation}
+	\mathbf{c} = \frac{1}{|\mathcal{I}|} \sum_{k \in \mathcal{I}} \mathbf{q}_k, \qquad |\mathcal{I}| \leq M
+	\label{eq:centro_modelo}
+\end{equation}
+
+A medida que se acumulan más fotogramas, $\mathbf{c}$ converge hacia una posición estable que captura la geometría individual del ojo del sujeto. La Figura~\ref{fig:centro_globo_ocular} ilustra la diferencia conceptual entre la representación plana 2D —donde el centro es simplemente el centroide proyectado— y la representación 3D, donde el centro incorpora la convergencia de múltiples ejes normales a lo largo del tiempo.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.47\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Imagenes/Calculo_centro_2D.png}
+		\caption*{\textbf{(a)} Representación 2D: centro proyectado en el plano imagen.}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Imagenes/Calculo_centro_3D.png}
+		\caption*{\textbf{(b)} Representación 3D: centro estimado por convergencia de ejes normales.}
+	\end{minipage}
+	\vspace{0.4cm}
+	\caption[Cálculo del centro del globo ocular en los modelos 2D y 3D.]{Comparativa del cálculo del Centro del Modelo ocular. En la representación 2D~(a) el centro se obtiene por proyección plana, ignorando la profundidad. En la representación 3D~(b) se estima por la convergencia de los ejes menores de elipses sucesivas, cuya intersección acumulada aproxima el centro de rotación real del globo ocular.}
+	\label{fig:centro_globo_ocular}
+\end{figure}
+
+\subsubsection{Cómputo del Vector de Mirada Unitario}
+
+Una vez establecido el Centro del Modelo $\mathbf{c}$, el \textbf{vector de mirada} $\hat{g}$ se obtiene mediante una proyección esférica que traslada el desplazamiento 2D de la pupila respecto al centro a un vector unitario tridimensional.
+
+En primer lugar, se calculan las componentes planares normalizadas respecto al radio máximo observado $r_{max}$ —distancia máxima registrada entre la pupila y el centro del modelo a lo largo de la sesión—:
+
+\begin{equation}
+	g_x = \frac{x_p - x_c}{r_{max}}, \qquad g_y = -\frac{y_p - y_c}{r_{max}}
+	\label{eq:gaze_xy}
+\end{equation}
+
+El signo negativo en $g_y$ convierte la convención de imagen (eje $y$ hacia abajo) a la convención geométrica estándar (eje $y$ hacia arriba). A continuación, la componente de profundidad $g_z$ se obtiene por proyección sobre la esfera unitaria, bajo el supuesto de que la dirección de mirada tiene módulo unitario:
+
+\begin{equation}
+	g_z = -\sqrt{\max\!\left(0,\; 1 - g_x^2 - g_y^2\right)}
+	\label{eq:gaze_z}
+\end{equation}
+
+El signo negativo indica que la mirada apunta hacia el frente de la cámara (dirección $-z$ en el sistema de coordenadas de la imagen). Finalmente, el vector tridimensional se normaliza para garantizar módulo unitario:
+
+\begin{equation}
+	\hat{g} = \frac{(g_x,\; g_y,\; g_z)}{\|(g_x,\; g_y,\; g_z)\|}
+	\label{eq:gaze_norm}
+\end{equation}
+
+Este enfoque de proyección esférica —esquematizado en la Figura~\ref{fig:vector_mirada}— permite obtener un vector de mirada 3D completo a partir de una única cámara monocular sin necesidad de calibración de profundidad explícita. La componente $g_z$ no proviene de una medición directa de profundidad sino de la restricción geométrica de que la dirección de mirada yace sobre una esfera unitaria, lo que constituye una aproximación válida para la estimación cinemática de movimientos sacádicos planares.
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/calculo_vector_mirada.png}
-	\caption[Esquema de estimación del vector de mirada en 3D.]{Esquema de la estimación del vector de mirada. (Izquierda) Identificación del contorno pupilar.
-		(Centro) Cálculo del centro del modelo ocular (punto azul) respecto al centroide de la pupila.
-		(Derecha) Proyección del vector de mirada resultante (línea roja) en el espacio 3D.}
+	\caption[Esquema de estimación del vector de mirada en 3D.]{Esquema del \textit{pipeline} de estimación del vector de mirada.
+		\textbf{(Izquierda)} Segmentación del contorno pupilar y ajuste de elipse.
+		\textbf{(Centro)} Centro del Modelo $\mathbf{c}$ (punto azul) estimado por convergencia de ejes normales respecto al centroide de la pupila (punto rojo).
+		\textbf{(Derecha)} Vector de mirada $\hat{g}$ (línea roja) resultante de la proyección esférica, cuya orientación en el espacio 3D determina la dirección de fijación del sujeto.}
 	\label{fig:vector_mirada}
 \end{figure}
 
 \subsubsection{Validación y Justificación del Enfoque Híbrido}
 
-La selección de una arquitectura basada en aprendizaje profundo (YOLOv8) frente a los métodos clásicos de procesamiento de imagen se fundamenta en pruebas preliminares de rendimiento y robustez realizadas durante el diseño del sistema.
+La selección de una arquitectura basada en aprendizaje profundo (YOLOv8) frente a los métodos clásicos de visión artificial se fundamenta en pruebas preliminares de rendimiento y robustez realizadas durante el diseño del sistema.
 
-\paragraph{Robustez en la detección}
-En implementaciones previas basadas puramente en técnicas de visión artificial (operaciones morfológicas y umbralización global sobre el fotograma completo), se observó una tasa de fallo en la detección de la pupila de aproximadamente un 10\% de los fotogramas procesados.
-Estas pérdidas ocurrían principalmente debido a:
+\paragraph{Robustez en la detección.}
+En implementaciones previas basadas puramente en umbralización global y operaciones morfológicas sobre el fotograma completo, se registró una tasa de fallo en la detección de la pupila de aproximadamente el $10\%$ de los fotogramas. Estas pérdidas ocurrían principalmente por tres causas:
+
 \begin{itemize}
-	\item Oclusiones parciales por pestañas o párpados durante el parpadeo.
-	\item Cambios bruscos de iluminación que afectaban el umbral de binarización.
+	\item Oclusiones parciales producidas por pestañas o párpados durante el parpadeo.
+	\item Variaciones bruscas de iluminación que desestabilizaban el umbral de binarización.
 	\item Pérdida de seguimiento durante movimientos sacádicos de alta velocidad.
 \end{itemize}
 
-Por el contrario, la implementación propuesta mediante YOLOv8 demostró una estabilidad superior, con menos del 1\% de fallos en la detección de la ROI en condiciones controladas.
-El modelo es capaz de re-adquirir la posición del ojo instantáneamente \textit{frame} a \textit{frame} específicamente para el \textit{dataset} de esta investigación, garantizando la continuidad de las series temporales necesarias para el cálculo de la velocidad y aceleración.
+La implementación propuesta con YOLOv8 redujo la tasa de fallos por debajo del $1\%$ en condiciones controladas, re-adquiriendo la posición del ojo de forma instantánea entre fotogramas y garantizando la continuidad de las series temporales requeridas para el cálculo de derivadas cinemáticas. Adicionalmente, se aplica un filtro temporal que invalida detecciones con saltos espaciales superiores a $d_{max} = 120$\,px respecto al fotograma anterior, eliminando falsos positivos ocasionales sin interrumpir la señal válida.
 
-\paragraph{Eficiencia Computacional}
-Además de la robustez, el uso de YOLO para recortar la Región de Interés (ROI) ofrece una ventaja crítica de optimización.
-Al limitar el procesamiento matemático costoso (ajuste de elipses, CLAHE, algoritmos de contornos) exclusivamente al área delimitada por el \textit{bounding box} ($< 10\%$ del área total de la imagen), se reduce drásticamente la carga computacional.
-Esto libera recursos del CPU para mantener una tasa de muestreo estable de 120 FPS, algo que sería insostenible procesando la matriz de imagen completa con algoritmos iterativos.
+\paragraph{Eficiencia computacional.}
+El uso de YOLO para delimitar la Región de Interés (ROI) ofrece además una ventaja crítica de optimización: al restringir el procesamiento costoso (ajuste de elipses, CLAHE, análisis de contornos) exclusivamente al área del \textit{bounding box} —que representa menos del $10\%$ del área total de la imagen—, se reduce drásticamente la carga sobre el CPU. Esto hace viable mantener una tasa de muestreo estable de 120\,FPS, algo insostenible si se procesara la matriz de imagen completa con algoritmos iterativos.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Imagenes/correlacion.png}
-	\caption[Correspondencia entre imagen infrarroja y modelo 3D ocular.]{Correspondencia entre la señal visual capturada y su representación 
-		computacional. \textbf{Izquierda:} imagen infrarroja del ojo adquirida por la 
-		cámara, donde se aprecia la pupila detectada. 
-		\textbf{Derecha:} modelo tridimensional resultante, en el que el diámetro 
-		pupilar estimado determina la escala del globo ocular y el vector de mirada 
-		(\textit{gaze vector}) que define su orientación en el espacio 3D. Esta 
-		transformación constituye el núcleo del \textit{pipeline} de estimación oculomotora 
-		propuesto.}
+	\caption[Correspondencia entre imagen infrarroja y modelo 3D ocular.]{Correspondencia entre la señal visual capturada y su representación computacional.
+		\textbf{Izquierda:} imagen infrarroja del ojo adquirida por la cámara con la pupila segmentada.
+		\textbf{Derecha:} modelo tridimensional resultante, donde el diámetro pupilar estimado determina la escala del globo ocular y el vector de mirada $\hat{g}$ —obtenido por proyección esférica— define su orientación en el espacio 3D.
+		Esta transformación constituye el núcleo del \textit{pipeline} de estimación oculomotora propuesto.}
 	\label{fig:correlacion}
 \end{figure}
-
 
 \section{Procesamiento de Señales y Extracción de Métricas}
 
