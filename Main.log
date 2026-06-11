@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  30 APR 2026 11:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.16)  4 JUN 2026 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1660,59 +1660,350 @@ Package pdftex.def Info: Imagenes/ojo_ray_x_partes.png  used on input line 126.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10] [11 <./Imagenes/ojo.png>] [12 <./Imagenes/ojo_ray_x_partes.png (PNG copy)>
-] [13] [14] [15]
-<Imagenes/dark_pupil.png, id=881, 935.74594pt x 694.84593pt>
+] [13] [14] [15
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.254 \subsubsection{Filtro de Savitzky-Golay}
+                                              ]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.258 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.258 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.258 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.258 \begin{equation}
+                      
+<Imagenes/dark_pupil.png, id=899, 935.74594pt x 694.84593pt>
 File: Imagenes/dark_pupil.png Graphic file (type png)
 <use Imagenes/dark_pupil.png>
-Package pdftex.def Info: Imagenes/dark_pupil.png  used on input line 268.
+Package pdftex.def Info: Imagenes/dark_pupil.png  used on input line 272.
 (pdftex.def)             Requested size: 274.6857pt x 203.97054pt.
- [16 <./Imagenes/dark_pupil.png>] [17] [18] [19] [20] [21]
-[22]
-<Imagenes/rf_architecture.jpg, id=936, 999.735pt x 536.75531pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16] [17 <./Imagenes/dark_pupil.png>]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.314 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.314 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.314 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.314 \begin{equation}
+                       [18]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.331 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.331 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.331 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.331 \begin{equation}
+                       [19]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.357 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.357 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.357 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.357 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.363 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.363 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.363 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.363 \begin{equation}
+                       [20]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.403 	\begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.403 	\begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.403 	\begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.403 	\begin{equation}
+                        [21] [22
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.454 	\item $
+              S_B$ es la matriz de dispersión interclase ($d \times d$);
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.454 	\item $
+              S_B$ es la matriz de dispersión interclase ($d \times d$);
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.454 	\item $
+              S_B$ es la matriz de dispersión interclase ($d \times d$);]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.474 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.474 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.474 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.474 \begin{equation}
+                       [23]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.485 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.485 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.485 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.485 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.494 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.494 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.494 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.494 \begin{equation}
+                       [24]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.527 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.527 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.527 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.527 \begin{equation}
+                       [25]
+<Imagenes/rf_architecture.jpg, id=982, 999.735pt x 536.75531pt>
 File: Imagenes/rf_architecture.jpg Graphic file (type jpg)
 <use Imagenes/rf_architecture.jpg>
-Package pdftex.def Info: Imagenes/rf_architecture.jpg  used on input line 490.
+Package pdftex.def Info: Imagenes/rf_architecture.jpg  used on input line 569.
 (pdftex.def)             Requested size: 457.80486pt x 245.79655pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 491.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 570.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 491.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 570.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 491.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 570.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [23] [24 <./Imagenes/rf_architecture.jpg>]
+) [26] [27 <./Imagenes/rf_architecture.jpg>]
 \openout2 = `Capitulo3.aux'.
 
  (Capitulo3.tex
 Cap\'{\i }tulo 3.
-[25
+[28
 
 
 
 
-] [26] [27]
-<Imagenes/gc0308.png, id=967, 525.965pt x 402.50375pt>
+] [29] [30]
+<Imagenes/gc0308.png, id=1012, 525.965pt x 402.50375pt>
 File: Imagenes/gc0308.png Graphic file (type png)
 <use Imagenes/gc0308.png>
 Package pdftex.def Info: Imagenes/gc0308.png  used on input line 106.
 (pdftex.def)             Requested size: 274.6857pt x 210.21826pt.
-<Imagenes/camara_montada.jpg, id=968, 1284.8pt x 967.615pt>
+<Imagenes/camara_montada.jpg, id=1013, 1284.8pt x 967.615pt>
 File: Imagenes/camara_montada.jpg Graphic file (type jpg)
 <use Imagenes/camara_montada.jpg>
 Package pdftex.def Info: Imagenes/camara_montada.jpg  used on input line 114.
 (pdftex.def)             Requested size: 320.46199pt x 241.3421pt.
- [28 <./Imagenes/gc0308.png>] [29 <./Imagenes/camara_montada.jpg>]
-<Imagenes/luxometro.png, id=979, 328.22626pt x 325.96782pt>
+ [31 <./Imagenes/gc0308.png>] [32 <./Imagenes/camara_montada.jpg>] [33]
+<Imagenes/luxometro.png, id=1037, 328.22626pt x 325.96782pt>
 File: Imagenes/luxometro.png Graphic file (type png)
 <use Imagenes/luxometro.png>
-Package pdftex.def Info: Imagenes/luxometro.png  used on input line 162.
+Package pdftex.def Info: Imagenes/luxometro.png  used on input line 173.
 (pdftex.def)             Requested size: 228.90242pt x 227.33035pt.
- [30] [31 <./Imagenes/luxometro.png>]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 19
-6.
+ [34 <./Imagenes/luxometro.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 20
+5.
 
 (C:\Users\Victor\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -1722,164 +2013,280 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-[32]
-<Imagenes/flow.png, id=1003, 1289.81876pt x 4486.7625pt>
+[35] [36]
+<Imagenes/flow.png, id=1060, 1289.81876pt x 4486.7625pt>
 File: Imagenes/flow.png Graphic file (type png)
 <use Imagenes/flow.png>
-Package pdftex.def Info: Imagenes/flow.png  used on input line 258.
+Package pdftex.def Info: Imagenes/flow.png  used on input line 267.
 (pdftex.def)             Requested size: 163.56898pt x 568.99097pt.
- [33]
-Overfull \hbox (1.73616pt too wide) in paragraph at lines 282--282
+ [37]
+Overfull \hbox (1.73616pt too wide) in paragraph at lines 291--291
 \T1/pcr/m/n/12 eye_tracker_utils.py| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 []|\T1/ptm/m/n/12 (+20) Archivos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 \T1/pcr/m/n/12 _data.csv \T1/ptm/m/n/12 (+20) con
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 []|\T1/ptm/m/it/12 (+20) Dataset
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 \T1/pcr/m/n/12 BIOMETRIC.csv
  []
 
 
-Overfull \hbox (1.73616pt too wide) in paragraph at lines 282--282
+Overfull \hbox (1.73616pt too wide) in paragraph at lines 291--291
 []|\T1/pcr/m/n/12 Analizar_Metricas.py| 
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 282--282
+Underfull \hbox (badness 2302) in paragraph at lines 291--291
 []|\T1/ptm/m/n/12 (+20) Gr�ficos de Ra-dar,
  []
 
-[34 <./Imagenes/flow.png>] [35]
-<Imagenes/voluntarios.png, id=1021, 607.51968pt x 300.3722pt>
+[38 <./Imagenes/flow.png>] [39]
+<Imagenes/voluntarios.png, id=1078, 607.51968pt x 300.3722pt>
 File: Imagenes/voluntarios.png Graphic file (type png)
 <use Imagenes/voluntarios.png>
-Package pdftex.def Info: Imagenes/voluntarios.png  used on input line 324.
+Package pdftex.def Info: Imagenes/voluntarios.png  used on input line 333.
 (pdftex.def)             Requested size: 412.02156pt x 203.7187pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 362.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 371.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 362.
- [36 <./Imagenes/voluntarios.png>] [37]
-<Imagenes/experimento.png, id=1032, 709.90219pt x 398.99063pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 371.
+ [40 <./Imagenes/voluntarios.png>] [41]
+<Imagenes/experimento.png, id=1088, 709.90219pt x 398.99063pt>
 File: Imagenes/experimento.png Graphic file (type png)
 <use Imagenes/experimento.png>
-Package pdftex.def Info: Imagenes/experimento.png  used on input line 388.
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 397.
 (pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
- [38 <./Imagenes/experimento.png>]
+ [42 <./Imagenes/experimento.png>]
 File: Imagenes/experimento.png Graphic file (type png)
 <use Imagenes/experimento.png>
-Package pdftex.def Info: Imagenes/experimento.png  used on input line 436.
+Package pdftex.def Info: Imagenes/experimento.png  used on input line 445.
 (pdftex.def)             Requested size: 320.46199pt x 180.1164pt.
- [39] [40] [41] [42] [43]
-<Imagenes/Loss.png, id=1081, 548.5293pt x 399.6531pt>
+ [43] [44] [45]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.530 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.530 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.530 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.530 \begin{equation}
+                       [46] [47]
+<Imagenes/Loss.png, id=1134, 548.5293pt x 399.6531pt>
 File: Imagenes/Loss.png Graphic file (type png)
 <use Imagenes/Loss.png>
-Package pdftex.def Info: Imagenes/Loss.png  used on input line 575.
+Package pdftex.def Info: Imagenes/Loss.png  used on input line 569.
 (pdftex.def)             Requested size: 343.35364pt x 250.17285pt.
- [44]
-<Imagenes/MaP.png, id=1089, 535.5207pt x 403.9893pt>
+<Imagenes/MaP.png, id=1135, 535.5207pt x 403.9893pt>
 File: Imagenes/MaP.png Graphic file (type png)
 <use Imagenes/MaP.png>
-Package pdftex.def Info: Imagenes/MaP.png  used on input line 582.
+Package pdftex.def Info: Imagenes/MaP.png  used on input line 576.
 (pdftex.def)             Requested size: 343.35364pt x 259.02692pt.
- [45 <./Imagenes/Loss.png> <./Imagenes/MaP.png>] [46]
+ [48 <./Imagenes/Loss.png>] [49 <./Imagenes/MaP.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 638.
- [47]
-<Imagenes/preprocesamiento.png, id=1111, 823.57687pt x 352.31625pt>
+put line 631.
+ [50]
+<Imagenes/preprocesamiento.png, id=1159, 823.57687pt x 352.31625pt>
 File: Imagenes/preprocesamiento.png Graphic file (type png)
 <use Imagenes/preprocesamiento.png>
-Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 674.
+Package pdftex.def Info: Imagenes/preprocesamiento.png  used on input line 667.
 
 (pdftex.def)             Requested size: 457.80486pt x 195.84425pt.
- [48] [49 <./Imagenes/preprocesamiento.png>]
-<Imagenes/Calculo_centro_2D.png, id=1127, 1156.32pt x 922.44624pt>
+ [51] [52 <./Imagenes/preprocesamiento.png>]
+<Imagenes/Calculo_centro_2D.png, id=1174, 1156.32pt x 922.44624pt>
 File: Imagenes/Calculo_centro_2D.png Graphic file (type png)
 <use Imagenes/Calculo_centro_2D.png>
-Package pdftex.def Info: Imagenes/Calculo_centro_2D.png  used on input line 714
+Package pdftex.def Info: Imagenes/Calculo_centro_2D.png  used on input line 707
 .
 (pdftex.def)             Requested size: 215.16884pt x 171.64923pt.
-<Imagenes/Calculo_centro_3D.png, id=1128, 1092.08pt x 995.72pt>
+<Imagenes/Calculo_centro_3D.png, id=1175, 1092.08pt x 995.72pt>
 File: Imagenes/Calculo_centro_3D.png Graphic file (type png)
 <use Imagenes/Calculo_centro_3D.png>
-Package pdftex.def Info: Imagenes/Calculo_centro_3D.png  used on input line 720
+Package pdftex.def Info: Imagenes/Calculo_centro_3D.png  used on input line 713
 .
 (pdftex.def)             Requested size: 215.16884pt x 196.17775pt.
-
-[50 <./Imagenes/Calculo_centro_2D.png> <./Imagenes/Calculo_centro_3D.png>]
-<Imagenes/calculo_vector_mirada.png, id=1137, 1072.75781pt x 258.9675pt>
+ [53 <./Imagenes/Calculo_centro_2D.png> <./Imagenes/Calculo_centro_3D.png>]
+<Imagenes/calculo_vector_mirada.png, id=1184, 1072.75781pt x 258.9675pt>
 File: Imagenes/calculo_vector_mirada.png Graphic file (type png)
 <use Imagenes/calculo_vector_mirada.png>
 Package pdftex.def Info: Imagenes/calculo_vector_mirada.png  used on input line
- 757.
+ 750.
 (pdftex.def)             Requested size: 412.02156pt x 99.46371pt.
-
-[51 <./Imagenes/calculo_vector_mirada.png>]
-<Imagenes/correlacion.png, id=1145, 604.50844pt x 247.67531pt>
+ [54 <./Imagenes/calculo_vector_mirada.png>]
+<Imagenes/correlacion.png, id=1192, 604.50844pt x 247.67531pt>
 File: Imagenes/correlacion.png Graphic file (type png)
 <use Imagenes/correlacion.png>
-Package pdftex.def Info: Imagenes/correlacion.png  used on input line 785.
+Package pdftex.def Info: Imagenes/correlacion.png  used on input line 778.
 (pdftex.def)             Requested size: 412.02156pt x 168.81001pt.
- [52 <./Imagenes/correlacion.png>]
-[53] [54] [55] [56] [57]) [58]
+ [55 <./Imagenes/correlacion.png>] [56] [57
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.861 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.861 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.861 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.861 
+      ]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.865 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.865 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.865 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.12
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.865 \begin{equation}
+                       [58] [59]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.928 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.928 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.928 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.928 \begin{equation}
+                       [60] [61]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.960 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.960 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.960 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.15
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.960 \begin{equation}
+                      ) [62]
 \openout2 = `Capitulo4.aux'.
 
  (Capitulo4.tex
 Cap\'{\i }tulo 4.
-[59
+[63
 
 
 
 
 ]
-<Imagenes/senal_filtrada.png, id=1219, 1337.99875pt x 1606.0pt>
+<Imagenes/senal_filtrada.png, id=1285, 1337.99875pt x 1606.0pt>
 File: Imagenes/senal_filtrada.png Graphic file (type png)
 <use Imagenes/senal_filtrada.png>
 Package pdftex.def Info: Imagenes/senal_filtrada.png  used on input line 71.
 (pdftex.def)             Requested size: 457.80486pt x 549.51257pt.
- [60] [61 <./Imagenes/senal_filtrada.png>]
-<Imagenes/eventos.png, id=1234, 1156.32pt x 578.16pt>
+ [64] [65 <./Imagenes/senal_filtrada.png>]
+<Imagenes/eventos.png, id=1297, 1156.32pt x 578.16pt>
 File: Imagenes/eventos.png Graphic file (type png)
 <use Imagenes/eventos.png>
 Package pdftex.def Info: Imagenes/eventos.png  used on input line 110.
 (pdftex.def)             Requested size: 434.91321pt x 217.45346pt.
- [62 <./Imagenes/eventos.png>]
-[63]
-<Imagenes/erar_original_mejorado.png, id=1248, 685.05937pt x 167.87718pt>
+ [66 <./Imagenes/eventos.png>]
+[67]
+<Imagenes/erar_original_mejorado.png, id=1311, 685.05937pt x 167.87718pt>
 File: Imagenes/erar_original_mejorado.png Graphic file (type png)
 <use Imagenes/erar_original_mejorado.png>
 Package pdftex.def Info: Imagenes/erar_original_mejorado.png  used on input lin
 e 187.
 (pdftex.def)             Requested size: 434.91321pt x 106.58032pt.
-<Imagenes/secuencia_principal.png, id=1251, 722.7pt x 505.89pt>
+<Imagenes/secuencia_principal.png, id=1314, 722.7pt x 505.89pt>
 File: Imagenes/secuencia_principal.png Graphic file (type png)
 <use Imagenes/secuencia_principal.png>
 Package pdftex.def Info: Imagenes/secuencia_principal.png  used on input line 2
 07.
 (pdftex.def)             Requested size: 389.13692pt x 272.39688pt.
- [64 <./Imagenes/erar_original_mejorado.png>]
+ [68 <./Imagenes/erar_original_mejorado.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[65 <./Imagenes/secuencia_principal.png>] [66] [67]
-<Imagenes/vel_jerk.png, id=1302, 1606.0pt x 963.6pt>
+[69 <./Imagenes/secuencia_principal.png>] [70] [71]
+<Imagenes/vel_jerk.png, id=1363, 1606.0pt x 963.6pt>
 File: Imagenes/vel_jerk.png Graphic file (type png)
 <use Imagenes/vel_jerk.png>
 Package pdftex.def Info: Imagenes/vel_jerk.png  used on input line 345.
@@ -1888,8 +2295,8 @@ Package pdftex.def Info: Imagenes/vel_jerk.png  used on input line 345.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[68] [69 <./Imagenes/vel_jerk.png>]
-<Imagenes/Importancia_Discriminativa.png, id=1317, 1003.5894pt x 643.203pt>
+[72] [73 <./Imagenes/vel_jerk.png>]
+<Imagenes/Importancia_Discriminativa.png, id=1379, 1003.5894pt x 643.203pt>
 File: Imagenes/Importancia_Discriminativa.png Graphic file (type png)
 <use Imagenes/Importancia_Discriminativa.png>
 Package pdftex.def Info: Imagenes/Importancia_Discriminativa.png  used on input
@@ -1899,7 +2306,7 @@ Package pdftex.def Info: Imagenes/Importancia_Discriminativa.png  used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[70]
+[74]
 Underfull \hbox (badness 10000) in paragraph at lines 503--503
 []|\T1/pcr/m/n/12 Pupil_Mean\T1/ptm/m/n/12 (+20) ,
  []
@@ -1909,78 +2316,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 510--510
 []|\T1/pcr/m/n/12 Jerk_Max\T1/ptm/m/n/12 (+20) ,
  []
 
-[71 <./Imagenes/Importancia_Discriminativa.png>] [72]
-<Imagenes/radares_comparativos.png, id=1358, 1887.6924pt x 550.2156pt>
+[75 <./Imagenes/Importancia_Discriminativa.png>] [76]
+<Imagenes/radares_comparativos.png, id=1420, 1887.6924pt x 550.2156pt>
 File: Imagenes/radares_comparativos.png Graphic file (type png)
 <use Imagenes/radares_comparativos.png>
 Package pdftex.def Info: Imagenes/radares_comparativos.png  used on input line 
 582.
 (pdftex.def)             Requested size: 457.80486pt x 133.43132pt.
- [73 <./Imagenes/radares_comparativos.png>]
-<Imagenes/2d.png, id=1365, 1606.0pt x 1071.00125pt>
+ [77 <./Imagenes/radares_comparativos.png>]
+<Imagenes/2d.png, id=1426, 1606.0pt x 1071.00125pt>
 File: Imagenes/2d.png Graphic file (type png)
 <use Imagenes/2d.png>
 Package pdftex.def Info: Imagenes/2d.png  used on input line 607.
 (pdftex.def)             Requested size: 219.74437pt x 146.53998pt.
-<Imagenes/3d.png, id=1366, 1606.0pt x 1147.28625pt>
+<Imagenes/3d.png, id=1427, 1606.0pt x 1147.28625pt>
 File: Imagenes/3d.png Graphic file (type png)
 <use Imagenes/3d.png>
 Package pdftex.def Info: Imagenes/3d.png  used on input line 615.
 (pdftex.def)             Requested size: 219.74437pt x 156.97769pt.
- [74 <./Imagenes/2d.png> <./Imagenes/3d.png>]
-<Imagenes/varianza.png, id=1374, 1651.16875pt x 1172.38pt>
+ [78 <./Imagenes/2d.png> <./Imagenes/3d.png>]
+<Imagenes/varianza.png, id=1435, 1651.16875pt x 1172.38pt>
 File: Imagenes/varianza.png Graphic file (type png)
 <use Imagenes/varianza.png>
 Package pdftex.def Info: Imagenes/varianza.png  used on input line 644.
 (pdftex.def)             Requested size: 320.46199pt x 227.53088pt.
-<Imagenes/pca_2d.png, id=1375, 470.50781pt x 300.3722pt>
+<Imagenes/pca_2d.png, id=1436, 470.50781pt x 300.3722pt>
 File: Imagenes/pca_2d.png Graphic file (type png)
 <use Imagenes/pca_2d.png>
 Package pdftex.def Info: Imagenes/pca_2d.png  used on input line 655.
 (pdftex.def)             Requested size: 219.74437pt x 140.28578pt.
-<Imagenes/pca_3d.png, id=1376, 1194.71344pt x 1029.8475pt>
+<Imagenes/pca_3d.png, id=1437, 1194.71344pt x 1029.8475pt>
 File: Imagenes/pca_3d.png Graphic file (type png)
 <use Imagenes/pca_3d.png>
 Package pdftex.def Info: Imagenes/pca_3d.png  used on input line 663.
 (pdftex.def)             Requested size: 219.74437pt x 189.41881pt.
- [75 <./Imagenes/varianza.png>]
-<Imagenes/tSNE.png, id=1384, 2364.835pt x 1901.1025pt>
+ [79 <./Imagenes/varianza.png>]
+<Imagenes/tSNE.png, id=1446, 2364.835pt x 1901.1025pt>
 File: Imagenes/tSNE.png Graphic file (type png)
 <use Imagenes/tSNE.png>
 Package pdftex.def Info: Imagenes/tSNE.png  used on input line 684.
 (pdftex.def)             Requested size: 219.74437pt x 176.63245pt.
-<Imagenes/UMAP.png, id=1385, 2365.83875pt x 1901.1025pt>
+<Imagenes/UMAP.png, id=1447, 2365.83875pt x 1901.1025pt>
 File: Imagenes/UMAP.png Graphic file (type png)
 <use Imagenes/UMAP.png>
 Package pdftex.def Info: Imagenes/UMAP.png  used on input line 691.
 (pdftex.def)             Requested size: 219.74437pt x 176.57443pt.
- [76 <./Imagenes/pca_2d.png> <./Imagenes/pca_3d.png>]
+ [80 <./Imagenes/pca_2d.png> <./Imagenes/pca_3d.png>]
 Overfull \hbox (2.6949pt too wide) in paragraph at lines 714--722
  [][] 
  []
 
-[77 <./Imagenes/tSNE.png> <./Imagenes/UMAP.png>] [78] [79] [80]
-<Imagenes/matriz_5_sujetos.png, id=1430, 787.743pt x 715.2321pt>
+[81 <./Imagenes/tSNE.png> <./Imagenes/UMAP.png>] [82] [83] [84]
+<Imagenes/matriz_5_sujetos.png, id=1491, 787.743pt x 715.2321pt>
 File: Imagenes/matriz_5_sujetos.png Graphic file (type png)
 <use Imagenes/matriz_5_sujetos.png>
 Package pdftex.def Info: Imagenes/matriz_5_sujetos.png  used on input line 877.
 
 (pdftex.def)             Requested size: 457.80486pt x 415.67526pt.
- [81]
-<Imagenes/matriz_10_sujetos.png, id=1435, 788.2248pt x 715.2321pt>
+ [85]
+<Imagenes/matriz_10_sujetos.png, id=1497, 788.2248pt x 715.2321pt>
 File: Imagenes/matriz_10_sujetos.png Graphic file (type png)
 <use Imagenes/matriz_10_sujetos.png>
 Package pdftex.def Info: Imagenes/matriz_10_sujetos.png  used on input line 885
 .
 (pdftex.def)             Requested size: 457.80486pt x 415.40242pt.
- [82 <./Imagenes/matriz_5_sujetos.png>]
-<Imagenes/matriz.png, id=1441, 788.2248pt x 715.2321pt>
+ [86 <./Imagenes/matriz_5_sujetos.png>]
+<Imagenes/matriz.png, id=1503, 788.2248pt x 715.2321pt>
 File: Imagenes/matriz.png Graphic file (type png)
 <use Imagenes/matriz.png>
 Package pdftex.def Info: Imagenes/matriz.png  used on input line 893.
 (pdftex.def)             Requested size: 457.80486pt x 415.40242pt.
- [83 <./Imagenes/matriz_10_sujetos.png>] [84 <./Imagenes/matriz.png>]
-<Imagenes/correccion_homografica.png, id=1453, 514.92375pt x 416.30531pt>
+ [87 <./Imagenes/matriz_10_sujetos.png>] [88 <./Imagenes/matriz.png>]
+<Imagenes/correccion_homografica.png, id=1515, 514.92375pt x 416.30531pt>
 File: Imagenes/correccion_homografica.png Graphic file (type png)
 <use Imagenes/correccion_homografica.png>
 Package pdftex.def Info: Imagenes/correccion_homografica.png  used on input lin
@@ -1990,14 +2397,14 @@ e 924.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[85] [86 <./Imagenes/correccion_homografica.png>]
-<Imagenes/hm.png, id=1469, 925.7787pt x 534.798pt>
+[89] [90 <./Imagenes/correccion_homografica.png>]
+<Imagenes/hm.png, id=1530, 925.7787pt x 534.798pt>
 File: Imagenes/hm.png Graphic file (type png)
 <use Imagenes/hm.png>
 Package pdftex.def Info: Imagenes/hm.png  used on input line 965.
 (pdftex.def)             Requested size: 389.13692pt x 224.79315pt.
- [87 <./Imagenes/hm.png>]
-<Imagenes/hm_5_puntos.png, id=1477, 1084.05pt x 650.43pt>
+ [91 <./Imagenes/hm.png>]
+<Imagenes/hm_5_puntos.png, id=1539, 1084.05pt x 650.43pt>
 File: Imagenes/hm_5_puntos.png Graphic file (type png)
 <use Imagenes/hm_5_puntos.png>
 Package pdftex.def Info: Imagenes/hm_5_puntos.png  used on input line 1011.
@@ -2006,27 +2413,27 @@ Package pdftex.def Info: Imagenes/hm_5_puntos.png  used on input line 1011.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagenes/mapeo_espiral.png, id=1481, 886.81313pt x 504.38437pt>
+<Imagenes/mapeo_espiral.png, id=1543, 886.81313pt x 504.38437pt>
 File: Imagenes/mapeo_espiral.png Graphic file (type png)
 <use Imagenes/mapeo_espiral.png>
 Package pdftex.def Info: Imagenes/mapeo_espiral.png  used on input line 1071.
 (pdftex.def)             Requested size: 389.13692pt x 221.3295pt.
-[88]
+[92]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[89 <./Imagenes/hm_5_puntos.png>]
+[93 <./Imagenes/hm_5_puntos.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[90 <./Imagenes/mapeo_espiral.png>]
-<Imagenes/COMPARATIVA_FINAL_MATRICES.png, id=1507, 1598.3715pt x 668.9793pt>
+[94 <./Imagenes/mapeo_espiral.png>]
+<Imagenes/COMPARATIVA_FINAL_MATRICES.png, id=1569, 1598.3715pt x 668.9793pt>
 File: Imagenes/COMPARATIVA_FINAL_MATRICES.png Graphic file (type png)
 <use Imagenes/COMPARATIVA_FINAL_MATRICES.png>
 Package pdftex.def Info: Imagenes/COMPARATIVA_FINAL_MATRICES.png  used on input
  line 1196.
 (pdftex.def)             Requested size: 457.80486pt x 191.6104pt.
- [91] [92 <./Imagenes/COMPARATIVA_FINAL_MATRICES.png>] [93]
+ [95] [96 <./Imagenes/COMPARATIVA_FINAL_MATRICES.png>] [97]
 Overfull \hbox (0.74763pt too wide) in paragraph at lines 1394--1401
 []\T1/pcr/m/n/12 Jerk_Max\T1/ptm/m/n/12 (-20) : $\OML/ztmcm/m/it/12 ^^U \OT1/zt
 mcm/m/n/12 = \OMS/ztmcm/m/n/12 ^^@\OT1/ztmcm/m/n/12 2\OML/ztmcm/m/it/12 :\OT1/z
@@ -2037,17 +2444,17 @@ tmcm/m/n/12 362$\T1/ptm/m/n/12 (-20) , $\OML/ztmcm/m/it/12 d \OT1/ztmcm/m/n/12
 OT1/ztmcm/m/n/12 18 %[]$\T1/ptm/m/n/12 (-20) ,
  []
 
-[94]) [95]
+[98]) [99]
 \openout2 = `Capitulo5.aux'.
 
  (Capitulo5.tex
 Cap\'{\i }tulo 5.
-[96
+[100
 
 
 
 
-] [97] [98] [99] [100] [101] [102] [103] [104] [105]) [106] [107
+] [101] [102] [103] [104] [105] [106] [107] [108] [109]) [110] [111
 
 
 
@@ -2057,18 +2464,18 @@ Cap\'{\i }tulo 5.
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 217.
 
-[108] [109]
+[112] [113]
 
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 217.
 
-[110]
+[114]
 \openout2 = `formulas.aux'.
 
- (formulas.tex [111
+ (formulas.tex [115
 
 
-] [112]
+] [116]
 Overfull \hbox (49.05228pt too wide) in paragraph at lines 90--91
 []\T1/ptm/m/n/12 (-20) Algoritmo pa-ra cuan-ti-fi-car la com-ple-ji-dad y auto-
 similaridad de una se-rie tem-po-ral $\OML/ztmcm/m/it/12 X\OT1/ztmcm/m/n/12 (1)
@@ -2076,7 +2483,7 @@ similaridad de una se-rie tem-po-ral $\OML/ztmcm/m/it/12 X\OT1/ztmcm/m/n/12 (1)
 m/m/n/12 (\OML/ztmcm/m/it/12 N\OT1/ztmcm/m/n/12 )$\T1/ptm/m/n/12 (-20) : 
  []
 
-[113] [114]) [115]
+[117] [118]) [119]
 \openout2 = `glosario.aux'.
 
  (glosario.tex
@@ -2084,12 +2491,12 @@ Overfull \hbox (1.61557pt too wide) in paragraph at lines 35--36
 []\T1/ptm/m/n/12 (-20) Algoritmo de me-jo-ra de con-
  []
 
-[116
+[120
 
 
 
 
-] [117] [118] [119] [120] [121] [122] [123] [124]) [125] (Main.aux
+] [121] [122] [123] [124] [125] [126] [127] [128]) [129] (Main.aux
 (portada.aux)
 LaTeX Info: Redefining \sptext on input line 13.
 LaTeX Info: Redefining \. on input line 13.
@@ -2101,20 +2508,29 @@ LaTeX Info: Redefining \% on input line 13.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Main.out' has not changed.
-(rerunfilecheck)             Checksum: 8491A2DA709B46A4BBEA19FE7532B9D1;27805.
+(rerunfilecheck)             Checksum: 96879C56EDF1E1AFE94250186A923895;27805.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Main.run.xml'.
 \openout1 = `Main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44883 strings out of 467871
- 892945 string characters out of 5417892
- 1718560 words of memory out of 5000000
- 71819 multiletter control sequences out of 15000+600000
- 769228 words of font info for 650 fonts, out of 8000000 for 9000
+ 44908 strings out of 467871
+ 893349 string characters out of 5417892
+ 1718645 words of memory out of 5000000
+ 71823 multiletter control sequences out of 15000+600000
+ 769678 words of font info for 654 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,94p,1196b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,94p,1426b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmex10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi10.pfb><C:/Users/Victor/AppData/Local/Programs/MiKTeX/fonts/type
@@ -2130,9 +2546,9 @@ or/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Vic
 tor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/V
 ictor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/
 Victor/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Main.pdf (137 pages, 18939626 bytes).
+Output written on Main.pdf (141 pages, 18962294 bytes).
 PDF statistics:
- 1947 PDF objects out of 2073 (max. 8388607)
- 479 named destinations out of 1000 (max. 500000)
+ 2008 PDF objects out of 2073 (max. 8388607)
+ 494 named destinations out of 1000 (max. 500000)
  127685 words of extra memory for PDF output out of 128383 (max. 10000000)
 

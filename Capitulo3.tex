@@ -79,7 +79,7 @@ El equipo utilizado presenta las siguientes características:
 
 Este equipo proporciona el poder de cómputo necesario para:
 \begin{enumerate}
-	\item Procesar flujos de video a 30-120 FPS en tiempo real
+	\item Procesar flujos de video a 30-120 FPS (\textit{Frames per second}) en tiempo real
 	\item Ejecutar algoritmos de detección y extracción de características
 	\item Entrenar y validar modelos de aprendizaje automático
 	\item Almacenar y gestionar grandes volúmenes de datos experimentales
@@ -98,7 +98,7 @@ La captura de imágenes del ojo se realizó mediante un módulo de cámara infra
 	\item \textbf{Interfaz de datos}: USB 2.0 de alta velocidad
 	\item \textbf{Formato de salida}: MJPEG
 	\item \textbf{Enfoque}: Lente de enfoque fijo manual (montura M12) ajustado para macro-distancia
-	\item \textbf{Precio}: 15 USD (Amazon)
+	\item \textbf{Precio}: 15 USD 
 \end{itemize}
 
 \begin{figure}[H]
@@ -116,9 +116,20 @@ La captura de imágenes del ojo se realizó mediante un módulo de cámara infra
 	\label{fig:montaje_camara}
 \end{figure}
 
-Se seleccionó una frecuencia de muestreo operativa de 120 Hz fundamentada en el teorema de muestreo de Nyquist-Shannon.
-Dado que el ancho de banda fisiológico de los movimientos oculares sacádicos convencionales se sitúa en el rango de 20-25 Hz, una tasa de 120 FPS no solo satisface la condición de Nyquist ($120 > 50$), sino que proporciona un factor de sobremuestreo significativo.
-Esto permite una reconstrucción temporal fidedigna de la dinámica ocular, minimizando el desenfoque de movimiento (\textit{motion blur}) durante las aceleraciones rápidas del ojo.
+Se seleccionó una frecuencia de muestreo operativa de 120 Hz fundamentada en el teorema de muestreo de Nyquist-Shannon. Según Nyquist \cite{nyquist1928certain}, este teorema establece que para reconstruir fielmente una señal continua a partir de sus muestras discretas, la frecuencia de muestreo $f_s$ debe ser al menos el doble de la frecuencia máxima $f_{\text{max}}$ presente en la señal:
+
+\begin{equation}
+	f_s > 2 f_{\text{max}} \tag{16}
+\end{equation}
+
+donde:
+\begin{itemize}
+	\item $f_s$ es la frecuencia de muestreo (en Hz, muestras por segundo);
+	\item $f_{\text{max}}$ es la frecuencia más alta contenida en la señal (en Hz), es decir, su ancho de banda;
+	\item $2 f_{\text{max}}$ se conoce como la \textbf{frecuencia de Nyquist}.
+\end{itemize}
+
+Dado que el ancho de banda fisiológico de los movimientos oculares sacádicos convencionales se sitúa en el rango de 20-25 Hz, una tasa de 120 FPS no solo satisface la condición de Nyquist ($120 > 50$), sino que proporciona un factor de sobremuestreo significativo (más del doble de la frecuencia crítica). Esto permite una reconstrucción temporal fidedigna de la dinámica ocular, minimizando el desenfoque de movimiento (\textit{motion blur}) durante las aceleraciones rápidas del ojo \cite{holmqvist2011eye}.
 
 \textbf{Configuración geométrica y validez de la captura:}
 
@@ -164,9 +175,7 @@ Para implementar eficazmente el método de pupila oscura y maximizar el contrast
 	\label{fig:luxometro_unit}
 \end{figure}
 
-\textbf{Método de pupila oscura:} Gracias a la sensibilidad espectral del sensor GC0308 en el rango del infrarrojo cercano (sin filtro IR-cut), este estudio implementa el método de pupila oscura aprovechando la iluminación ambiental como fuente pasiva.
-A diferencia de los sensores que operan exclusivamente en el espectro visible, este dispositivo capta la radiación infrarroja del entorno, la cual es absorbida eficientemente por la retina pero reflejada por el iris y la esclera.
-Este fenómeno físico maximiza el contraste natural de la imagen, haciendo que la pupila aparezca significativamente más oscura sin necesidad de emisores activos (LEDs), lo que optimiza la segmentación mediante las técnicas de umbralización detalladas en la sección~\ref{sec:segmentacion}.
+\textbf{Método de pupila oscura:} Gracias a la sensibilidad espectral del sensor GC0308 en el rango del infrarrojo cercano (sin filtro IR-cut), este estudio implementa el método de pupila oscura aprovechando la iluminación ambiental como fuente pasiva. Como señalan Li y Parkhurst \cite{li2005starburst}, esta técnica se fundamenta en la absorción diferencial de la radiación infrarroja: a diferencia de los sensores que operan exclusivamente en el espectro visible, este dispositivo capta la radiación infrarroja del entorno, la cual es absorbida eficientemente por la retina pero reflejada por el iris y la esclera. Este fenómeno físico maximiza el contraste natural de la imagen, haciendo que la pupila aparezca significativamente más oscura sin necesidad de emisores activos (LEDs), lo que optimiza la segmentación mediante las técnicas de umbralización detalladas en la sección~\ref{sec:segmentacion} \cite{duchowski2017}.
 
 \subsection{Herramientas de \textit{Software}}
 
@@ -380,7 +389,7 @@ No se registraron imágenes que permitieran la identificación facial de los par
 \subsubsection{Cuadrícula de calibración y prueba (\textit{Grid} 3×3)}
 
 El estímulo visual consistió en una cuadrícula regular de $3 \times 3$ puntos distribuidos uniformemente sobre el área activa del monitor.
-La posición de los puntos se calculó dividiendo la resolución de pantalla ($W \times H$) en tres segmentos iguales tanto horizontal como verticalmente, situando cada estímulo en el centro geométrico de cada celda resultante.
+La posición de los puntos se calculó dividiendo la resolución de pantalla ($W \times H$) ó (Ancho x Alto) en tres segmentos iguales tanto horizontal como verticalmente, situando cada estímulo en el centro geométrico de cada celda resultante.
 Para una resolución estándar de $1920 \times 1080$ píxeles, esto resulta en una separación constante entre centros de 640 píxeles en el eje horizontal y 360 píxeles en el eje vertical.
 
 \begin{figure}[htbp]
@@ -530,21 +539,6 @@ Esta transformación reduce el espacio de representación de 3 canales a 1 canal
 Las imágenes capturadas por cámaras digitales inevitablemente contienen ruido, proveniente de fuentes como la sensibilidad del sensor, condiciones de baja iluminación, y artefactos de compresión.
 Para suavizar estas fluctuaciones aleatorias de intensidad sin perder información estructural importante (como los bordes de la pupila), se aplicaron dos tipos de filtros complementarios:
 
-\paragraph{Filtro Gaussiano}
-
-El filtro Gaussiano es un filtro lineal de paso bajo que atenúa las componentes de alta frecuencia espacial (ruido) mediante una convolución con un \textit{kernel} gaussiano bidimensional descrito por Giménez et al. \cite{gimenez2016aplicacion}:
-
-\begin{equation}
-	G(x, y) = \frac{1}{2\pi\sigma^2} \exp\left(-\frac{x^2 + y^2}{2\sigma^2}\right)
-\end{equation}
-
-donde $\sigma$ es la desviación estándar de la distribución gaussiana, que controla el grado de suavizado.
-En este estudio se utilizó $\sigma = 1.5$ y un \textit{kernel} de tamaño $5 \times 5$ píxeles.
-La imagen filtrada se obtiene mediante:
-
-\begin{equation}
-	I_{\text{filtrada}}(x, y) = (I_{\text{gray}} * G)(x, y) = \sum_{i=-2}^{2} \sum_{j=-2}^{2} I_{\text{gray}}(x-i, y-j) \cdot G(i, j)
-\end{equation}
 
 \subsection{Segmentación y Detección de Pupila}
 \label{sec:segmentacion}
@@ -606,7 +600,6 @@ Dado que la iluminación infrarroja puede generar histogramas de intensidad conc
 Según se observa en la función \texttt{process\_frame} del algoritmo implementado:
 
 \begin{enumerate}
-	\item \textbf{Suavizado Gaussiano}: Se aplicó un filtro Gaussiano con \textit{kernel} $(7 \times 7)$ para reducir el ruido de alta frecuencia del sensor CMOS.
 	\item \textbf{Ecualización de Histograma Adaptativa (CLAHE)}: Se utilizó \textit{Contrast Limited Adaptive Histogram Equalization} con un límite de recorte (\textit{clip limit}) de 1.0 y una rejilla de $8 \times 8$.
 	Esto maximiza el contraste local entre la pupila y el iris sin amplificar el ruido en las zonas homogéneas, lo cual es crítico para el método de pupila oscura.
 \end{enumerate}
@@ -825,12 +818,46 @@ Las derivadas se obtuvieron analíticamente a partir de los coeficientes del pol
 Además de las métricas estándar, se implementaron algoritmos para extraer características avanzadas de control motor y cognitivo:
 
 \subsubsection{Pendiente de la Secuencia Principal (\textit{Main Sequence Slope})}
-Para caracterizar la biomecánica muscular, se analizó la relación entre la velocidad pico ($V_{pico}$) y la amplitud ($Amp$) de las sacadas.
-En el rango de amplitudes medidas, esta relación se linealizó, calculando la pendiente $K$ mediante regresión lineal:
+
+Para caracterizar la biomecánica muscular, se analizó la relación entre la velocidad pico ($V_{\text{pico}}$) y la amplitud ($A$) de los movimientos sacádicos. Esta relación, conocida como \textit{secuencia principal}, fue modelada por Bahill et al. \cite{bahill1975} mediante la siguiente función exponencial:
+
 \begin{equation}
-	V_{pico} \approx K \cdot Amp \implies K = \frac{\text{Cov}(V_{pico}, Amp)}{\text{Var}(Amp)}
+	V_{\text{pico}} = V_{\text{sat}} \left(1 - e^{-A / C}\right) \tag{17}
 \end{equation}
-Este parámetro $K$ es un indicador de la rigidez o eficiencia del sistema oculomotor.
+
+donde:
+\begin{itemize}
+	\item $V_{\text{pico}}$ es la velocidad angular máxima alcanzada durante el sacádico ($^\circ$/s);
+	\item $A$ es la amplitud total del desplazamiento ($^\circ$);
+	\item $V_{\text{sat}}$ es la velocidad de saturación asintótica (límite fisiológico superior, típicamente 400-800 $^\circ$/s);
+	\item $C$ es la constante de forma que define la curvatura (típicamente 10-20$^\circ$).
+\end{itemize}
+
+Para amplitudes pequeñas ($A \ll C$), la exponencial puede aproximarse por sus dos primeros términos de la serie de Taylor: $e^{-A/C} \approx 1 - A/C$. Sustituyendo en (17) se obtiene una relación lineal:
+
+\begin{equation}
+	V_{\text{pico}} \approx V_{\text{sat}} \cdot \frac{A}{C} = K \cdot A \tag{18}
+\end{equation}
+
+donde $K = V_{\text{sat}} / C$ es la pendiente inicial de la secuencia principal. En la práctica, para extraer $K$ a partir de los datos experimentales, se aplica una transformación logarítmica que linealiza la ecuación (17). Tomando logaritmos naturales en ambos lados:
+
+\begin{equation}
+	\ln(V_{\text{pico}}) = \ln(V_{\text{sat}}) + \ln\!\left(1 - e^{-A/C}\right) \tag{19}
+\end{equation}
+
+Para el rango de amplitudes donde $A$ es pequeño en comparación con $C$, el término $\ln(1 - e^{-A/C}) \approx \ln(A/C)$, con lo que (19) se reduce a:
+
+\begin{equation}
+	\ln(V_{\text{pico}}) \approx \ln(V_{\text{sat}}/C) + \ln(A) \tag{20}
+\end{equation}
+
+De esta forma, la pendiente de la recta en el plano $\ln(V_{\text{pico}})$ vs. $\ln(A)$ es 1, y la ordenada en el origen proporciona $K$. En este trabajo, la pendiente $K$ se calculó directamente mediante regresión lineal sobre los pares $(A, V_{\text{pico}})$ para el rango de amplitudes medidas, usando la expresión:
+
+\begin{equation}
+	K = \frac{\text{Cov}(V_{\text{pico}}, A)}{\text{Var}(A)} \tag{21}
+\end{equation}
+
+El parámetro $K$ es un indicador de la **rigidez o eficiencia neuromuscular** del sistema oculomotor. Una pendiente alta implica que, para una misma amplitud, el ojo alcanza mayores velocidades, lo cual está asociado a una mayor fuerza de contracción de los músculos extraoculares o a una menor inercia del globo ocular. Komogortsev et al. \cite{komogortsev2010} demostraron que $K$ es uno de los parámetros más estables intra-sujeto y, por tanto, altamente discriminante en tareas de biometría oculomotora. Desde una perspectiva energética, movimientos con mayor pendiente requieren un gasto calórico mayor por unidad de desplazamiento, reflejando así la eficiencia del control motor central.
 
 \subsubsection{Dimensión Fractal de Higuchi (HFD)}
 Para cuantificar la complejidad de la señal de velocidad (estrategia cognitiva de búsqueda), se aplicó el algoritmo de Higuchi con un parámetro $k_{max}=5$.
@@ -864,7 +891,6 @@ Las ecuaciones que definen ambas métricas son:
 
 Donde $p_{sup,i}$ y $p_{inf,i}$ representan los pares de puntos (\textit{landmarks}) verticales densos y $N$ corresponde al número de segmentos de muestreo.
 
-
 \subsection{Justificación y Selección del Espacio de Características}
 \label{subsec:justificacion_metricas}
 
@@ -873,8 +899,7 @@ La selección de los descriptores biométricos no fue arbitraria: cada métrica 
 % ===== CATEGORÍA 1 =====
 \subsubsection*{Categoría I — Cinemática Sacádica}
 
-Las métricas de esta categoría describen la dinámica del movimiento 
-sacádico a distintas escalas de derivación temporal:
+Las métricas de esta categoría describen la dinámica del movimiento sacádico a distintas escalas de derivación temporal:
 
 \begin{itemize}
 	\item \texttt{Vel\_Mean}
@@ -884,32 +909,24 @@ sacádico a distintas escalas de derivación temporal:
 	\item \texttt{Velocity\_Transition\_Smoothness}
 \end{itemize}
 
-Su justificación biométrica se fundamenta en el 
-trabajo de Komogortsev et al.\ \cite{komogortsev2010}, quienes 
-demostraron que los parámetros del modelo de la planta oculomotora 
----incluyendo la velocidad y la aceleración--- son lo suficientemente 
-estables inter-sesión e idiosincrásicos inter-sujeto como para 
-constituir una firma biométrica. En particular, el \textit{Jerk} 
-(derivada de la aceleración, $J = \dddot{\theta}$) es especialmente 
-relevante porque cuantifica el costo energético del movimiento:
+Su justificación biométrica se fundamenta en el trabajo de Komogortsev et al. \cite{komogortsev2010}, quienes demostraron que los parámetros del modelo de la planta oculomotora —incluyendo la velocidad y la aceleración— son lo suficientemente estables inter-sesión e idiosincrásicos inter-sujeto como para constituir una firma biométrica. En particular, el \textit{Jerk} (derivada de la aceleración, $J = \dddot{\theta}$) es especialmente relevante porque cuantifica el costo energético del movimiento:
 
 \begin{equation}
-	J(t) = \frac{d^3\theta}{dt^3} \quad [\text{°/s}^3]
-	\label{eq:jerk}
+	J(t) = \frac{d^3\theta}{dt^3} \quad [\text{°/s}^3] \tag{18}
 \end{equation}
+donde $\theta(t)$ es la posición angular del ojo en función del tiempo.
 
-El cerebro minimiza el \textit{jerk} cuadrático integrado al planificar movimientos oculares óptimos \cite{leigh2015neurology}, y la forma exacta en que cada individuo alcanza ese mínimo está determinada por la geometría muscular única de su sistema oculomotor \cite{bahill1975}. Así, \texttt{Jerk\_Max} captura el límite superior del esfuerzo neuromuscular, mientras que \texttt{Jerk\_Mean} describe la estrategia promedio de control motor. La métrica \texttt{Velocity\_Transition\_Smoothness} complementa estas variables midiendo la continuidad de la curva de velocidad, un indicador de la calidad del control motor de lazo cerrado que varía entre individuos con distinta coordinación oculomotora \cite{vanopstal1987skewness}.
+El cerebro minimiza el \textit{jerk} cuadrático integrado al planificar movimientos oculares óptimos \cite{leigh2015neurology}. Flash y Hogan \cite{flash1985coordination} formalizaron este principio en su modelo de mínimo jerk, demostrando que las trayectorias suaves y eficientes emergen naturalmente de esta optimización. La forma exacta en que cada individuo alcanza ese mínimo está determinada por la geometría muscular única de su sistema oculomotor \cite{bahill1975}. Así, \texttt{Jerk\_Max} captura el límite superior del esfuerzo neuromuscular, mientras que \texttt{Jerk\_Mean} describe la estrategia promedio de control motor. La métrica \texttt{Velocity\_Transition\_Smoothness} complementa estas variables midiendo la continuidad de la curva de velocidad, un indicador de la calidad del control motor de lazo cerrado que varía entre individuos con distinta coordinación oculomotora \cite{vanopstal1987skewness}. Adicionalmente, Harwood et al. \cite{harwood1999spectral} demostraron que el contenido espectral de los sacádicos (estrechamente relacionado con el jerk) es característico de cada persona.
 
 % ===== CATEGORÍA 2 =====
 \subsubsection*{Categoría II — Morfología Pupilar}
 
 Las métricas \texttt{Pupil\_Mean}, \texttt{Pupil\_Std}, \texttt{Pupil\_CV} y \texttt{Pupil\_Vel\_Max} caracterizan la geometría y la dinámica del diámetro pupilar. La justificación de su inclusión es doble.
 
-En primer lugar, el diámetro pupilar en reposo es un rasgo fenotípico estable determinado por la anatomía del músculo esfínter del iris \cite{duchowski2017}. Su valor medio (\texttt{Pupil\_Mean}) actúa como un descriptor morfológico, análogo al diámetro del iris en los sistemas de reconocimiento biométrico clásico \cite{komogortsev2010}. El coeficiente de variación (\texttt{Pupil\_CV} $= \sigma / \mu$) normaliza la dispersión por la media, haciéndolo comparable entre sujetos con distintos tamaños pupilares basales:
+En primer lugar, el diámetro pupilar en reposo es un rasgo fenotípico estable determinado por la anatomía del músculo esfínter del iris \cite{duchowski2017}. Su valor medio (\texttt{Pupil\_Mean}) actúa como un descriptor morfológico, análogo al diámetro del iris en los sistemas de reconocimiento biométrico clásico \cite{komogortsev2010}. Como señalan Jain et al. \cite{jain2016biometric}, los rasgos morfológicos del ojo han sido ampliamente explotados en biometría estática, y su combinación con características dinámicas mejora significativamente la robustez frente a suplantaciones. El coeficiente de variación (\texttt{Pupil\_CV} $= \sigma / \mu$) normaliza la dispersión por la media, haciéndolo comparable entre sujetos con distintos tamaños pupilares basales:
 
 \begin{equation}
-	CV_{pupil} = \frac{\sigma_{pupil}}{\mu_{pupil}} \times 100\%
-	\label{eq:cv_pupil}
+	CV_{pupil} = \frac{\sigma_{pupil}}{\mu_{pupil}} \times 100\% \tag{19}
 \end{equation}
 
 En segundo lugar, la dinámica pupilar (\texttt{Pupil\_Vel\_Max}) refleja la reactividad del sistema nervioso autónomo ante la carga cognitiva del estímulo \cite{beatty1982}. Beatty demostró que la dilatación pupilar evocada por la tarea (\textit{task-evoked pupillary response}) es proporcional al esfuerzo cognitivo y presenta alta consistencia intra-sujeto, lo que la convierte en un marcador conductual de la estrategia de procesamiento visual individual.
@@ -917,9 +934,7 @@ En segundo lugar, la dinámica pupilar (\texttt{Pupil\_Vel\_Max}) refleja la rea
 % ===== CATEGORÍA 3 =====
 \subsubsection*{Categoría III — Estructura Temporal del Movimiento}
 
-Las métricas de esta categoría describen la organización temporal de 
-la exploración visual: cuántos movimientos se producen, con qué 
-frecuencia, y qué tan eficientemente se realizan:
+Las métricas de esta categoría describen la organización temporal de la exploración visual: cuántos movimientos se producen, con qué frecuencia, y qué tan eficientemente se realizan:
 
 \begin{itemize}
 	\item \texttt{Microsaccade\_Rate}
@@ -928,14 +943,14 @@ frecuencia, y qué tan eficientemente se realizan:
 	\item \texttt{Main\_Seq\_Slope}
 \end{itemize}
 
-La tasa de microsacadas (\texttt{Microsaccade\_Rate}) es particularmente relevante como descriptor de biometría conductual: los microsacadas son movimientos involuntarios de fijación donde su frecuencia y dirección están moduladas por factores atencionales y neurofisiológicos propios de cada individuo \cite{holmqvist2011eye}. La pendiente de la Secuencia Principal (\texttt{Main\_Seq\_Slope}) cuantifica la eficiencia neuromuscular del sistema sacádico como fue descrito en la Sección~\ref{subsec:justificacion_metricas}, y su inclusión como métrica independiente permite capturar variaciones individuales en la curva velocidad-amplitud que el modelo exponencial completo de Bahill \cite{bahill1975} no resume en un único escalar. La velocidad durante fijación (\texttt{Fixation\_Vel\_Mean}) captura la micro-deriva residual del ojo durante los periodos de aparente reposo, un marcador de la estabilidad del sistema de mantenimiento de fijación que varía entre individuos sanos \cite{leigh2015neurology}.
+La tasa de microsacadas (\texttt{Microsaccade\_Rate}) es particularmente relevante como descriptor de biometría conductual. Engbert y Kliegl \cite{engbert2003microsaccades} mostraron que las microsacadas son movimientos involuntarios de fijación cuya frecuencia y dirección están moduladas por factores atencionales y neurofisiológicos propios de cada individuo, lo que las convierte en una firma sutil pero robusta. La pendiente de la Secuencia Principal (\texttt{Main\_Seq\_Slope}) cuantifica la eficiencia neuromuscular del sistema sacádico como fue descrito en la Sección~\ref{subsec:justificacion_metricas}, y su inclusión como métrica independiente permite capturar variaciones individuales en la curva velocidad-amplitud que el modelo exponencial completo de Bahill \cite{bahill1975} no resume en un único escalar. Collewijn et al. \cite{collewijn1988binocular} reportaron que la coordinación binocular durante las sacadas presenta patrones idiosincrásicos, lo que respalda el uso de parámetros derivados de la main sequence. La velocidad durante fijación (\texttt{Fixation\_Vel\_Mean}) captura la micro-deriva residual del ojo durante los periodos de aparente reposo, un marcador de la estabilidad del sistema de mantenimiento de fijación que varía entre individuos sanos \cite{leigh2015neurology}.
 
 % ===== CATEGORÍA 4 =====
 \subsubsection*{Categoría IV — Complejidad No Lineal}
 
 Las métricas \texttt{Fractal\_Dim} y \texttt{Gaze\_Z\_Mean} aportan información de orden superior que los descriptores lineales no pueden capturar.
 
-La Dimensión Fractal de Higuchi (\texttt{Fractal\_Dim}) cuantifica la auto-similaridad de la señal de velocidad a través de múltiples escalas temporales \cite{higuchi1988}. Señales de mayor dimensión fractal ($D_H$ próxima a 2) reflejan estrategias de exploración visual más complejas y caóticas, mientras que valores bajos ($D_H$ próxima a 1) corresponden a movimientos más suaves y predecibles. Esta métrica es especialmente valiosa porque es invariante a transformaciones lineales de la señal, lo que la hace robusta ante variaciones de ganancia del sensor. La componente $Z$ del vector de mirada (\texttt{Gaze\_Z\_Mean}) codifica la profundidad de la dirección de mirada en el espacio tridimensional, capturando diferencias individuales en la postura de convergencia ocular que son invisibles para los sistemas de \textit{eye-tracking} 2D convencionales \cite{duchowski2017}.
+La Dimensión Fractal de Higuchi (\texttt{Fractal\_Dim}) cuantifica la auto-similaridad de la señal de velocidad a través de múltiples escalas temporales \cite{higuchi1988}. Mandelbrot \cite{mandelbrot1982fractal} estableció las bases de la geometría fractal, demostrando que muchas señales biológicas presentan estructuras auto-similares no capturables por métodos lineales. Señales de mayor dimensión fractal ($D_H$ próxima a 2) reflejan estrategias de exploración visual más complejas y caóticas, mientras que valores bajos ($D_H$ próxima a 1) corresponden a movimientos más suaves y predecibles. Esta métrica es especialmente valiosa porque es invariante a transformaciones lineales de la señal, lo que la hace robusta ante variaciones de ganancia del sensor. La componente $Z$ del vector de mirada (\texttt{Gaze\_Z\_Mean}) codifica la profundidad de la dirección de mirada en el espacio tridimensional, capturando diferencias individuales en la postura de convergencia ocular que son invisibles para los sistemas de \textit{eye-tracking} 2D convencionales \cite{duchowski2017}.
 
 % ===== SELECCIÓN POR GINI =====
 \subsubsection*{Reducción del Espacio de Características mediante Impureza de Gini}
