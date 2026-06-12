@@ -129,7 +129,7 @@
 \contentsline {section}{\numberline {4.2}Caracterización Cinemática y Fisiológica}{68}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Análisis de la Secuencia Principal (Main Sequence)}{68}{subsection.4.2.1}%
 \contentsline {subsubsection}{Discusión de Parámetros}{69}{figure.caption.54}%
-\contentsline {paragraph}{Perfil de los datos recolectados}{70}{table.caption.56}%
+\contentsline {paragraph}{Perfil de los datos recolectados}{69}{table.caption.56}%
 \contentsline {paragraph}{Velocidad de saturación ($V_{sat} = 654.33~^\circ /s$).}{70}{equation.4.1}%
 \contentsline {paragraph}{Constante de amplitud ($C = 15.85^\circ $).}{71}{equation.4.3}%
 \contentsline {paragraph}{Bondad de ajuste y análisis de residuos.}{72}{equation.4.5}%
