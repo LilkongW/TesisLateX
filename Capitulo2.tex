@@ -606,13 +606,29 @@ Cuando las relaciones entre las características oculomotoras presentan estructu
 	\item \textbf{Uniform Manifold Approximation and Projection (UMAP):} Basado en la geometría diferencial y la topología algebraica, UMAP asume que los datos se distribuyen de manera uniforme en una variedad de Riemann localmente conexa. A diferencia de t-SNE, UMAP calcula las distancias relativas utilizando conjuntos difusos locales y minimiza la entropía cruzada difusa. Esta fundamentación teórica permite que UMAP preserve de manera simultánea tanto la estructura local (similitud entre muestras del mismo sujeto) como la estructura global del espacio biométrico, ofreciendo además una mayor eficiencia computacional y escalabilidad.
 \end{enumerate}
 
-\subsubsection{Algoritmos de Agrupamiento (Clustering) No Supervisado}
-Con el fin de examinar la separabilidad intrínseca de los patrones oculomotores sin la guía de un clasificador supervisado, se aplican algoritmos de \textit{clustering}. Estos métodos agrupan las instancias biométricas basándose únicamente en métricas de distancia o densidad en el espacio transformado. El análisis no supervisado permite validar si las firmas dinámicas del ojo (como las curvas de Bahill o el Eye Aspect Ratio) se asocian de forma natural a grupos discretos correspondientes a los individuos bajo estudio.
 
-Para evaluar de manera cuantitativa la calidad y cohesión de estos agrupamientos sin depender de las etiquetas reales, se emplean métricas internas de rendimiento, entre las cuales destaca el \textit{Coeficiente de Silueta} ($S$). Para una muestra dada, se define como:
+\subsubsection{Algoritmos de Agrupamiento (Clustering) No Supervisado}
+Con el fin de examinar la separabilidad intrínseca de los patrones oculomotores sin la guía de un clasificador supervisado, se aplican algoritmos de \textit{clustering}. Estos métodos agrupan las instancias biométricas basándose en métricas de distancia o densidad en el espacio transformado, permitiendo validar si las firmas dinámicas del ojo (como las curvas de Bahill o el Eye Aspect Ratio) se asocian de forma natural a grupos discretos correspondientes a los individuos bajo estudio. Para evaluar este comportamiento de forma exhaustiva, se emplean dos enfoques con metodologías matemáticas distintas: un enfoque particional basado en distancias y un enfoque basado en densidad.
+
+\begin{enumerate}
+	\item \textbf{K-Means (Agrupamiento por Particiones):} Es un algoritmo iterativo que particiona el conjunto de datos en $K$ clústeres disjuntos. El proceso asigna cada muestra al centroide más cercano (utilizando comúnmente la distancia euclidiana) y actualiza la posición de dichos centroides basándose en la media aritmética de los puntos asignados. El objetivo matemático de K-Means es minimizar la suma de los errores cuadráticos internos (inercia):
+	\begin{equation}
+		J = \sum_{j=1}^{K} \sum_{\mathbf{x}_i \in C_j} \|\mathbf{x}_i - \boldsymbol{\mu}_j\|^2
+	\end{equation}
+	Donde $C_j$ representa el $j$-ésimo clúster y $\boldsymbol{\mu}_j$ es el vector medio o centroide del clúster. Este método asume implícitamente que los grupos poseen geometrías esféricas e isotrópicas y tamaños relativamente homogéneos en el espacio de características.
+	
+	\item \textbf{DBSCAN (Density-Based Spatial Clustering of Applications with Noise):} A diferencia de K-Means, DBSCAN no requiere definir a priori el número de clústeres y es capaz de descubrir agrupamientos de formas geométricas arbitrarias y complejas, además de identificar datos atípicos u \textit{outliers}. El algoritmo clasifica los puntos basándose en dos hiperparámetros esenciales: el radio de vecindad ($\varepsilon$) y el número mínimo de puntos requeridos para formar una región densa ($MinPts$). Un punto se define como:
+	\begin{itemize}
+		\item \textit{Punto Núcleo (Core point):} Si posee al menos $MinPts$ en su vecindad de radio $\varepsilon$.
+		\item \textit{Punto Frontera (Border point):} Si está en la vecindad de un punto núcleo pero tiene menos de $MinPts$ a su alrededor.
+		\item \textit{Ruido (Noise):} Si no cumple ninguna de las condiciones anteriores, lo cual es de gran utilidad para depurar señales u observaciones anómalas en registros biométricos oculares.
+	\end{itemize}
+\end{enumerate}
+
+Para evaluar de manera cuantitativa la calidad y cohesión de los clústeres generados por ambos algoritmos sin depender de las etiquetas reales, se emplean métricas internas de rendimiento, entre las cuales destaca el \textit{Coeficiente de Silueta} ($S$). Para una muestra dada, se define como:
 
 \begin{equation}
 	S = \frac{b - a}{\max(a, b)}
 \end{equation}
 
-Donde $a$ es la distancia promedio de la muestra a los demás puntos del mismo clúster, y $b$ es la distancia promedio mínima de la muestra a los puntos de cualquier otro clúster. Valores cercanos a $1$ indican un agrupamiento altamente definido y correcto, validando la estabilidad espacial de la huella oculomotora generada.
+Donde $a$ es la distancia promedio de la muestra a los demás puntos del mismo clúster, y $b$ es la distancia promedio mínima de la muestra a los puntos de cualquier otro clúster. Valores cercanos a $1$ indican un agrupamiento altamente definido y correcto, validando la estabilidad espacial de la huella oculomotora generada mediante un método o el otro.
