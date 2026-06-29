@@ -802,7 +802,8 @@ La trayectoria angular acumulada se define como $P(t) = \sum \Delta \theta$.
 
 \subsection{Filtrado y Derivación}
 
-Para el cálculo de la velocidad y aceleración, se aplicó el filtro Savitzky-Golay sobre la señal de posición angular $P(t)$, con los siguientes parámetros configurados en el sistema (\texttt{CONFIG['PARAMS']}):
+Para el cálculo de la velocidad y aceleración, se aplicó el filtro Savitzky-Golay \cite{savitzky1964smoothing} sobre la señal de posición angular $P(t)$, con los siguientes parámetros configurados en el sistema (\texttt{CONFIG['PARAMS']}):
+
 \begin{itemize}
 	\item \textbf{Ventana ($w$)}: 21 muestras (equivalente a 175 ms a 120 Hz).
 	\item \textbf{Orden del polinomio ($p$)}: 3 (cúbico).
@@ -860,10 +861,10 @@ De esta forma, la pendiente de la recta en el plano $\ln(V_{\text{pico}})$ vs. $
 	K = \frac{\text{Cov}(V_{\text{pico}}, A)}{\text{Var}(A)} \tag{21}
 \end{equation}
 
-El parámetro $K$ es un indicador de la **rigidez o eficiencia neuromuscular** del sistema oculomotor. Una pendiente alta implica que, para una misma amplitud, el ojo alcanza mayores velocidades, lo cual está asociado a una mayor fuerza de contracción de los músculos extraoculares o a una menor inercia del globo ocular. Komogortsev et al. \cite{komogortsev2010} demostraron que $K$ es uno de los parámetros más estables intra-sujeto y, por tanto, altamente discriminante en tareas de biometría oculomotora. Desde una perspectiva energética, movimientos con mayor pendiente requieren un gasto calórico mayor por unidad de desplazamiento, reflejando así la eficiencia del control motor central.
+El parámetro $K$ es un indicador de la rigidez o eficiencia neuromuscular del sistema oculomotor. Una pendiente alta implica que, para una misma amplitud, el ojo alcanza mayores velocidades, lo cual está asociado a una mayor fuerza de contracción de los músculos extraoculares o a una menor inercia del globo ocular. Komogortsev et al. \cite{komogortsev2010} demostraron que $K$ es uno de los parámetros más estables intra-sujeto y, por tanto, altamente discriminante en tareas de biometría oculomotora. Desde una perspectiva energética, movimientos con mayor pendiente requieren un gasto calórico mayor por unidad de desplazamiento, reflejando así la eficiencia del control motor central.
 
 \subsubsection{Dimensión Fractal de Higuchi (HFD)}
-Para cuantificar la complejidad de la señal de velocidad (estrategia cognitiva de búsqueda), se aplicó el algoritmo de Higuchi con un parámetro $k_{max}=5$.
+Para cuantificar la complejidad de la señal de velocidad (estrategia cognitiva de búsqueda), se aplicó el algoritmo de Higuchi \cite{higuchi1988} con un parámetro $k_{max}=5$.
 Este algoritmo calcula la dimensión fractal $D_H$ basándose en la tasa de cambio de la longitud de la curva $L(k)$ a diferentes escalas temporales $k$:
 \begin{equation}
 	L(k) \propto k^{-D_H}
@@ -901,25 +902,36 @@ La selección de los descriptores biométricos no fue arbitraria: cada métrica 
 
 % ===== CATEGORÍA 1 =====
 \subsubsection*{Categoría I — Cinemática Sacádica}
-
-Las métricas de esta categoría describen la dinámica del movimiento sacádico a distintas escalas de derivación temporal:
-
+Las métricas pertenecientes a esta categoría describen la dinámica intrínseca del movimiento sacádico a través de distintas escalas de derivación temporal, capturando la firma cinemática del sistema oculomotor:
 \begin{itemize}
-	\item \texttt{Vel\_Mean}
-	\item \texttt{Acc\_Max}
-	\item \texttt{Jerk\_Mean}
-	\item \texttt{Jerk\_Max}
-	\item \texttt{Velocity\_Transition\_Smoothness}
+	\item \texttt{Vel\_Mean} (Velocidad media del sacádico)
+	\item \texttt{Acc\_Max} (Aceleración máxima)
+	\item \texttt{Jerk\_Mean} (Jerk medio)
+	\item \texttt{Jerk\_Max} (Jerk máximo)
+	\item \texttt{Velocity\_Transition\_Smoothness} (Suavidad de la transición de velocidad)
 \end{itemize}
 
-Su justificación biométrica se fundamenta en el trabajo de Komogortsev et al. \cite{komogortsev2010}, quienes demostraron que los parámetros del modelo de la planta oculomotora —incluyendo la velocidad y la aceleración— son lo suficientemente estables inter-sesión e idiosincrásicos inter-sujeto como para constituir una firma biométrica. En particular, el \textit{Jerk} (derivada de la aceleración, $J = \dddot{\theta}$) es especialmente relevante porque cuantifica el costo energético del movimiento:
+Su justificación biométrica se fundamenta en el trabajo pionero de Komogortsev et al. \cite{komogortsev2010}, quienes demostraron que los parámetros mecánicos del modelo de la planta oculomotora —incluyendo los perfiles de velocidad y aceleración— exhiben una notable estabilidad inter-sesión en un mismo individuo, así como una alta idiosincrasia inter-sujeto, lo que les confiere propiedades idóneas para constituir una firma biométrica conductual. 
 
+En este contexto, el \textit{Jerk} ($J$), definido matemáticamente como la tercera derivada de la posición angular $\theta(t)$ respecto al tiempo (o la derivada temporal de la aceleración $a$), adquiere una relevancia física fundamental debido a su relación directa con la eficiencia y el costo energético del control neuromuscular:
 \begin{equation}
-	J(t) = \frac{d^3\theta}{dt^3} \quad [\text{°/s}^3] \tag{18}
+	J(t) = \frac{da(t)}{dt} = \frac{d^2v(t)}{dt^2} = \frac{d^3\theta(t)}{dt^3} \quad \left[\text{°/s}^3\right] \tag{18}
 \end{equation}
-donde $\theta(t)$ es la posición angular del ojo en función del tiempo.
 
-El cerebro minimiza el \textit{jerk} cuadrático integrado al planificar movimientos oculares óptimos \cite{leigh2015neurology}. Flash y Hogan \cite{flash1985coordination} formalizaron este principio en su modelo de mínimo jerk, demostrando que las trayectorias suaves y eficientes emergen naturalmente de esta optimización. La forma exacta en que cada individuo alcanza ese mínimo está determinada por la geometría muscular única de su sistema oculomotor \cite{bahill1975}. Así, \texttt{Jerk\_Max} captura el límite superior del esfuerzo neuromuscular, mientras que \texttt{Jerk\_Mean} describe la estrategia promedio de control motor. La métrica \texttt{Velocity\_Transition\_Smoothness} complementa estas variables midiendo la continuidad de la curva de velocidad, un indicador de la calidad del control motor de lazo cerrado que varía entre individuos con distinta coordinación oculomotora \cite{vanopstal1987skewness}. Adicionalmente, Harwood et al. \cite{harwood1999spectral} demostraron que el contenido espectral de los sacádicos (estrechamente relacionado con el jerk) es característico de cada persona.
+Desde la perspectiva del control motor óptimo, el cerebro planifica las trayectorias oculares minimizando el esfuerzo neuromuscular e intentando suavizar las transiciones cinemáticas \cite{leigh2015neurology}. Flash y Hogan \cite{flash1985coordination} formalizaron este principio mediante el \textbf{modelo de mínimo jerk}, demostrando que los movimientos biológicos eficientes emergen de la optimización de un funcional de costo definido como la integral del jerk cuadrático a lo largo del tiempo. Para un movimiento sacádico de duración $T$, este costo energético se expresa como:
+\begin{equation}
+	C_J = \int_{0}^{T} \left( \frac{d^3\theta(t)}{dt^3} \right)^2 dt = \int_{0}^{T} J(t)^2 dt \tag{19}
+\end{equation}
+
+La forma exacta en que el sistema nervioso de cada individuo minimiza este funcional y alcanza dicho óptimo está supeditada a las restricciones anatómicas particulares de su órbita, tales como la geometría muscular única, la masa del globo ocular y la viscosidad de los tejidos extraoculares \cite{bahill1975}. Por consiguiente, mientras que \texttt{Jerk\_Max} registra el límite superior del esfuerzo o ``tirón'' neuromuscular instantáneo, \texttt{Jerk\_Mean} describe la estrategia promedio de optimización dinámica del sujeto.
+
+No obstante, la magnitud cruda del jerk está fuertemente sesgada por la amplitud angular ($A$) y la duración total ($T$) del sacádico, lo que dificulta la comparación directa entre diferentes trayectorias. Para aislar la calidad del control motor de estos factores de escala, se introduce el \textbf{Logaritmo del Jerk Adimensional} (LDLJ, por sus siglas en inglés), adaptado de los modelos de suavidad motora de Teulings \cite{teulings1996jerk}. Esta métrica normaliza el funcional de costo y se define matemáticamente como:
+\begin{equation}
+	\text{LDLJ} = \ln \left( \frac{A^2}{T^5 \int_{0}^{T} J(t)^2 dt} \right) \tag{20}
+\end{equation}
+donde $A$ representa el desplazamiento angular total del movimiento (amplitud en grados) y $T$ es el tiempo de ejecución (en segundos). Al ser una cantidad adimensional, el LDLJ proporciona una medida pura de la fluidez del sacádico: valores más altos (menor jerk integrado) denotan un control de lazo cerrado altamente eficiente y coordinado, mientras que valores reducidos o erráticos reflejan la presencia de micro-temblores, fatiga neuromuscular o anomalías en la modulación motora.
+
+Esta caracterización se complementa con la métrica \texttt{Velocity\_Transition\_Smoothness}, la cual cuantifica la continuidad de la curva de velocidad como un indicador del control en lazo cerrado que varía significativamente entre individuos con distinta coordinación oculomotora \cite{vanopstal1987skewness}. Adicionalmente, Harwood et al. \cite{harwood1999spectral} demostraron que el contenido espectral de las señales sacádicas —el cual se vincula íntimamente con las altas frecuencias del jerk— constituye un rasgo altamente característico y reproducible de la firma individual de cada sujeto.
 
 % ===== CATEGORÍA 2 =====
 \subsubsection*{Categoría II — Morfología Pupilar}

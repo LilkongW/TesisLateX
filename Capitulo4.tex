@@ -19,13 +19,13 @@ El análisis inicial de los datos crudos reveló la presencia de ruido de
 alta frecuencia, un problema común en sensores CMOS cuando operan con
 ganancia variable en el espectro infrarrojo.
 Holmqvist et al.\
-\cite{holmqvist2011eye} señalan que este tipo de \textit{jitter}
-instrumental es inherente a los sistemas de captura basados en cámaras
+\cite{holmqvist2011eye} señalan que este tipo de ruido 
+instrumental (\textit{jitter}) es inherente a los sistemas de captura basados en cámaras
 no especializadas, y que su mitigación mediante filtrado digital es un
 paso indispensable antes de cualquier análisis cinemático, dado que las
 derivadas temporales (velocidad, aceleración) amplifican exponencialmente
 el ruido de alta frecuencia si se calculan sobre la señal cruda.
-Para mitigar este \textit{jitter} sin comprometer la integridad de la
+Para mitigar este ruido instrumental  sin comprometer la integridad de la
 información biológica, se aplicó el filtro digital Savitzky-Golay.
 Savitzky y Golay \cite{savitzky1964smoothing} demostraron que el ajuste
 polinomial local sobre ventanas deslizantes preserva los momentos
@@ -161,7 +161,7 @@ Los resultados evidencian una robustez excepcional:
 
 \subsection{Validación de la Métrica de Apertura Palpebral (\textit{Improved EAR})}
 
-Para garantizar la robustez del mecanismo de selección (parpadeo voluntario) en la interfaz de control de cursor, se evaluó experimentalmente la métrica de apertura ocular mejorada ($EAR_{imp}$) propuesta en el Capítulo 3.
+Para garantizar la robustez del mecanismo de selección (parpadeo voluntario) en la interfaz de control de cursor, se evaluó experimentalmente la métrica de apertura ocular mejorada($EAR_{imp}$ \eqref{eq:ear_improved_def}) propuesta en el Capítulo 3.
 
 La comparación cuantitativa entre la formulación tradicional y la propuesta, ejecutada sobre las mismas secuencias de video, demostró una reducción del 25\% en la variabilidad \textit{frame-a-frame} (pasando de una desviación $\sigma_{diff} = 0.0274$ a $0.0205$). Al mismo tiempo, el método propuesto mantuvo una correlación perfecta con la señal original ($r = 1.000$). La Tabla \ref{tab:ear_metrics_improved} resume estos hallazgos.
 
@@ -337,7 +337,7 @@ Esta triple condición —y no cada criterio por separado— constituye la evide
 \subsection{Perfiles de Velocidad y Jerk}
 
 Para evaluar la calidad del control motor ocular a nivel microscópico, se analizaron los perfiles cinemáticos de movimientos sacádicos individuales.
-Esta evaluación es crítica para confirmar que el proceso de filtrado (Savitzky-Golay) eliminó el ruido instrumental sin distorsionar la dinámica natural del ojo.
+Esta evaluación es crítica para confirmar que el proceso de filtrado (Savitzky-Golay\cite{savitzky1964smoothing}) eliminó el ruido instrumental sin distorsionar la dinámica natural del ojo.
 La Figura~\ref{fig:perfil_velocidad} presenta la evolución temporal de la velocidad angular y el \textit{Jerk} (la derivada de la aceleración) para un movimiento sacádico representativo de $\approx 20^\circ$ de amplitud.
 \begin{figure}[h!]
 	\centering
@@ -599,29 +599,24 @@ El análisis cualitativo de estos perfiles revela que el sistema no depende de u
 
 Para corroborar visualmente la capacidad del sistema para distinguir entre los 14 participantes, se aplicó un Análisis Discriminante Lineal (LDA) sobre el conjunto completo de métricas.
 Con el fin de garantizar la privacidad y neutralidad del análisis, los sujetos fueron codificados con etiquetas anónimas (P1-P14).
+
+
 \begin{figure}[H]
 	\centering
-	% --- IMAGEN IZQUIERDA (2D) ---
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/2d.png}
-		\caption{Proyección en 2D (LD1 vs LD2)}
-		\label{fig:lda_2d}
-	\end{minipage}
-	\hfill % Esto añade el espacio entre las dos imágenes
-	% --- IMAGEN DERECHA (3D) ---
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/3d.png}
-		\caption{Proyección en 3D (LD1, LD2, LD3)}
-		\label{fig:lda_3d}
-	\end{minipage}
-	\caption[Proyección LDA del espacio de características (P1–P14).]{Espacio de características transformado mediante LDA.
-		Cada color (P1-P14) representa a un participante distinto. Se observa la formación de clústeres compactos y bien definidos, lo que confirma visualmente la separabilidad lineal de las identidades biométricas.}
-	\label{fig:lda_analysis}
+	\includegraphics[width=0.85\textwidth]{Imagenes/2d.png}
+	\caption[Proyección en 2D del espacio de características LDA (P1–P14).]{Proyección en 2D (LD1 vs. LD2) del espacio de características transformado mediante LDA. Cada color representa a un participante distinto, evidenciando la formación de clústeres compactos y bien definidos.}
+	\label{fig:lda_2d}
 \end{figure}
 
-Como se observa en la Figura~\ref{fig:lda_analysis}, los datos biométricos forman nubes de puntos claramente distinguibles:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Imagenes/3d.png}
+	\caption[Proyección en 3D del espacio de características LDA (P1–P14).]{Proyección en 3D (LD1, LD2 y LD3) del espacio de características transformado mediante LDA. El análisis tridimensional confirma visualmente la separabilidad lineal y el aislamiento de las identidades biométricas de los 14 participantes.}
+	\label{fig:lda_3d}
+\end{figure}
+
+
+Como se observa en la Figura~\ref{fig:lda_3d}, los datos biométricos forman nubes de puntos claramente distinguibles:
 \begin{itemize}
 	\item \textbf{Eficacia de la Reducción:} Las tres primeras componentes discriminantes logran explicar el \textbf{85\%} de la varianza discriminatoria.
 	Esto indica que la identidad oculomotora puede ser comprimida eficientemente sin perder información crítica.
@@ -638,36 +633,30 @@ Los resultados de esta exploración se discuten a continuación.
 El análisis de componentes principales se aplicó inicialmente para determinar la dimensionalidad intrínseca de los datos.
 La Figura~\ref{fig:pca_scree} muestra la varianza explicada acumulada en función del número de componentes.
 Se observa que son necesarios \textbf{10 componentes principales para alcanzar el 95\,\% de la varianza total}, lo que indica que el espacio biométrico es intrínsecamente de alta dimensión y no puede comprimirse drásticamente sin perder información relevante.
-Las proyecciones en 2D y 3D (Figura~\ref{fig:pca_2d_3d}) evidencian una cierta separación entre clases, pero con solapamientos significativos que impiden una discriminación fiable mediante inspección visual o métodos lineales simples.
+Las proyecciones en 2D y 3D (Figura~\ref{fig:pca_2d} y \ref{fig:pca_3d})  evidencian una cierta separación entre clases, pero con solapamientos significativos que impiden una discriminación fiable mediante inspección visual o métodos lineales simples.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{Imagenes/varianza.png}
+	\includegraphics[width=0.8\textwidth]{Imagenes/varianza2.png}
 	\caption[Gráfico de sedimentación del PCA (10 componentes para el 95\,\% de varianza).]{Gráfico de sedimentación del análisis de componentes principales.
 		Las barras representan la varianza explicada por cada componente individual, mientras que la línea roja muestra la varianza acumulada.
 		Se requieren 10 componentes para alcanzar el 95\,\% de la varianza total, lo que evidencia la alta dimensionalidad intrínseca del espacio de características biométricas y la imposibilidad de reducirlo drásticamente sin pérdida significativa de información.}
 	\label{fig:pca_scree}
 \end{figure}
 
+
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/pca_2d.png}
-		\caption[Proyección PCA en 2D (PC1 y PC2, $\approx$20\,\% de varianza).]{Proyección de los datos en las dos primeras componentes principales (PC1 y PC2), que en conjunto explican aproximadamente el 20\,\% de la varianza total.
-			Se observa un fuerte solapamiento entre las clases, lo que evidencia la limitada separabilidad lineal del espacio biométrico original.}
-		\label{fig:pca_2d}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/pca_3d.png}
-		\caption[Proyección PCA en 3D (PC1, PC2 y PC3).]{Proyección tridimensional de los datos sobre las tres primeras componentes principales (PC1, PC2 y PC3).
-			Aunque se incorpora una dimensión adicional, el solapamiento entre sujetos persiste, confirmando que la varianza explicada por estas componentes es insuficiente para una discriminación fiable.}
-		\label{fig:pca_3d}
-	\end{minipage}
-	\caption[Análisis PCA: proyecciones 2D y 3D del espacio biométrico.]{Análisis de componentes principales (PCA) del espacio de características biométricas.
-		Las proyecciones en 2D y 3D muestran la dificultad de separar linealmente a los 14 participantes, lo que justifica la necesidad de métodos no lineales o supervisados.}
-	\label{fig:pca_2d_3d}
+	\includegraphics[width=1\textwidth]{Imagenes/pca_2d.png}
+	\caption[Proyección PCA en 2D (PC1 y PC2, $\approx$20\,\% de varianza).]{Proyección de los datos en las dos primeras componentes principales (PC1 y PC2), que en conjunto explican aproximadamente el 20\,\% de la varianza total. Se observa un fuerte solapamiento entre las clases, lo que evidencia la limitada separabilidad lineal del espacio biométrico original para los 14 participantes.}
+	\label{fig:pca_2d}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Imagenes/pca_3d.png}
+	\caption[Proyección PCA en 3D (PC1, PC2 y PC3).]{Proyección tridimensional de los datos sobre las tres primeras componentes principales (PC1, PC2 y PC3). Aunque se incorpora una dimensión adicional, el solapamiento entre sujetos persiste, confirmando que la varianza explicada por estas componentes es insuficiente para una discriminación fiable, lo que justifica la necesidad de métodos supervisados.}
+	\label{fig:pca_3d}
 \end{figure}
 
 \subsubsection{Visualización con t-SNE y UMAP}
@@ -677,25 +666,20 @@ Estas herramientas son excelentes para revelar estructuras locales en los datos,
 Por lo tanto, su utilidad se limita a la exploración.
 En las Figuras~\ref{fig:tsne} y~\ref{fig:umap} se aprecia que, bajo ciertos hiperparámetros, los sujetos tienden a agruparse, aunque la forma de los grupos varía con la perplejidad (en t-SNE) o con los vecinos considerados (en UMAP).
 Estos resultados confirman que existe estructura agrupada, pero no proporcionan un método práctico para la identificación automática.
+
+
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/tSNE.png}
-		\caption{Visualización mediante t-SNE de las características biométricas.}
-		\label{fig:tsne}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Imagenes/UMAP.png}
-		\caption{Proyección mediante UMAP del mismo espacio de características.}
-		\label{fig:umap}
-	\end{minipage}
-	\caption[Visualización no lineal del espacio biométrico: t-SNE y UMAP.]{Visualización no lineal del espacio biométrico mediante t-SNE (izquierda) y UMAP (derecha).
-		Ambas técnicas confirman la existencia de una estructura subyacente, pero al carecer de capacidad de generalización, su utilidad se limita a la exploración visual.
-		Estos resultados refuerzan la necesidad de métodos supervisados como Random Forest para la identificación de sujetos.}
-	\label{fig:tsne_umap}
+	\includegraphics[width=0.85\textwidth]{Imagenes/tSNE.png}
+	\caption[Visualización del espacio biométrico mediante t-SNE.]{Visualización no lineal del espacio de características biométricas mediante t-SNE. La distribución espacial confirma la existencia de una estructura subyacente altamente agrupada, aunque al carecer de capacidad de generalización directa, su utilidad metodológica se restringe a la exploración y validación visual.}
+	\label{fig:tsne}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Imagenes/UMAP.png}
+	\caption[Proyección del espacio biométrico mediante UMAP.]{Proyección no lineal del mismo espacio de características mediante la técnica UMAP. Al igual que t-SNE, este mapeo geométrico revela la formación de clústeres nativos compactos; no obstante, la naturaleza no supervisada de ambos enfoques refuerza la necesidad de implementar clasificadores supervisados robustos como Random Forest para la identificación efectiva de sujetos.}
+	\label{fig:umap}
 \end{figure}
 
 \subsubsection{\textit{Clustering} no supervisado: KMeans y DBSCAN}

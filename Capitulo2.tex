@@ -412,6 +412,10 @@ El análisis de los datos oculométricos requiere una caracterización inicial m
 	Una desviación estándar baja indica alta consistencia entre mediciones repetidas bajo las mismas condiciones, lo cual es indicativo de un sistema estable y confiable. Valores típicos de precisión en sistemas comerciales de seguimiento ocular remoto son de 0.5° a 1° de ángulo visual.
 \end{description}
 
+
+
+
+
 \subsection{Análisis Discriminante Lineal (LDA)}
 
 El Análisis Discriminante Lineal (\textit{Linear Discriminant Analysis}, LDA) es una técnica estadística de aprendizaje supervisado utilizada para la reducción de dimensionalidad y la clasificación de patrones, introducida por Fisher \cite{fisher1936use}. Su propósito es proyectar un conjunto de datos de alta dimensión ($d$ características) a un subespacio de menor dimensión ($k$ dimensiones, donde $k < d$), maximizando la separabilidad lineal entre las distintas clases.
@@ -572,3 +576,43 @@ donde $h_t(x)$ es la predicción del árbol $t$-ésimo y $T$ es el número total
 \end{figure}
 
 Como se ilustra en la Figura \ref{fig:rf_architecture}, esta estrategia de doble aleatorización reduce significativamente la correlación entre los árboles individuales y mitiga eficazmente el riesgo de sobreajuste (\textit{overfitting}), resultando en un modelo con una alta capacidad de generalización. Adicionalmente, \textit{Random Forest} proporciona estimaciones automáticas de la importancia de cada característica, lo cual es valioso para interpretar qué aspectos de los movimientos oculares son más discriminativos para la identificación de individuos.
+
+
+
+\subsection{Técnicas de Reducción de Dimensionalidad y Aprendizaje No Supervisado}
+\label{subsec:reduccion_y_clustering}
+
+En el análisis de señales biométricas complejas, como las características cinemáticas y dinámicas de los movimientos oculares, el espacio de características resultante suele ser de alta dimensionalidad. Esto puede inducir problemas como la presencia de variables redundantes o altamente correlacionadas. Para mitigar estos efectos y evaluar la estructura geométrica intrínseca de los datos biométricos de los participantes, se requiere el empleo de técnicas de reducción de dimensionalidad —tanto lineales como no lineales— y algoritmos de aprendizaje no supervisado.
+
+\subsubsection{Análisis de Componentes Principales (PCA)}
+El Análisis de Componentes Principales (PCA, por sus siglas en inglés) es una técnica lineal no supervisada cuyo objetivo es transformar un conjunto de variables potencialmente correlacionadas en un nuevo conjunto de variables incorrelacionadas denominadas \textit{componentes principales}. Matemáticamente, dado un conjunto de datos centrado $\mathbf{X} \in \mathbb{R}^{n \times d}$, PCA busca encontrar una matriz de transformación lineal $\mathbf{W} \in \mathbb{R}^{d \times k}$ (donde $k < d$) que maximice la varianza de las proyecciones. Esto se reduce a resolver el problema de valores y vectores propios de la matriz de covarianza $\boldsymbol{\Sigma}$:
+
+\begin{equation}
+	\boldsymbol{\Sigma} \mathbf{w}_i = \lambda_i \mathbf{w}_i
+\end{equation}
+
+Donde $\lambda_i$ representa la varianza explicada por el $i$-ésimo componente principal y $\mathbf{w}_i$ es su vector propio correspondiente. A diferencia del Análisis Discriminante Lineal (LDA), el PCA no utiliza información de las etiquetas de clase (en este caso, la identidad de los participantes), centrándose exclusivamente en la estructura global de la varianza del espacio biométrico. Para determinar el número óptimo de componentes $k$, se evalúa la varianza acumulada mediante un gráfico de sedimentación (\textit{scree plot}).
+
+\subsubsection{Reducción de Dimensionalidad No Lineal: t-SNE y UMAP}
+Cuando las relaciones entre las características oculomotoras presentan estructuras complejas o no lineales que escapan al alcance de transformaciones ortogonales como PCA, es necesario recurrir a métodos de preservación de topologías locales y globales.
+
+\begin{enumerate}
+	\item \textbf{t-Distributed Stochastic Neighbor Embedding (t-SNE):} Es un algoritmo que transforma las distancias euclidianas entre puntos del espacio de alta dimensionalidad en probabilidades condicionales que representan similitudes. La similitud del punto $\mathbf{x}_j$ con el punto $\mathbf{x}_i$ se define como:
+	\begin{equation}
+		p_{j|i} = \frac{\exp(-\|\mathbf{x}_i - \mathbf{x}_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|\mathbf{x}_i - \mathbf{x}_k\|^2 / 2\sigma_i^2)}
+	\end{equation}
+	En el espacio de baja dimensionalidad (típicamente 2D o 3D), t-SNE emplea una distribución $t$-Student con un grado de libertad para evitar el problema de hacinamiento (\textit{crowding problem}). La proyección óptima se logra minimizando la divergencia de Kullback-Leibler ($\mathcal{D}_{KL}$) entre las distribuciones de alta y baja dimensionalidad mediante descenso de gradiente. Esta técnica es altamente efectiva para revelar agrupamientos locales compactos.
+	
+	\item \textbf{Uniform Manifold Approximation and Projection (UMAP):} Basado en la geometría diferencial y la topología algebraica, UMAP asume que los datos se distribuyen de manera uniforme en una variedad de Riemann localmente conexa. A diferencia de t-SNE, UMAP calcula las distancias relativas utilizando conjuntos difusos locales y minimiza la entropía cruzada difusa. Esta fundamentación teórica permite que UMAP preserve de manera simultánea tanto la estructura local (similitud entre muestras del mismo sujeto) como la estructura global del espacio biométrico, ofreciendo además una mayor eficiencia computacional y escalabilidad.
+\end{enumerate}
+
+\subsubsection{Algoritmos de Agrupamiento (Clustering) No Supervisado}
+Con el fin de examinar la separabilidad intrínseca de los patrones oculomotores sin la guía de un clasificador supervisado, se aplican algoritmos de \textit{clustering}. Estos métodos agrupan las instancias biométricas basándose únicamente en métricas de distancia o densidad en el espacio transformado. El análisis no supervisado permite validar si las firmas dinámicas del ojo (como las curvas de Bahill o el Eye Aspect Ratio) se asocian de forma natural a grupos discretos correspondientes a los individuos bajo estudio.
+
+Para evaluar de manera cuantitativa la calidad y cohesión de estos agrupamientos sin depender de las etiquetas reales, se emplean métricas internas de rendimiento, entre las cuales destaca el \textit{Coeficiente de Silueta} ($S$). Para una muestra dada, se define como:
+
+\begin{equation}
+	S = \frac{b - a}{\max(a, b)}
+\end{equation}
+
+Donde $a$ es la distancia promedio de la muestra a los demás puntos del mismo clúster, y $b$ es la distancia promedio mínima de la muestra a los puntos de cualquier otro clúster. Valores cercanos a $1$ indican un agrupamiento altamente definido y correcto, validando la estabilidad espacial de la huella oculomotora generada.
