@@ -786,6 +786,68 @@ El uso de YOLO para delimitar la Región de Interés (ROI) ofrece además una ve
 	\label{fig:correlacion}
 \end{figure}
 
+\subsection{Mapeo Proyectivo y Matriz de Homografía}
+\label{subsec:homografia}
+
+Una vez obtenido el vector de mirada tridimensional $\hat{g} = (g_x, g_y, g_z)$ mediante el procedimiento descrito en la Sección 3.4.3, es necesario establecer una correspondencia entre esta dirección de mirada y las coordenadas de la pantalla $(s_x, s_y)$ para habilitar aplicaciones de interacción humano-computadora (HCI), como el control de un cursor.
+
+\subsubsection{Justificación de la reducción dimensional}
+
+Dado que el sistema de captura es de tipo \textit{head-mounted} (la cámara va montada en la cabeza del usuario), la distancia relativa y el ángulo de orientación entre el sensor y el globo ocular permanecen aproximadamente constantes durante una sesión de uso. En estas condiciones, la componente de profundidad $g_z$ del vector de mirada no varía significativamente y no aporta información adicional para el apuntamiento en una pantalla plana. Por tanto, la tarea de mapeo se reduce a transformar la proyección 2D $(g_x, g_y)$ del vector de mirada en coordenadas de píxel $(s_x, s_y)$ en el monitor.
+
+\subsubsection{Modelo proyectivo}
+
+La relación entre el espacio de la mirada (plano de la cámara) y el espacio de la pantalla no es lineal debido a la distorsión de la lente, la posición excéntrica de la cámara y la geometría del ojo. Para modelar esta transformación se emplea una \textbf{matriz de homografía} $H \in \mathbb{R}^{3 \times 3}$, que define una transformación proyectiva entre dos planos:
+
+\begin{equation}
+	\begin{bmatrix}
+		s_x \\
+		s_y \\
+		1
+	\end{bmatrix}
+	=
+	H \cdot
+	\begin{bmatrix}
+		g_x \\
+		g_y \\
+		1
+	\end{bmatrix},
+	\qquad
+	H =
+	\begin{bmatrix}
+		h_{11} & h_{12} & h_{13} \\
+		h_{21} & h_{22} & h_{23} \\
+		h_{31} & h_{32} & h_{33}
+	\end{bmatrix}
+	\label{eq:homografia}
+\end{equation}
+
+donde $(g_x, g_y, 1)$ son las coordenadas homogéneas del vector de mirada normalizado, y $(s_x, s_y, 1)$ las coordenadas homogéneas en píxeles de la pantalla. La matriz $H$ tiene 8 grados de libertad (se fija $h_{33}=1$), por lo que se requieren al menos 4 puntos de calibración no colineales para estimarla.
+
+\subsubsection{Procedimiento de calibración}
+
+La estimación de $H$ se realiza durante una fase de calibración previa al uso interactivo. En esta investigación, se utilizan los mismos 9 puntos de la cuadrícula $3 \times 3$ descritos en la Sección 3.3.2. Para cada punto de calibración $i$ con coordenadas conocidas en la pantalla $(s_x^{(i)}, s_y^{(i)})$, se registra el vector de mirada correspondiente $(g_x^{(i)}, g_y^{(i)})$ mientras el usuario fija la mirada en el estímulo. Con estas correspondencias se construye un sistema sobredeterminado de ecuaciones lineales que se resuelve por mínimos cuadrados, minimizando el error de proyección:
+
+\begin{equation}
+	\min_{H} \sum_{i=1}^{N} \left\| 
+	\begin{bmatrix} s_x^{(i)} \\ s_y^{(i)} \end{bmatrix} - 
+	\text{proyectar}\!\left(H \cdot 
+	\begin{bmatrix} g_x^{(i)} \\ g_y^{(i)} \\ 1 \end{bmatrix}\right)
+	\right\|^2,
+	\quad N \ge 4
+	\label{eq:calibracion_homografia}
+\end{equation}
+
+donde la función $\text{proyectar}(\cdot)$ convierte las coordenadas homogéneas resultantes a coordenadas euclidianas dividiendo por la tercera componente.
+
+En el protocolo experimental de esta tesis se evaluaron dos configuraciones de calibración: con los 9 puntos de la cuadrícula completa y con un subconjunto de 5 puntos (esquinas y centro). Los resultados de precisión obtenidos con ambas configuraciones se presentan en el Capítulo 4.
+
+\subsubsection{Limitaciones y consideraciones de uso}
+
+La matriz de homografía estimada es estática y asume que la posición relativa entre la cámara y el ojo no varía durante la sesión. Cualquier movimiento de la montura (deslizamiento de las gafas, gestos faciales) o cambio en la distancia de observación introduce un error sistemático en el mapeo, degradando la precisión del cursor. Este es un factor crítico que se discute en el análisis de resultados (Capítulo 4) y que motiva futuras líneas de trabajo hacia la calibración dinámica o el uso de algoritmos de seguimiento de la pose de la cabeza.
+
+No obstante, para aplicaciones de prueba de concepto y entornos controlados, el mapeo mediante homografía proporciona una base funcional suficiente para evaluar la viabilidad del control ocular, como se demuestra en los experimentos de seguimiento de trayectorias y apuntamiento a puntos fijos.
+
 \section{Procesamiento de Señales y Extracción de Métricas}
 
 El archivo \texttt{Generar\_Metricas.py} procesó las series temporales de vectores de mirada $\hat{g}(t)$ para extraer los descriptores biométricos.

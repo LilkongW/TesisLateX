@@ -1336,11 +1336,9 @@ y de alta relevancia para el diseño del sistema: \textbf{la confusión del
 	la variable de mayor peso de Gini del modelo}.
 \paragraph{Convergencia en \texttt{Pupil\_Mean} ($\lambda = +0.789$).}
 Esta es la única métrica que converge sustancialmente hacia P5.
-El
-diámetro pupilar de P11 se incrementa un $\mathbf{+28.64\%}$ entre
-sesiones ($58.73 \to 75.55$ unidades), con un efecto de Cohen de
-$d = -1.626$ (\textbf{grande}), el mayor de todas las métricas
-analizadas.
+
+El diámetro pupilar de P11 se incrementa un $\mathbf{+28.64\%}$ entre sesiones ($58.73 \to 75.55$ unidades), con un tamaño del efecto de Cohen \cite{cohen1988statistical} de $d = -1.626$. Según la convención establecida por Cohen, valores de $|d| \geq 0.8$ se consideran un efecto \textbf{grande}, $|d| \geq 0.5$ \textbf{mediano} y $|d| \geq 0.2$ \textbf{pequeño}. Dado que $|d| = 1.626 \gg 0.8$, este cambio se clasifica como de magnitud \textbf{grande}, siendo el mayor de todas las métricas analizadas.
+
 Este aumento corresponde a la midriasis inducida por la
 reducción de iluminación ambiental: Beatty \cite{beatty1982} demostró
 que el diámetro pupilar en reposo es inversamente proporcional a la
@@ -1443,7 +1441,7 @@ Los resultados presentados en este capítulo demuestran la viabilidad técnica y
 
 \begin{enumerate}
 	\item \textbf{Calidad de la Señal:} La implementación de redes neuronales (YOLOv8) sobre video de bajo costo permitió extraer señales oculométricas de alta fidelidad.
-	La reconstrucción exitosa de la \textit{Main Sequence} ($R^2 > 0.90$) confirma que el sistema captura la dinámica fisiológica real del ojo y no ruido aleatorio.
+	La reconstrucción exitosa de la \textit{Main Sequence} (Secuencia principal) ($R^2 > 0.90$) confirma que el sistema captura la dinámica fisiológica real del ojo y no ruido aleatorio.
 	\item \textbf{Identificación Biométrica:} Se demostró que la forma de mirar es única.
 	Mediante el análisis de características híbridas (anatomía pupilar + dinámica sacádica) y algoritmos de \textit{Random Forest}, se alcanzó una exactitud de clasificación superior al 83\%, validando el potencial del movimiento ocular como huella biométrica robusta ante suplantaciones.
 	\item \textbf{Doble Propósito (Cursor + Seguridad):} La prueba de homografía confirmó que el mismo sensor utilizado para identificar al usuario puede servir simultáneamente como dispositivo de entrada.

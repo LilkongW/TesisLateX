@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.8" bltxversion="3.17" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.11" bltxversion="3.21" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -37,6 +37,11 @@
     <bcf:option type="singlevalued">
       <bcf:key>alphaothers</bcf:key>
       <bcf:value>+</bcf:value>
+    </bcf:option>
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
@@ -95,7 +100,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>2</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
@@ -111,15 +116,15 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minbibnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>mincitenames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minsortnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minitems</bcf:key>
@@ -135,6 +140,10 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>nosortothers</bcf:key>
+      <bcf:value>0</bcf:value>
+    </bcf:option>
+    <bcf:option type="singlevalued">
+      <bcf:key>pluralothers</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
@@ -272,6 +281,11 @@
   </bcf:options>
   <!-- online -->
   <bcf:options component="biblatex" type="online">
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
+    </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
       <bcf:value>0</bcf:value>
@@ -321,7 +335,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>2</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
@@ -337,15 +351,15 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minbibnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>mincitenames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minsortnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minitems</bcf:key>
@@ -372,11 +386,11 @@
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
-      <bcf:key>skiplab</bcf:key>
+      <bcf:key>skipbiblist</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
-      <bcf:key>skipbiblist</bcf:key>
+      <bcf:key>skiplab</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
@@ -488,9 +502,11 @@
     <bcf:option datatype="xml">inheritance</bcf:option>
     <bcf:option datatype="xml">translit</bcf:option>
     <bcf:option datatype="xml">uniquenametemplate</bcf:option>
+    <bcf:option datatype="xml">namehashtemplate</bcf:option>
     <bcf:option datatype="xml">sortingnamekeytemplate</bcf:option>
     <bcf:option datatype="xml">sortingtemplate</bcf:option>
     <bcf:option datatype="xml">extradatespec</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -498,6 +514,7 @@
     <bcf:option datatype="string">alphaothers</bcf:option>
     <bcf:option datatype="string">sortalphaothers</bcf:option>
     <bcf:option datatype="string">presort</bcf:option>
+    <bcf:option datatype="string">citepagerange</bcf:option>
     <bcf:option datatype="string">texencoding</bcf:option>
     <bcf:option datatype="string">bibencoding</bcf:option>
     <bcf:option datatype="string">sortingtemplatename</bcf:option>
@@ -599,6 +616,7 @@
     <bcf:option datatype="boolean">labeltitle</bcf:option>
     <bcf:option datatype="boolean">labeltitleyear</bcf:option>
     <bcf:option datatype="boolean">labeldateparts</bcf:option>
+    <bcf:option datatype="boolean">pluralothers</bcf:option>
     <bcf:option datatype="boolean">nohashothers</bcf:option>
     <bcf:option datatype="boolean">nosortothers</bcf:option>
     <bcf:option datatype="boolean">noroman</bcf:option>
@@ -627,7 +645,6 @@
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
     <bcf:option datatype="boolean">dashed</bcf:option>
-    <bcf:option datatype="boolean">subentrycomp</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
     <bcf:option datatype="integer">minxrefs</bcf:option>
@@ -710,12 +727,12 @@
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
-    <bcf:option datatype="boolean">subentrycomp</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="xml">labelalphatemplate</bcf:option>
     <bcf:option datatype="xml">translit</bcf:option>
     <bcf:option datatype="xml">sortexclusion</bcf:option>
     <bcf:option datatype="xml">sortinclusion</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -734,9 +751,10 @@
   </bcf:optionscope>
   <bcf:optionscope type="ENTRY">
     <bcf:option datatype="string">noinherit</bcf:option>
-    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename">nametemplates</bcf:option>
+    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename,namehashtemplatename">nametemplates</bcf:option>
     <bcf:option datatype="string" backendout="1">labelalphanametemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">uniquenametemplatename</bcf:option>
+    <bcf:option datatype="string" backendout="1">namehashtemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">sortingnamekeytemplatename</bcf:option>
     <bcf:option datatype="string">presort</bcf:option>
     <bcf:option datatype="string" backendout="1">indexing</bcf:option>
@@ -798,7 +816,6 @@
     <bcf:option datatype="boolean" backendout="1">eprint</bcf:option>
     <bcf:option datatype="boolean" backendout="1">related</bcf:option>
     <bcf:option datatype="boolean" backendout="1">subentry</bcf:option>
-    <bcf:option datatype="boolean" backendout="1">subentrycomp</bcf:option>
     <bcf:option datatype="boolean" backendout="1">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer" backendin="maxcitenames,maxbibnames,maxsortnames">maxnames</bcf:option>
     <bcf:option datatype="integer" backendin="mincitenames,minbibnames,minsortnames">minnames</bcf:option>
@@ -814,9 +831,10 @@
     <bcf:option datatype="integer" backendout="1">minalphanames</bcf:option>
   </bcf:optionscope>
   <bcf:optionscope type="NAMELIST">
-    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename">nametemplates</bcf:option>
+    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename,namehashtemplatename">nametemplates</bcf:option>
     <bcf:option datatype="string" backendout="1">labelalphanametemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">uniquenametemplatename</bcf:option>
+    <bcf:option datatype="string" backendout="1">namehashtemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">sortingnamekeytemplatename</bcf:option>
     <bcf:option datatype="string">uniquelist</bcf:option>
     <bcf:option datatype="string">uniquename</bcf:option>
@@ -830,9 +848,10 @@
     <bcf:option datatype="boolean" backendout="1">useprefix</bcf:option>
   </bcf:optionscope>
   <bcf:optionscope type="NAME">
-    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename">nametemplates</bcf:option>
+    <bcf:option datatype="string" backendin="sortingnamekeytemplatename,uniquenametemplatename,labelalphanametemplatename,namehashtemplatename">nametemplates</bcf:option>
     <bcf:option datatype="string" backendout="1">labelalphanametemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">uniquenametemplatename</bcf:option>
+    <bcf:option datatype="string" backendout="1">namehashtemplatename</bcf:option>
     <bcf:option datatype="string" backendout="1">sortingnamekeytemplatename</bcf:option>
     <bcf:option datatype="string">uniquename</bcf:option>
     <bcf:option datatype="boolean" backendout="1">familyinits</bcf:option>
@@ -1046,8 +1065,15 @@
     <bcf:namepart order="2" base="1">family</bcf:namepart>
     <bcf:namepart order="3">given</bcf:namepart>
   </bcf:uniquenametemplate>
+  <!-- NAME HASH TEMPLATES -->
+  <bcf:namehashtemplate name="global">
+    <bcf:namepart order="1" hashscope="full">family</bcf:namepart>
+    <bcf:namepart order="2" hashscope="full">given</bcf:namepart>
+    <bcf:namepart order="3" hashscope="full">prefix</bcf:namepart>
+    <bcf:namepart order="4" hashscope="full">suffix</bcf:namepart>
+  </bcf:namehashtemplate>
   <!-- SORTING NAME KEY TEMPLATES -->
-  <bcf:sortingnamekeytemplate name="global">
+  <bcf:sortingnamekeytemplate name="global" visibility="sort">
     <bcf:keypart order="1">
       <bcf:part type="namepart" order="1" use="1">prefix</bcf:part>
       <bcf:part type="namepart" order="2">family</bcf:part>
@@ -2348,255 +2374,215 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">referencias.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="2">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="3">bahill1975</bcf:citekey>
-    <bcf:citekey order="4">bahill1975</bcf:citekey>
-    <bcf:citekey order="5">breiman2001</bcf:citekey>
-    <bcf:citekey order="6">breiman2001</bcf:citekey>
-    <bcf:citekey order="7">diaz2021</bcf:citekey>
-    <bcf:citekey order="8">ramirez2004</bcf:citekey>
-    <bcf:citekey order="9">arias2010</bcf:citekey>
-    <bcf:citekey order="10">dewi2022eye</bcf:citekey>
-    <bcf:citekey order="11">gao2025eye_tracking_tutorial</bcf:citekey>
-    <bcf:citekey order="12">allado2022remote</bcf:citekey>
-    <bcf:citekey order="13">ncbi2023ai</bcf:citekey>
-    <bcf:citekey order="14">zhou2024abnormal</bcf:citekey>
-    <bcf:citekey order="15">gimenez2016aplicacion</bcf:citekey>
-    <bcf:citekey order="16">weigle2008analysis</bcf:citekey>
-    <bcf:citekey order="17">bahill1975</bcf:citekey>
-    <bcf:citekey order="18">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="19">cardenas2024</bcf:citekey>
-    <bcf:citekey order="20">duchowski2017</bcf:citekey>
-    <bcf:citekey order="21">duchowski2017</bcf:citekey>
-    <bcf:citekey order="22">duchowski2017</bcf:citekey>
-    <bcf:citekey order="23">bahill1975</bcf:citekey>
-    <bcf:citekey order="24">duchowski2017</bcf:citekey>
-    <bcf:citekey order="25">gao2025eye_tracking_tutorial</bcf:citekey>
-    <bcf:citekey order="26">weigle2008analysis</bcf:citekey>
-    <bcf:citekey order="27">duchowski2017</bcf:citekey>
-    <bcf:citekey order="28">duchowski2017</bcf:citekey>
-    <bcf:citekey order="29">duchowski2017</bcf:citekey>
-    <bcf:citekey order="30">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="31">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="32">duchowski2017</bcf:citekey>
-    <bcf:citekey order="33">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="34">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="35">gimenez2016aplicacion</bcf:citekey>
-    <bcf:citekey order="36">li2005starburst</bcf:citekey>
-    <bcf:citekey order="37">duchowski2017</bcf:citekey>
-    <bcf:citekey order="38">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="39">beatty1982</bcf:citekey>
-    <bcf:citekey order="40">flash1985coordination</bcf:citekey>
-    <bcf:citekey order="41">teulings1996jerk</bcf:citekey>
-    <bcf:citekey order="42">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="43">higuchi1988</bcf:citekey>
-    <bcf:citekey order="44">fisher1936use</bcf:citekey>
-    <bcf:citekey order="45">vapnik1995</bcf:citekey>
-    <bcf:citekey order="46">breiman2001</bcf:citekey>
-    <bcf:citekey order="47">ramirez2004</bcf:citekey>
-    <bcf:citekey order="48">duchowski2017</bcf:citekey>
-    <bcf:citekey order="49">nyquist1928certain</bcf:citekey>
-    <bcf:citekey order="50">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="51">iso9241_5</bcf:citekey>
-    <bcf:citekey order="52">li2005starburst</bcf:citekey>
-    <bcf:citekey order="53">duchowski2017</bcf:citekey>
-    <bcf:citekey order="54">jocher_yolov8_2023</bcf:citekey>
-    <bcf:citekey order="55">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="56">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="57">bahill1975</bcf:citekey>
-    <bcf:citekey order="58">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="59">higuchi1988</bcf:citekey>
-    <bcf:citekey order="60">soukupova2016real</bcf:citekey>
-    <bcf:citekey order="61">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="62">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="63">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="64">flash1985coordination</bcf:citekey>
-    <bcf:citekey order="65">bahill1975</bcf:citekey>
-    <bcf:citekey order="66">teulings1996jerk</bcf:citekey>
-    <bcf:citekey order="67">vanopstal1987skewness</bcf:citekey>
-    <bcf:citekey order="68">harwood1999spectral</bcf:citekey>
-    <bcf:citekey order="69">duchowski2017</bcf:citekey>
-    <bcf:citekey order="70">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="71">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="72">beatty1982</bcf:citekey>
-    <bcf:citekey order="73">engbert2003microsaccades</bcf:citekey>
-    <bcf:citekey order="74">bahill1975</bcf:citekey>
-    <bcf:citekey order="75">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="76">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="77">higuchi1988</bcf:citekey>
-    <bcf:citekey order="78">mandelbrot1982fractal</bcf:citekey>
-    <bcf:citekey order="79">duchowski2017</bcf:citekey>
-    <bcf:citekey order="80">breiman2001</bcf:citekey>
-    <bcf:citekey order="81">breiman2001</bcf:citekey>
-    <bcf:citekey order="82">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="83">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="84">nyquist1928certain</bcf:citekey>
-    <bcf:citekey order="85">bahill1975</bcf:citekey>
-    <bcf:citekey order="86">harwood1999spectral</bcf:citekey>
-    <bcf:citekey order="87">gao2025eye_tracking_tutorial</bcf:citekey>
-    <bcf:citekey order="88">engbert2003microsaccades</bcf:citekey>
-    <bcf:citekey order="89">engbert2003microsaccades</bcf:citekey>
-    <bcf:citekey order="90">bahill1975</bcf:citekey>
-    <bcf:citekey order="90">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="90">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="91">bahill1975</bcf:citekey>
-    <bcf:citekey order="91">vanopstal1987skewness</bcf:citekey>
-    <bcf:citekey order="92">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="93">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="94">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="95">bahill1975</bcf:citekey>
-    <bcf:citekey order="96">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="97">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="98">boghen1974velocity</bcf:citekey>
-    <bcf:citekey order="99">boghen1974velocity</bcf:citekey>
-    <bcf:citekey order="99">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="100">nyquist1928certain</bcf:citekey>
-    <bcf:citekey order="101">harwood1999spectral</bcf:citekey>
-    <bcf:citekey order="102">bahill1975</bcf:citekey>
-    <bcf:citekey order="103">vanopstal1987skewness</bcf:citekey>
-    <bcf:citekey order="104">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="105">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="106">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="107">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="108">breiman2001</bcf:citekey>
-    <bcf:citekey order="109">beatty1982</bcf:citekey>
-    <bcf:citekey order="110">duchowski2017</bcf:citekey>
-    <bcf:citekey order="111">breiman2001</bcf:citekey>
-    <bcf:citekey order="112">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="113">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="114">bahill1975</bcf:citekey>
-    <bcf:citekey order="115">breiman2001</bcf:citekey>
-    <bcf:citekey order="116">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="116">duchowski2017</bcf:citekey>
-    <bcf:citekey order="117">beatty1982</bcf:citekey>
-    <bcf:citekey order="117">duchowski2017</bcf:citekey>
-    <bcf:citekey order="118">bahill1975</bcf:citekey>
-    <bcf:citekey order="118">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="119">bahill1975</bcf:citekey>
-    <bcf:citekey order="120">higuchi1988</bcf:citekey>
-    <bcf:citekey order="121">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="122">duchowski2017</bcf:citekey>
-    <bcf:citekey order="123">breiman2001</bcf:citekey>
-    <bcf:citekey order="124">breiman2001</bcf:citekey>
-    <bcf:citekey order="125">breiman2001</bcf:citekey>
-    <bcf:citekey order="126">breiman2001</bcf:citekey>
-    <bcf:citekey order="127">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="128">duchowski2017</bcf:citekey>
-    <bcf:citekey order="129">breiman2001</bcf:citekey>
-    <bcf:citekey order="130">duchowski2017</bcf:citekey>
-    <bcf:citekey order="131">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="132">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="133">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="134">duchowski2017</bcf:citekey>
-    <bcf:citekey order="135">duchowski2017</bcf:citekey>
-    <bcf:citekey order="136">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="137">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="138">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="139">beatty1982</bcf:citekey>
-    <bcf:citekey order="140">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="141">bahill1975</bcf:citekey>
-    <bcf:citekey order="142">beatty1982</bcf:citekey>
-    <bcf:citekey order="142">duchowski2017</bcf:citekey>
-    <bcf:citekey order="143">bahill1975</bcf:citekey>
-    <bcf:citekey order="144">breiman2001</bcf:citekey>
-    <bcf:citekey order="145">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="146">zhou2024abnormal</bcf:citekey>
-    <bcf:citekey order="147">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="148">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="149">kassner2014pupil</bcf:citekey>
-    <bcf:citekey order="150">li2005starburst</bcf:citekey>
-    <bcf:citekey order="151">fisher1936use</bcf:citekey>
-    <bcf:citekey order="152">majaranta2014eye</bcf:citekey>
-    <bcf:citekey order="153">wilhelm2001pupil</bcf:citekey>
-    <bcf:citekey order="154">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="155">duchowski2017</bcf:citekey>
-    <bcf:citekey order="156">bahill1975</bcf:citekey>
-    <bcf:citekey order="157">li2005starburst</bcf:citekey>
-    <bcf:citekey order="158">kassner2014pupil</bcf:citekey>
-    <bcf:citekey order="159">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="160">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="161">mandelbrot1982fractal</bcf:citekey>
-    <bcf:citekey order="162">breiman2001</bcf:citekey>
-    <bcf:citekey order="163">fisher1936use</bcf:citekey>
-    <bcf:citekey order="164">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="165">duchowski2017</bcf:citekey>
-    <bcf:citekey order="166">soukupova2016real</bcf:citekey>
-    <bcf:citekey order="167">majaranta2014eye</bcf:citekey>
-    <bcf:citekey order="168">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="169">duchowski2017</bcf:citekey>
-    <bcf:citekey order="170">iso19794</bcf:citekey>
-    <bcf:citekey order="171">klare2012face</bcf:citekey>
-    <bcf:citekey order="172">li2005starburst</bcf:citekey>
-    <bcf:citekey order="173">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="174">duchowski2017</bcf:citekey>
-    <bcf:citekey order="175">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="176">kassner2014pupil</bcf:citekey>
-    <bcf:citekey order="177">wilhelm2001pupil</bcf:citekey>
-    <bcf:citekey order="178">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="179">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="180">duchowski2017</bcf:citekey>
-    <bcf:citekey order="181">zander2011towards</bcf:citekey>
-    <bcf:citekey order="182">wilhelm2001pupil</bcf:citekey>
-    <bcf:citekey order="183">klare2012face</bcf:citekey>
-    <bcf:citekey order="184">bahill1975</bcf:citekey>
-    <bcf:citekey order="185">komogortsev2010</bcf:citekey>
-    <bcf:citekey order="186">bahill1975</bcf:citekey>
-    <bcf:citekey order="187">breiman2001</bcf:citekey>
-    <bcf:citekey order="188">diaz2021</bcf:citekey>
-    <bcf:citekey order="189">ramirez2004</bcf:citekey>
-    <bcf:citekey order="190">arias2010</bcf:citekey>
-    <bcf:citekey order="191">dewi2022eye</bcf:citekey>
-    <bcf:citekey order="192">gao2025eye_tracking_tutorial</bcf:citekey>
-    <bcf:citekey order="193">allado2022remote</bcf:citekey>
-    <bcf:citekey order="194">ncbi2023ai</bcf:citekey>
-    <bcf:citekey order="195">zhou2024abnormal</bcf:citekey>
-    <bcf:citekey order="196">gimenez2016aplicacion</bcf:citekey>
-    <bcf:citekey order="197">weigle2008analysis</bcf:citekey>
-    <bcf:citekey order="198">cardenas2024</bcf:citekey>
-    <bcf:citekey order="199">duchowski2017</bcf:citekey>
-    <bcf:citekey order="200">holmqvist2011eye</bcf:citekey>
-    <bcf:citekey order="201">savitzky1964smoothing</bcf:citekey>
-    <bcf:citekey order="202">li2005starburst</bcf:citekey>
-    <bcf:citekey order="203">beatty1982</bcf:citekey>
-    <bcf:citekey order="204">flash1985coordination</bcf:citekey>
-    <bcf:citekey order="205">teulings1996jerk</bcf:citekey>
-    <bcf:citekey order="206">higuchi1988</bcf:citekey>
-    <bcf:citekey order="207">fisher1936use</bcf:citekey>
-    <bcf:citekey order="208">vapnik1995</bcf:citekey>
-    <bcf:citekey order="209">nyquist1928certain</bcf:citekey>
-    <bcf:citekey order="210">iso9241_5</bcf:citekey>
-    <bcf:citekey order="211">jocher_yolov8_2023</bcf:citekey>
-    <bcf:citekey order="212">soukupova2016real</bcf:citekey>
-    <bcf:citekey order="213">leigh2015neurology</bcf:citekey>
-    <bcf:citekey order="214">vanopstal1987skewness</bcf:citekey>
-    <bcf:citekey order="215">harwood1999spectral</bcf:citekey>
-    <bcf:citekey order="216">jain2016biometric</bcf:citekey>
-    <bcf:citekey order="217">engbert2003microsaccades</bcf:citekey>
-    <bcf:citekey order="218">collewijn1988binocular</bcf:citekey>
-    <bcf:citekey order="219">mandelbrot1982fractal</bcf:citekey>
-    <bcf:citekey order="220">boghen1974velocity</bcf:citekey>
-    <bcf:citekey order="221">kassner2014pupil</bcf:citekey>
-    <bcf:citekey order="222">majaranta2014eye</bcf:citekey>
-    <bcf:citekey order="223">wilhelm2001pupil</bcf:citekey>
-    <bcf:citekey order="224">iso19794</bcf:citekey>
-    <bcf:citekey order="225">klare2012face</bcf:citekey>
-    <bcf:citekey order="226">zander2011towards</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">diaz2021</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">ramirez2004</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">arias2010</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">dewi2022eye</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">gao2025eye_tracking_tutorial</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">allado2022remote</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">ncbi2023ai</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">zhou2024abnormal</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">gimenez2016aplicacion</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">weigle2008analysis</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">cardenas2024</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">gao2025eye_tracking_tutorial</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">weigle2008analysis</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">gimenez2016aplicacion</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">li2005starburst</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">flash1985coordination</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">teulings1996jerk</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">higuchi1988</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">fisher1936use</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">vapnik1995</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">ramirez2004</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">nyquist1928certain</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">iso9241_5</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">li2005starburst</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">jocher_yolov8_2023</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">higuchi1988</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">soukupova2016real</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">flash1985coordination</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">teulings1996jerk</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">vanopstal1987skewness</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">harwood1999spectral</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">engbert2003microsaccades</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">collewijn1988binocular</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">higuchi1988</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">mandelbrot1982fractal</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="78" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="80" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">nyquist1928certain</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">harwood1999spectral</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">gao2025eye_tracking_tutorial</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">engbert2003microsaccades</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">engbert2003microsaccades</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="87" intorder="2">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="87" intorder="3">collewijn1988binocular</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="88" intorder="2">vanopstal1987skewness</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="90" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="91" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="92" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">collewijn1988binocular</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="95" intorder="1">boghen1974velocity</bcf:citekey>
+    <bcf:citekey order="96" intorder="1">boghen1974velocity</bcf:citekey>
+    <bcf:citekey order="96" intorder="2">collewijn1988binocular</bcf:citekey>
+    <bcf:citekey order="97" intorder="1">nyquist1928certain</bcf:citekey>
+    <bcf:citekey order="98" intorder="1">harwood1999spectral</bcf:citekey>
+    <bcf:citekey order="99" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">vanopstal1987skewness</bcf:citekey>
+    <bcf:citekey order="101" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="102" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="103" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="104" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="105" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="106" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="107" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="108" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="109" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="110" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="111" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="112" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="113" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="113" intorder="2">duchowski2017</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="114" intorder="2">duchowski2017</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="115" intorder="2">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="116" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="117" intorder="1">higuchi1988</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="120" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="121" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="123" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="124" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="125" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="126" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="127" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="128" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="129" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="130" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="135" intorder="1">komogortsev2010</bcf:citekey>
+    <bcf:citekey order="136" intorder="1">cohen1988statistical</bcf:citekey>
+    <bcf:citekey order="137" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="138" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="139" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="140" intorder="1">beatty1982</bcf:citekey>
+    <bcf:citekey order="140" intorder="2">duchowski2017</bcf:citekey>
+    <bcf:citekey order="141" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="142" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="143" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="144" intorder="1">zhou2024abnormal</bcf:citekey>
+    <bcf:citekey order="145" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="146" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="147" intorder="1">kassner2014pupil</bcf:citekey>
+    <bcf:citekey order="148" intorder="1">li2005starburst</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">fisher1936use</bcf:citekey>
+    <bcf:citekey order="150" intorder="1">majaranta2014eye</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">wilhelm2001pupil</bcf:citekey>
+    <bcf:citekey order="152" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="153" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="154" intorder="1">bahill1975</bcf:citekey>
+    <bcf:citekey order="155" intorder="1">li2005starburst</bcf:citekey>
+    <bcf:citekey order="156" intorder="1">kassner2014pupil</bcf:citekey>
+    <bcf:citekey order="157" intorder="1">savitzky1964smoothing</bcf:citekey>
+    <bcf:citekey order="158" intorder="1">holmqvist2011eye</bcf:citekey>
+    <bcf:citekey order="159" intorder="1">mandelbrot1982fractal</bcf:citekey>
+    <bcf:citekey order="160" intorder="1">breiman2001</bcf:citekey>
+    <bcf:citekey order="161" intorder="1">fisher1936use</bcf:citekey>
+    <bcf:citekey order="162" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="163" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="164" intorder="1">soukupova2016real</bcf:citekey>
+    <bcf:citekey order="165" intorder="1">majaranta2014eye</bcf:citekey>
+    <bcf:citekey order="166" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="167" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="168" intorder="1">iso19794</bcf:citekey>
+    <bcf:citekey order="169" intorder="1">klare2012face</bcf:citekey>
+    <bcf:citekey order="170" intorder="1">li2005starburst</bcf:citekey>
+    <bcf:citekey order="171" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="172" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="173" intorder="1">collewijn1988binocular</bcf:citekey>
+    <bcf:citekey order="174" intorder="1">kassner2014pupil</bcf:citekey>
+    <bcf:citekey order="175" intorder="1">wilhelm2001pupil</bcf:citekey>
+    <bcf:citekey order="176" intorder="1">jain2016biometric</bcf:citekey>
+    <bcf:citekey order="177" intorder="1">leigh2015neurology</bcf:citekey>
+    <bcf:citekey order="178" intorder="1">duchowski2017</bcf:citekey>
+    <bcf:citekey order="179" intorder="1">zander2011towards</bcf:citekey>
+    <bcf:citekey order="180" intorder="1">wilhelm2001pupil</bcf:citekey>
+    <bcf:citekey order="181" intorder="1">klare2012face</bcf:citekey>
+    <bcf:citekey order="182" intorder="1">bahill1975</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
     <bcf:sort order="1">
       <bcf:sortitem order="1">citeorder</bcf:sortitem>
     </bcf:sort>
+    <bcf:sort order="2">
+      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
+    </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
   <bcf:datalist section="0"
-                name="none/global//global/global"
+                name="none/global//global/global/global"
                 type="entry"
                 sortingtemplatename="none"
                 sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"
-                labelalphanametemplatename="global">
+                labelalphanametemplatename="global"
+                namehashtemplatename="global">
   </bcf:datalist>
 </bcf:controlfile>
